@@ -36,17 +36,17 @@ public ParcelDeliveryStatus getParcelDeliveryStatus() {
  * <pre>
  *           0..*     1..1
  * ParcelDelivery ------------------------- Address
- *           parcelDelivery        &lt;       deliveryaddress
+ *           parcelDelivery        &lt;       deliveryAddress
  * </pre>
  */
-private Address deliveryaddress;
+private Address deliveryAddress;
 
-public void setDeliveryaddress(Address value) {
-   this.deliveryaddress = value;
+public void setDeliveryAddress(Address value) {
+   this.deliveryAddress = value;
 }
 
-public Address getDeliveryaddress() {
-   return this.deliveryaddress;
+public Address getDeliveryAddress() {
+   return this.deliveryAddress;
 }
 
 }

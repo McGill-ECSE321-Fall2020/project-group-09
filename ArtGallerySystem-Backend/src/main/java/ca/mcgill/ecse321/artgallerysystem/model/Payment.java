@@ -22,14 +22,14 @@ public PaymentMethod getPaymentMethod() {
    return this.paymentMethod;
 }
 
-private boolean isValid;
+private boolean isSuccessful;
 
-public void setIsValid(boolean value) {
-   this.isValid = value;
+public void setIsSuccessful(boolean value) {
+   this.isSuccessful = value;
 }
 
-public boolean isIsValid() {
-   return this.isValid;
+public boolean isIsSuccessful() {
+   return this.isSuccessful;
 }
 
 /**

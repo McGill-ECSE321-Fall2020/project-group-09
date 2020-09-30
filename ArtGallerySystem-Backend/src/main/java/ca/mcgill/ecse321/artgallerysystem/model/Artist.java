@@ -4,16 +4,6 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class Artist extends UserRole {
-private double credit;
-
-public void setCredit(double value) {
-   this.credit = value;
-}
-
-public double getCredit() {
-   return this.credit;
-}
-
 private String artistId;
 
 public void setArtistId(String value) {
@@ -22,6 +12,16 @@ public void setArtistId(String value) {
 
 public String getArtistId() {
    return this.artistId;
+}
+
+private double credit;
+
+public void setCredit(double value) {
+   this.credit = value;
+}
+
+public double getCredit() {
+   return this.credit;
 }
 
 /**

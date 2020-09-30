@@ -4,16 +4,6 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class Address {
-private String name;
-
-public void setName(String value) {
-   this.name = value;
-}
-
-public String getName() {
-   return this.name;
-}
-
 private String addressId;
 
 public void setAddressId(String value) {
@@ -22,6 +12,16 @@ public void setAddressId(String value) {
 
 public String getAddressId() {
    return this.addressId;
+}
+
+private String name;
+
+public void setName(String value) {
+   this.name = value;
+}
+
+public String getName() {
+   return this.name;
 }
 
 private String phoneNumber;
@@ -34,34 +34,24 @@ public String getPhoneNumber() {
    return this.phoneNumber;
 }
 
-private String postalCode;
+private String streetAddress;
 
-public void setPostalCode(String value) {
-   this.postalCode = value;
+public void setStreetAddress(String value) {
+   this.streetAddress = value;
 }
 
-public String getPostalCode() {
-   return this.postalCode;
+public String getStreetAddress() {
+   return this.streetAddress;
 }
 
-private String street;
+private String city;
 
-public void setStreet(String value) {
-   this.street = value;
+public void setCity(String value) {
+   this.city = value;
 }
 
-public String getStreet() {
-   return this.street;
-}
-
-private String country;
-
-public void setCountry(String value) {
-   this.country = value;
-}
-
-public String getCountry() {
-   return this.country;
+public String getCity() {
+   return this.city;
 }
 
 private String province;
@@ -74,14 +64,24 @@ public String getProvince() {
    return this.province;
 }
 
-private String city;
+private String postalCode;
 
-public void setCity(String value) {
-   this.city = value;
+public void setPostalCode(String value) {
+   this.postalCode = value;
 }
 
-public String getCity() {
-   return this.city;
+public String getPostalCode() {
+   return this.postalCode;
+}
+
+private String country;
+
+public void setCountry(String value) {
+   this.country = value;
+}
+
+public String getCountry() {
+   return this.country;
 }
 
 /**
@@ -105,7 +105,7 @@ public Customer getCustomer() {
  * <pre>
  *           1..1     0..*
  * Address ------------------------- ParcelDelivery
- *           deliveryaddress        &gt;       parcelDelivery
+ *           deliveryAddress        &gt;       parcelDelivery
  * </pre>
  */
 private Set<ParcelDelivery> parcelDelivery;
@@ -120,17 +120,17 @@ this.parcelDelivery = new HashSet<ParcelDelivery>();
 /**
  * <pre>
  *           1..1     0..*
- * Address ------------------------- InstorePickUp
- *           storeaddress        &gt;       instorePickUp
+ * Address ------------------------- InStorePickUp
+ *           storeAddress        &gt;       inStorePickUp
  * </pre>
  */
-private Set<InstorePickUp> instorePickUp;
+private Set<InStorePickUp> inStorePickUp;
 
-public Set<InstorePickUp> getInstorePickUp() {
-   if (this.instorePickUp == null) {
-this.instorePickUp = new HashSet<InstorePickUp>();
+public Set<InStorePickUp> getInStorePickUp() {
+   if (this.inStorePickUp == null) {
+this.inStorePickUp = new HashSet<InStorePickUp>();
    }
-   return this.instorePickUp;
+   return this.inStorePickUp;
 }
 
 /**

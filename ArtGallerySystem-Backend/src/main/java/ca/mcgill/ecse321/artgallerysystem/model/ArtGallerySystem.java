@@ -68,4 +68,14 @@ this.address = new HashSet<Address>();
    return this.address;
 }
 
+private double income;
+
+public void setIncome(double value) {
+   this.income = value;
+}
+
+public double getIncome() {
+   return this.income;
+}
+
 }
