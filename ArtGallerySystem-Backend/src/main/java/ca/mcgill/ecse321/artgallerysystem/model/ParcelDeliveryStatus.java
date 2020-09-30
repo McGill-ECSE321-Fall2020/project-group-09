@@ -1,7 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
-import javax.persistence.Entity;
 
-@Entity
-public enum ParcelDeliveryStatus{
+public enum ParcelDeliveryStatus {
+Pending, Shipped, Delivered;
+
 }

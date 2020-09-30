@@ -9,9 +9,9 @@
       </contents>
       <contents xmi:type="ecore:EAnnotation" xmi:id="_zEUfMAKqEeuSgZB_KB01WQ" source="preferences">
         <contents xmi:type="ecore:EAnnotation" xmi:id="_zEWUYAKqEeuSgZB_KB01WQ" source="com.yattasolutions.codegen.reverse">
-          <details xmi:id="_zEWUYQKqEeuSgZB_KB01WQ" key="com.yattasolutions.codegen.reverse.roundtrip.ReverseEngineerNewFiles" value="true"/>
-          <details xmi:id="_zEWUYgKqEeuSgZB_KB01WQ" key="com.yattasolutions.codegen.reverse.roundtrip.RemoveDeletedFiles" value="true"/>
-          <details xmi:id="_zEWUYwKqEeuSgZB_KB01WQ" key="com.yattasolutions.codegen.reverse.roundtrip.ReverseEngineerChangedFiles" value="true"/>
+          <details xmi:id="_8s7jgAM_EeuBNuW16gxEfQ" key="com.yattasolutions.codegen.reverse.roundtrip.ReverseEngineerNewFiles" value="false"/>
+          <details xmi:id="_8s7jgQM_EeuBNuW16gxEfQ" key="com.yattasolutions.codegen.reverse.roundtrip.RemoveDeletedFiles" value="false"/>
+          <details xmi:id="_8s7jggM_EeuBNuW16gxEfQ" key="com.yattasolutions.codegen.reverse.roundtrip.ReverseEngineerChangedFiles" value="false"/>
         </contents>
       </contents>
     </eAnnotations>
@@ -335,7 +335,6 @@
   <UMLLabProfile:TargetLanguage xmi:id="_06jIYAKnEeuKUq95mGVj0w" base_Package="_zca9gAKnEeuKUq95mGVj0w">
     <languageName>java</languageName>
   </UMLLabProfile:TargetLanguage>
-  <Persistency:JPA1StyledElement xmi:id="_eSbkoAKqEeuKUq95mGVj0w" base_Element="_zca9gAKnEeuKUq95mGVj0w"/>
   <Persistency:PrimaryKey xmi:id="_eMcTkAK5EeuSgZB_KB01WQ" base_Property="_VKX2IAK5EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_-K2J4AK5EeuSgZB_KB01WQ" base_Property="_9LEH4AK5EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_GY-B4AK6EeuSgZB_KB01WQ" base_Property="_EmnTcAK6EeuSgZB_KB01WQ"/>
@@ -343,7 +342,6 @@
   <Persistency:PrimaryKey xmi:id="_mBOzoAK7EeuSgZB_KB01WQ" base_Property="_lT2JMAK7EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_ekIokAK-EeuSgZB_KB01WQ" base_Property="_d8TMgAK-EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_fWJCYALAEeuSgZB_KB01WQ" base_Property="_QsRO8ALAEeuSgZB_KB01WQ"/>
-  <Persistency:Past xmi:id="_tPwoIALBEeuSgZB_KB01WQ" base_Property="_qVwVIALBEeuSgZB_KB01WQ"/>
   <Persistency:JPA1StyledElement xmi:id="_0T-J8AM-EeuBNuW16gxEfQ" base_Element="_EV27oAKvEeuSgZB_KB01WQ"/>
   <Persistency:JPA1StyledElement xmi:id="_0T-J8QM-EeuBNuW16gxEfQ" base_Element="_SxWRoAKrEeuSgZB_KB01WQ"/>
   <Persistency:JPA1StyledElement xmi:id="_0T-xAAM-EeuBNuW16gxEfQ" base_Element="_KVjkgALAEeuSgZB_KB01WQ"/>
