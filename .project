@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>artgallery</name>
+<<<<<<< HEAD
 	<comment>Project project-group-09 created by Buildship.</comment>
+=======
+	<comment></comment>
+>>>>>>> branch 'master' of https://github.com/McGill-ECSE321-Fall2020/project-group-09.git
 	<projects>
 	</projects>
 	<buildSpec>
