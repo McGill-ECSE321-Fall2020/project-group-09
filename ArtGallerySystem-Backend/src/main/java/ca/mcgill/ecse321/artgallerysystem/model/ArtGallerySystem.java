@@ -50,5 +50,12 @@ public class ArtGallerySystem{
    public void setAddress(Set<Address> addresss) {
       this.address = addresss;
    }
-   
+   private double income;
+
+   public void setIncome(String value) {
+      this.income = value;
+   }
+   public String getIncome() {
+      return this.income;
+   }
    }
