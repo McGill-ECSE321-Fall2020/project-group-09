@@ -1,52 +1,43 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
-public class ParcelDelivery extends Delivery {
+@Entity
+public class ParcelDelivery extends Delivery{
 private String trackingNumber;
-
-public void setTrackingNumber(String value) {
-   this.trackingNumber = value;
-}
-
+   
+   public void setTrackingNumber(String value) {
+this.trackingNumber = value;
+    }
 public String getTrackingNumber() {
-   return this.trackingNumber;
-}
-
+return this.trackingNumber;
+    }
 private String carrier;
 
 public void setCarrier(String value) {
-   this.carrier = value;
-}
-
+this.carrier = value;
+    }
 public String getCarrier() {
-   return this.carrier;
-}
-
+return this.carrier;
+    }
 private ParcelDeliveryStatus parcelDeliveryStatus;
 
 public void setParcelDeliveryStatus(ParcelDeliveryStatus value) {
-   this.parcelDeliveryStatus = value;
-}
-
+this.parcelDeliveryStatus = value;
+    }
 public ParcelDeliveryStatus getParcelDeliveryStatus() {
-   return this.parcelDeliveryStatus;
-}
-
-/**
- * <pre>
- *           0..*     1..1
- * ParcelDelivery ------------------------- Address
- *           parcelDelivery        &lt;       deliveryAddress
- * </pre>
- */
+return this.parcelDeliveryStatus;
+    }
 private Address deliveryAddress;
 
-public void setDeliveryAddress(Address value) {
-   this.deliveryAddress = value;
-}
-
+@ManyToOne(optional=false)
 public Address getDeliveryAddress() {
    return this.deliveryAddress;
+}
+
+public void setDeliveryAddress(Address deliveryAddress) {
+   this.deliveryAddress = deliveryAddress;
 }
 
 }

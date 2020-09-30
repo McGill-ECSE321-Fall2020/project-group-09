@@ -1,122 +1,94 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToOne;
 import java.util.Set;
-import java.util.HashSet;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
-public class Order {
+@Entity
+public class Order{
 private String orderId;
-
-public void setOrderId(String value) {
-   this.orderId = value;
-}
-
+   
+   public void setOrderId(String value) {
+this.orderId = value;
+    }
+@Id
 public String getOrderId() {
-   return this.orderId;
-}
-
+return this.orderId;
+    }
 private Date date;
 
 public void setDate(Date value) {
-   this.date = value;
-}
-
+this.date = value;
+    }
 public Date getDate() {
-   return this.date;
-}
-
+return this.date;
+    }
 private OrderStatus orderStatus;
 
 public void setOrderStatus(OrderStatus value) {
-   this.orderStatus = value;
-}
-
+this.orderStatus = value;
+    }
 public OrderStatus getOrderStatus() {
-   return this.orderStatus;
-}
-
-/**
- * <pre>
- *           1..1     0..1
- * Order ------------------------- Delivery
- *           order        &gt;       delivery
- * </pre>
- */
+return this.orderStatus;
+    }
 private Delivery delivery;
 
-public void setDelivery(Delivery value) {
-   this.delivery = value;
-}
-
+@OneToOne(mappedBy="order", cascade={CascadeType.ALL})
 public Delivery getDelivery() {
    return this.delivery;
 }
 
-/**
- * <pre>
- *           1..1     0..*
- * Order ------------------------- Payment
- *           order        &gt;       payment
- * </pre>
- */
+public void setDelivery(Delivery delivery) {
+   this.delivery = delivery;
+}
+
 private Set<Payment> payment;
 
+@OneToMany(mappedBy="order", cascade={CascadeType.ALL})
 public Set<Payment> getPayment() {
-   if (this.payment == null) {
-this.payment = new HashSet<Payment>();
-   }
    return this.payment;
 }
 
-/**
- * <pre>
- *           0..*     1..1
- * Order ------------------------- Customer
- *           order        &lt;       customer
- * </pre>
- */
-private Customer customer;
-
-public void setCustomer(Customer value) {
-   this.customer = value;
+public void setPayment(Set<Payment> payments) {
+   this.payment = payments;
 }
 
+private Customer customer;
+
+@ManyToOne(optional=false)
 public Customer getCustomer() {
    return this.customer;
 }
 
-/**
- * <pre>
- *           0..1     1..1
- * Order ------------------------- ArtPiece
- *           order        &lt;       artPiece
- * </pre>
- */
-private ArtPiece artPiece;
-
-public void setArtPiece(ArtPiece value) {
-   this.artPiece = value;
+public void setCustomer(Customer customer) {
+   this.customer = customer;
 }
 
+private ArtPiece artPiece;
+
+@OneToOne(optional=false)
 public ArtPiece getArtPiece() {
    return this.artPiece;
 }
 
-/**
- * <pre>
- *           0..*     1..1
- * Order ------------------------- ArtGallerySystem
- *           order        &lt;       artGallerySystem
- * </pre>
- */
-private ArtGallerySystem artGallerySystem;
-
-public void setArtGallerySystem(ArtGallerySystem value) {
-   this.artGallerySystem = value;
+public void setArtPiece(ArtPiece artPiece) {
+   this.artPiece = artPiece;
 }
 
+private ArtGallerySystem artGallerySystem;
+
+@ManyToOne(optional=false)
 public ArtGallerySystem getArtGallerySystem() {
    return this.artGallerySystem;
+}
+
+public void setArtGallerySystem(ArtGallerySystem artGallerySystem) {
+   this.artGallerySystem = artGallerySystem;
 }
 
 }

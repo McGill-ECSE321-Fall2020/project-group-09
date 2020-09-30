@@ -1,81 +1,62 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
+import javax.persistence.Entity;
 import java.util.Set;
-import java.util.HashSet;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 
-public class ArtGallerySystem {
-/**
- * <pre>
- *           1..1     0..*
- * ArtGallerySystem ------------------------- User
- *           artGallerySystem        &gt;       user
- * </pre>
- */
+@Entity
+public class ArtGallerySystem{
 private Set<User> user;
 
+@OneToMany(mappedBy="artGallerySystem", cascade={CascadeType.ALL})
 public Set<User> getUser() {
-   if (this.user == null) {
-this.user = new HashSet<User>();
-   }
    return this.user;
 }
 
-/**
- * <pre>
- *           1..1     0..*
- * ArtGallerySystem ------------------------- ArtPiece
- *           artGallerySystem        &gt;       artPiece
- * </pre>
- */
+public void setUser(Set<User> users) {
+   this.user = users;
+}
+
 private Set<ArtPiece> artPiece;
 
+@OneToMany(mappedBy="artGallerySystem", cascade={CascadeType.ALL})
 public Set<ArtPiece> getArtPiece() {
-   if (this.artPiece == null) {
-this.artPiece = new HashSet<ArtPiece>();
-   }
    return this.artPiece;
 }
 
-/**
- * <pre>
- *           1..1     0..*
- * ArtGallerySystem ------------------------- Order
- *           artGallerySystem        &gt;       order
- * </pre>
- */
+public void setArtPiece(Set<ArtPiece> artPieces) {
+   this.artPiece = artPieces;
+}
+
 private Set<Order> order;
 
+@OneToMany(mappedBy="artGallerySystem", cascade={CascadeType.ALL})
 public Set<Order> getOrder() {
-   if (this.order == null) {
-this.order = new HashSet<Order>();
-   }
    return this.order;
 }
 
-/**
- * <pre>
- *           1..1     0..*
- * ArtGallerySystem ------------------------- Address
- *           artGallerySystem        &gt;       address
- * </pre>
- */
+public void setOrder(Set<Order> orders) {
+   this.order = orders;
+}
+
 private Set<Address> address;
 
+@OneToMany(mappedBy="artGallerySystem", cascade={CascadeType.ALL})
 public Set<Address> getAddress() {
-   if (this.address == null) {
-this.address = new HashSet<Address>();
-   }
    return this.address;
+}
+
+public void setAddress(Set<Address> addresss) {
+   this.address = addresss;
 }
 
 private double income;
 
 public void setIncome(double value) {
-   this.income = value;
-}
-
+this.income = value;
+    }
 public double getIncome() {
-   return this.income;
-}
-
-}
+return this.income;
+       }
+   }

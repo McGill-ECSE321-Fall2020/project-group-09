@@ -1,22 +1,19 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
-public class UserRole {
-/**
- * <pre>
- *           0..2     1..1
- * UserRole ------------------------- User
- *           userRole        &lt;       user
- * </pre>
- */
+@Entity
+public class UserRole{
 private User user;
 
-public void setUser(User value) {
-   this.user = value;
-}
-
+@ManyToOne(optional=false)
 public User getUser() {
    return this.user;
+}
+
+public void setUser(User user) {
+   this.user = user;
 }
 
 }

@@ -1,7 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
+import javax.persistence.Entity;
 
-public enum PaymentMethod {
-CreditCard, DebitCard, Balance, PayPal;
-
+@Entity
+public enum PaymentMethod{
 }

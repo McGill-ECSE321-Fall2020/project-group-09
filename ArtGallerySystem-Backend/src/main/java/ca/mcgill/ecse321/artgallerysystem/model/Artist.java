@@ -1,43 +1,38 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Set;
-import java.util.HashSet;
+import javax.persistence.ManyToMany;
 
-public class Artist extends UserRole {
+@Entity
+public class Artist extends UserRole{
 private String artistId;
-
-public void setArtistId(String value) {
-   this.artistId = value;
-}
-
+   
+   public void setArtistId(String value) {
+this.artistId = value;
+    }
+@Id
 public String getArtistId() {
-   return this.artistId;
-}
-
+return this.artistId;
+    }
 private double credit;
 
 public void setCredit(double value) {
-   this.credit = value;
-}
-
+this.credit = value;
+    }
 public double getCredit() {
-   return this.credit;
-}
-
-/**
- * <pre>
- *           1..*     0..*
- * Artist ------------------------- ArtPiece
- *           artist        &gt;       artPiece
- * </pre>
- */
+return this.credit;
+    }
 private Set<ArtPiece> artPiece;
 
+@ManyToMany(mappedBy="artist")
 public Set<ArtPiece> getArtPiece() {
-   if (this.artPiece == null) {
-this.artPiece = new HashSet<ArtPiece>();
-   }
    return this.artPiece;
+}
+
+public void setArtPiece(Set<ArtPiece> artPieces) {
+   this.artPiece = artPieces;
 }
 
 }

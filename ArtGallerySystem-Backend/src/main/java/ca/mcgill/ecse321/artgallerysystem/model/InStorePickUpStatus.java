@@ -1,7 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
+import javax.persistence.Entity;
 
-public enum InStorePickUpStatus {
-Pending, AvailableForPickUp, PickedUp;
-
+@Entity
+public enum InStorePickUpStatus{
 }

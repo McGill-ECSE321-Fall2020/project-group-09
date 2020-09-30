@@ -1,52 +1,45 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-public class Payment {
+@Entity
+public class Payment{
 private String paymentId;
-
-public void setPaymentId(String value) {
-   this.paymentId = value;
-}
-
+   
+   public void setPaymentId(String value) {
+this.paymentId = value;
+    }
+@Id
 public String getPaymentId() {
-   return this.paymentId;
-}
-
+return this.paymentId;
+    }
 private PaymentMethod paymentMethod;
 
 public void setPaymentMethod(PaymentMethod value) {
-   this.paymentMethod = value;
-}
-
+this.paymentMethod = value;
+    }
 public PaymentMethod getPaymentMethod() {
-   return this.paymentMethod;
-}
-
+return this.paymentMethod;
+    }
 private boolean isSuccessful;
 
 public void setIsSuccessful(boolean value) {
-   this.isSuccessful = value;
-}
-
+this.isSuccessful = value;
+    }
 public boolean isIsSuccessful() {
-   return this.isSuccessful;
-}
-
-/**
- * <pre>
- *           0..*     1..1
- * Payment ------------------------- Order
- *           payment        &lt;       order
- * </pre>
- */
+return this.isSuccessful;
+    }
 private Order order;
 
-public void setOrder(Order value) {
-   this.order = value;
-}
-
+@ManyToOne(optional=false)
 public Order getOrder() {
    return this.order;
+}
+
+public void setOrder(Order order) {
+   this.order = order;
 }
 
 }
