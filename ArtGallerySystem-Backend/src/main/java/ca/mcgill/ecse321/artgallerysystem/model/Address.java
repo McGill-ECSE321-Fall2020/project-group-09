@@ -8,113 +8,113 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Address{
-private String addressId;
-   
-   public void setAddressId(String value) {
-this.addressId = value;
-    }
-@Id
-public String getAddressId() {
-return this.addressId;
-    }
-private String name;
+   private String name;
 
 public void setName(String value) {
-this.name = value;
-    }
+    this.name = value;
+}
 public String getName() {
-return this.name;
-    }
+    return this.name;
+}
+private String addressId;
+
+public void setAddressId(String value) {
+    this.addressId = value;
+}
+@Id
+public String getAddressId() {
+    return this.addressId;
+}
 private String phoneNumber;
 
 public void setPhoneNumber(String value) {
-this.phoneNumber = value;
-    }
+    this.phoneNumber = value;
+}
 public String getPhoneNumber() {
-return this.phoneNumber;
-    }
-private String streetAddress;
-
-public void setStreetAddress(String value) {
-this.streetAddress = value;
-    }
-public String getStreetAddress() {
-return this.streetAddress;
-    }
-private String city;
-
-public void setCity(String value) {
-this.city = value;
-    }
-public String getCity() {
-return this.city;
-    }
-private String province;
-
-public void setProvince(String value) {
-this.province = value;
-    }
-public String getProvince() {
-return this.province;
-    }
+    return this.phoneNumber;
+}
 private String postalCode;
 
 public void setPostalCode(String value) {
-this.postalCode = value;
-    }
+    this.postalCode = value;
+}
 public String getPostalCode() {
-return this.postalCode;
-    }
+    return this.postalCode;
+}
+private String street;
+
+public void setStreet(String value) {
+    this.street = value;
+}
+public String getStreet() {
+    return this.street;
+}
 private String country;
 
 public void setCountry(String value) {
-this.country = value;
-    }
+    this.country = value;
+}
 public String getCountry() {
-return this.country;
-    }
-private Customer customer;
-
-@ManyToOne
-public Customer getCustomer() {
-   return this.customer;
+    return this.country;
 }
+private String province;
 
-public void setCustomer(Customer customer) {
-   this.customer = customer;
+public void setProvince(String value) {
+    this.province = value;
 }
-
-private Set<ParcelDelivery> parcelDelivery;
-
-@OneToMany(mappedBy="deliveryAddress")
-public Set<ParcelDelivery> getParcelDelivery() {
-   return this.parcelDelivery;
+public String getProvince() {
+    return this.province;
 }
+private String city;
 
-public void setParcelDelivery(Set<ParcelDelivery> parcelDeliverys) {
-   this.parcelDelivery = parcelDeliverys;
+public void setCity(String value) {
+    this.city = value;
 }
-
-private Set<InStorePickUp> inStorePickUp;
-
-@OneToMany(mappedBy="storeAddress")
-public Set<InStorePickUp> getInStorePickUp() {
-   return this.inStorePickUp;
+public String getCity() {
+    return this.city;
 }
-
-public void setInStorePickUp(Set<InStorePickUp> inStorePickUps) {
-   this.inStorePickUp = inStorePickUps;
-}
-
-private ArtGallerySystem artGallerySystem;
-
-@ManyToOne(optional=false)
-public ArtGallerySystem getArtGallerySystem() {
-   return this.artGallerySystem;
-}
-
-public void setArtGallerySystem(ArtGallerySystem artGallerySystem) {
-   this.artGallerySystem = artGallerySystem;
-}
-
-}
+   private Customer customer;
+   
+   @ManyToOne
+   public Customer getCustomer() {
+      return this.customer;
+   }
+   
+   public void setCustomer(Customer customer) {
+      this.customer = customer;
+   }
+   
+   private Set<ParcelDelivery> parcelDelivery;
+   
+   @OneToMany(mappedBy="deliveryaddress" )
+   public Set<ParcelDelivery> getParcelDelivery() {
+      return this.parcelDelivery;
+   }
+   
+   public void setParcelDelivery(Set<ParcelDelivery> parcelDeliverys) {
+      this.parcelDelivery = parcelDeliverys;
+   }
+   
+   private Set<InstorePickUp> instorePickUp;
+   
+   @OneToMany(mappedBy="storeaddress" )
+   public Set<InstorePickUp> getInstorePickUp() {
+      return this.instorePickUp;
+   }
+   
+   public void setInstorePickUp(Set<InstorePickUp> instorePickUps) {
+      this.instorePickUp = instorePickUps;
+   }
+   
+   private ArtGallerySystem artGallerySystem;
+   
+   @ManyToOne(optional=false)
+   public ArtGallerySystem getArtGallerySystem() {
+      return this.artGallerySystem;
+   }
+   
+   public void setArtGallerySystem(ArtGallerySystem artGallerySystem) {
+      this.artGallerySystem = artGallerySystem;
+   }
+   
+   }

@@ -1,29 +1,32 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
-@Entity
-public abstract class Delivery{
-private String deliveryId;
-   
-   public void setDeliveryId(String value) {
-this.deliveryId = value;
-    }
+public abstract class Delivery {
+   private String deliveryId;
+
+public void setDeliveryId(String value) {
+    this.deliveryId = value;
+}
 @Id
 public String getDeliveryId() {
-return this.deliveryId;
-    }
-private Order order;
-
-@OneToOne(optional=false)
-public Order getOrder() {
-   return this.order;
+    return this.deliveryId;
 }
-
-public void setOrder(Order order) {
-   this.order = order;
-}
-
-}
+   /**
+    * <pre>
+    *           0..1     1..1
+    * Delivery ------------------------- Order
+    *           delivery        &lt;       order
+    * </pre>
+    */
+   private Order order;
+   
+   public void setOrder(Order value) {
+      this.order = value;
+   }
+   
+   public Order getOrder() {
+      return this.order;
+   }
+   
+   }

@@ -6,40 +6,40 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Payment{
-private String paymentId;
-   
-   public void setPaymentId(String value) {
-this.paymentId = value;
-    }
+   private String paymentId;
+
+public void setPaymentId(String value) {
+    this.paymentId = value;
+}
 @Id
 public String getPaymentId() {
-return this.paymentId;
-    }
+    return this.paymentId;
+}
 private PaymentMethod paymentMethod;
 
 public void setPaymentMethod(PaymentMethod value) {
-this.paymentMethod = value;
-    }
+    this.paymentMethod = value;
+}
 public PaymentMethod getPaymentMethod() {
-return this.paymentMethod;
-    }
-private boolean isSuccessful;
-
-public void setIsSuccessful(boolean value) {
-this.isSuccessful = value;
-    }
-public boolean isIsSuccessful() {
-return this.isSuccessful;
-    }
-private Order order;
-
-@ManyToOne(optional=false)
-public Order getOrder() {
-   return this.order;
+    return this.paymentMethod;
 }
+private boolean isValid;
 
-public void setOrder(Order order) {
-   this.order = order;
+public void setIsValid(boolean value) {
+    this.isValid = value;
 }
-
+public boolean isIsValid() {
+    return this.isValid;
 }
+   private Order order;
+   
+   @ManyToOne(optional=false)
+   public Order getOrder() {
+      return this.order;
+   }
+   
+   public void setOrder(Order order) {
+      this.order = order;
+   }
+   
+   }

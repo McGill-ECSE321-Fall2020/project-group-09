@@ -5,39 +5,39 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class ParcelDelivery extends Delivery{
-private String trackingNumber;
-   
-   public void setTrackingNumber(String value) {
-this.trackingNumber = value;
-    }
+   private String trackingNumber;
+
+public void setTrackingNumber(String value) {
+    this.trackingNumber = value;
+}
 public String getTrackingNumber() {
-return this.trackingNumber;
-    }
+    return this.trackingNumber;
+}
 private String carrier;
 
 public void setCarrier(String value) {
-this.carrier = value;
-    }
+    this.carrier = value;
+}
 public String getCarrier() {
-return this.carrier;
-    }
+    return this.carrier;
+}
 private ParcelDeliveryStatus parcelDeliveryStatus;
 
 public void setParcelDeliveryStatus(ParcelDeliveryStatus value) {
-this.parcelDeliveryStatus = value;
-    }
+    this.parcelDeliveryStatus = value;
+}
 public ParcelDeliveryStatus getParcelDeliveryStatus() {
-return this.parcelDeliveryStatus;
-    }
-private Address deliveryAddress;
-
-@ManyToOne(optional=false)
-public Address getDeliveryAddress() {
-   return this.deliveryAddress;
+    return this.parcelDeliveryStatus;
 }
-
-public void setDeliveryAddress(Address deliveryAddress) {
-   this.deliveryAddress = deliveryAddress;
-}
-
-}
+   private Address deliveryaddress;
+   
+   @ManyToOne(optional=false)
+   public Address getDeliveryaddress() {
+      return this.deliveryaddress;
+   }
+   
+   public void setDeliveryaddress(Address deliveryaddress) {
+      this.deliveryaddress = deliveryaddress;
+   }
+   
+   }
