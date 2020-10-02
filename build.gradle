@@ -10,6 +10,9 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
 }
+task stage () {
+    dependsOn ':ArtGallerySystem-Backend:assemble'
+}
 
 repositories {
     // Use jcenter for resolving dependencies.
