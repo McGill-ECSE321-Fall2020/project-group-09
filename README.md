@@ -8,15 +8,15 @@ The gallery wants to focus on local artists and encourage them to use their webs
 
 Team members
 
-Team members	Major	Year
-Amelia Cui	Software Engineering	U2
-Angelina Duan	Software Engineering	U2
+Team members |	Major	Year
+Amelia Cui |	Software Engineering	U2
+Angelina Duan	| Software Engineering	U2
 
 
 Deliverable 1
 
-Team members	Total hours	Responsibility
-Amelia Cui 		
-Angelina Duan		
+Team members |	Total hours	| Responsibility
+Amelia Cui | 		
+Angelina Duan	|	
 
 
