@@ -51,4 +51,12 @@ public void setAddress(Set<Address> addresss) {
    this.address = addresss;
 }
 
-}
+private double income;
+
+public void setIncome(double value) {
+this.income = value;
+    }
+public double getIncome() {
+return this.income;
+       }
+   }

@@ -1,0 +1,31 @@
+!SESSION 2020-10-03 20:27:25.663 -----------------------------------------------
+eclipse.buildId=4.16.0.I20200604-0540
+java.version=14.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.modeling.product -keyring /Users/jiangzhekai/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.modeling.product -keyring /Users/jiangzhekai/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-10-03 20:27:45.531
+!MESSAGE System property http.proxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2020-10-03 20:27:45.531
+!MESSAGE System property http.proxyPort has been set to 1080 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2020-10-03 20:27:45.532
+!MESSAGE System property http.nonProxyHosts has been set to 127.0.0.1|localhost|*.localhost by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2020-10-03 20:27:45.533
+!MESSAGE System property https.proxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2020-10-03 20:27:45.533
+!MESSAGE System property https.proxyPort has been set to 1080 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2020-10-03 20:27:45.533
+!MESSAGE System property socksProxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2020-10-03 20:27:45.533
+!MESSAGE System property socksProxyPort has been set to 1086 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.jobs 2 2 2020-10-03 20:29:08.035
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: de.yatta.platform.marketplace.licensing.client.LicensingClient$1

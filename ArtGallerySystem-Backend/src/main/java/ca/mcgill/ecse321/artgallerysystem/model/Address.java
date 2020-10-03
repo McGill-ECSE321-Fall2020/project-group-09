@@ -8,22 +8,22 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Address{
-private String name;
-   
-   public void setName(String value) {
-this.name = value;
-    }
-public String getName() {
-return this.name;
-    }
 private String addressId;
-
-public void setAddressId(String value) {
+   
+   public void setAddressId(String value) {
 this.addressId = value;
     }
 @Id
 public String getAddressId() {
 return this.addressId;
+    }
+private String name;
+
+public void setName(String value) {
+this.name = value;
+    }
+public String getName() {
+return this.name;
     }
 private String phoneNumber;
 
@@ -33,29 +33,21 @@ this.phoneNumber = value;
 public String getPhoneNumber() {
 return this.phoneNumber;
     }
-private String postalCode;
+private String streetAddress;
 
-public void setPostalCode(String value) {
-this.postalCode = value;
+public void setStreetAddress(String value) {
+this.streetAddress = value;
     }
-public String getPostalCode() {
-return this.postalCode;
+public String getStreetAddress() {
+return this.streetAddress;
     }
-private String street;
+private String city;
 
-public void setStreet(String value) {
-this.street = value;
+public void setCity(String value) {
+this.city = value;
     }
-public String getStreet() {
-return this.street;
-    }
-private String country;
-
-public void setCountry(String value) {
-this.country = value;
-    }
-public String getCountry() {
-return this.country;
+public String getCity() {
+return this.city;
     }
 private String province;
 
@@ -65,13 +57,21 @@ this.province = value;
 public String getProvince() {
 return this.province;
     }
-private String city;
+private String postalCode;
 
-public void setCity(String value) {
-this.city = value;
+public void setPostalCode(String value) {
+this.postalCode = value;
     }
-public String getCity() {
-return this.city;
+public String getPostalCode() {
+return this.postalCode;
+    }
+private String country;
+
+public void setCountry(String value) {
+this.country = value;
+    }
+public String getCountry() {
+return this.country;
     }
 private Customer customer;
 
@@ -86,7 +86,7 @@ public void setCustomer(Customer customer) {
 
 private Set<ParcelDelivery> parcelDelivery;
 
-@OneToMany(mappedBy="deliveryaddress")
+@OneToMany(mappedBy="deliveryAddress")
 public Set<ParcelDelivery> getParcelDelivery() {
    return this.parcelDelivery;
 }
@@ -95,15 +95,15 @@ public void setParcelDelivery(Set<ParcelDelivery> parcelDeliverys) {
    this.parcelDelivery = parcelDeliverys;
 }
 
-private Set<InstorePickUp> instorePickUp;
+private Set<InStorePickUp> inStorePickUp;
 
-@OneToMany(mappedBy="storeaddress")
-public Set<InstorePickUp> getInstorePickUp() {
-   return this.instorePickUp;
+@OneToMany(mappedBy="storeAddress")
+public Set<InStorePickUp> getInStorePickUp() {
+   return this.inStorePickUp;
 }
 
-public void setInstorePickUp(Set<InstorePickUp> instorePickUps) {
-   this.instorePickUp = instorePickUps;
+public void setInStorePickUp(Set<InStorePickUp> inStorePickUps) {
+   this.inStorePickUp = inStorePickUps;
 }
 
 private ArtGallerySystem artGallerySystem;
