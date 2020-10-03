@@ -15,7 +15,7 @@ Team members
 | Angelina Duan	| Software Engineering	U2 |
 
 
-Deliverable 1
+# Deliverable 1
 
 | Team members |	Total hours	| Responsibility |
 | ------------ | ------------ | -------------- |
