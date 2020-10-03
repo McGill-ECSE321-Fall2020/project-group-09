@@ -59,13 +59,13 @@ this.date = value;
 public Date getDate() {
 return this.date;
     }
-private ArtPieceStatus artpieceStatus;
+private ArtPieceStatus artPieceStatus;
 
-public void setArtpieceStatus(ArtPieceStatus value) {
-this.artpieceStatus = value;
+public void setArtPieceStatus(ArtPieceStatus value) {
+this.artPieceStatus = value;
     }
-public ArtPieceStatus getArtpieceStatus() {
-return this.artpieceStatus;
+public ArtPieceStatus getArtPieceStatus() {
+return this.artPieceStatus;
     }
 private Set<Artist> artist;
 

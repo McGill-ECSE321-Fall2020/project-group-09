@@ -29,15 +29,15 @@ this.parcelDeliveryStatus = value;
 public ParcelDeliveryStatus getParcelDeliveryStatus() {
 return this.parcelDeliveryStatus;
     }
-private Address deliveryaddress;
+private Address deliveryAddress;
 
 @ManyToOne(optional=false)
-public Address getDeliveryaddress() {
-   return this.deliveryaddress;
+public Address getDeliveryAddress() {
+   return this.deliveryAddress;
 }
 
-public void setDeliveryaddress(Address deliveryaddress) {
-   this.deliveryaddress = deliveryaddress;
+public void setDeliveryAddress(Address deliveryAddress) {
+   this.deliveryAddress = deliveryAddress;
 }
 
 }

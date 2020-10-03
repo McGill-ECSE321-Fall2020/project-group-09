@@ -7,17 +7,9 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Artist extends UserRole{
-private double credit;
-   
-   public void setCredit(double value) {
-this.credit = value;
-    }
-public double getCredit() {
-return this.credit;
-    }
 private String artistId;
-
-public void setArtistId(String value) {
+   
+   public void setArtistId(String value) {
 this.artistId = value;
     }
 @Id
@@ -35,4 +27,12 @@ public void setArtPiece(Set<ArtPiece> artPieces) {
    this.artPiece = artPieces;
 }
 
-}
+private double credit;
+
+public void setCredit(double value) {
+this.credit = value;
+    }
+public double getCredit() {
+return this.credit;
+       }
+   }
