@@ -13,6 +13,7 @@ Team members
 | ------------ | ----------- |
 | Amelia Cui |	Software Engineering	U2 |
 | Angelina Duan	| Software Engineering	U2 |
+| Zheyan Tu | Computer Engineering U2 |
 
 
 # Deliverable 1
@@ -21,5 +22,5 @@ Team members
 | ------------ | ------------ | -------------- |
 | Amelia Cui | 		
 | Angelina Duan	|	
-
+| Zheyan Tu |
 [Deliverable 1 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_1)
