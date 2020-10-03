@@ -15,6 +15,7 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | Angelina Duan	| Software Engineering	U2 |
 | Zhekai Jiang | Software Engineering U1 |
 | Zheyan Tu | Computer Engineering U2 |
+| Tianyu Zhao | Computer Engineering U2 |
 
 
 ## Deliverable 1
@@ -25,5 +26,6 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | Angelina Duan	| | |
 | Zhekai Jiang | | |
 | Zheyan Tu | | |
+| Tianyu Zhao | | |
 
 [Deliverable 1 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_1)
