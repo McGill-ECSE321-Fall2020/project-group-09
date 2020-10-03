@@ -22,10 +22,10 @@ The gallery wants to focus on local artists and encourage them to use their webs
 
 | Team members |	Total hours	| Responsibility |
 | ------------ | ------------ | -------------- |
-| Amelia Cui | | |
-| Angelina Duan	| | |
-| Zhekai Jiang | | |
-| Zheyan Tu | | |
-| Tianyu Zhao | | |
+| Amelia Cui | | Domain model, Requirements model, Persistence layer, Documentation |
+| Angelina Duan	| | Domain model, Requirements model, Continuous Integration, Build System |
+| Zhekai Jiang | | Domain model, Bug fixing,  Continuous Integration |
+| Zheyan Tu | | Persistence Layer, Test Suite, Documentation, Bug fixing |
+| Tianyu Zhao | | Persistence Layer, Test Suite, Bug fixing |
 
 [Deliverable 1 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_1)
