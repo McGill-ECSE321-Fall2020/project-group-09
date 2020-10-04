@@ -379,22 +379,6 @@
     <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_zZkWcAKqEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_zZqdEQKqEeuSgZB_KB01WQ" position="6.0,-161.0" size="-1.0,-1.0"/>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_9Lql0QKuEeuSgZB_KB01WQ" containment="_D2PzMALKEeuureya8sZnkw" name="UserRole" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_1k4DgALCEeuSgZB_KB01WQ" subclassedBy="_-mTnwALCEeuSgZB_KB01WQ _Aj3goALDEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_9Lql0AKuEeuSgZB_KB01WQ"/>
-    <visualProperties xmi:id="_9Lql0gKuEeuSgZB_KB01WQ" position="644.0,225.0" size="153.0,67.0"/>
-    <stereotypes xmi:id="_0UGs0AM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T-xBAM-EeuBNuW16gxEfQ"/>
-    </stereotypes>
-    <visibility xmi:id="_9Lql0wKuEeuSgZB_KB01WQ" label="+"/>
-    <attributes xmi:id="_1k4qlQLCEeuSgZB_KB01WQ" name="user">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_1kzyEQLCEeuSgZB_KB01WQ"/>
-      <visibility xmi:id="_1k4qlgLCEeuSgZB_KB01WQ" label="+"/>
-      <cardinality xmi:id="_1k4qlwLCEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
-      <type xmi:id="_1k4qmALCEeuSgZB_KB01WQ" name="User">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_SxWRoAKrEeuSgZB_KB01WQ"/>
-      </type>
-    </attributes>
-  </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_CEq8IAKvEeuSgZB_KB01WQ" containment="_E07pAALKEeuureya8sZnkw" name="ArtPiece" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_H2CRQALEEeuSgZB_KB01WQ _hayocALFEeuSgZB_KB01WQ" associationsOut="_NFbHQALEEeuSgZB_KB01WQ">
     <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_CEqVEAKvEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_CEq8IQKvEeuSgZB_KB01WQ" position="908.0,170.0" size="235.0,167.0"/>
@@ -1126,6 +1110,33 @@
       <cardinality xmi:id="_tcYGIgZWEeuwvrQeOA7xXg" label="1" max="1" min="1"/>
       <type xmi:id="_tcYGIwZWEeuwvrQeOA7xXg" name="double">
         <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </type>
+    </attributes>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_9Lql0QKuEeuSgZB_KB01WQ" containment="_D2PzMALKEeuureya8sZnkw" name="UserRole" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_1k4DgALCEeuSgZB_KB01WQ" subclassedBy="_-mTnwALCEeuSgZB_KB01WQ _Aj3goALDEeuSgZB_KB01WQ">
+    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_9Lql0AKuEeuSgZB_KB01WQ"/>
+    <visualProperties xmi:id="_9Lql0gKuEeuSgZB_KB01WQ" position="644.0,225.0" size="153.0,67.0"/>
+    <stereotypes xmi:id="_0UGs0AM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
+      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T-xBAM-EeuBNuW16gxEfQ"/>
+    </stereotypes>
+    <visibility xmi:id="_9Lql0wKuEeuSgZB_KB01WQ" label="+"/>
+    <attributes xmi:id="_1k4qlQLCEeuSgZB_KB01WQ" name="user">
+      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_1kzyEQLCEeuSgZB_KB01WQ"/>
+      <visibility xmi:id="_1k4qlgLCEeuSgZB_KB01WQ" label="+"/>
+      <cardinality xmi:id="_1k4qlwLCEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
+      <type xmi:id="_1k4qmALCEeuSgZB_KB01WQ" name="User">
+        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_SxWRoAKrEeuSgZB_KB01WQ"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_sTUHIAZoEeu0jqnpqfObkg" name="userRoleId">
+      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_sTS5AAZoEeu0jqnpqfObkg"/>
+      <stereotypes xmi:id="_tclcUAZoEeu0jqnpqfObkg" name="PrimaryKey">
+        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_tck1QAZoEeu0jqnpqfObkg"/>
+      </stereotypes>
+      <visibility xmi:id="_sTUHIQZoEeu0jqnpqfObkg" label="+"/>
+      <cardinality xmi:id="_sTUHIgZoEeu0jqnpqfObkg" label="1" max="1" min="1"/>
+      <type xmi:id="_sTUHIwZoEeu0jqnpqfObkg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </type>
     </attributes>
   </nodes>
