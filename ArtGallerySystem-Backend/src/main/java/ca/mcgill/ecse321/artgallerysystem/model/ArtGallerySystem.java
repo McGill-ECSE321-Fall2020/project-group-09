@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import javax.persistence.Id;
 
 @Entity
 public class ArtGallerySystem{
@@ -51,6 +52,15 @@ public void setAddress(Set<Address> addresss) {
    this.address = addresss;
 }
 
+private String artGallerySystemId;
+
+public void setArtGallerySystemId(String value) {
+this.artGallerySystemId = value;
+    }
+@Id
+public String getArtGallerySystemId() {
+return this.artGallerySystemId;
+    }
 private double income;
 
 public void setIncome(double value) {

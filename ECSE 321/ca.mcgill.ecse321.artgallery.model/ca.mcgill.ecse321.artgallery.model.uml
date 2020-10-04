@@ -65,7 +65,10 @@
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kczn9QLFEeuSgZB_KB01WQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kczn9gLFEeuSgZB_KB01WQ" value="*"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_rIxngAV0EeudRu1KX4nc4Q" name="income">
+                <ownedAttribute xmi:id="_rIxngAV0EeudRu1KX4nc4Q" name="artGallerySystemId">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_tcW4AAZWEeuwvrQeOA7xXg" name="income">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                 </ownedAttribute>
               </packagedElement>
@@ -520,4 +523,5 @@
   <UMLLabProfile:Generics xmi:id="_2wlbUAV4EeudRu1KX4nc4Q" genericsValue="Order, String" base_Element="_2wi_EAV4EeudRu1KX4nc4Q"/>
   <UMLLabProfile:Generics xmi:id="_2woeoAV4EeudRu1KX4nc4Q" genericsValue="Payment, String" base_Element="_2wlbUQV4EeudRu1KX4nc4Q"/>
   <UMLLabProfile:Generics xmi:id="_2wq64AV4EeudRu1KX4nc4Q" genericsValue="User, String" base_Element="_2woeoQV4EeudRu1KX4nc4Q"/>
+  <Persistency:PrimaryKey xmi:id="_u2R4UAZWEeuwvrQeOA7xXg" base_Property="_rIxngAV0EeudRu1KX4nc4Q"/>
 </xmi:XMI>

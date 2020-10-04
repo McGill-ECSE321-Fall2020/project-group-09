@@ -1,285 +1,285 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.diagrams="http://ns.yatta-solutions.com/umllab/diagrams/1.1.0" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmi:id="_0vNbEAKnEeuKUq95mGVj0w">
-  <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_zca9gAKnEeuKUq95mGVj0w"/>
+  <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_zca9gAKnEeuKUq95mGVj0w"/>
   <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_8XMYwAKqEeuSgZB_KB01WQ" sourceAnchor="2.0,26.0" targetAnchor="92.0,28.0" enclosingItem="_zZqdEAKqEeuSgZB_KB01WQ" containedItem="_2NB8kAKqEeuSgZB_KB01WQ"/>
   <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_82SvkAKqEeuSgZB_KB01WQ" sourceAnchor="2.0,26.0" targetAnchor="92.0,28.0" enclosingItem="_2NB8kAKqEeuSgZB_KB01WQ" containedItem="_3ZH8QQKqEeuSgZB_KB01WQ"/>
   <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_9LTWQAKqEeuSgZB_KB01WQ" sourceAnchor="2.0,27.0" targetAnchor="92.0,28.0" enclosingItem="_3ZH8QQKqEeuSgZB_KB01WQ" containedItem="_4VlkgQKqEeuSgZB_KB01WQ"/>
-  <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_9neU4AKqEeuSgZB_KB01WQ" sourceAnchor="0.0,29.0" targetAnchor="129.0,28.0" enclosingItem="_4VlkgQKqEeuSgZB_KB01WQ" containedItem="_6oEkgAKqEeuSgZB_KB01WQ"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_9neU4AKqEeuSgZB_KB01WQ" sourceAnchor="2.0,29.0" targetAnchor="127.0,28.0" enclosingItem="_4VlkgQKqEeuSgZB_KB01WQ" containedItem="_6oEkgAKqEeuSgZB_KB01WQ"/>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_1k4DgALCEeuSgZB_KB01WQ" sourceAnchor="184.0,33.0" targetAnchor="0.0,31.0" target="_9Lql0QKuEeuSgZB_KB01WQ" source="_SxYG0AKrEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_1kzyEALCEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_1kzyEALCEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_1k4DgQLCEeuSgZB_KB01WQ"/>
     <nameVisual xmi:id="_1k4DggLCEeuSgZB_KB01WQ" text="">
       <visualProperties xmi:id="_1tP8YgLCEeuSgZB_KB01WQ" position="26.0,2.0"/>
     </nameVisual>
     <sourceRole xmi:id="_1k4DgwLCEeuSgZB_KB01WQ" aggregationKind="NONE" name="user" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_1kzyEQLCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_1kzyEQLCEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_1tP8YQLCEeuSgZB_KB01WQ" position="17.0,-15.0"/>
       <visibility xmi:id="_1k4qkALCEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_1k4qkQLCEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_1k4qkgLCEeuSgZB_KB01WQ" name="userRole" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_1k2OUgLCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_1k2OUgLCEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_1tP8YwLCEeuSgZB_KB01WQ" position="-60.0,-31.0"/>
       <visibility xmi:id="_1k4qkwLCEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_1k4qlALCEeuSgZB_KB01WQ" label="0..2" max="2"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_-mTnwALCEeuSgZB_KB01WQ" sourceAnchor="80.0,0.0" targetAnchor="76.0,67.0" superClass="_9Lql0QKuEeuSgZB_KB01WQ" subClass="__GM_4AKuEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_-mTAsALCEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_-mTAsALCEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_-mTnwQLCEeuSgZB_KB01WQ"/>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_Aj3goALDEeuSgZB_KB01WQ" sourceAnchor="92.0,0.0" targetAnchor="76.0,67.0" superClass="_9Lql0QKuEeuSgZB_KB01WQ" subClass="_AKa18AKvEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Aj25kALDEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Aj25kALDEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_Aj4HsALDEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4HMJQV4EeudRu1KX4nc4Q" sourceY="-31" targetX="-297" targetY="67"/>
-    <bendpoints xmi:id="_E4HMJgV4EeudRu1KX4nc4Q" sourceX="297" sourceY="-31" targetY="67"/>
+    <bendpoints xmi:id="_mWDdUgZOEeudw4mZqBF3yQ" sourceY="-31" targetX="-297" targetY="67"/>
+    <bendpoints xmi:id="_mWDdUwZOEeudw4mZqBF3yQ" sourceX="297" sourceY="-31" targetY="67"/>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_EJEswALDEeuSgZB_KB01WQ" sourceAnchor="141.0,0.0" targetAnchor="89.0,64.0" superClass="_vk6pAAK-EeuSgZB_KB01WQ" subClass="_2BJFkAK-EeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_EJEFsALDEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_EJEFsALDEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_EJEswQLDEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4GlEAV4EeudRu1KX4nc4Q" sourceY="-30" targetX="-373" targetY="48"/>
-    <bendpoints xmi:id="_E4GlEQV4EeudRu1KX4nc4Q" sourceX="373" sourceY="-30" targetY="48"/>
+    <bendpoints xmi:id="_mWCPMAZOEeudw4mZqBF3yQ" sourceY="-30" targetX="-373" targetY="48"/>
+    <bendpoints xmi:id="_mWC2QAZOEeudw4mZqBF3yQ" sourceX="373" sourceY="-30" targetY="48"/>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_FFlYUALDEeuSgZB_KB01WQ" sourceAnchor="152.0,0.0" targetAnchor="89.0,64.0" superClass="_vk6pAAK-EeuSgZB_KB01WQ" subClass="_4da6wQK-EeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_FFkxQALDEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_FFkxQALDEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_FFlYUQLDEeuSgZB_KB01WQ"/>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_sWM4AALDEeuSgZB_KB01WQ" sourceAnchor="204.0,42.0" targetAnchor="0.0,32.0" target="_vk6pAAK-EeuSgZB_KB01WQ" source="_GqQnMAKvEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_sWLC0ALDEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_sWLC0ALDEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_sWM4AQLDEeuSgZB_KB01WQ"/>
     <nameVisual xmi:id="_sWM4AgLDEeuSgZB_KB01WQ" text="">
       <visualProperties xmi:id="_sei7sALDEeuSgZB_KB01WQ" position="-6.0,2.0"/>
     </nameVisual>
     <sourceRole xmi:id="_sWM4AwLDEeuSgZB_KB01WQ" aggregationKind="NONE" name="order" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_sWLp4ALDEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_sWLp4ALDEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_sehtkALDEeuSgZB_KB01WQ" position="22.0,-15.0"/>
       <visibility xmi:id="_sWM4BALDEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_sWM4BQLDEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_sWM4BgLDEeuSgZB_KB01WQ" name="delivery" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_sWLp4wLDEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_sWLp4wLDEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_sei7sQLDEeuSgZB_KB01WQ" position="-57.0,-15.0"/>
       <visibility xmi:id="_sWM4BwLDEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_sWM4CALDEeuSgZB_KB01WQ" label="0..1" max="1"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_5mzLYALDEeuSgZB_KB01WQ" sourceAnchor="103.0,0.0" targetAnchor="120.0,125.0" target="_GljIgQK-EeuSgZB_KB01WQ" source="_GqQnMAKvEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_5mxWMALDEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_5mxWMALDEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_5mzLYQLDEeuSgZB_KB01WQ"/>
     <nameVisual xmi:id="_5mzLYgLDEeuSgZB_KB01WQ" text="">
       <visualProperties xmi:id="_5vnwMQLDEeuSgZB_KB01WQ" position="-18.0,-12.0"/>
     </nameVisual>
     <sourceRole xmi:id="_5mzLYwLDEeuSgZB_KB01WQ" aggregationKind="NONE" name="order" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_5mxWMQLDEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_5mxWMQLDEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_5vnwMALDEeuSgZB_KB01WQ" position="7.0,-34.0"/>
       <visibility xmi:id="_5mzLZALDEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_5mzLZQLDEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_5mzLZgLDEeuSgZB_KB01WQ" name="payment" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_5mxWNALDEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_5mxWNALDEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_5vnwMgLDEeuSgZB_KB01WQ" position="-60.0,1.0"/>
       <visibility xmi:id="_5mzLZwLDEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_5mzLaALDEeuSgZB_KB01WQ" label="*" max="-1"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_APf9sALEEeuSgZB_KB01WQ" sourceAnchor="92.0,77.0" targetAnchor="0.0,88.0" target="_GqQnMAKvEeuSgZB_KB01WQ" source="_AKa18AKvEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_APevkALEEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_APevkALEEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_APf9sQLEEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4HMIgV4EeudRu1KX4nc4Q" sourceY="51" targetX="-875" targetY="187"/>
-    <bendpoints xmi:id="_E4HMIwV4EeudRu1KX4nc4Q" sourceX="760" sourceY="53" targetX="-115" targetY="189"/>
-    <bendpoints xmi:id="_E4HMJAV4EeudRu1KX4nc4Q" sourceX="761" sourceY="-135" targetX="-114" targetY="1"/>
+    <bendpoints xmi:id="_mWC2RAZOEeudw4mZqBF3yQ" sourceY="51" targetX="-875" targetY="187"/>
+    <bendpoints xmi:id="_mWDdUAZOEeudw4mZqBF3yQ" sourceX="760" sourceY="53" targetX="-115" targetY="189"/>
+    <bendpoints xmi:id="_mWDdUQZOEeudw4mZqBF3yQ" sourceX="761" sourceY="-135" targetX="-114" targetY="1"/>
     <nameVisual xmi:id="_APf9sgLEEeuSgZB_KB01WQ" text="">
       <visualProperties xmi:id="_AX3PhALEEeuSgZB_KB01WQ" position="-51.0,-17.0"/>
     </nameVisual>
     <sourceRole xmi:id="_APf9swLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="customer" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_APevkQLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_APevkQLEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_AX3PgwLEEeuSgZB_KB01WQ" position="-2.0,4.0"/>
       <visibility xmi:id="_APf9tALEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_APf9tQLEEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_APf9tgLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="order" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_APevlALEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_APevlALEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_AX32kALEEeuSgZB_KB01WQ" position="-44.0,-15.000000000000114"/>
       <visibility xmi:id="_APf9twLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_APf9uALEEeuSgZB_KB01WQ" label="*" max="-1"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_H2CRQALEEeuSgZB_KB01WQ" sourceAnchor="165.0,26.0" targetAnchor="117.0,167.0" target="_CEq8IAKvEeuSgZB_KB01WQ" source="__GM_4AKuEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_H2AcEALEEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_H2AcEALEEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_H2CRQQLEEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4F-AAV4EeudRu1KX4nc4Q" sourceX="220" targetY="78"/>
+    <bendpoints xmi:id="_mWDdVAZOEeudw4mZqBF3yQ" sourceX="220" targetY="78"/>
     <nameVisual xmi:id="_H2CRQgLEEeuSgZB_KB01WQ" text="">
       <visualProperties xmi:id="_H_aPtALEEeuSgZB_KB01WQ" position="2.0,-57.0"/>
     </nameVisual>
     <sourceRole xmi:id="_H2CRQwLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="artist" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_H2AcEQLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_H2AcEQLEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_H_aPswLEEeuSgZB_KB01WQ" position="1.0,-15.0"/>
       <visibility xmi:id="_H2CRRALEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_H2CRRQLEEeuSgZB_KB01WQ" label="1..*" max="-1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_H2CRRgLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="artPiece" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_H2BDIgLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_H2BDIgLEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_H_aPtQLEEeuSgZB_KB01WQ" position="-58.0,1.0"/>
       <visibility xmi:id="_H2CRRwLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_H2CRSALEEeuSgZB_KB01WQ" label="*" max="-1"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_NFbHQALEEeuSgZB_KB01WQ" sourceAnchor="235.0,120.0" targetAnchor="0.0,47.0" target="_GqQnMAKvEeuSgZB_KB01WQ" source="_CEq8IAKvEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_NFYD8ALEEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_NFYD8ALEEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_NFbHQQLEEeuSgZB_KB01WQ"/>
     <nameVisual xmi:id="_NFbHQgLEEeuSgZB_KB01WQ" text="">
       <visualProperties xmi:id="_NOBCkQLEEeuSgZB_KB01WQ" position="-10.0,2.0"/>
     </nameVisual>
     <sourceRole xmi:id="_NFbHQwLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="artPiece" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_NFYrAALEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_NFYrAALEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_NOBCkALEEeuSgZB_KB01WQ" position="-1.0,-15.0"/>
       <visibility xmi:id="_NFbHRALEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_NFbHRQLEEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_NFbHRgLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="order" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_NFYrAwLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_NFYrAwLEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_NOBCkgLEEeuSgZB_KB01WQ" position="-42.0,-15.0"/>
       <visibility xmi:id="_NFbHRwLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_NFbHSALEEeuSgZB_KB01WQ" label="0..1" max="1"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_yWNdMALEEeuSgZB_KB01WQ" sourceAnchor="0.0,92.0" targetAnchor="62.0,77.0" target="_AKa18AKvEeuSgZB_KB01WQ" source="_KVkLkALAEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_yWMPEALEEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_yWMPEALEEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_yWNdMQLEEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4GlFwV4EeudRu1KX4nc4Q" sourceX="-1103" sourceY="-3" targetY="148"/>
+    <bendpoints xmi:id="_mWC2QQZOEeudw4mZqBF3yQ" sourceX="-1103" sourceY="-3" targetY="148"/>
     <nameVisual xmi:id="_yWNdMgLEEeuSgZB_KB01WQ" text="">
-      <visualProperties xmi:id="_ye9JgQLEEeuSgZB_KB01WQ" position="1.0,-56.0"/>
+      <visualProperties xmi:id="_ye9JgQLEEeuSgZB_KB01WQ" position="1.0,-56.000000000000114"/>
     </nameVisual>
     <sourceRole xmi:id="_yWNdMwLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="address" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_yWMPEQLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_yWMPEQLEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_ye9JgALEEeuSgZB_KB01WQ" position="-58.0,-14.0"/>
       <visibility xmi:id="_yWNdNALEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_yWNdNQLEEeuSgZB_KB01WQ" label="*" max="-1"/>
     </sourceRole>
     <targetRole xmi:id="_yWNdNgLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="customer" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_yWM2IgLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_yWM2IgLEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_ye9JggLEEeuSgZB_KB01WQ" position="-64.0,1.0000000000001137"/>
       <visibility xmi:id="_yWNdNwLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_yWNdOALEEeuSgZB_KB01WQ" label="0..1" max="1"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_7wEIgALEEeuSgZB_KB01WQ" sourceAnchor="0.0,54.0" targetAnchor="129.0,92.0" target="_2BJFkAK-EeuSgZB_KB01WQ" source="_KVkLkALAEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_7wCTUALEEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_7wCTUALEEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_7wEIgQLEEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4HMIAV4EeudRu1KX4nc4Q" sourceX="-120" targetY="93"/>
+    <bendpoints xmi:id="_mWC2QgZOEeudw4mZqBF3yQ" sourceX="-120" targetY="93"/>
     <nameVisual xmi:id="_7wEIggLEEeuSgZB_KB01WQ" text="">
       <visualProperties xmi:id="_75i0oQLEEeuSgZB_KB01WQ" position="-13.0,-4.0"/>
     </nameVisual>
     <sourceRole xmi:id="_7wEIgwLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="deliveryAddress" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_7wCTUQLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_7wCTUQLEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_75i0oALEEeuSgZB_KB01WQ" position="-100.0,-35.0"/>
       <visibility xmi:id="_7wEIhALEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_7wEIhQLEEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_7wEIhgLEEeuSgZB_KB01WQ" aggregationKind="NONE" name="parcelDelivery" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_7wC6YgLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_7wC6YgLEEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_75i0ogLEEeuSgZB_KB01WQ" position="2.0,2.0"/>
       <visibility xmi:id="_7wEIhwLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_7wEIiALEEeuSgZB_KB01WQ" label="*" max="-1"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_BKzS4ALFEeuSgZB_KB01WQ" sourceAnchor="178.0,94.0" targetAnchor="150.0,73.0" target="_4da6wQK-EeuSgZB_KB01WQ" source="_KVkLkALAEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_BKxdsALFEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_BKxdsALFEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_BKzS4QLFEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4HMIQV4EeudRu1KX4nc4Q" sourceX="85" targetY="146"/>
+    <bendpoints xmi:id="_mWC2QwZOEeudw4mZqBF3yQ" sourceX="87" targetX="2" targetY="146"/>
     <nameVisual xmi:id="_BKzS4gLFEeuSgZB_KB01WQ" text="">
       <visualProperties xmi:id="_BTlbcQLFEeuSgZB_KB01WQ" position="41.0,1.0"/>
     </nameVisual>
     <sourceRole xmi:id="_BKzS4wLFEeuSgZB_KB01WQ" aggregationKind="NONE" name="storeAddress" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_BKyEwALFEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_BKyEwALFEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_BTlbcALFEeuSgZB_KB01WQ" position="2.0,-15.0"/>
       <visibility xmi:id="_BKzS5ALFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_BKzS5QLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_BKzS5gLFEeuSgZB_KB01WQ" aggregationKind="NONE" name="inStorePickUp" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_BKyEwwLFEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_BKyEwwLFEeuSgZB_KB01WQ"/>
       <visualProperties xmi:id="_BTlbcgLFEeuSgZB_KB01WQ" position="1.0,2.0"/>
       <visibility xmi:id="_BKzS5wLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_BKzS6ALFEeuSgZB_KB01WQ" label="*" max="-1"/>
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_RyePwALFEeuSgZB_KB01WQ" sourceAnchor="92.0,91.0" targetAnchor="92.0,0.0" target="_SxYG0AKrEeuSgZB_KB01WQ" source="_EV3isAKvEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_RydBoALFEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_RydBoALFEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_RyePwQLFEeuSgZB_KB01WQ"/>
     <nameVisual xmi:id="_RyePwgLFEeuSgZB_KB01WQ" text="">
-      <visualProperties xmi:id="_R7KRsQLFEeuSgZB_KB01WQ" position="-18.0,14.0"/>
+      <visualProperties xmi:id="_R7KRsQLFEeuSgZB_KB01WQ" position="2.0,-29.833333333333343"/>
     </nameVisual>
     <sourceRole xmi:id="_RyePwwLFEeuSgZB_KB01WQ" aggregationKind="NONE" name="artGallerySystem" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_RydBoQLFEeuSgZB_KB01WQ"/>
-      <visualProperties xmi:id="_R7KRsALFEeuSgZB_KB01WQ" position="-106.0,1.0"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_RydBoQLFEeuSgZB_KB01WQ"/>
+      <visualProperties xmi:id="_R7KRsALFEeuSgZB_KB01WQ" position="-107.0,14.666666666666657"/>
       <visibility xmi:id="_RyePxALFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_RyePxQLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_RyePxgLFEeuSgZB_KB01WQ" name="user" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_RydosALFEeuSgZB_KB01WQ"/>
-      <visualProperties xmi:id="_R7KRsgLFEeuSgZB_KB01WQ" position="1.0,-32.0"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_RydosALFEeuSgZB_KB01WQ"/>
+      <visualProperties xmi:id="_R7KRsgLFEeuSgZB_KB01WQ" position="2.0,-55.666666666666686"/>
       <visibility xmi:id="_RyePxwLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_RyePyALFEeuSgZB_KB01WQ" label="*" max="-1"/>
     </targetRole>
   </edges>
-  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_hayocALFEeuSgZB_KB01WQ" sourceAnchor="183.0,45.0" targetAnchor="117.0,0.0" target="_CEq8IAKvEeuSgZB_KB01WQ" source="_EV3isAKvEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_hawzQALFEeuSgZB_KB01WQ"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_hayocALFEeuSgZB_KB01WQ" sourceAnchor="229.0,45.0" targetAnchor="117.0,0.0" target="_CEq8IAKvEeuSgZB_KB01WQ" source="_EV3isAKvEeuSgZB_KB01WQ">
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_hawzQALFEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_hayocQLFEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4GlEgV4EeudRu1KX4nc4Q" sourceX="514" targetY="-77"/>
+    <bendpoints xmi:id="_mWDdVQZOEeudw4mZqBF3yQ" sourceX="468" targetY="-77"/>
     <nameVisual xmi:id="_hayocgLFEeuSgZB_KB01WQ" text="">
-      <visualProperties xmi:id="_hiVa4QLFEeuSgZB_KB01WQ" position="-17.0,41.0"/>
+      <visualProperties xmi:id="_hiVa4QLFEeuSgZB_KB01WQ" position="-16.5,41.5"/>
     </nameVisual>
     <sourceRole xmi:id="_hayocwLFEeuSgZB_KB01WQ" aggregationKind="NONE" name="artGallerySystem" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_haxaUALFEeuSgZB_KB01WQ"/>
-      <visualProperties xmi:id="_hiVa4ALFEeuSgZB_KB01WQ" position="21.0,2.0"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_haxaUALFEeuSgZB_KB01WQ"/>
+      <visualProperties xmi:id="_hiVa4ALFEeuSgZB_KB01WQ" position="73.29999999999995,2.5"/>
       <visibility xmi:id="_hayodALFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_hayodQLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_hayodgLFEeuSgZB_KB01WQ" name="artPiece" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_haxaUwLFEeuSgZB_KB01WQ"/>
-      <visualProperties xmi:id="_hiVa4gLFEeuSgZB_KB01WQ" position="2.0,-32.0"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_haxaUwLFEeuSgZB_KB01WQ"/>
+      <visualProperties xmi:id="_hiVa4gLFEeuSgZB_KB01WQ" position="-98.5,-75.5"/>
       <visibility xmi:id="_hayodwLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_hayoeALFEeuSgZB_KB01WQ" label="*" max="-1"/>
     </targetRole>
   </edges>
-  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_ie0RQALFEeuSgZB_KB01WQ" sourceAnchor="183.0,15.0" targetAnchor="0.0,17.0" target="_GqQnMAKvEeuSgZB_KB01WQ" source="_EV3isAKvEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_ieycEALFEeuSgZB_KB01WQ"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_ie0RQALFEeuSgZB_KB01WQ" sourceAnchor="226.0,17.0" targetAnchor="0.0,17.0" target="_GqQnMAKvEeuSgZB_KB01WQ" source="_EV3isAKvEeuSgZB_KB01WQ">
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_ieycEALFEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_ie0RQQLFEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4GlEwV4EeudRu1KX4nc4Q" sourceX="677" targetX="-110" targetY="-197"/>
-    <bendpoints xmi:id="_E4GlFAV4EeudRu1KX4nc4Q" sourceX="677" sourceY="197" targetX="-110"/>
+    <bendpoints xmi:id="_mWDdVwZOEeudw4mZqBF3yQ" sourceX="635" sourceY="-1" targetX="-109" targetY="-196"/>
+    <bendpoints xmi:id="_mWDdWAZOEeudw4mZqBF3yQ" sourceX="739" sourceY="212" targetX="-110"/>
     <nameVisual xmi:id="_ie0RQgLFEeuSgZB_KB01WQ" text="">
-      <visualProperties xmi:id="_imV1kALFEeuSgZB_KB01WQ" position="-17.0,-57.0"/>
+      <visualProperties xmi:id="_imV1kALFEeuSgZB_KB01WQ" position="1.0,217.00000000000009"/>
     </nameVisual>
     <sourceRole xmi:id="_ie0RQwLFEeuSgZB_KB01WQ" aggregationKind="NONE" name="artGallerySystem" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_ieycEQLFEeuSgZB_KB01WQ"/>
-      <visualProperties xmi:id="_imVOgALFEeuSgZB_KB01WQ" position="17.0,-33.0"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_ieycEQLFEeuSgZB_KB01WQ"/>
+      <visualProperties xmi:id="_imVOgALFEeuSgZB_KB01WQ" position="41.0,-60.0"/>
       <visibility xmi:id="_ie0RRALFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_ie0RRQLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_ie0RRgLFEeuSgZB_KB01WQ" name="order" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_ieycFALFEeuSgZB_KB01WQ"/>
-      <visualProperties xmi:id="_imV1kQLFEeuSgZB_KB01WQ" position="-45.0,-34.0"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_ieycFALFEeuSgZB_KB01WQ"/>
+      <visualProperties xmi:id="_imV1kQLFEeuSgZB_KB01WQ" position="-69.0,-42.0"/>
       <visibility xmi:id="_ie0RRwLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_ie0RSALFEeuSgZB_KB01WQ" label="*" max="-1"/>
     </targetRole>
   </edges>
-  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_kc02EALFEeuSgZB_KB01WQ" sourceAnchor="0.0,45.0" targetAnchor="0.0,122.0" target="_KVkLkALAEeuSgZB_KB01WQ" source="_EV3isAKvEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_kczn8ALFEeuSgZB_KB01WQ"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_kc02EALFEeuSgZB_KB01WQ" sourceAnchor="0.0,45.0" targetAnchor="2.0,133.0" target="_KVkLkALAEeuSgZB_KB01WQ" source="_EV3isAKvEeuSgZB_KB01WQ">
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_kczn8ALFEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_kc02EQLFEeuSgZB_KB01WQ"/>
-    <bendpoints xmi:id="_E4GlFQV4EeudRu1KX4nc4Q" sourceX="-59" targetX="-1227" targetY="-555"/>
-    <bendpoints xmi:id="_E4GlFgV4EeudRu1KX4nc4Q" sourceX="-59" sourceY="555" targetX="-1227"/>
+    <bendpoints xmi:id="_mWEEYAZOEeudw4mZqBF3yQ" sourceX="-50" targetX="-1218" targetY="-526"/>
+    <bendpoints xmi:id="_mWEEYQZOEeudw4mZqBF3yQ" sourceX="-50" sourceY="564" targetX="-1220" targetY="-2"/>
     <nameVisual xmi:id="_kc02EgLFEeuSgZB_KB01WQ" text="">
-      <visualProperties xmi:id="_kloz0ALFEeuSgZB_KB01WQ" position="41.0,-277.0"/>
+      <visualProperties xmi:id="_kloz0ALFEeuSgZB_KB01WQ" position="40.99999999999994,-261.5"/>
     </nameVisual>
     <sourceRole xmi:id="_kc02EwLFEeuSgZB_KB01WQ" aggregationKind="NONE" name="artGallerySystem" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_kczn8QLFEeuSgZB_KB01WQ"/>
-      <visualProperties xmi:id="_kloMwALFEeuSgZB_KB01WQ" position="-164.0,2.0000000000000284"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_kczn8QLFEeuSgZB_KB01WQ"/>
+      <visualProperties xmi:id="_kloMwALFEeuSgZB_KB01WQ" position="-163.5,-42.49999999999997"/>
       <visibility xmi:id="_kc02FALFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_kc02FQLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_kc02FgLFEeuSgZB_KB01WQ" name="address" navigable="true">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_kczn9ALFEeuSgZB_KB01WQ"/>
-      <visualProperties xmi:id="_kloz0QLFEeuSgZB_KB01WQ" position="-55.99999999999977,2.0"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_kczn9ALFEeuSgZB_KB01WQ"/>
+      <visualProperties xmi:id="_kloz0QLFEeuSgZB_KB01WQ" position="-56.0,4.5"/>
       <visibility xmi:id="_kc02FwLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_kc02GALFEeuSgZB_KB01WQ" label="*" max="-1"/>
     </targetRole>
@@ -371,46 +371,46 @@
     <visualProperties xmi:id="_-ZfqQAV0EeudRu1KX4nc4Q" visible="false"/>
   </edges>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:UMLDataTypeVisual" xmi:id="_DAI7UAKuEeuSgZB_KB01WQ" name="Date">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_DAGfEAKuEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_DAGfEAKuEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_DAI7UQKuEeuSgZB_KB01WQ" position="134.0,2.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_DAI7UgKuEeuSgZB_KB01WQ" label="+"/>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_zZqdEAKqEeuSgZB_KB01WQ" containments="_8XMYwAKqEeuSgZB_KB01WQ" name="ca" nestedPackages="_2NB8kAKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_zZkWcAKqEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_zZkWcAKqEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_zZqdEQKqEeuSgZB_KB01WQ" position="6.0,-161.0" size="-1.0,-1.0"/>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_9Lql0QKuEeuSgZB_KB01WQ" containment="_D2PzMALKEeuureya8sZnkw" name="UserRole" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_1k4DgALCEeuSgZB_KB01WQ" subclassedBy="_-mTnwALCEeuSgZB_KB01WQ _Aj3goALDEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_9Lql0AKuEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_9Lql0AKuEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_9Lql0gKuEeuSgZB_KB01WQ" position="644.0,225.0" size="153.0,67.0"/>
     <stereotypes xmi:id="_0UGs0AM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T-xBAM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T-xBAM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_9Lql0wKuEeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_1k4qlQLCEeuSgZB_KB01WQ" name="user">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_1kzyEQLCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_1kzyEQLCEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_1k4qlgLCEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_1k4qlwLCEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_1k4qmALCEeuSgZB_KB01WQ" name="User">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_SxWRoAKrEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_SxWRoAKrEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_CEq8IAKvEeuSgZB_KB01WQ" containment="_E07pAALKEeuureya8sZnkw" name="ArtPiece" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_H2CRQALEEeuSgZB_KB01WQ _hayocALFEeuSgZB_KB01WQ" associationsOut="_NFbHQALEEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_CEqVEAKvEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_CEqVEAKvEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_CEq8IQKvEeuSgZB_KB01WQ" position="908.0,170.0" size="235.0,167.0"/>
     <stereotypes xmi:id="_0UHT4AM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T_YEAM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T_YEAM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_CEq8IgKvEeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_Nd3oAAK6EeuSgZB_KB01WQ" name="artPieceId">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Nd3A8AK6EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Nd3A8AK6EeuSgZB_KB01WQ"/>
       <stereotypes xmi:id="_XaxWAQK6EeuSgZB_KB01WQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_XaxWAAK6EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_XaxWAAK6EeuSgZB_KB01WQ"/>
       </stereotypes>
       <stereotypes xmi:id="_J04JoAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_KCr8IAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_-zmxkAM-EeuBNuW16gxEfQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_-zljcAM-EeuBNuW16gxEfQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_-zljcAM-EeuBNuW16gxEfQ"/>
       </stereotypes>
       <visibility xmi:id="_Nd3oAQK6EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_Nd3oAgK6EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
@@ -419,7 +419,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_Q5faUAK6EeuSgZB_KB01WQ" name="name">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Q5ezQAK6EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Q5ezQAK6EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_Q5faUQK6EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_Q5faUgK6EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_Q5faUwK6EeuSgZB_KB01WQ" name="String">
@@ -427,7 +427,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_TFv2gAK6EeuSgZB_KB01WQ" name="description">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_TFvPcAK6EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_TFvPcAK6EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_TFv2gQK6EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_TFv2ggK6EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_TFv2gwK6EeuSgZB_KB01WQ" name="String">
@@ -435,7 +435,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_UKGPcAK6EeuSgZB_KB01WQ" name="author">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_UKFoYAK6EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_UKFoYAK6EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_UKGPcQK6EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_UKGPcgK6EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_UKGPcwK6EeuSgZB_KB01WQ" name="String">
@@ -443,7 +443,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_W1cbYAK6EeuSgZB_KB01WQ" name="price">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_W1b0UAK6EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_W1b0UAK6EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_W1cbYQK6EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_W1cbYgK6EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_W1cbYwK6EeuSgZB_KB01WQ" name="double">
@@ -451,55 +451,55 @@
       </type>
     </attributes>
     <attributes xmi:id="_a9kuYAK6EeuSgZB_KB01WQ" name="date">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_a9kHUAK6EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_a9kHUAK6EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_a9kuYQK6EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_a9kuYgK6EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_a9kuYwK6EeuSgZB_KB01WQ" name="Date">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_DAGfEAKuEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_DAGfEAKuEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_gT-88AK7EeuSgZB_KB01WQ" name="artPieceStatus">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_gT-V4AK7EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_gT-V4AK7EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_gT-88QK7EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_gT-88gK7EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_gT-88wK7EeuSgZB_KB01WQ" name="ArtPieceStatus">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_J8DRoAK7EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_J8DRoAK7EeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_H2CRSQLEEeuSgZB_KB01WQ" name="artist">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_H2AcEQLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_H2AcEQLEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_H2CRSgLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_H2CRSwLEEeuSgZB_KB01WQ" label="1..*" max="-1" min="1"/>
       <type xmi:id="_H2CRTALEEeuSgZB_KB01WQ" name="Artist">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#__GLxwAKuEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#__GLxwAKuEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_NFc8cALEEeuSgZB_KB01WQ" name="order">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_NFYrAwLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_NFYrAwLEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_NFc8cQLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_NFc8cgLEEeuSgZB_KB01WQ" label="0..1" max="1"/>
       <type xmi:id="_NFc8cwLEEeuSgZB_KB01WQ" name="Order">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_hayoeQLFEeuSgZB_KB01WQ" name="artGallerySystem">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_haxaUALFEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_haxaUALFEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_hayoegLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_hayoewLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_hayofALFEeuSgZB_KB01WQ" name="ArtGallerySystem">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_4da6wQK-EeuSgZB_KB01WQ" containment="_BkvDkALKEeuureya8sZnkw" name="InStorePickUp" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_BKzS4ALFEeuSgZB_KB01WQ" generalizations="_FFlYUALDEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_4da6wAK-EeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_4da6wAK-EeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_4da6wgK-EeuSgZB_KB01WQ" position="1609.0,401.0" size="-1.0,-1.0"/>
     <stereotypes xmi:id="_0UIiAAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T_YEgM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T_YEgM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_4da6wwK-EeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_TDtyAALBEeuSgZB_KB01WQ" name="pickUpReferenceNumber">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_TDtK8ALBEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_TDtK8ALBEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_TDtyAQLBEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_TDtyAgLBEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_TDtyAwLBEeuSgZB_KB01WQ" name="String">
@@ -507,31 +507,31 @@
       </type>
     </attributes>
     <attributes xmi:id="_pIHn4QLCEeuSgZB_KB01WQ" name="inStorePickUpStatus">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_pIHn4ALCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_pIHn4ALCEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_pIHn4gLCEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_pIHn4wLCEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_pIHn5ALCEeuSgZB_KB01WQ" name="InStorePickUpStatus">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_YLkAIALCEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_YLkAIALCEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_BKz58ALFEeuSgZB_KB01WQ" name="storeAddress">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_BKyEwALFEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_BKyEwALFEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_BKz58QLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_BKz58gLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_BKz58wLFEeuSgZB_KB01WQ" name="Address">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_2BJFkAK-EeuSgZB_KB01WQ" containment="_A4ZiAALKEeuureya8sZnkw" name="ParcelDelivery" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_7wEIgALEEeuSgZB_KB01WQ" generalizations="_EJEswALDEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_2BIegAK-EeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_2BIegAK-EeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_2BJFkQK-EeuSgZB_KB01WQ" position="1247.0,395.0" size="-1.0,-1.0"/>
     <stereotypes xmi:id="_0UEQkAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T-xAQM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T-xAQM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_2BJFkgK-EeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_Hc_mgALBEeuSgZB_KB01WQ" name="trackingNumber">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Hc-_cALBEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Hc-_cALBEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_Hc_mgQLBEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_Hc_mggLBEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_Hc_mgwLBEeuSgZB_KB01WQ" name="String">
@@ -539,7 +539,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_JnDqUALBEeuSgZB_KB01WQ" name="carrier">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_JnDDQALBEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_JnDDQALBEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_JnDqUQLBEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_JnDqUgLBEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_JnDqUwLBEeuSgZB_KB01WQ" name="String">
@@ -547,38 +547,38 @@
       </type>
     </attributes>
     <attributes xmi:id="_mbu6IQLCEeuSgZB_KB01WQ" name="parcelDeliveryStatus">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_mbu6IALCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_mbu6IALCEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_mbu6IgLCEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_mbu6IwLCEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_mbu6JALCEeuSgZB_KB01WQ" name="ParcelDeliveryStatus">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_09tyUALBEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_09tyUALBEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_7wEIiQLEEeuSgZB_KB01WQ" name="deliveryAddress">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_7wCTUQLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_7wCTUQLEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_7wEIigLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_7wEIiwLEEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_7wEIjALEEeuSgZB_KB01WQ" name="Address">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_GqQnMAKvEeuSgZB_KB01WQ" containment="_FaX4YALKEeuureya8sZnkw" name="Order" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_APf9sALEEeuSgZB_KB01WQ _NFbHQALEEeuSgZB_KB01WQ _ie0RQALFEeuSgZB_KB01WQ" associationsOut="_sWM4AALDEeuSgZB_KB01WQ _5mzLYALDEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_GqQnMQKvEeuSgZB_KB01WQ" position="1298.0,243.0" size="204.0,95.0"/>
     <stereotypes xmi:id="_0UKXMAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T__IQM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T__IQM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_GqQnMgKvEeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_lT2JMQK7EeuSgZB_KB01WQ" name="orderId">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_lT2JMAK7EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_lT2JMAK7EeuSgZB_KB01WQ"/>
       <stereotypes xmi:id="_mBPasAK7EeuSgZB_KB01WQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_mBOzoAK7EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_mBOzoAK7EeuSgZB_KB01WQ"/>
       </stereotypes>
       <stereotypes xmi:id="_J2qSUAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_KCRFYAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_ESIPwAM_EeuBNuW16gxEfQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_ESHosAM_EeuBNuW16gxEfQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_ESHosAM_EeuBNuW16gxEfQ"/>
       </stereotypes>
       <visibility xmi:id="_lT2JMgK7EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_lT2JMwK7EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
@@ -587,73 +587,73 @@
       </type>
     </attributes>
     <attributes xmi:id="_oI_KUAK7EeuSgZB_KB01WQ" name="date">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_oI-jQAK7EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_oI-jQAK7EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_oI_KUQK7EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_oI_KUgK7EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_oI_KUwK7EeuSgZB_KB01WQ" name="Date">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_DAGfEAKuEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_DAGfEAKuEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_XPRwUAK9EeuSgZB_KB01WQ" name="orderStatus">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_XPRJQAK9EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_XPRJQAK9EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_XPRwUQK9EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_XPRwUgK9EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_XPRwUwK9EeuSgZB_KB01WQ" name="OrderStatus">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_7F6R4AK8EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_7F6R4AK8EeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_sWOGIALDEeuSgZB_KB01WQ" name="delivery">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_sWLp4wLDEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_sWLp4wLDEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_sWOGIQLDEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_sWOGIgLDEeuSgZB_KB01WQ" label="0..1" max="1"/>
       <type xmi:id="_sWOGIwLDEeuSgZB_KB01WQ" name="Delivery">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_vk6B8AK-EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_vk6B8AK-EeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_5m0ZgALDEeuSgZB_KB01WQ" name="payment">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_5mxWNALDEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_5mxWNALDEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_5m0ZgQLDEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_5m0ZggLDEeuSgZB_KB01WQ" label="*" max="-1"/>
       <type xmi:id="_5m0ZgwLDEeuSgZB_KB01WQ" name="Payment">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_GljIgAK-EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_GljIgAK-EeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_APgkwALEEeuSgZB_KB01WQ" name="customer">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_APevkQLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_APevkQLEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_APgkwQLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_APgkwgLEEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_APgkwwLEEeuSgZB_KB01WQ" name="Customer">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_AKaO4AKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_AKaO4AKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_NFcVYALEEeuSgZB_KB01WQ" name="artPiece">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_NFYrAALEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_NFYrAALEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_NFcVYQLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_NFcVYgLEEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_NFcVYwLEEeuSgZB_KB01WQ" name="ArtPiece">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_CEqVEAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_CEqVEAKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_ie0RSQLFEeuSgZB_KB01WQ" name="artGallerySystem">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_ieycEQLFEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_ieycEQLFEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_ie0RSgLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_ie0RSwLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_ie0RTALFEeuSgZB_KB01WQ" name="ArtGallerySystem">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_KVkLkALAEeuSgZB_KB01WQ" containment="_6vfqEALJEeuureya8sZnkw" name="Address" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_kc02EALFEeuSgZB_KB01WQ" associationsOut="_yWNdMALEEeuSgZB_KB01WQ _7wEIgALEEeuSgZB_KB01WQ _BKzS4ALFEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_KVkLkQLAEeuSgZB_KB01WQ" position="1496.0,526.0" size="178.0,187.0"/>
     <stereotypes xmi:id="_0UDCcAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T-xAAM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T-xAAM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_KVkLkgLAEeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_O2pxIALAEeuSgZB_KB01WQ" name="addressId">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_O2pKEALAEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_O2pKEALAEeuSgZB_KB01WQ"/>
       <stereotypes xmi:id="_ISOYAAV3EeudRu1KX4nc4Q" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_ISMi0AV3EeudRu1KX4nc4Q"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_ISMi0AV3EeudRu1KX4nc4Q"/>
       </stereotypes>
       <visibility xmi:id="_O2pxIQLAEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_O2pxIgLAEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
@@ -662,7 +662,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_QsRO8QLAEeuSgZB_KB01WQ" name="name">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_QsRO8ALAEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_QsRO8ALAEeuSgZB_KB01WQ"/>
       <stereotypes xmi:id="_J5AbsAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_KF4aEAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <visibility xmi:id="_QsRO8gLAEeuSgZB_KB01WQ" label="+"/>
@@ -672,7 +672,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_eThu0ALAEeuSgZB_KB01WQ" name="phoneNumber">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_eThHwALAEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_eThHwALAEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_eThu0QLAEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_eThu0gLAEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_eThu0wLAEeuSgZB_KB01WQ" name="String">
@@ -680,7 +680,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_nyXn0ALAEeuSgZB_KB01WQ" name="streetAddress">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_nyXAwALAEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_nyXAwALAEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_nyXn0QLAEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_nyXn0gLAEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_nyXn0wLAEeuSgZB_KB01WQ" name="String">
@@ -688,7 +688,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_wq-nQALAEeuSgZB_KB01WQ" name="city">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_wq-AMALAEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_wq-AMALAEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_wq-nQQLAEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_wq-nQgLAEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_wq-nQwLAEeuSgZB_KB01WQ" name="String">
@@ -696,7 +696,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_xg47kALAEeuSgZB_KB01WQ" name="province">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_xg4UgALAEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_xg4UgALAEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_xg47kQLAEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_xg47kgLAEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_xg47kwLAEeuSgZB_KB01WQ" name="String">
@@ -704,7 +704,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_ylEVYQLAEeuSgZB_KB01WQ" name="postalCode">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_ylEVYALAEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_ylEVYALAEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_ylEVYgLAEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_ylEVYwLAEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_ylEVZALAEeuSgZB_KB01WQ" name="String">
@@ -712,7 +712,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_zwgNwALAEeuSgZB_KB01WQ" name="country">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_zwfmsALAEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_zwfmsALAEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_zwgNwQLAEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_zwgNwgLAEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_zwgNwwLAEeuSgZB_KB01WQ" name="String">
@@ -720,54 +720,54 @@
       </type>
     </attributes>
     <attributes xmi:id="_yWOrUALEEeuSgZB_KB01WQ" name="customer">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_yWM2IgLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_yWM2IgLEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_yWOrUQLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_yWOrUgLEEeuSgZB_KB01WQ" label="0..1" max="1"/>
       <type xmi:id="_yWOrUwLEEeuSgZB_KB01WQ" name="Customer">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_AKaO4AKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_AKaO4AKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_7wEvkALEEeuSgZB_KB01WQ" name="parcelDelivery">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_7wC6YgLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_7wC6YgLEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_7wEvkQLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_7wEvkgLEEeuSgZB_KB01WQ" label="*" max="-1"/>
       <type xmi:id="_7wEvkwLEEeuSgZB_KB01WQ" name="ParcelDelivery">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_2BIegAK-EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_2BIegAK-EeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_BK0hAALFEeuSgZB_KB01WQ" name="inStorePickUp">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_BKyEwwLFEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_BKyEwwLFEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_BK0hAQLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_BK0hAgLFEeuSgZB_KB01WQ" label="*" max="-1"/>
       <type xmi:id="_BK0hAwLFEeuSgZB_KB01WQ" name="InStorePickUp">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_4da6wAK-EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_4da6wAK-EeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_kc1dIALFEeuSgZB_KB01WQ" name="artGallerySystem">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_kczn8QLFEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_kczn8QLFEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_kc1dIQLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_kc1dIgLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_kc1dIwLFEeuSgZB_KB01WQ" name="ArtGallerySystem">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_GljIgQK-EeuSgZB_KB01WQ" containment="_F2hB0ALKEeuureya8sZnkw" name="Payment" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_5mzLYALDEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_GljIgAK-EeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_GljIgAK-EeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_GljIggK-EeuSgZB_KB01WQ" position="1281.0,58.0" size="240.0,125.0"/>
     <stereotypes xmi:id="_0UJJEAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T_YEwM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T_YEwM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_GljIgwK-EeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_d8TMgQK-EeuSgZB_KB01WQ" name="paymentId">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_d8TMgAK-EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_d8TMgAK-EeuSgZB_KB01WQ"/>
       <stereotypes xmi:id="_ekIokQK-EeuSgZB_KB01WQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_ekIokAK-EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_ekIokAK-EeuSgZB_KB01WQ"/>
       </stereotypes>
       <stereotypes xmi:id="_J4EnkAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_J_eQEAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_DwwBAAM_EeuBNuW16gxEfQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_DwvZ8AM_EeuBNuW16gxEfQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_DwvZ8AM_EeuBNuW16gxEfQ"/>
       </stereotypes>
       <visibility xmi:id="_d8TMggK-EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_d8TMgwK-EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
@@ -776,15 +776,15 @@
       </type>
     </attributes>
     <attributes xmi:id="_g0x1gAK-EeuSgZB_KB01WQ" name="paymentMethod">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_g0xOcAK-EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_g0xOcAK-EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_g0x1gQK-EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_g0x1ggK-EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_g0x1gwK-EeuSgZB_KB01WQ" name="PaymentMethod">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Jf2WcAK-EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Jf2WcAK-EeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_nd3pYAK-EeuSgZB_KB01WQ" name="isSuccessful">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_nd3CUAK-EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_nd3CUAK-EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_nd3pYQK-EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_nd3pYgK-EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_nd3pYwK-EeuSgZB_KB01WQ" name="boolean">
@@ -792,94 +792,46 @@
       </type>
     </attributes>
     <attributes xmi:id="_5mzycALDEeuSgZB_KB01WQ" name="order">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_5mxWMQLDEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_5mxWMQLDEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_5mzycQLDEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_5mzycgLDEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_5mzycwLDEeuSgZB_KB01WQ" name="Order">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_2NB8kAKqEeuSgZB_KB01WQ" containment="_8XMYwAKqEeuSgZB_KB01WQ" containments="_82SvkAKqEeuSgZB_KB01WQ" name="mcgill" nestedPackages="_3ZH8QQKqEeuSgZB_KB01WQ" nestingPackage="_zZqdEAKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_2NBVgAKqEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_2NBVgAKqEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_2NB8kQKqEeuSgZB_KB01WQ" position="163.0,-159.0" size="-1.0,-1.0"/>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_3ZH8QQKqEeuSgZB_KB01WQ" containment="_82SvkAKqEeuSgZB_KB01WQ" containments="_9LTWQAKqEeuSgZB_KB01WQ" name="ecse321" nestedPackages="_4VlkgQKqEeuSgZB_KB01WQ" nestingPackage="_2NB8kAKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_3ZH8QAKqEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_3ZH8QAKqEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_3ZH8QgKqEeuSgZB_KB01WQ" position="340.0,-157.0" size="-1.0,-1.0"/>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_4VlkgQKqEeuSgZB_KB01WQ" containment="_9LTWQAKqEeuSgZB_KB01WQ" containments="_9neU4AKqEeuSgZB_KB01WQ" name="artgallerysystem" nestedPackages="_6oEkgAKqEeuSgZB_KB01WQ" nestingPackage="_3ZH8QQKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_4VlkgAKqEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_4VlkgAKqEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_4VlkggKqEeuSgZB_KB01WQ" position="517.0,-156.0" size="-1.0,-1.0"/>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_6oEkgAKqEeuSgZB_KB01WQ" containment="_9neU4AKqEeuSgZB_KB01WQ" containments="_BrV-sALGEeuSgZB_KB01WQ _6vfqEALJEeuureya8sZnkw _75AP0ALJEeuureya8sZnkw _A4ZiAALKEeuureya8sZnkw _BkvDkALKEeuureya8sZnkw _CHw4IALKEeuureya8sZnkw _CpJt8ALKEeuureya8sZnkw _DGrXcALKEeuureya8sZnkw _D2PzMALKEeuureya8sZnkw _E07pAALKEeuureya8sZnkw _FaX4YALKEeuureya8sZnkw _F2hB0ALKEeuureya8sZnkw _N2f-cAM-EeuBNuW16gxEfQ _OPBMIAM-EeuBNuW16gxEfQ _OoMhIAM-EeuBNuW16gxEfQ _PHKVEAM-EeuBNuW16gxEfQ _PeqPEAM-EeuBNuW16gxEfQ" classes="_SxYG0AKrEeuSgZB_KB01WQ _EV3isAKvEeuSgZB_KB01WQ _KVkLkALAEeuSgZB_KB01WQ _2BJFkAK-EeuSgZB_KB01WQ _4da6wQK-EeuSgZB_KB01WQ _vk6pAAK-EeuSgZB_KB01WQ __GM_4AKuEeuSgZB_KB01WQ _AKa18AKvEeuSgZB_KB01WQ _9Lql0QKuEeuSgZB_KB01WQ _CEq8IAKvEeuSgZB_KB01WQ _GqQnMAKvEeuSgZB_KB01WQ _GljIgQK-EeuSgZB_KB01WQ _09uZYALBEeuSgZB_KB01WQ _YLkAIQLCEeuSgZB_KB01WQ _7F6R4QK8EeuSgZB_KB01WQ _Jf2WcQK-EeuSgZB_KB01WQ _J8D4sAK7EeuSgZB_KB01WQ" name="model" nestingPackage="_4VlkgQKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_6oD9cAKqEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_6oD9cAKqEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_6oEkgQKqEeuSgZB_KB01WQ" position="747.0,-157.0" size="-1.0,-1.0"/>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_EV3isAKvEeuSgZB_KB01WQ" containment="_BrV-sALGEeuSgZB_KB01WQ" name="ArtGallerySystem" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsOut="_RyePwALFEeuSgZB_KB01WQ _hayocALFEeuSgZB_KB01WQ _ie0RQALFEeuSgZB_KB01WQ _kc02EALFEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
-    <visualProperties xmi:id="_EV3isQKvEeuSgZB_KB01WQ" position="328.0,48.0" size="183.0,91.0"/>
-    <stereotypes xmi:id="_0UBNQAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T-J8AM-EeuBNuW16gxEfQ"/>
-    </stereotypes>
-    <visibility xmi:id="_EV3isgKvEeuSgZB_KB01WQ" label="+"/>
-    <attributes xmi:id="_Ryfd4ALFEeuSgZB_KB01WQ" name="user">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_RydosALFEeuSgZB_KB01WQ"/>
-      <visibility xmi:id="_Ryfd4QLFEeuSgZB_KB01WQ" label="+"/>
-      <cardinality xmi:id="_Ryfd4gLFEeuSgZB_KB01WQ" label="*" max="-1"/>
-      <type xmi:id="_Ryfd4wLFEeuSgZB_KB01WQ" name="User">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_SxWRoAKrEeuSgZB_KB01WQ"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_hazPgALFEeuSgZB_KB01WQ" name="artPiece">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_haxaUwLFEeuSgZB_KB01WQ"/>
-      <visibility xmi:id="_hazPgQLFEeuSgZB_KB01WQ" label="+"/>
-      <cardinality xmi:id="_hazPggLFEeuSgZB_KB01WQ" label="*" max="-1"/>
-      <type xmi:id="_hazPgwLFEeuSgZB_KB01WQ" name="ArtPiece">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_CEqVEAKvEeuSgZB_KB01WQ"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_ie1fYALFEeuSgZB_KB01WQ" name="order">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_ieycFALFEeuSgZB_KB01WQ"/>
-      <visibility xmi:id="_ie1fYQLFEeuSgZB_KB01WQ" label="+"/>
-      <cardinality xmi:id="_ie1fYgLFEeuSgZB_KB01WQ" label="*" max="-1"/>
-      <type xmi:id="_ie1fYwLFEeuSgZB_KB01WQ" name="Order">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_kc2EMALFEeuSgZB_KB01WQ" name="address">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_kczn9ALFEeuSgZB_KB01WQ"/>
-      <visibility xmi:id="_kc2EMQLFEeuSgZB_KB01WQ" label="+"/>
-      <cardinality xmi:id="_kc2EMgLFEeuSgZB_KB01WQ" label="*" max="-1"/>
-      <type xmi:id="_kc2EMwLFEeuSgZB_KB01WQ" name="Address">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_rI0q0AV0EeudRu1KX4nc4Q" name="income">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_rIxngAV0EeudRu1KX4nc4Q"/>
-      <visibility xmi:id="_rI0q0QV0EeudRu1KX4nc4Q" label="+"/>
-      <cardinality xmi:id="_rI0q0gV0EeudRu1KX4nc4Q" label="1" max="1" min="1"/>
-      <type xmi:id="_rI0q0wV0EeudRu1KX4nc4Q" name="double">
-        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-      </type>
-    </attributes>
-  </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_SxYG0AKrEeuSgZB_KB01WQ" containment="_75AP0ALJEeuureya8sZnkw" name="User" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_RyePwALFEeuSgZB_KB01WQ" associationsOut="_1k4DgALCEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_SxWRoAKrEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_SxWRoAKrEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_SxYG0QKrEeuSgZB_KB01WQ" position="328.0,223.0" size="184.0,110.0"/>
     <stereotypes xmi:id="_0UCbYAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T-J8QM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T-J8QM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_SxYG0gKrEeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_VKYdMAK5EeuSgZB_KB01WQ" name="name">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_VKX2IAK5EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_VKX2IAK5EeuSgZB_KB01WQ"/>
       <stereotypes xmi:id="_eMc6oAK5EeuSgZB_KB01WQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_eMcTkAK5EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_eMcTkAK5EeuSgZB_KB01WQ"/>
       </stereotypes>
       <stereotypes xmi:id="_JuZuMAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_KFh0wAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="___sKMAM-EeuBNuW16gxEfQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#___q8EAM-EeuBNuW16gxEfQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#___q8EAM-EeuBNuW16gxEfQ"/>
       </stereotypes>
       <visibility xmi:id="_VKYdMQK5EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_VKYdMgK5EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
@@ -888,7 +840,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_VzOl4AK5EeuSgZB_KB01WQ" name="email">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_VzN-0AK5EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_VzN-0AK5EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_VzOl4QK5EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_VzOl4gK5EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_VzOl4wK5EeuSgZB_KB01WQ" name="String">
@@ -896,7 +848,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_WpxzYAK5EeuSgZB_KB01WQ" name="password">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_WpxMUAK5EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_WpxMUAK5EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_WpxzYQK5EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_WpxzYgK5EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_WpxzYwK5EeuSgZB_KB01WQ" name="String">
@@ -904,7 +856,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_pz8iMAK5EeuSgZB_KB01WQ" name="avatar">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_pz77IAK5EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_pz77IAK5EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_pz8iMQK5EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_pz8iMgK5EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_pz8iMwK5EeuSgZB_KB01WQ" name="String">
@@ -912,38 +864,38 @@
       </type>
     </attributes>
     <attributes xmi:id="_1k5RoALCEeuSgZB_KB01WQ" name="userRole">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_1k2OUgLCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_1k2OUgLCEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_1k5RoQLCEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_1k5RogLCEeuSgZB_KB01WQ" label="0..2" max="2"/>
       <type xmi:id="_1k5RowLCEeuSgZB_KB01WQ" name="UserRole">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_9Lql0AKuEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_9Lql0AKuEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_Rye20ALFEeuSgZB_KB01WQ" name="artGallerySystem">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_RydBoQLFEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_RydBoQLFEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_Rye20QLFEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_Rye20gLFEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_Rye20wLFEeuSgZB_KB01WQ" name="ArtGallerySystem">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_AKa18AKvEeuSgZB_KB01WQ" containment="_DGrXcALKEeuureya8sZnkw" name="Customer" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsIn="_yWNdMALEEeuSgZB_KB01WQ" associationsOut="_APf9sALEEeuSgZB_KB01WQ" generalizations="_Aj3goALDEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_AKaO4AKvEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_AKaO4AKvEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_AKa18QKvEeuSgZB_KB01WQ" position="331.0,390.0" size="184.0,77.0"/>
     <stereotypes xmi:id="_0UFesAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T-xAwM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T-xAwM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_AKa18gKvEeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_Emn6gAK6EeuSgZB_KB01WQ" name="customerId">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_EmnTcAK6EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_EmnTcAK6EeuSgZB_KB01WQ"/>
       <stereotypes xmi:id="_GY-B4QK6EeuSgZB_KB01WQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_GY-B4AK6EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_GY-B4AK6EeuSgZB_KB01WQ"/>
       </stereotypes>
       <stereotypes xmi:id="_Jy5MoAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_KDVcYAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_BRr9kQM_EeuBNuW16gxEfQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_BRr9kAM_EeuBNuW16gxEfQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_BRr9kAM_EeuBNuW16gxEfQ"/>
       </stereotypes>
       <visibility xmi:id="_Emn6gQK6EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_Emn6ggK6EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
@@ -952,7 +904,7 @@
       </type>
     </attributes>
     <attributes xmi:id="_Fc1w0AK6EeuSgZB_KB01WQ" name="balance">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Fc1JwAK6EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Fc1JwAK6EeuSgZB_KB01WQ"/>
       <visibility xmi:id="_Fc1w0QK6EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_Fc1w0gK6EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_Fc1w0wK6EeuSgZB_KB01WQ" name="double">
@@ -960,38 +912,38 @@
       </type>
     </attributes>
     <attributes xmi:id="_APhL0ALEEeuSgZB_KB01WQ" name="order">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_APevlALEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_APevlALEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_APhL0QLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_APhL0gLEEeuSgZB_KB01WQ" label="*" max="-1"/>
       <type xmi:id="_APhL0wLEEeuSgZB_KB01WQ" name="Order">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_yWOEQALEEeuSgZB_KB01WQ" name="address">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_yWMPEQLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_yWMPEQLEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_yWOEQQLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_yWOEQgLEEeuSgZB_KB01WQ" label="*" max="-1"/>
       <type xmi:id="_yWOEQwLEEeuSgZB_KB01WQ" name="Address">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="__GM_4AKuEeuSgZB_KB01WQ" containment="_CpJt8ALKEeuureya8sZnkw" name="Artist" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsOut="_H2CRQALEEeuSgZB_KB01WQ" generalizations="_-mTnwALCEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#__GLxwAKuEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#__GLxwAKuEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="__GM_4QKuEeuSgZB_KB01WQ" position="640.0,389.0" size="165.0,77.0"/>
     <stereotypes xmi:id="_0UE3oAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T-xAgM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T-xAgM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="__GM_4gKuEeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_9LEu8AK5EeuSgZB_KB01WQ" name="artistId">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_9LEH4AK5EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_9LEH4AK5EeuSgZB_KB01WQ"/>
       <stereotypes xmi:id="_-K2w8AK5EeuSgZB_KB01WQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_-K2J4AK5EeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_-K2J4AK5EeuSgZB_KB01WQ"/>
       </stereotypes>
       <stereotypes xmi:id="_Jv9NYAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_KD9HcAMeEeure60nlAlu0Q" name="PrimaryKey"/>
       <stereotypes xmi:id="_A7N-UAM_EeuBNuW16gxEfQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_A7NXQAM_EeuBNuW16gxEfQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_A7NXQAM_EeuBNuW16gxEfQ"/>
       </stereotypes>
       <visibility xmi:id="_9LEu8QK5EeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_9LEu8gK5EeuSgZB_KB01WQ" label="1" max="1" min="1"/>
@@ -1000,15 +952,15 @@
       </type>
     </attributes>
     <attributes xmi:id="_H2C4UALEEeuSgZB_KB01WQ" name="artPiece">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_H2BDIgLEEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_H2BDIgLEEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_H2C4UQLEEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_H2C4UgLEEeuSgZB_KB01WQ" label="*" max="-1"/>
       <type xmi:id="_H2C4UwLEEeuSgZB_KB01WQ" name="ArtPiece">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_CEqVEAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_CEqVEAKvEeuSgZB_KB01WQ"/>
       </type>
     </attributes>
     <attributes xmi:id="_1q6JgAV0EeudRu1KX4nc4Q" name="credit">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_1q5icAV0EeudRu1KX4nc4Q"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_1q5icAV0EeudRu1KX4nc4Q"/>
       <visibility xmi:id="_1q6JgQV0EeudRu1KX4nc4Q" label="+"/>
       <cardinality xmi:id="_1q6JggV0EeudRu1KX4nc4Q" label="1" max="1" min="1"/>
       <type xmi:id="_1q6JgwV0EeudRu1KX4nc4Q" name="double">
@@ -1017,91 +969,91 @@
     </attributes>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:EnumerationVisual" xmi:id="_J8D4sAK7EeuSgZB_KB01WQ" containment="_PeqPEAM-EeuBNuW16gxEfQ" name="ArtPieceStatus" package="_6oEkgAKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_J8DRoAK7EeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_J8DRoAK7EeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_J8D4sQK7EeuSgZB_KB01WQ" position="1969.0,560.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_J8D4sgK7EeuSgZB_KB01WQ" label="+"/>
     <literals xmi:id="_OQ9cYQK7EeuSgZB_KB01WQ" name="Available">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_OQ9cYAK7EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_OQ9cYAK7EeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_QYM1sAK7EeuSgZB_KB01WQ" name="Sold">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_QYMOoAK7EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_QYMOoAK7EeuSgZB_KB01WQ"/>
     </literals>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:EnumerationVisual" xmi:id="_YLkAIQLCEeuSgZB_KB01WQ" containment="_OPBMIAM-EeuBNuW16gxEfQ" name="InStorePickUpStatus" package="_6oEkgAKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_YLkAIALCEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_YLkAIALCEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_YLkAIgLCEeuSgZB_KB01WQ" position="1935.0,401.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_YLkAIwLCEeuSgZB_KB01WQ" label="+"/>
     <literals xmi:id="_dHfuoALCEeuSgZB_KB01WQ" name="Pending">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_dHfHkALCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_dHfHkALCEeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_fuYRUQLCEeuSgZB_KB01WQ" name="AvailableForPickUp">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_fuYRUALCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_fuYRUALCEeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_hChZwQLCEeuSgZB_KB01WQ" name="PickedUp">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_hChZwALCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_hChZwALCEeuSgZB_KB01WQ"/>
     </literals>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:EnumerationVisual" xmi:id="_09uZYALBEeuSgZB_KB01WQ" containment="_N2f-cAM-EeuBNuW16gxEfQ" name="ParcelDeliveryStatus" package="_6oEkgAKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_09tyUALBEeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_09tyUALBEeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_09uZYQLBEeuSgZB_KB01WQ" position="1949.0,253.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_09uZYgLBEeuSgZB_KB01WQ" label="+"/>
     <literals xmi:id="_549kUQLBEeuSgZB_KB01WQ" name="Pending">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_549kUALBEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_549kUALBEeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_UtUXoQLCEeuSgZB_KB01WQ" name="Shipped">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_UtUXoALCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_UtUXoALCEeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_WQ-iwALCEeuSgZB_KB01WQ" name="Delivered">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_WQ97sALCEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_WQ97sALCEeuSgZB_KB01WQ"/>
     </literals>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:EnumerationVisual" xmi:id="_7F6R4QK8EeuSgZB_KB01WQ" containment="_OoMhIAM-EeuBNuW16gxEfQ" name="OrderStatus" package="_6oEkgAKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_7F6R4AK8EeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_7F6R4AK8EeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_7F6R4gK8EeuSgZB_KB01WQ" position="1959.0,56.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_7F6R4wK8EeuSgZB_KB01WQ" label="+"/>
     <literals xmi:id="_86t3YQK8EeuSgZB_KB01WQ" name="Successful">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_86t3YAK8EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_86t3YAK8EeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_-pSSAQK8EeuSgZB_KB01WQ" name="Failed">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_-pSSAAK8EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_-pSSAAK8EeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_A0wrEQK9EeuSgZB_KB01WQ" name="Cancelled">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_A0wrEAK9EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_A0wrEAK9EeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_PkyJ0AK9EeuSgZB_KB01WQ" name="Pending">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_PkxiwAK9EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_PkxiwAK9EeuSgZB_KB01WQ"/>
     </literals>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:EnumerationVisual" xmi:id="_Jf2WcQK-EeuSgZB_KB01WQ" containment="_PHKVEAM-EeuBNuW16gxEfQ" name="PaymentMethod" package="_6oEkgAKqEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Jf2WcAK-EeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Jf2WcAK-EeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_Jf2WcgK-EeuSgZB_KB01WQ" position="1742.0,56.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_Jf2WcwK-EeuSgZB_KB01WQ" label="+"/>
     <literals xmi:id="_Lr-20QK-EeuSgZB_KB01WQ" name="CreditCard">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Lr-20AK-EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Lr-20AK-EeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_Nn-CYAK-EeuSgZB_KB01WQ" name="DebitCard">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Nn9bUAK-EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Nn9bUAK-EeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_PAJWQQK-EeuSgZB_KB01WQ" name="Balance">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_PAJWQAK-EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_PAJWQAK-EeuSgZB_KB01WQ"/>
     </literals>
     <literals xmi:id="_SpVDcQK-EeuSgZB_KB01WQ" name="PayPal">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_SpVDcAK-EeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_SpVDcAK-EeuSgZB_KB01WQ"/>
     </literals>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_vk6pAAK-EeuSgZB_KB01WQ" containment="_CHw4IALKEeuureya8sZnkw" name="Delivery" package="_6oEkgAKqEeuSgZB_KB01WQ" abstractClass="true" associationsIn="_sWM4AALDEeuSgZB_KB01WQ" subclassedBy="_EJEswALDEeuSgZB_KB01WQ _FFlYUALDEeuSgZB_KB01WQ">
-    <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_vk6B8AK-EeuSgZB_KB01WQ"/>
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_vk6B8AK-EeuSgZB_KB01WQ"/>
     <visualProperties xmi:id="_vk6pAQK-EeuSgZB_KB01WQ" position="1672.0,253.0" size="179.0,64.0"/>
     <stereotypes xmi:id="_0UH68AM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_0T_YEQM-EeuBNuW16gxEfQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T_YEQM-EeuBNuW16gxEfQ"/>
     </stereotypes>
     <visibility xmi:id="_vk6pAgK-EeuSgZB_KB01WQ" label="+"/>
     <attributes xmi:id="_qVwVIQLBEeuSgZB_KB01WQ" name="deliveryId">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_qVwVIALBEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_qVwVIALBEeuSgZB_KB01WQ"/>
       <stereotypes xmi:id="_J6nlQAMeEeure60nlAlu0Q" name="Past"/>
       <stereotypes xmi:id="_KEQCYAMeEeure60nlAlu0Q" name="Past"/>
       <stereotypes xmi:id="_Bs89QAM_EeuBNuW16gxEfQ" name="PrimaryKey">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_Bs8WMAM_EeuBNuW16gxEfQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_Bs8WMAM_EeuBNuW16gxEfQ"/>
       </stereotypes>
       <visibility xmi:id="_qVwVIgLBEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_qVwVIwLBEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
@@ -1110,11 +1062,70 @@
       </type>
     </attributes>
     <attributes xmi:id="_sWNfEALDEeuSgZB_KB01WQ" name="order">
-      <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_sWLp4ALDEeuSgZB_KB01WQ"/>
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_sWLp4ALDEeuSgZB_KB01WQ"/>
       <visibility xmi:id="_sWNfEQLDEeuSgZB_KB01WQ" label="+"/>
       <cardinality xmi:id="_sWNfEgLDEeuSgZB_KB01WQ" label="1" max="1" min="1"/>
       <type xmi:id="_sWNfEwLDEeuSgZB_KB01WQ" name="Order">
-        <modelElement href="ca.mcgill.ecse321.artgallery.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
+      </type>
+    </attributes>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_EV3isAKvEeuSgZB_KB01WQ" containment="_BrV-sALGEeuSgZB_KB01WQ" name="ArtGallerySystem" package="_6oEkgAKqEeuSgZB_KB01WQ" associationsOut="_RyePwALFEeuSgZB_KB01WQ _hayocALFEeuSgZB_KB01WQ _ie0RQALFEeuSgZB_KB01WQ _kc02EALFEeuSgZB_KB01WQ">
+    <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_EV27oAKvEeuSgZB_KB01WQ"/>
+    <visualProperties xmi:id="_EV3isQKvEeuSgZB_KB01WQ" position="328.0,48.0" size="229.0,91.0"/>
+    <stereotypes xmi:id="_0UBNQAM-EeuBNuW16gxEfQ" name="JPA1StyledElement">
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_0T-J8AM-EeuBNuW16gxEfQ"/>
+    </stereotypes>
+    <visibility xmi:id="_EV3isgKvEeuSgZB_KB01WQ" label="+"/>
+    <attributes xmi:id="_Ryfd4ALFEeuSgZB_KB01WQ" name="user">
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_RydosALFEeuSgZB_KB01WQ"/>
+      <visibility xmi:id="_Ryfd4QLFEeuSgZB_KB01WQ" label="+"/>
+      <cardinality xmi:id="_Ryfd4gLFEeuSgZB_KB01WQ" label="*" max="-1"/>
+      <type xmi:id="_Ryfd4wLFEeuSgZB_KB01WQ" name="User">
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_SxWRoAKrEeuSgZB_KB01WQ"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_hazPgALFEeuSgZB_KB01WQ" name="artPiece">
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_haxaUwLFEeuSgZB_KB01WQ"/>
+      <visibility xmi:id="_hazPgQLFEeuSgZB_KB01WQ" label="+"/>
+      <cardinality xmi:id="_hazPggLFEeuSgZB_KB01WQ" label="*" max="-1"/>
+      <type xmi:id="_hazPgwLFEeuSgZB_KB01WQ" name="ArtPiece">
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_CEqVEAKvEeuSgZB_KB01WQ"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_ie1fYALFEeuSgZB_KB01WQ" name="order">
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_ieycFALFEeuSgZB_KB01WQ"/>
+      <visibility xmi:id="_ie1fYQLFEeuSgZB_KB01WQ" label="+"/>
+      <cardinality xmi:id="_ie1fYgLFEeuSgZB_KB01WQ" label="*" max="-1"/>
+      <type xmi:id="_ie1fYwLFEeuSgZB_KB01WQ" name="Order">
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_GqPZEAKvEeuSgZB_KB01WQ"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_kc2EMALFEeuSgZB_KB01WQ" name="address">
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_kczn9ALFEeuSgZB_KB01WQ"/>
+      <visibility xmi:id="_kc2EMQLFEeuSgZB_KB01WQ" label="+"/>
+      <cardinality xmi:id="_kc2EMgLFEeuSgZB_KB01WQ" label="*" max="-1"/>
+      <type xmi:id="_kc2EMwLFEeuSgZB_KB01WQ" name="Address">
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_KVjkgALAEeuSgZB_KB01WQ"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_rI0q0AV0EeudRu1KX4nc4Q" name="artGallerySystemId">
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_rIxngAV0EeudRu1KX4nc4Q"/>
+      <stereotypes xmi:id="_lfOjAAZOEeudw4mZqBF3yQ" name="PrimaryKey">
+        <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_lfNU4AZOEeudw4mZqBF3yQ"/>
+      </stereotypes>
+      <visibility xmi:id="_rI0q0QV0EeudRu1KX4nc4Q" label="+"/>
+      <cardinality xmi:id="_rI0q0gV0EeudRu1KX4nc4Q" label="1" max="1" min="1"/>
+      <type xmi:id="_jKoDIAZOEeudw4mZqBF3yQ" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_j5pFQAZOEeudw4mZqBF3yQ" name="income">
+      <modelElement href="ca.mcgill.ecse321.artgallerysystem.model.uml#_j5n3IAZOEeudw4mZqBF3yQ"/>
+      <visibility xmi:id="_j5pFQQZOEeudw4mZqBF3yQ" label="+"/>
+      <cardinality xmi:id="_j5pFQgZOEeudw4mZqBF3yQ" label="1" max="1" min="1"/>
+      <type xmi:id="_j5pFQwZOEeudw4mZqBF3yQ" name="double">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
       </type>
     </attributes>
   </nodes>
