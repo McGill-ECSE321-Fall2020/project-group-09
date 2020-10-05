@@ -3,8 +3,6 @@ package ca.mcgill.ecse321.artgallerysystem.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import java.util.Set;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Address{
@@ -73,39 +71,6 @@ this.country = value;
 public String getCountry() {
 return this.country;
     }
-private Customer customer;
-
-@ManyToOne
-public Customer getCustomer() {
-   return this.customer;
-}
-
-public void setCustomer(Customer customer) {
-   this.customer = customer;
-}
-
-private Set<ParcelDelivery> parcelDelivery;
-
-@OneToMany(mappedBy="deliveryAddress")
-public Set<ParcelDelivery> getParcelDelivery() {
-   return this.parcelDelivery;
-}
-
-public void setParcelDelivery(Set<ParcelDelivery> parcelDeliverys) {
-   this.parcelDelivery = parcelDeliverys;
-}
-
-private Set<InStorePickUp> inStorePickUp;
-
-@OneToMany(mappedBy="storeAddress")
-public Set<InStorePickUp> getInStorePickUp() {
-   return this.inStorePickUp;
-}
-
-public void setInStorePickUp(Set<InStorePickUp> inStorePickUps) {
-   this.inStorePickUp = inStorePickUps;
-}
-
 private ArtGallerySystem artGallerySystem;
 
 @ManyToOne(optional=false)

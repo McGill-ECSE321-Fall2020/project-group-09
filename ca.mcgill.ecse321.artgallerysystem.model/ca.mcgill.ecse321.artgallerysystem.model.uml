@@ -5,7 +5,7 @@
       <contents xmi:type="ecore:EAnnotation" xmi:id="_06YJQAKnEeuKUq95mGVj0w" source="codegen">
         <details xmi:id="_06YJQQKnEeuKUq95mGVj0w" key="codegenDirectory" value="/project-group-09/ArtGallerySystem-Backend/src/main/java"/>
         <details xmi:id="_06oA4AKnEeuKUq95mGVj0w" key="observedFolders" value="/ca.mcgill.ecse321.artgallery.model/src,/project-group-09/ArtGallerySystem-Backend/src/main/java"/>
-        <details xmi:id="_r0DhIAKrEeuSgZB_KB01WQ" key="AssociatedSourceCode" value="/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtGallerySystem.java;448908884/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Address.java;712869180/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/User.java;3429689754/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ParcelDelivery.java;3023582601/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Delivery.java;3265853570/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Artist.java;377299499/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Customer.java;2003089300/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/UserRole.java;156904177/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtPiece.java;3563227275/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Order.java;836105386/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Payment.java;837071241/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ParcelDeliveryStatus.java;3774203401/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/InStorePickUpStatus.java;1039631631/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/OrderStatus.java;2626566032/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/PaymentMethod.java;3688921569/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtPieceStatus.java;1063105346/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/ArtGallerySystemApplication.java;3522438297/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/AddressRepository.java;2805056150/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtGallerySystemRepository.java;3440979356/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtPieceRepository.java;2621268655/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtistRepository.java;3668140730/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/CustomerRepository.java;1033410502/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/DeliveryRepository.java;1104883994/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/InstorePickUpRepository.java;3989700566/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/OrderRepository.java;3672961061/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ParcelDeliveryRepository.java;3119983751/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/PaymentRepository.java;3620029357/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/UserRepository.java;935114532/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/InStorePickUp.java;3898885155/1;"/>
+        <details xmi:id="_r0DhIAKrEeuSgZB_KB01WQ" key="AssociatedSourceCode" value="/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtGallerySystem.java;448908884/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Address.java;86034527/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/User.java;3429689754/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ParcelDelivery.java;3023582601/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Delivery.java;3265853570/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Artist.java;520897297/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Customer.java;4199442796/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/UserRole.java;156904177/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtPiece.java;3563227275/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Order.java;836105386/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Payment.java;837071241/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ParcelDeliveryStatus.java;3774203401/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/InStorePickUpStatus.java;1039631631/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/OrderStatus.java;2626566032/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/PaymentMethod.java;3688921569/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtPieceStatus.java;1063105346/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/ArtGallerySystemApplication.java;3522438297/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/AddressRepository.java;2805056150/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtGallerySystemRepository.java;3440979356/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtPieceRepository.java;2621268655/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtistRepository.java;3668140730/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/CustomerRepository.java;1033410502/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/DeliveryRepository.java;1104883994/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/InstorePickUpRepository.java;3989700566/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/OrderRepository.java;3672961061/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ParcelDeliveryRepository.java;3119983751/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/PaymentRepository.java;3620029357/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/UserRepository.java;935114532/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/InStorePickUp.java;3898885155/1;"/>
       </contents>
       <contents xmi:type="ecore:EAnnotation" xmi:id="_zEUfMAKqEeuSgZB_KB01WQ" source="preferences">
         <contents xmi:type="ecore:EAnnotation" xmi:id="_zEWUYAKqEeuSgZB_KB01WQ" source="com.yattasolutions.codegen.reverse">
@@ -97,18 +97,6 @@
                 <ownedAttribute xmi:id="_zwfmsALAEeuSgZB_KB01WQ" name="country">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_yWM2IgLEEeuSgZB_KB01WQ" name="customer" type="_AKaO4AKvEeuSgZB_KB01WQ" association="_yWMPEALEEeuSgZB_KB01WQ">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yWM2IwLEEeuSgZB_KB01WQ"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yWM2JALEEeuSgZB_KB01WQ" value="1"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_7wC6YgLEEeuSgZB_KB01WQ" name="parcelDelivery" type="_2BIegAK-EeuSgZB_KB01WQ" association="_7wCTUALEEeuSgZB_KB01WQ">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7wC6YwLEEeuSgZB_KB01WQ"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7wC6ZALEEeuSgZB_KB01WQ" value="*"/>
-                </ownedAttribute>
-                <ownedAttribute xmi:id="_BKyEwwLFEeuSgZB_KB01WQ" name="inStorePickUp" type="_4da6wAK-EeuSgZB_KB01WQ" association="_BKxdsALFEeuSgZB_KB01WQ">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BKyExALFEeuSgZB_KB01WQ"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BKyExQLFEeuSgZB_KB01WQ" value="*"/>
-                </ownedAttribute>
                 <ownedAttribute xmi:id="_kczn8QLFEeuSgZB_KB01WQ" name="artGallerySystem" type="_EV27oAKvEeuSgZB_KB01WQ" association="_kczn8ALFEeuSgZB_KB01WQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kczn8gLFEeuSgZB_KB01WQ" value="1"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kczn8wLFEeuSgZB_KB01WQ" value="1"/>
@@ -172,9 +160,6 @@
               </packagedElement>
               <packagedElement xmi:type="uml:Class" xmi:id="__GLxwAKuEeuSgZB_KB01WQ" name="Artist">
                 <generalization xmi:id="_-mTAsALCEeuSgZB_KB01WQ" general="_9Lql0AKuEeuSgZB_KB01WQ"/>
-                <ownedAttribute xmi:id="_9LEH4AK5EeuSgZB_KB01WQ" name="artistId">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                </ownedAttribute>
                 <ownedAttribute xmi:id="_H2BDIgLEEeuSgZB_KB01WQ" name="artPiece" type="_CEqVEAKvEeuSgZB_KB01WQ" association="_H2AcEALEEeuSgZB_KB01WQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_H2BDIwLEEeuSgZB_KB01WQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_H2BDJALEEeuSgZB_KB01WQ" value="*"/>
@@ -185,9 +170,6 @@
               </packagedElement>
               <packagedElement xmi:type="uml:Class" xmi:id="_AKaO4AKvEeuSgZB_KB01WQ" name="Customer">
                 <generalization xmi:id="_Aj25kALDEeuSgZB_KB01WQ" general="_9Lql0AKuEeuSgZB_KB01WQ"/>
-                <ownedAttribute xmi:id="_EmnTcAK6EeuSgZB_KB01WQ" name="customerId">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                </ownedAttribute>
                 <ownedAttribute xmi:id="_Fc1JwAK6EeuSgZB_KB01WQ" name="balance">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                 </ownedAttribute>
@@ -429,9 +411,24 @@
     <packagedElement xmi:type="uml:Association" xmi:id="_APevkALEEeuSgZB_KB01WQ" name="" memberEnd="_APevkQLEEeuSgZB_KB01WQ _APevlALEEeuSgZB_KB01WQ"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_H2AcEALEEeuSgZB_KB01WQ" name="" memberEnd="_H2AcEQLEEeuSgZB_KB01WQ _H2BDIgLEEeuSgZB_KB01WQ"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_NFYD8ALEEeuSgZB_KB01WQ" name="" memberEnd="_NFYrAALEEeuSgZB_KB01WQ _NFYrAwLEEeuSgZB_KB01WQ"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_yWMPEALEEeuSgZB_KB01WQ" name="" memberEnd="_yWMPEQLEEeuSgZB_KB01WQ _yWM2IgLEEeuSgZB_KB01WQ"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_7wCTUALEEeuSgZB_KB01WQ" name="" memberEnd="_7wCTUQLEEeuSgZB_KB01WQ _7wC6YgLEEeuSgZB_KB01WQ"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_BKxdsALFEeuSgZB_KB01WQ" name="" memberEnd="_BKyEwALFEeuSgZB_KB01WQ _BKyEwwLFEeuSgZB_KB01WQ"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_yWMPEALEEeuSgZB_KB01WQ" name="" memberEnd="_yWMPEQLEEeuSgZB_KB01WQ _yWM2IgLEEeuSgZB_KB01WQ">
+      <ownedEnd xmi:id="_yWM2IgLEEeuSgZB_KB01WQ" name="customer" type="_AKaO4AKvEeuSgZB_KB01WQ" association="_yWMPEALEEeuSgZB_KB01WQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yWM2IwLEEeuSgZB_KB01WQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yWM2JALEEeuSgZB_KB01WQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_7wCTUALEEeuSgZB_KB01WQ" name="" memberEnd="_7wCTUQLEEeuSgZB_KB01WQ _7wC6YgLEEeuSgZB_KB01WQ">
+      <ownedEnd xmi:id="_7wC6YgLEEeuSgZB_KB01WQ" name="parcelDelivery" type="_2BIegAK-EeuSgZB_KB01WQ" association="_7wCTUALEEeuSgZB_KB01WQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7wC6YwLEEeuSgZB_KB01WQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7wC6ZALEEeuSgZB_KB01WQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_BKxdsALFEeuSgZB_KB01WQ" name="" memberEnd="_BKyEwALFEeuSgZB_KB01WQ _BKyEwwLFEeuSgZB_KB01WQ">
+      <ownedEnd xmi:id="_BKyEwwLFEeuSgZB_KB01WQ" name="inStorePickUp" type="_4da6wAK-EeuSgZB_KB01WQ" association="_BKxdsALFEeuSgZB_KB01WQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BKyExALFEeuSgZB_KB01WQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BKyExQLFEeuSgZB_KB01WQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_RydBoALFEeuSgZB_KB01WQ" name="" memberEnd="_RydBoQLFEeuSgZB_KB01WQ _RydosALFEeuSgZB_KB01WQ"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_hawzQALFEeuSgZB_KB01WQ" name="" memberEnd="_haxaUALFEeuSgZB_KB01WQ _haxaUwLFEeuSgZB_KB01WQ"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_ieycEALFEeuSgZB_KB01WQ" name="" memberEnd="_ieycEQLFEeuSgZB_KB01WQ _ieycFALFEeuSgZB_KB01WQ"/>
@@ -476,8 +473,6 @@
     <languageName>java</languageName>
   </UMLLabProfile:TargetLanguage>
   <Persistency:PrimaryKey xmi:id="_eMcTkAK5EeuSgZB_KB01WQ" base_Property="_VKX2IAK5EeuSgZB_KB01WQ"/>
-  <Persistency:PrimaryKey xmi:id="_-K2J4AK5EeuSgZB_KB01WQ" base_Property="_9LEH4AK5EeuSgZB_KB01WQ"/>
-  <Persistency:PrimaryKey xmi:id="_GY-B4AK6EeuSgZB_KB01WQ" base_Property="_EmnTcAK6EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_XaxWAAK6EeuSgZB_KB01WQ" base_Property="_Nd3A8AK6EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_mBOzoAK7EeuSgZB_KB01WQ" base_Property="_lT2JMAK7EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_ekIokAK-EeuSgZB_KB01WQ" base_Property="_d8TMgAK-EeuSgZB_KB01WQ"/>
@@ -495,8 +490,6 @@
   <Persistency:JPA1StyledElement xmi:id="_0T__IQM-EeuBNuW16gxEfQ" base_Element="_GqPZEAKvEeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_-zljcAM-EeuBNuW16gxEfQ" base_Property="_Nd3A8AK6EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="___q8EAM-EeuBNuW16gxEfQ" base_Property="_VKX2IAK5EeuSgZB_KB01WQ"/>
-  <Persistency:PrimaryKey xmi:id="_A7NXQAM_EeuBNuW16gxEfQ" base_Property="_9LEH4AK5EeuSgZB_KB01WQ"/>
-  <Persistency:PrimaryKey xmi:id="_BRr9kAM_EeuBNuW16gxEfQ" base_Property="_EmnTcAK6EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_Bs8WMAM_EeuBNuW16gxEfQ" base_Property="_qVwVIALBEeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_DwvZ8AM_EeuBNuW16gxEfQ" base_Property="_d8TMgAK-EeuSgZB_KB01WQ"/>
   <Persistency:PrimaryKey xmi:id="_ESHosAM_EeuBNuW16gxEfQ" base_Property="_lT2JMAK7EeuSgZB_KB01WQ"/>
