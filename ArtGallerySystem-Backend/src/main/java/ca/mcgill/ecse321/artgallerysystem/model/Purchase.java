@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Order{
+public class Purchase{
 private String orderId;
    
    public void setOrderId(String value) {
@@ -38,7 +38,7 @@ return this.orderStatus;
     }
 private Delivery delivery;
 
-@OneToOne(mappedBy="order", cascade={CascadeType.ALL})
+@OneToOne(mappedBy="purchase", cascade={CascadeType.ALL})
 public Delivery getDelivery() {
    return this.delivery;
 }
@@ -49,7 +49,7 @@ public void setDelivery(Delivery delivery) {
 
 private Set<Payment> payment;
 
-@OneToMany(mappedBy="order", cascade={CascadeType.ALL})
+@OneToMany(mappedBy="purchase", cascade={CascadeType.ALL})
 public Set<Payment> getPayment() {
    return this.payment;
 }

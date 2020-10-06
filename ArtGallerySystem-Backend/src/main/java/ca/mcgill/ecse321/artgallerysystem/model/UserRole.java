@@ -6,15 +6,15 @@ import javax.persistence.Id;
 
 @Entity
 public class UserRole{
-private User user;
+private ArtGallerySystemUser artGallerySystemUser;
 
 @ManyToOne(optional=false)
-public User getUser() {
-   return this.user;
+public ArtGallerySystemUser getArtGallerySystemUser() {
+   return this.artGallerySystemUser;
 }
 
-public void setUser(User user) {
-   this.user = user;
+public void setArtGallerySystemUser(ArtGallerySystemUser artGallerySystemUser) {
+   this.artGallerySystemUser = artGallerySystemUser;
 }
 
 private String userRoleId;

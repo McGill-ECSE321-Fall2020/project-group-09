@@ -8,7 +8,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class User{
+public class ArtGallerySystemUser{
 private String name;
    
    public void setName(String value) {
@@ -44,7 +44,7 @@ return this.avatar;
     }
 private Set<UserRole> userRole;
 
-@OneToMany(mappedBy="user", cascade={CascadeType.ALL})
+@OneToMany(mappedBy="artGallerySystemUser", cascade={CascadeType.ALL})
 public Set<UserRole> getUserRole() {
    return this.userRole;
 }

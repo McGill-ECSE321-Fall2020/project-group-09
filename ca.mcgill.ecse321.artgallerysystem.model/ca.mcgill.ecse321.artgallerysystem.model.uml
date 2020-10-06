@@ -5,7 +5,7 @@
       <contents xmi:type="ecore:EAnnotation" xmi:id="_06YJQAKnEeuKUq95mGVj0w" source="codegen">
         <details xmi:id="_06YJQQKnEeuKUq95mGVj0w" key="codegenDirectory" value="/project-group-09/ArtGallerySystem-Backend/src/main/java"/>
         <details xmi:id="_06oA4AKnEeuKUq95mGVj0w" key="observedFolders" value="/ca.mcgill.ecse321.artgallery.model/src,/project-group-09/ArtGallerySystem-Backend/src/main/java"/>
-        <details xmi:id="_r0DhIAKrEeuSgZB_KB01WQ" key="AssociatedSourceCode" value="/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtGallerySystem.java;448908884/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Address.java;86034527/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/User.java;3429689754/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ParcelDelivery.java;3023582601/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Delivery.java;3265853570/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Artist.java;520897297/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Customer.java;4199442796/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/UserRole.java;156904177/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtPiece.java;3563227275/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Order.java;836105386/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Payment.java;837071241/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ParcelDeliveryStatus.java;3774203401/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/InStorePickUpStatus.java;1039631631/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/OrderStatus.java;2626566032/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/PaymentMethod.java;3688921569/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtPieceStatus.java;1063105346/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/ArtGallerySystemApplication.java;3522438297/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/AddressRepository.java;2805056150/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtGallerySystemRepository.java;3440979356/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtPieceRepository.java;2621268655/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtistRepository.java;3668140730/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/CustomerRepository.java;1033410502/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/DeliveryRepository.java;1104883994/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/InstorePickUpRepository.java;3989700566/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/OrderRepository.java;3672961061/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ParcelDeliveryRepository.java;3119983751/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/PaymentRepository.java;3620029357/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/UserRepository.java;935114532/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/InStorePickUp.java;3898885155/1;"/>
+        <details xmi:id="_r0DhIAKrEeuSgZB_KB01WQ" key="AssociatedSourceCode" value="/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtGallerySystem.java;2175692433/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Address.java;86034527/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ParcelDelivery.java;3023582601/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Delivery.java;199499919/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Artist.java;520897297/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Customer.java;874277406/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/UserRole.java;3841185130/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtPiece.java;3300009803/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Payment.java;2167148876/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ParcelDeliveryStatus.java;3774203401/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/InStorePickUpStatus.java;1039631631/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/OrderStatus.java;2626566032/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/PaymentMethod.java;3688921569/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtPieceStatus.java;1063105346/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/ArtGallerySystemApplication.java;3522438297/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/AddressRepository.java;2805056150/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtGallerySystemRepository.java;3440979356/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtPieceRepository.java;2621268655/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ArtistRepository.java;3668140730/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/CustomerRepository.java;1033410502/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/DeliveryRepository.java;1104883994/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/InstorePickUpRepository.java;3989700566/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/OrderRepository.java;2929039742/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/ParcelDeliveryRepository.java;3119983751/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/PaymentRepository.java;3620029357/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/dao/UserRepository.java;2252779891/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/InStorePickUp.java;3898885155/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/ArtGallerySystemUser.java;1232007662/1;/project-group-09/ArtGallerySystem-Backend/src/main/java/ca/mcgill/ecse321/artgallerysystem/model/Purchase.java;3270875287/1;"/>
       </contents>
       <contents xmi:type="ecore:EAnnotation" xmi:id="_zEUfMAKqEeuSgZB_KB01WQ" source="preferences">
         <contents xmi:type="ecore:EAnnotation" xmi:id="_zEWUYAKqEeuSgZB_KB01WQ" source="com.yattasolutions.codegen.reverse">
@@ -49,7 +49,7 @@
             <packagedElement xmi:type="uml:Package" xmi:id="_6oD9cAKqEeuSgZB_KB01WQ" name="model">
               <packagedElement xmi:type="uml:Association" xmi:id="_1kzyEALCEeuSgZB_KB01WQ" name="" memberEnd="_1kzyEQLCEeuSgZB_KB01WQ _1k2OUgLCEeuSgZB_KB01WQ"/>
               <packagedElement xmi:type="uml:Class" xmi:id="_EV27oAKvEeuSgZB_KB01WQ" name="ArtGallerySystem">
-                <ownedAttribute xmi:id="_RydosALFEeuSgZB_KB01WQ" name="user" type="_SxWRoAKrEeuSgZB_KB01WQ" aggregation="composite" association="_RydBoALFEeuSgZB_KB01WQ">
+                <ownedAttribute xmi:id="_RydosALFEeuSgZB_KB01WQ" name="artGallerySystemUser" type="_SxWRoAKrEeuSgZB_KB01WQ" aggregation="composite" association="_RydBoALFEeuSgZB_KB01WQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RydosQLFEeuSgZB_KB01WQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RydosgLFEeuSgZB_KB01WQ" value="*"/>
                 </ownedAttribute>
@@ -57,7 +57,7 @@
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_haxaVALFEeuSgZB_KB01WQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_haxaVQLFEeuSgZB_KB01WQ" value="*"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_ieycFALFEeuSgZB_KB01WQ" name="order" type="_GqPZEAKvEeuSgZB_KB01WQ" aggregation="composite" association="_ieycEALFEeuSgZB_KB01WQ">
+                <ownedAttribute xmi:id="_ieycFALFEeuSgZB_KB01WQ" name="purchase" type="_GqPZEAKvEeuSgZB_KB01WQ" aggregation="composite" association="_ieycEALFEeuSgZB_KB01WQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iezDIALFEeuSgZB_KB01WQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iezDIQLFEeuSgZB_KB01WQ" value="*"/>
                 </ownedAttribute>
@@ -102,7 +102,7 @@
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kczn8wLFEeuSgZB_KB01WQ" value="1"/>
                 </ownedAttribute>
               </packagedElement>
-              <packagedElement xmi:type="uml:Class" xmi:id="_SxWRoAKrEeuSgZB_KB01WQ" name="User">
+              <packagedElement xmi:type="uml:Class" xmi:id="_SxWRoAKrEeuSgZB_KB01WQ" name="ArtGallerySystemUser">
                 <ownedAttribute xmi:id="_VKX2IAK5EeuSgZB_KB01WQ" name="name">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                 </ownedAttribute>
@@ -153,7 +153,7 @@
                 <ownedAttribute xmi:id="_qVwVIALBEeuSgZB_KB01WQ" name="deliveryId">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_sWLp4ALDEeuSgZB_KB01WQ" name="order" type="_GqPZEAKvEeuSgZB_KB01WQ" association="_sWLC0ALDEeuSgZB_KB01WQ">
+                <ownedAttribute xmi:id="_sWLp4ALDEeuSgZB_KB01WQ" name="purchase" type="_GqPZEAKvEeuSgZB_KB01WQ" association="_sWLC0ALDEeuSgZB_KB01WQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sWLp4QLDEeuSgZB_KB01WQ" value="1"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sWLp4gLDEeuSgZB_KB01WQ" value="1"/>
                 </ownedAttribute>
@@ -173,7 +173,7 @@
                 <ownedAttribute xmi:id="_Fc1JwAK6EeuSgZB_KB01WQ" name="balance">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_APevlALEEeuSgZB_KB01WQ" name="order" type="_GqPZEAKvEeuSgZB_KB01WQ" association="_APevkALEEeuSgZB_KB01WQ">
+                <ownedAttribute xmi:id="_APevlALEEeuSgZB_KB01WQ" name="purchase" type="_GqPZEAKvEeuSgZB_KB01WQ" association="_APevkALEEeuSgZB_KB01WQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_APevlQLEEeuSgZB_KB01WQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_APevlgLEEeuSgZB_KB01WQ" value="*"/>
                 </ownedAttribute>
@@ -183,7 +183,7 @@
                 </ownedAttribute>
               </packagedElement>
               <packagedElement xmi:type="uml:Class" xmi:id="_9Lql0AKuEeuSgZB_KB01WQ" name="UserRole">
-                <ownedAttribute xmi:id="_1kzyEQLCEeuSgZB_KB01WQ" name="user" type="_SxWRoAKrEeuSgZB_KB01WQ" association="_1kzyEALCEeuSgZB_KB01WQ">
+                <ownedAttribute xmi:id="_1kzyEQLCEeuSgZB_KB01WQ" name="artGallerySystemUser" type="_SxWRoAKrEeuSgZB_KB01WQ" association="_1kzyEALCEeuSgZB_KB01WQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1k2OUALCEeuSgZB_KB01WQ" value="1"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1k2OUQLCEeuSgZB_KB01WQ" value="1"/>
                 </ownedAttribute>
@@ -213,7 +213,7 @@
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_H2BDIALEEeuSgZB_KB01WQ" value="1"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_H2BDIQLEEeuSgZB_KB01WQ" value="*"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_NFYrAwLEEeuSgZB_KB01WQ" name="order" type="_GqPZEAKvEeuSgZB_KB01WQ" association="_NFYD8ALEEeuSgZB_KB01WQ">
+                <ownedAttribute xmi:id="_NFYrAwLEEeuSgZB_KB01WQ" name="purchase" type="_GqPZEAKvEeuSgZB_KB01WQ" association="_NFYD8ALEEeuSgZB_KB01WQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NFYrBALEEeuSgZB_KB01WQ"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NFYrBQLEEeuSgZB_KB01WQ" value="1"/>
                 </ownedAttribute>
@@ -222,7 +222,7 @@
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_haxaUgLFEeuSgZB_KB01WQ" value="1"/>
                 </ownedAttribute>
               </packagedElement>
-              <packagedElement xmi:type="uml:Class" xmi:id="_GqPZEAKvEeuSgZB_KB01WQ" name="Order">
+              <packagedElement xmi:type="uml:Class" xmi:id="_GqPZEAKvEeuSgZB_KB01WQ" name="Purchase">
                 <ownedAttribute xmi:id="_lT2JMAK7EeuSgZB_KB01WQ" name="orderId">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                 </ownedAttribute>
@@ -257,7 +257,7 @@
                 <ownedAttribute xmi:id="_nd3CUAK-EeuSgZB_KB01WQ" name="isSuccessful">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_5mxWMQLDEeuSgZB_KB01WQ" name="order" type="_GqPZEAKvEeuSgZB_KB01WQ" association="_5mxWMALDEeuSgZB_KB01WQ">
+                <ownedAttribute xmi:id="_5mxWMQLDEeuSgZB_KB01WQ" name="purchase" type="_GqPZEAKvEeuSgZB_KB01WQ" association="_5mxWMALDEeuSgZB_KB01WQ">
                   <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5mxWMgLDEeuSgZB_KB01WQ" value="1"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5mxWMwLDEeuSgZB_KB01WQ" value="1"/>
                 </ownedAttribute>

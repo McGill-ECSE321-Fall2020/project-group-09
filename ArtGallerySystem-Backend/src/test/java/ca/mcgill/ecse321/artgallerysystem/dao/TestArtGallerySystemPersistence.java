@@ -29,11 +29,11 @@ public class TestArtGallerySystemPersistence {
 	@Autowired
 	private DeliveryRepository deliveryRepository;
 	@Autowired
-	private OrderRepository orderRepository;
+	private PurchaseRepository orderRepository;
 	@Autowired
 	private PaymentRepository paymentRepository;
 	@Autowired
-	private UserRepository userRepository;
+	private ArtGallerySystemUserRepository userRepository;
 	@AfterEach
 	public void clearDatabase() {
 		addressRepository.deleteAll();
@@ -49,7 +49,7 @@ public class TestArtGallerySystemPersistence {
 	public void testPersistAndLoadUser() {
 		String name = "TestUser";
 		// First example for object save/load
-		User user = new User();
+		ArtGallerySystemUser user = new ArtGallerySystemUser();
 		// First example for attribute save/load
 		user.setName(name);
 		userRepository.save(user);

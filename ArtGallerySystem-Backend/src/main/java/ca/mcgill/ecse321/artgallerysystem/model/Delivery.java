@@ -15,15 +15,15 @@ this.deliveryId = value;
 public String getDeliveryId() {
 return this.deliveryId;
     }
-private Order order;
+private Purchase purchase;
 
 @OneToOne(optional=false)
-public Order getOrder() {
-   return this.order;
+public Purchase getPurchase() {
+   return this.purchase;
 }
 
-public void setOrder(Order order) {
-   this.order = order;
+public void setPurchase(Purchase purchase) {
+   this.purchase = purchase;
 }
 
 }

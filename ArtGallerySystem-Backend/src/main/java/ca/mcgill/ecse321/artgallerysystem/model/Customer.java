@@ -14,15 +14,15 @@ this.balance = value;
 public double getBalance() {
 return this.balance;
     }
-private Set<Order> order;
+private Set<Purchase> purchase;
 
 @OneToMany(mappedBy="customer")
-public Set<Order> getOrder() {
-   return this.order;
+public Set<Purchase> getPurchase() {
+   return this.purchase;
 }
 
-public void setOrder(Set<Order> orders) {
-   this.order = orders;
+public void setPurchase(Set<Purchase> purchases) {
+   this.purchase = purchases;
 }
 
 private Set<Address> address;

@@ -8,15 +8,15 @@ import javax.persistence.Id;
 
 @Entity
 public class ArtGallerySystem{
-private Set<User> user;
+private Set<ArtGallerySystemUser> artGallerySystemUser;
 
 @OneToMany(mappedBy="artGallerySystem", cascade={CascadeType.ALL})
-public Set<User> getUser() {
-   return this.user;
+public Set<ArtGallerySystemUser> getArtGallerySystemUser() {
+   return this.artGallerySystemUser;
 }
 
-public void setUser(Set<User> users) {
-   this.user = users;
+public void setArtGallerySystemUser(Set<ArtGallerySystemUser> artGallerySystemUsers) {
+   this.artGallerySystemUser = artGallerySystemUsers;
 }
 
 private Set<ArtPiece> artPiece;
@@ -30,15 +30,15 @@ public void setArtPiece(Set<ArtPiece> artPieces) {
    this.artPiece = artPieces;
 }
 
-private Set<Order> order;
+private Set<Purchase> purchase;
 
 @OneToMany(mappedBy="artGallerySystem", cascade={CascadeType.ALL})
-public Set<Order> getOrder() {
-   return this.order;
+public Set<Purchase> getPurchase() {
+   return this.purchase;
 }
 
-public void setOrder(Set<Order> orders) {
-   this.order = orders;
+public void setPurchase(Set<Purchase> purchases) {
+   this.purchase = purchases;
 }
 
 private Set<Address> address;
