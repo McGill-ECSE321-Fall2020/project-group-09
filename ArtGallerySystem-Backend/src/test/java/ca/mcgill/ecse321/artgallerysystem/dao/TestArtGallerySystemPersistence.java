@@ -22,12 +22,12 @@ import ca.mcgill.ecse321.artgallerysystem.model.*;
 public class TestArtGallerySystemPersistence {
 	@Autowired
 	private AddressRepository addressRepository;
-	@Autowired
-	private ArtistRepository artistRepository;
+	//@Autowired
+	//private ArtistRepository artistRepository;
 	@Autowired
 	private ArtPieceRepository artpieceRepository;
-	@Autowired
-	private CustomerRepository customerRepository;
+	//@Autowired
+	//private CustomerRepository customerRepository;
 	@Autowired
 	private DeliveryRepository deliveryRepository;
 	@Autowired
@@ -39,7 +39,7 @@ public class TestArtGallerySystemPersistence {
 	@Autowired
 	private UserRoleRepository userRoleRepository;
 	@Autowired
-	private ArtGallerySystemRepository artGallerySystemRepository;
+	private ArtGallerySystemRepository artGallerySystemManagerRepository;
 	@AfterEach
 	public void clearDatabase() {
 		addressRepository.deleteAll();
@@ -49,7 +49,7 @@ public class TestArtGallerySystemPersistence {
 		paymentRepository.deleteAll();
 		userRepository.deleteAll();
 		userRoleRepository.deleteAll();
-		artGallerySystemRepository.deleteAll();
+		artGallerySystemManagerRepository.deleteAll();
 	}
 
 
@@ -73,7 +73,7 @@ public class TestArtGallerySystemPersistence {
 		userRepository.save(user);
 		user = null;
 
-		user = userRepository.findUserByName(name);
+		user = userRepository.findArtGallerySystemUserByName(name);
 		assertNotNull(user,"failed adding user to repository");
 		assertEquals(name, user.getName());
 
@@ -89,7 +89,7 @@ public class TestArtGallerySystemPersistence {
 		addressRepository.save(address);
 		address = null;
 
-		address = addressRepository.findAddressById(location);
+		address = addressRepository.findAddressByAddressId(location);
 		assertNotNull(address,"failed adding address to repository");
 		assertEquals(location,address.getAddressId());
 	}
@@ -103,7 +103,7 @@ public class TestArtGallerySystemPersistence {
 		userRoleRepository.save(artist);
 		artist = null;
 
-		artist = (Artist) userRoleRepository.findUserRoleById(aid);
+		artist = (Artist) userRoleRepository.findUserRoleByUserRoleId(aid);
 		assertNotNull(artist,"failed adding address to repository");
 		assertEquals(aid,artist.getUserRoleId());
 	}
@@ -117,7 +117,7 @@ public class TestArtGallerySystemPersistence {
 		userRoleRepository.save(customer);
 		customer = null;
 
-		customer = (Customer) userRoleRepository.findUserRoleById(cid);
+		customer = (Customer) userRoleRepository.findUserRoleByUserRoleId(cid);
 		assertNotNull(customer,"failed adding customer to repository");
 		assertEquals(cid,customer.getUserRoleId());
 	}
@@ -131,7 +131,7 @@ public class TestArtGallerySystemPersistence {
 		artpieceRepository.save(artPiece);
 		artPiece = null;
 
-		artPiece = artpieceRepository.findArtPieceById(apid);
+		artPiece = artpieceRepository.findArtPieceByArtPieceId(apid);
 		assertNotNull(artPiece,"failed adding artPiece to repository");
 		assertEquals(apid,artPiece.getArtPieceId());
 	}
@@ -145,7 +145,7 @@ public class TestArtGallerySystemPersistence {
 		orderRepository.save(order);
 		order = null;
 
-		order = orderRepository.findPurchaseById(oid);
+		order = orderRepository.findPurchaseByOrderId(oid);
 		assertNotNull(order,"failed adding order to repository");
 		assertEquals(oid,order.getOrderId());
 	}
@@ -159,7 +159,7 @@ public class TestArtGallerySystemPersistence {
 		paymentRepository.save(payment);
 		payment = null;
 
-		payment = paymentRepository.findPaymentById(pid);
+		payment = paymentRepository.findPaymentByPaymentId(pid);
 		assertNotNull(payment,"failed adding payment to repository");
 		assertEquals(pid,payment.getPaymentId());
 	}
@@ -181,8 +181,8 @@ public class TestArtGallerySystemPersistence {
 		parcelDelivery = null;
 		inStorePickUp = null;
 
-		parcelDelivery = deliveryRepository.findDeliveryById(pdid);
-		inStorePickUp = deliveryRepository.findDeliveryById(isid);
+		parcelDelivery = deliveryRepository.findDeliveryByDeliveryId(pdid);
+		inStorePickUp = deliveryRepository.findDeliveryByDeliveryId(isid);
 		assertNotNull(parcelDelivery,"failed adding parcel delivery to repository");
 		assertEquals(pdid,parcelDelivery.getDeliveryId());
 		assertNotNull(inStorePickUp,"failed adding instore pick up to repository");

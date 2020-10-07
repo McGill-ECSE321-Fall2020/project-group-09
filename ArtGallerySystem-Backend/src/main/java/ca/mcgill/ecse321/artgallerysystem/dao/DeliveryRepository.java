@@ -1,9 +1,12 @@
 package ca.mcgill.ecse321.artgallerysystem.dao;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
 import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 
+@Repository
 public interface DeliveryRepository extends CrudRepository <Delivery, String>  {
-public Delivery findDeliveryById(String id);
+public Delivery findDeliveryByDeliveryId(String id);
 
 }
