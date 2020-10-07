@@ -1,43 +1,33 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.Set;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Customer extends UserRole{
-private String customerId;
-   
-   public void setCustomerId(String value) {
-this.customerId = value;
-    }
-@Id
-public String getCustomerId() {
-return this.customerId;
-    }
 private double balance;
-
-public void setBalance(double value) {
+   
+   public void setBalance(double value) {
 this.balance = value;
     }
 public double getBalance() {
 return this.balance;
     }
-private Set<Order> order;
+private Set<Purchase> purchase;
 
 @OneToMany(mappedBy="customer")
-public Set<Order> getOrder() {
-   return this.order;
+public Set<Purchase> getPurchase() {
+   return this.purchase;
 }
 
-public void setOrder(Set<Order> orders) {
-   this.order = orders;
+public void setPurchase(Set<Purchase> purchases) {
+   this.purchase = purchases;
 }
 
 private Set<Address> address;
 
-@OneToMany(mappedBy="customer")
+@OneToMany
 public Set<Address> getAddress() {
    return this.address;
 }

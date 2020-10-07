@@ -31,15 +31,15 @@ this.isSuccessful = value;
 public boolean isIsSuccessful() {
 return this.isSuccessful;
     }
-private Order order;
+private Purchase purchase;
 
 @ManyToOne(optional=false)
-public Order getOrder() {
-   return this.order;
+public Purchase getPurchase() {
+   return this.purchase;
 }
 
-public void setOrder(Order order) {
-   this.order = order;
+public void setPurchase(Purchase purchase) {
+   this.purchase = purchase;
 }
 
 }

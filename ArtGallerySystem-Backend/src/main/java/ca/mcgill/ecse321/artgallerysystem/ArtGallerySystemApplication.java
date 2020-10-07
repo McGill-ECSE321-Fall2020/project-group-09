@@ -7,15 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @SpringBootApplication
-public class ArtGallerySystemApplication {
+public class ArtGallerySystemApplication{
+public static void main(String[] args) {
+SpringApplication.run(ArtGallerySystemApplication.class, args);
+     }
 
-  public static void main(String[] args) {
-    SpringApplication.run(ArtGallerySystemApplication.class, args);
-  }
-
-  @RequestMapping("/")
-  public String greeting(){
-    return "Hello world!";
-  }
-
+@RequestMapping("/")
+public String greeting ()
+{
+return "Hello world!";
+     }
 }

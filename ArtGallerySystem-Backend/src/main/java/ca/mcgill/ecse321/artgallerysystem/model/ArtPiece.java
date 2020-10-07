@@ -78,15 +78,15 @@ public void setArtist(Set<Artist> artists) {
    this.artist = artists;
 }
 
-private Order order;
+private Purchase purchase;
 
 @OneToOne(mappedBy="artPiece")
-public Order getOrder() {
-   return this.order;
+public Purchase getPurchase() {
+   return this.purchase;
 }
 
-public void setOrder(Order order) {
-   this.order = order;
+public void setPurchase(Purchase purchase) {
+   this.purchase = purchase;
 }
 
 private ArtGallerySystem artGallerySystem;

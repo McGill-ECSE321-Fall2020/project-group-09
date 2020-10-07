@@ -31,23 +31,24 @@ public class TestArtGallerySystemPersistence {
 	@Autowired
 	private DeliveryRepository deliveryRepository;
 	@Autowired
-	private OrderRepository orderRepository;
+	private PurchaseRepository orderRepository;
 	@Autowired
 	private PaymentRepository paymentRepository;
 	@Autowired
-	private UserRepository userRepository;
+	private ArtGallerySystemUserRepository userRepository;
+	@Autowired
+	private UserRoleRepository userRoleRepository;
 	@Autowired
 	private ArtGallerySystemRepository artGallerySystemRepository;
 	@AfterEach
 	public void clearDatabase() {
 		addressRepository.deleteAll();
-		artistRepository.deleteAll();
 		artpieceRepository.deleteAll();
-		customerRepository.deleteAll();
 		deliveryRepository.deleteAll();
 		orderRepository.deleteAll();
 		paymentRepository.deleteAll();
 		userRepository.deleteAll();
+		userRoleRepository.deleteAll();
 		artGallerySystemRepository.deleteAll();
 	}
 
@@ -65,7 +66,9 @@ public class TestArtGallerySystemPersistence {
 	@Test
 	public void testPersistAndLoadUser() {
 		String name = "TestUser";
-		User user = new User();
+		// First example for object save/load
+		ArtGallerySystemUser user = new ArtGallerySystemUser();
+		// First example for attribute save/load
 		user.setName(name);
 		userRepository.save(user);
 		user = null;
@@ -96,13 +99,13 @@ public class TestArtGallerySystemPersistence {
 	public void testPersistAndLoadArtisit() {
 		String aid = "TestArtist";
 		Artist artist = new Artist();
-		artist.setArtistId(aid);
-		artistRepository.save(artist);
+		artist.setUserRoleId(aid);
+		userRoleRepository.save(artist);
 		artist = null;
 
-		artist = artistRepository.findArtistById(aid);
+		artist = (Artist) userRoleRepository.findUserRoleById(aid);
 		assertNotNull(artist,"failed adding address to repository");
-		assertEquals(aid,artist.getArtistId());
+		assertEquals(aid,artist.getUserRoleId());
 	}
 
 	//Test Customer
@@ -110,13 +113,13 @@ public class TestArtGallerySystemPersistence {
 	public void testPersistAndLoadCustomer(){
 		String cid = "TestCustomer";
 		Customer customer = new Customer();
-		customer.setCustomerId(cid);
-		customerRepository.save(customer);
+		customer.setUserRoleId(cid);
+		userRoleRepository.save(customer);
 		customer = null;
 
-		customer = customerRepository.findCustomerById(cid);
+		customer = (Customer) userRoleRepository.findUserRoleById(cid);
 		assertNotNull(customer,"failed adding customer to repository");
-		assertEquals(cid,customer.getCustomerId());
+		assertEquals(cid,customer.getUserRoleId());
 	}
 
 	//Test Artpiece
@@ -137,12 +140,12 @@ public class TestArtGallerySystemPersistence {
 	@Test
 	public void testPersistAndLoadOrder(){
 		String oid = "TestOrder";
-		Order order = new Order();
+		Purchase order = new Purchase();
 		order.setOrderId(oid);
 		orderRepository.save(order);
 		order = null;
 
-		order = orderRepository.findOrderById(oid);
+		order = orderRepository.findPurchaseById(oid);
 		assertNotNull(order,"failed adding order to repository");
 		assertEquals(oid,order.getOrderId());
 	}
