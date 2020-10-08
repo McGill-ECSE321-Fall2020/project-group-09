@@ -7,6 +7,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
+import java.util.HashSet;
 import java.util.Set;
 
 //import jdk.nashorn.internal.runtime.logging.DebugLogger;
@@ -55,19 +56,38 @@ public class TestArtGallerySystemPersistence {
 	@AfterEach
 	public void clearDatabase() {
 		addressRepository.deleteAll();
-		artpieceRepository.deleteAll();
-		deliveryRepository.deleteAll();
 		purchaseRepository.deleteAll();
 		paymentRepository.deleteAll();
+		artpieceRepository.deleteAll();
+		deliveryRepository.deleteAll();
+		
+		
 		userRepository.deleteAll();
 		userRoleRepository.deleteAll();
 		artGallerySystemRepository.deleteAll();
+		inStorePickUpRepository.deleteAll();
+		parcelDeliveryRepository.deleteAll();
+		artistRepository.deleteAll();
+		customerRepository.deleteAll();
+		
 	}
 	public ArtPiece createArtPiece() {
 		ArtGallerySystem sys = new ArtGallerySystem();
-		Artist art = new Artist();
-		//Set<Artist> arts = new Set();
-		//arts.add(art);
+		ArtGallerySystemUser u = new ArtGallerySystemUser();
+		u.setName("userTest");
+		u.setArtGallerySystem(sys);
+		userRepository.save(u);
+		//UserRole userole = new UserRole();
+		//userole.setArtGallerySystemUser(u);
+		//userole.setUserRoleId("id2");
+		//userRoleRepository.save(userole);
+		Artist artist = new Artist();
+		artist.setArtGallerySystemUser(u);
+		artist.setUserRoleId("id1");
+		artist.setCredit(0.0);
+		artistRepository.save(artist);
+		Set<Artist> arts = new HashSet<Artist>();
+		arts.add(artist);
 		sys.setArtGallerySystemId("test");
 		artGallerySystemRepository.save(sys);
 		ArtPiece test = new ArtPiece();
@@ -75,11 +95,13 @@ public class TestArtGallerySystemPersistence {
 		test.setAuthor("author");
 		test.setDescription("des");
 		test.setPrice(10.0);
-		test.setDate(Date.valueOf("2020"));
+		test.setDate(Date.valueOf("2020-01-01"));
 		test.setArtGallerySystem(sys);
+		test.setArtist(arts);
 		//test.setArtist(arts);
 		test.setArtPieceStatus(ArtPieceStatus.Available);
 		test.setName("name");
+		artpieceRepository.save(test);
 		//test.setPurchase(purchase);
 		return test;
 	}
@@ -250,27 +272,71 @@ public class TestArtGallerySystemPersistence {
 	@Test
 	public void testPersistAndLoadArtPiece(){
 		ArtGallerySystem sys = new ArtGallerySystem();
-		sys.setArtGallerySystemId("sysTest");
-		Purchase purchase = new Purchase();
-		purchase.setOrderId("purTest");
-		purchase.setArtGallerySystem(sys);
+		sys.setArtGallerySystemId("test");
 		artGallerySystemRepository.save(sys);
-		String apid = "TestArtPiece";
-		ArtPiece artPiece = new ArtPiece();
-		artPiece.setArtPieceId(apid);
-		artPiece.setArtGallerySystem(sys);
-		artPiece.setPurchase(purchase);
-		artpieceRepository.save(artPiece);
-		artPiece = null;
+		String oid = "TestOrder1";
+		Purchase purchase = new Purchase();
+		purchase.setOrderId(oid);
+		purchase.setArtGallerySystem(sys);
+		ArtGallerySystemUser u = new ArtGallerySystemUser();
+		u.setName("userTest1");
+		u.setArtGallerySystem(sys);
+		userRepository.save(u);
+		//UserRole userole = new UserRole();
+		//userole.setArtGallerySystemUser(u);
+		//userole.setUserRoleId("id2");
+		//userRoleRepository.save(userole);
+		Customer customer = new Customer();
+		ArtGallerySystemUser u1 = new ArtGallerySystemUser();
+		u1.setName("userTest2");
+		u1.setArtGallerySystem(sys);
+		userRepository.save(u1);
+		customer.setArtGallerySystemUser(u1);
+		customer.setUserRoleId("id4");
+		customer.setBalance(0.0);
+		customerRepository.save(customer);
+		purchase.setDate(Date.valueOf("2020-01-01"));
+		purchase.setOrderStatus(OrderStatus.Successful);
+		purchase.setCustomer(customer);
+		Artist artist = new Artist();
+		artist.setArtGallerySystemUser(u);
+		artist.setUserRoleId("id3");
+		artist.setCredit(0.0);
+		artistRepository.save(artist);
+		Set<Artist> arts = new HashSet<Artist>();
+		arts.add(artist);
+		ArtPiece test = new ArtPiece();
+		test.setArtPieceId("id");
+		test.setAuthor("author");
+		test.setDescription("des");
+		test.setPrice(10.0);
+		test.setDate(Date.valueOf("2020-01-01"));
+		test.setArtGallerySystem(sys);
+		test.setArtist(arts);
+		test.setArtPieceStatus(ArtPieceStatus.Available);
+		test.setName("name");
+		test.setPurchase(purchase);
+		purchase.setArtPiece(test);
+		purchaseRepository.save(purchase);
+		artpieceRepository.save(test);
+		
+		
+		//test.setArtist(arts);
+		
+		//artpieceRepository.save(test);
+		
+		
+		
+		test = null;
 
 		//Test Load
-		artPiece = artpieceRepository.findArtPieceByArtPieceId(apid);
-		assertNotNull(artPiece,"failed adding art piece to repository");
-		assertEquals(apid,artPiece.getArtPieceId());
+		test = artpieceRepository.findArtPieceByArtPieceId("id");
+		assertNotNull(test,"failed adding art piece to repository");
+		assertEquals("123",test.getArtPieceId());
 
 		//Test Delete
-		artpieceRepository.deleteById(apid);
-		assertEquals(null,artpieceRepository.findArtPieceByArtPieceId(apid));
+		artpieceRepository.deleteById("123");
+		assertEquals(null,artpieceRepository.findArtPieceByArtPieceId("123"));
 	}
 
 	//Test Purchase
@@ -283,6 +349,48 @@ public class TestArtGallerySystemPersistence {
 		Purchase purchase = new Purchase();
 		purchase.setOrderId(oid);
 		purchase.setArtGallerySystem(sys);
+		ArtGallerySystemUser u = new ArtGallerySystemUser();
+		u.setName("userTest");
+		u.setArtGallerySystem(sys);
+		userRepository.save(u);
+		//UserRole userole = new UserRole();
+		//userole.setArtGallerySystemUser(u);
+		//userole.setUserRoleId("id2");
+		//userRoleRepository.save(userole);
+		Artist artist = new Artist();
+		artist.setArtGallerySystemUser(u);
+		artist.setUserRoleId("id1");
+		artist.setCredit(0.0);
+		artistRepository.save(artist);
+		Set<Artist> arts = new HashSet<Artist>();
+		arts.add(artist);
+		sys.setArtGallerySystemId("test");
+		artGallerySystemRepository.save(sys);
+		ArtPiece test = new ArtPiece();
+		test.setArtPieceId("id");
+		test.setAuthor("author");
+		test.setDescription("des");
+		test.setPrice(10.0);
+		test.setDate(Date.valueOf("2020-01-01"));
+		test.setArtGallerySystem(sys);
+		test.setArtist(arts);
+		//test.setArtist(arts);
+		test.setArtPieceStatus(ArtPieceStatus.Available);
+		test.setName("name");
+		artpieceRepository.save(test);
+		purchase.setArtPiece(test);
+		Customer customer = new Customer();
+		ArtGallerySystemUser u1 = new ArtGallerySystemUser();
+		u1.setName("userTest");
+		u1.setArtGallerySystem(sys);
+		userRepository.save(u1);
+		customer.setArtGallerySystemUser(u1);
+		customer.setUserRoleId("id2");
+		customer.setBalance(0.0);
+		customerRepository.save(customer);
+		purchase.setDate(Date.valueOf("2020-01-01"));
+		purchase.setOrderStatus(OrderStatus.Successful);
+		purchase.setCustomer(customer);
 		purchaseRepository.save(purchase);
 		purchase = null;
 
@@ -299,32 +407,67 @@ public class TestArtGallerySystemPersistence {
 	//Test Payment
 	@Test
 	public void testPersistAndLoadPayment(){
-		Customer customer = new Customer();
 		ArtGallerySystem sys = new ArtGallerySystem();
-		sys.setArtGallerySystemId("sysTest");
+		sys.setArtGallerySystemId("test");
 		artGallerySystemRepository.save(sys);
+		String oid = "TestOrder1";
 		Purchase purchase = new Purchase();
-		purchase.setOrderId("purTest");
+		purchase.setOrderId(oid);
+		purchase.setArtGallerySystem(sys);
+		ArtGallerySystemUser u = new ArtGallerySystemUser();
+		u.setName("userTest");
+		u.setArtGallerySystem(sys);
+		userRepository.save(u);
+		Artist artist = new Artist();
+		artist.setArtGallerySystemUser(u);
+		artist.setUserRoleId("id1");
+		artist.setCredit(0.0);
+		artistRepository.save(artist);
+		Set<Artist> arts = new HashSet<Artist>();
+		arts.add(artist);
+		ArtPiece test = new ArtPiece();
+		test.setArtPieceId("id");
+		test.setAuthor("author");
+		test.setDescription("des");
+		test.setPrice(10.0);
+		test.setDate(Date.valueOf("2020-01-01"));
+		test.setArtGallerySystem(sys);
+		test.setArtist(arts);
+		test.setArtPieceStatus(ArtPieceStatus.Available);
+		test.setName("name");
+		artpieceRepository.save(test);
+		purchase.setArtPiece(test);
+		Customer customer = new Customer();
+		ArtGallerySystemUser u1 = new ArtGallerySystemUser();
+		u1.setName("userTest");
+		u1.setArtGallerySystem(sys);
+		userRepository.save(u1);
+		customer.setArtGallerySystemUser(u1);
+		customer.setUserRoleId("id2");
+		customer.setBalance(0.0);
+		customerRepository.save(customer);
 		purchase.setDate(Date.valueOf("2020-01-01"));
 		purchase.setOrderStatus(OrderStatus.Successful);
-		String pdid = "TestParcel";
-		Delivery parcelDelivery = new ParcelDelivery();
-		parcelDelivery.setDeliveryId(pdid);
-		deliveryRepository.save(parcelDelivery);
-		purchase.setDelivery((ParcelDelivery)parcelDelivery);
-		String apid = "TestArtPiece";
-		ArtPiece artPiece = new ArtPiece();
-		artPiece.setDate(Date.valueOf("2020"));
-		artPiece.setArtPieceId(apid);
-		artPiece.setArtGallerySystem(sys);
-		artPiece.setPurchase(purchase);
-		artpieceRepository.save(artPiece);
-		purchase.setArtGallerySystem(sys);
 		purchase.setCustomer(customer);
-		purchaseRepository.save(purchase);
+		String location = "TestAddress";
+		 Address address = new Address();
+		   address.setAddressId(location);
+		   address.setArtGallerySystem(sys);
+		   addressRepository.save(address);
+		String pdid = "TestParcel";
+		ParcelDelivery parcelDelivery = new ParcelDelivery();
+		parcelDelivery.setDeliveryId(pdid);
+		parcelDelivery.setCarrier("n");
+		parcelDelivery.setDeliveryAddress(address);
+		parcelDelivery.setParcelDeliveryStatus(ParcelDeliveryStatus.Delivered);
+		parcelDelivery.setTrackingNumber("123");
+		parcelDelivery.setPurchase(purchase);
+		parcelDeliveryRepository.save(parcelDelivery);
+		purchase.setDelivery(parcelDelivery);
 		String pid = "TestPayment";
 		Payment payment = new Payment();
 		payment.setPaymentId(pid);
+		purchaseRepository.save(purchase);
 		payment.setPurchase(purchase);
 		paymentRepository.save(payment);
 		payment = null;
@@ -368,9 +511,56 @@ public class TestArtGallerySystemPersistence {
 	@Test
 	public void testPersistAndLoadParcelDelivery(){
 		ArtGallerySystem sys = new ArtGallerySystem();
-		   sys.setArtGallerySystemId("test");
-		   artGallerySystemRepository.save(sys);
-		   String location = "TestAddress";
+		sys.setArtGallerySystemId("test");
+		artGallerySystemRepository.save(sys);
+		String oid = "TestOrder";
+		Purchase purchase = new Purchase();
+		purchase.setOrderId(oid);
+		purchase.setArtGallerySystem(sys);
+		ArtGallerySystemUser u = new ArtGallerySystemUser();
+		u.setName("userTest");
+		u.setArtGallerySystem(sys);
+		userRepository.save(u);
+		//UserRole userole = new UserRole();
+		//userole.setArtGallerySystemUser(u);
+		//userole.setUserRoleId("id2");
+		//userRoleRepository.save(userole);
+		Artist artist = new Artist();
+		artist.setArtGallerySystemUser(u);
+		artist.setUserRoleId("id1");
+		artist.setCredit(0.0);
+		artistRepository.save(artist);
+		Set<Artist> arts = new HashSet<Artist>();
+		arts.add(artist);
+		sys.setArtGallerySystemId("test");
+		artGallerySystemRepository.save(sys);
+		ArtPiece test = new ArtPiece();
+		test.setArtPieceId("id");
+		test.setAuthor("author");
+		test.setDescription("des");
+		test.setPrice(10.0);
+		test.setDate(Date.valueOf("2020-01-01"));
+		test.setArtGallerySystem(sys);
+		test.setArtist(arts);
+		//test.setArtist(arts);
+		test.setArtPieceStatus(ArtPieceStatus.Available);
+		test.setName("name");
+		artpieceRepository.save(test);
+		purchase.setArtPiece(test);
+		Customer customer = new Customer();
+		ArtGallerySystemUser u1 = new ArtGallerySystemUser();
+		u1.setName("userTest");
+		u1.setArtGallerySystem(sys);
+		userRepository.save(u1);
+		customer.setArtGallerySystemUser(u1);
+		customer.setUserRoleId("id2");
+		customer.setBalance(0.0);
+		customerRepository.save(customer);
+		purchase.setDate(Date.valueOf("2020-01-01"));
+		purchase.setOrderStatus(OrderStatus.Successful);
+		purchase.setCustomer(customer);
+		purchaseRepository.save(purchase);
+		   String location = "TestAddress1";
 		   Address address = new Address();
 		   address.setAddressId(location);
 		   address.setArtGallerySystem(sys);
@@ -382,7 +572,7 @@ public class TestArtGallerySystemPersistence {
 		parcelDelivery.setDeliveryAddress(address);
 		parcelDelivery.setParcelDeliveryStatus(ParcelDeliveryStatus.Delivered);
 		parcelDelivery.setTrackingNumber("123");
-		parcelDelivery.setPurchase(null);
+		parcelDelivery.setPurchase(purchase);
 		parcelDeliveryRepository.save(parcelDelivery);
 		parcelDelivery = null;
 		parcelDelivery = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(pdid);
