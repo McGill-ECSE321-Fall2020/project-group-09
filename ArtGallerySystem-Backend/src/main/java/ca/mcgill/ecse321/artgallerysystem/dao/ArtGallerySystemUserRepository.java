@@ -7,6 +7,6 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 
 @Repository
 public interface ArtGallerySystemUserRepository extends CrudRepository <ArtGallerySystemUser, String>  {
-public ArtGallerySystemUser findUserByName(String name);
+public ArtGallerySystemUser findArtGallerySystemUserByName(String name);
 
 }

@@ -1,6 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -21,6 +22,7 @@ this.carrier = value;
 public String getCarrier() {
 return this.carrier;
     }
+@Enumerated
 private ParcelDeliveryStatus parcelDeliveryStatus;
 
 public void setParcelDeliveryStatus(ParcelDeliveryStatus value) {

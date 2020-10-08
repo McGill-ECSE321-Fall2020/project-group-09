@@ -1,6 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -15,6 +16,7 @@ this.paymentId = value;
 public String getPaymentId() {
 return this.paymentId;
     }
+@Enumerated
 private PaymentMethod paymentMethod;
 
 public void setPaymentMethod(PaymentMethod value) {

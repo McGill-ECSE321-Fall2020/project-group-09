@@ -75,7 +75,7 @@ public class TestArtGallerySystemPersistence {
 		userRepository.save(user);
 		user = null;
 
-		user = userRepository.findUserByName(name);
+		user = userRepository.findArtGallerySystemUserByName(name);
 		assertNotNull(user,"failed adding user to repository");
 		assertEquals(name, user.getName());
 

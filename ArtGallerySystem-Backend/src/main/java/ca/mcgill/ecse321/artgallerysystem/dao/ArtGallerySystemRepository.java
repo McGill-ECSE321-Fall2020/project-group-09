@@ -8,4 +8,5 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 @Repository
 public interface ArtGallerySystemRepository extends CrudRepository <ArtGallerySystem, String>   {
 	public ArtGallerySystem findArtGallerySystemByArtGallerySystemId(String artGallerySystemId);
+
 }
