@@ -6,5 +6,5 @@ import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 
 
 public interface UserRoleRepository extends CrudRepository <UserRole, String>   {
-	public UserRole findUserRoleById(String userRoleId);
+	public UserRole findUserRoleByUserRoleId(String userRoleId);
 }

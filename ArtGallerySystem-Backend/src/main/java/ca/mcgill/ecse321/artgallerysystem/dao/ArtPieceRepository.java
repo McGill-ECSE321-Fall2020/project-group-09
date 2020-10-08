@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 
 public interface ArtPieceRepository extends CrudRepository <ArtPiece, String>  {
-public ArtPiece findArtPieceById(String artPieceId);
+public ArtPiece findArtPieceByArtPieceId(String artPieceId);
 
 }
