@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
 
+import org.apache.catalina.User;
 //import jdk.nashorn.internal.runtime.logging.DebugLogger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -132,8 +133,24 @@ public class TestArtGallerySystemPersistence {
 	//Test Artpiece
 	@Test
 	public void testPersistAndLoadArtPiece(){
+		String name = "TestUser";
+		// First example for object save/load
+		//Customer user = new Customer();
+		ArtGallerySystemUser user = new ArtGallerySystemUser();
+		// First example for attribute save/load
+		( user).setName(name);
+		user.setAvatar("val");
+		user.setEmail("email");
+		user.setPassword("123");
+		Delivery del = new InStorePickUp ();
+		del.setDeliveryId("12");
+		Date date = new Date(6);
 		Purchase pur = new Purchase();
+		//pur.setCustomer((Customer)user);
 		pur.setOrderId("123");
+		pur.setDate(date);
+		pur.setOrderStatus(OrderStatus.Successful);
+		del.setPurchase(pur);
 		ArtGallerySystem sys = new ArtGallerySystem();
 		sys.setArtGallerySystemId("test");
 		artGallerySystemRepository.save(sys);
@@ -142,9 +159,12 @@ public class TestArtGallerySystemPersistence {
 		artPiece. setArtPieceId(apid);
 		artPiece.setArtGallerySystem(sys);
 		pur.setArtGallerySystem(sys);
+		user.setArtGallerySystem(sys);
 		artPiece.setPurchase(pur);
 		artpieceRepository.save(artPiece);
 		orderRepository.save(pur);
+		deliveryRepository.save(del);
+		userRepository.save(user);
 		artPiece = null;
 		artPiece = artpieceRepository.findArtPieceByArtPieceId(apid);
 		assertNotNull(artPiece,"failed adding artPiece to repository");
