@@ -8,9 +8,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
 
-import org.apache.catalina.User;
-//import jdk.nashorn.internal.runtime.logging.DebugLogger;
+import jdk.nashorn.internal.runtime.logging.DebugLogger;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +23,16 @@ import ca.mcgill.ecse321.artgallerysystem.model.*;
 public class TestArtGallerySystemPersistence {
 	@Autowired
 	private AddressRepository addressRepository;
-	//@Autowired
-	//private ArtistRepository artistRepository;
+	@Autowired
+	private ArtistRepository artistRepository;
 	@Autowired
 	private ArtPieceRepository artpieceRepository;
-	//@Autowired
-	//private CustomerRepository customerRepository;
+	@Autowired
+	private CustomerRepository customerRepository;
 	@Autowired
 	private DeliveryRepository deliveryRepository;
 	@Autowired
-	private PurchaseRepository orderRepository;
+	private PurchaseRepository purchaseRepository;
 	@Autowired
 	private PaymentRepository paymentRepository;
 	@Autowired
@@ -41,12 +41,17 @@ public class TestArtGallerySystemPersistence {
 	private UserRoleRepository userRoleRepository;
 	@Autowired
 	private ArtGallerySystemRepository artGallerySystemRepository;
+
+	/**
+	 * clears the database before and after every run
+	 */
+	@BeforeEach
 	@AfterEach
 	public void clearDatabase() {
 		addressRepository.deleteAll();
 		artpieceRepository.deleteAll();
 		deliveryRepository.deleteAll();
-		orderRepository.deleteAll();
+		purchaseRepository.deleteAll();
 		paymentRepository.deleteAll();
 		userRepository.deleteAll();
 		userRoleRepository.deleteAll();
@@ -57,30 +62,33 @@ public class TestArtGallerySystemPersistence {
 	//Test System
 	@Test
 	public void testPersistAndLoadSystem(){
+		//System details
 
 	}
-
-
 
 
 	//Test User
 	@Test
 	public void testPersistAndLoadUser() {
+		ArtGallerySystem sys = new ArtGallerySystem();
+		sys.setArtGallerySystemId("test");
+		artGallerySystemRepository.save(sys);
 		String name = "TestUser";
-		// First example for object save/load
 		ArtGallerySystemUser user = new ArtGallerySystemUser();
-		//ArtGallerySystemUser user = new ArtGallerySystemUser();
-		// First example for attribute save/load
-		((ArtGallerySystemUser) user).setName(name);
+		user.setName(name);
+		user.setArtGallerySystem(sys);
 		userRepository.save(user);
 		user = null;
 
+		//Test Load
 		user = userRepository.findArtGallerySystemUserByName(name);
 		assertNotNull(user,"failed adding user to repository");
 		assertEquals(name, user.getName());
 
+		//Test Delete
+		userRepository.deleteById(name);
+		assertEquals(null,userRepository.findById(name));
 	}
-
 
 	//Test Address
 	@Test
@@ -95,113 +103,113 @@ public class TestArtGallerySystemPersistence {
 		addressRepository.save(address);
 		address = null;
 
+		//Test Load
 		address = addressRepository.findAddressByAddressId(location);
-		//assertNotNull(address);
 		assertNotNull(address,"failed adding address to repository");
 		assertEquals(location,address.getAddressId());
+
+		//Test Delete
+		userRepository.deleteById(location);
+		assertEquals(null,userRepository.findById(location));
 	}
 
 	//Test Artist
 	@Test
 	public void testPersistAndLoadArtisit() {
-		String aid = "TestArtist";
-		Artist artist = new Artist();
-		artist.setUserRoleId(aid);
-		userRoleRepository.save(artist);
-		artist = null;
-
-		artist = (Artist) userRoleRepository.findUserRoleByUserRoleId(aid);
-		assertNotNull(artist,"failed adding address to repository");
-		assertEquals(aid,artist.getUserRoleId());
+		ArtGallerySystem sys = new ArtGallerySystem();
+		sys.setArtGallerySystemId("sysTest");
+		ArtGallerySystemUser u = new ArtGallerySystemUser();
+		u.setName("userTest");
 	}
-	
 
 	//Test Customer
 	@Test
 	public void testPersistAndLoadCustomer(){
-		String cid = "TestCustomer";
-		Customer customer = new Customer();
-		customer.setUserRoleId(cid);
-		userRoleRepository.save(customer);
-		customer = null;
 
-		customer = (Customer) userRoleRepository.findUserRoleByUserRoleId(cid);
-		assertNotNull(customer,"failed adding customer to repository");
-		assertEquals(cid,customer.getUserRoleId());
 	}
+
 
 	//Test Artpiece
 	@Test
 	public void testPersistAndLoadArtPiece(){
-		String name = "TestUser";
-		// First example for object save/load
-		//Customer user = new Customer();
-		ArtGallerySystemUser user = new ArtGallerySystemUser();
-		// First example for attribute save/load
-		( user).setName(name);
-		user.setAvatar("val");
-		user.setEmail("email");
-		user.setPassword("123");
-		Delivery del = new InStorePickUp ();
-		del.setDeliveryId("12");
-		Date date = new Date(6);
-		Purchase pur = new Purchase();
-		//pur.setCustomer((Customer)user);
-		pur.setOrderId("123");
-		pur.setDate(date);
-		pur.setOrderStatus(OrderStatus.Successful);
-		del.setPurchase(pur);
 		ArtGallerySystem sys = new ArtGallerySystem();
-		sys.setArtGallerySystemId("test");
+		sys.setArtGallerySystemId("sysTest");
+		Purchase purchase = new Purchase();
+		purchase.setOrderId("purTest");
+		purchase.setArtGallerySystem(sys);
 		artGallerySystemRepository.save(sys);
 		String apid = "TestArtPiece";
 		ArtPiece artPiece = new ArtPiece();
-		artPiece. setArtPieceId(apid);
+		artPiece.setArtPieceId(apid);
 		artPiece.setArtGallerySystem(sys);
-		pur.setArtGallerySystem(sys);
-		user.setArtGallerySystem(sys);
-		artPiece.setPurchase(pur);
+		artPiece.setPurchase(purchase);
 		artpieceRepository.save(artPiece);
-		orderRepository.save(pur);
-		deliveryRepository.save(del);
-		userRepository.save(user);
 		artPiece = null;
+
+		//Test Load
 		artPiece = artpieceRepository.findArtPieceByArtPieceId(apid);
-		assertNotNull(artPiece,"failed adding artPiece to repository");
+		assertNotNull(artPiece,"failed adding art piece to repository");
 		assertEquals(apid,artPiece.getArtPieceId());
+
+		//Test Delete
+		artpieceRepository.deleteById(apid);
+		assertEquals(null,artpieceRepository.findById(apid));
 	}
 
-	//Test Order
+	//Test Purchase
 	@Test
-	public void testPersistAndLoadOrder(){
+	public void testPersistAndLoadPurchase(){
+		ArtGallerySystem sys = new ArtGallerySystem();
+		sys.setArtGallerySystemId("test");
+		artGallerySystemRepository.save(sys);
 		String oid = "TestOrder";
-		Purchase order = new Purchase();
-		order.setOrderId(oid);
-		orderRepository.save(order);
-		order = null;
+		Purchase purchase = new Purchase();
+		purchase.setOrderId(oid);
+		purchase.setArtGallerySystem(sys);
+		purchaseRepository.save(purchase);
+		purchase = null;
 
-		order = orderRepository.findPurchaseByOrderId(oid);
-		assertNotNull(order,"failed adding order to repository");
-		assertEquals(oid,order.getOrderId());
+		//Test Load
+		purchase = purchaseRepository.findPurchaseByOrderId(oid);
+		assertNotNull(purchase,"failed adding order to repository");
+		assertEquals(oid,purchase.getOrderId());
+
+		//Test Delete
+		purchaseRepository.deleteById(oid);
+		assertEquals(null,purchaseRepository.findById(oid));
 	}
 
-	//TestPayment
+	//Test Payment
 	@Test
 	public void testPersistAndLoadPayment(){
+		ArtGallerySystem sys = new ArtGallerySystem();
+		sys.setArtGallerySystemId("sysTest");
+		artGallerySystemRepository.save(sys);
+		Purchase purchase = new Purchase();
+		purchase.setOrderId("purTest");
+		purchase.setArtGallerySystem(sys);
 		String pid = "TestPayment";
 		Payment payment = new Payment();
 		payment.setPaymentId(pid);
+		payment.setPurchase(purchase);
 		paymentRepository.save(payment);
 		payment = null;
 
+		//Test Load
 		payment = paymentRepository.findPaymentByPaymentId(pid);
 		assertNotNull(payment,"failed adding payment to repository");
 		assertEquals(pid,payment.getPaymentId());
+
+		//Test Delete
+		paymentRepository.deleteById(pid);
+		assertEquals(null,paymentRepository.findById(pid));
 	}
+
 
 	//Test Delivery
 	@Test
 	public void testPersistAndLoadDelivery(){
+
 		String pdid = "TestParcel";
 		String isid = "TestPickUp";
 
@@ -216,8 +224,8 @@ public class TestArtGallerySystemPersistence {
 		parcelDelivery = null;
 		inStorePickUp = null;
 
-		parcelDelivery = deliveryRepository.findDeliveryByDeliveryId(pdid);
-		inStorePickUp = deliveryRepository.findDeliveryByDeliveryId(isid);
+		parcelDelivery = deliveryRepository.findDeliveryById(pdid);
+		inStorePickUp = deliveryRepository.findDeliveryById(isid);
 		assertNotNull(parcelDelivery,"failed adding parcel delivery to repository");
 		assertEquals(pdid,parcelDelivery.getDeliveryId());
 		assertNotNull(inStorePickUp,"failed adding instore pick up to repository");
