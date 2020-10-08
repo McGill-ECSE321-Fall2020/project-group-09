@@ -7,7 +7,7 @@ The art gallery in our neighbourhood has always done business the old-fashioned 
 
 The gallery wants to focus on local artists and encourage them to use their website and app to promote and sell their work. Artists register, create a profile, and present any pieces they have to sell. Interested customers can browse and buy what they like. The gallery can also promote artwork available on their premises. Artists can deliver their art to customers by mail or can leave it at the store for pickup. The gallery makes its income on commission from sold artwork.
 
-## Team members
+## Team Members
 
 | Team members |	Major	Year |
 | ------------ | ----------- |
@@ -18,7 +18,11 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | Tianyu Zhao | Computer Engineering U2 |
 
 
-## Deliverable 1
+## Deliverables Overview
+
+### Deliverable 1
+
+#### Overview Table
 
 | Team members |	Total hours	| Responsibility |
 | ------------ | ------------ | -------------- |
@@ -28,4 +32,7 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | Zheyan Tu | | Persistence Layer, Test Suite, Documentation, Bug fixing |
 | Tianyu Zhao | | Persistence Layer, Test Suite, Bug fixing |
 
-[Deliverable 1 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_1)
+#### Links
+* [Requirements Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Requirements-Model)
+* [Domain Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Domain-Model)
+* [Deliverable 1 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_1)
