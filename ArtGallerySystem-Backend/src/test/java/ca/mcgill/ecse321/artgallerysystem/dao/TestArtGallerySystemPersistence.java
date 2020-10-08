@@ -266,8 +266,28 @@ public class TestArtGallerySystemPersistence {
 		   assertEquals(null,customerRepository.findCustomerByUserRoleId("id1"));
 
 	}
-
-
+	@Test
+	public void testPersistAndLoadArtPiece2() {
+		ArtGallerySystem sys2 = new ArtGallerySystem();
+		sys2.setArtGallerySystemId("test");
+		artGallerySystemRepository.save(sys2);
+		ArtPiece test = new ArtPiece();
+		test.setArtGallerySystem(sys2);
+		test.setArtPieceId("123");
+		test.setArtPieceStatus(ArtPieceStatus.Available);
+		test.setAuthor("Angelina");
+		test.setDate(Date.valueOf("2020-10-08"));
+		test.setDescription("new");
+		test.setName("Angelina's work");
+		test.setPrice(0);
+		artpieceRepository.save(test);
+		test = artpieceRepository.findArtPieceByArtPieceId("123");
+		assertNotNull(test, "failed adding art piece to repo.");
+		assertEquals("123",test.getArtPieceId());
+		artpieceRepository.deleteById("123");
+		assertEquals(null,artpieceRepository.findArtPieceByArtPieceId("123"));
+		
+	}
 	//Test Artpiece
 	@Test
 	public void testPersistAndLoadArtPiece(){
@@ -306,7 +326,7 @@ public class TestArtGallerySystemPersistence {
 		Set<Artist> arts = new HashSet<Artist>();
 		arts.add(artist);
 		ArtPiece test = new ArtPiece();
-		test.setArtPieceId("id");
+		test.setArtPieceId("456");
 		test.setAuthor("author");
 		test.setDescription("des");
 		test.setPrice(10.0);
@@ -330,13 +350,13 @@ public class TestArtGallerySystemPersistence {
 		test = null;
 
 		//Test Load
-		test = artpieceRepository.findArtPieceByArtPieceId("id");
+		test = artpieceRepository.findArtPieceByArtPieceId("456");
 		assertNotNull(test,"failed adding art piece to repository");
-		assertEquals("123",test.getArtPieceId());
+		assertEquals("456",test.getArtPieceId());
 
 		//Test Delete
-		artpieceRepository.deleteById("123");
-		assertEquals(null,artpieceRepository.findArtPieceByArtPieceId("123"));
+		artpieceRepository.deleteById("456");
+		assertEquals(null,artpieceRepository.findArtPieceByArtPieceId("456"));
 	}
 
 	//Test Purchase
