@@ -22,12 +22,12 @@ import ca.mcgill.ecse321.artgallerysystem.model.*;
 public class TestArtGallerySystemPersistence {
 	@Autowired
 	private AddressRepository addressRepository;
-	@Autowired
-	private ArtistRepository artistRepository;
+	//@Autowired
+	//private ArtistRepository artistRepository;
 	@Autowired
 	private ArtPieceRepository artpieceRepository;
-	@Autowired
-	private CustomerRepository customerRepository;
+	//@Autowired
+	//private CustomerRepository customerRepository;
 	@Autowired
 	private DeliveryRepository deliveryRepository;
 	@Autowired
@@ -84,9 +84,13 @@ public class TestArtGallerySystemPersistence {
 	//Test Address
 	@Test
 	public void testPersistAndLoadAddress(){
+		ArtGallerySystem sys = new ArtGallerySystem();
+		sys.setArtGallerySystemId("test");
+		artGallerySystemRepository.save(sys);
 		String location = "TestAddress";
 		Address address = new Address();
 		address.setAddressId(location);
+		address.setArtGallerySystem(sys);
 		addressRepository.save(address);
 		address = null;
 
@@ -128,12 +132,20 @@ public class TestArtGallerySystemPersistence {
 	//Test Artpiece
 	@Test
 	public void testPersistAndLoadArtPiece(){
+		Purchase pur = new Purchase();
+		pur.setOrderId("123");
+		ArtGallerySystem sys = new ArtGallerySystem();
+		sys.setArtGallerySystemId("test");
+		artGallerySystemRepository.save(sys);
 		String apid = "TestArtPiece";
 		ArtPiece artPiece = new ArtPiece();
 		artPiece. setArtPieceId(apid);
+		artPiece.setArtGallerySystem(sys);
+		pur.setArtGallerySystem(sys);
+		artPiece.setPurchase(pur);
 		artpieceRepository.save(artPiece);
+		orderRepository.save(pur);
 		artPiece = null;
-
 		artPiece = artpieceRepository.findArtPieceByArtPieceId(apid);
 		assertNotNull(artPiece,"failed adding artPiece to repository");
 		assertEquals(apid,artPiece.getArtPieceId());
