@@ -27,7 +27,7 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | Team members |	Total hours	| Responsibility |
 | ------------ | ------------ | -------------- |
 | Amelia Cui | 18 | Domain model, Requirements model, Persistence layer, Documentation，Test Suite |
-| Angelina Duan	| 17 | Domain model, Requirements model, Continuous Integration, Build System, Test Suite |
+| Angelina Duan	| 18 | Domain model, Requirements model, Continuous Integration, Build System, Test Suite |
 | Zhekai Jiang | 18 | Domain model, Bug fixing,  Continuous Integration, Test Suite |
 | Zheyan Tu | 11 | Persistence Layer, Test Suite, Documentation, Bug fixing |
 | Tianyu Zhao | 5 | Persistence Layer, Test Suite |
