@@ -8,5 +8,6 @@ import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 @Repository
 public interface PurchaseRepository extends CrudRepository <Purchase, String>  {
 public Purchase findPurchaseByOrderId(String orderId);
-
+public Purchase findPurchaseByArtPieceId(String artpieceId);
+public List<Purchase> findPurchaseByUserRoleId(String customerId);
 }
