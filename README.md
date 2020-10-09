@@ -26,11 +26,11 @@ The gallery wants to focus on local artists and encourage them to use their webs
 
 | Team members |	Total hours	| Responsibility |
 | ------------ | ------------ | -------------- |
-| Amelia Cui | | Domain model, Requirements model, Persistence layer, Documentation |
-| Angelina Duan	| | Domain model, Requirements model, Continuous Integration, Build System |
-| Zhekai Jiang | | Domain model, Bug fixing,  Continuous Integration |
-| Zheyan Tu | | Persistence Layer, Test Suite, Documentation, Bug fixing |
-| Tianyu Zhao | | Persistence Layer, Test Suite, Bug fixing |
+| Amelia Cui | 18 | Domain model, Requirements model, Persistence layer, Documentation，Test Suite |
+| Angelina Duan	| 17 | Domain model, Requirements model, Continuous Integration, Build System, Test Suite |
+| Zhekai Jiang | 18 | Domain model, Bug fixing,  Continuous Integration, Test Suite |
+| Zheyan Tu | 11 | Persistence Layer, Test Suite, Documentation, Bug fixing |
+| Tianyu Zhao | 5 | Persistence Layer, Test Suite |
 
 #### Links
 * [Requirements Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Requirements-Model)
