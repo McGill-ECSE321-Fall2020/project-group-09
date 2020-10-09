@@ -117,39 +117,6 @@ public class TestArtGallerySystemPersistence {
 	   artGallerySystemRepository.deleteById(sid);
 	   assertEquals(null,artGallerySystemRepository.findArtGallerySystemByArtGallerySystemId(sid));
 	}
-/*
-	@Test
-    public void testPersistAndLoadArtGallerySystem() {
-        //ArtGallerySystem details
-		String name = "TestUser";
-		ArtGallerySystemUser user = new ArtGallerySystemUser();
-		user.setName(name);
-		//user.setArtGallerySystem(sys);
-        //User artGallerySystem = createUser();
-        
-       // Artist artist = new Artist();
-       // artistRepository.save(artist);
-        
-        
-        ArtGallerySystem artGallerysystem = new ArtGallerySystem();
-        artGallerysystem.setIsAccepted(isAccepted);
-        //artGallerysystem.setArtist(ar);
-        artGallerysystem.setUser(user);
-        
-        
-        artGallerySystemRepository.save(artGallerySystem);
-        
-        //asserts if everything can be retrieved from database
-        artGallerysystem = artGallerySystemRepository.findArtGallerySystemByUserNameAndAdvertisement(system.getUserName(), ad);
-        assertNotNull(artGallerysystem);
-        assertEquals(artGallerysystem.getUserName(), artGallerysystem.getUser().getUserName());
-        assertEquals(ar.getArtistId(), artGallerySystem.getArtist().getArtistId());
-        assertEquals(isAccepted, artGallerysystem.isIsAccepted());
-    }
-	//Test System
-	*/
-
-
 	//Test User
 	@Test
 	public void testPersistAndLoadUser() {
