@@ -55,9 +55,23 @@ public class TestArtGallerySystemPersistence {
 
 
 	//Test System
-	@Test
-	public void testPersistAndLoadSystem(){
-
+        @Test
+        public void testPersistAndLoadArtGallerySystem() {
+          ArtGallerySystem artGallerySystem = new ArtGallerySystem();
+          String sid = "TestSys";
+          artGallerySystem.setArtGallerySystemId(sid);
+          artGallerySystemRepository.save(artGallerySystem);
+          artGallerySystem = null;
+    
+   
+       //Test Load
+       artGallerySystem = artGallerySystemRepository.findArtGallerySystemById(sid);
+       assertNotNull(artGallerySystem,"failed adding user to repository");
+       assertEquals(artGallerySystem, artGallerySystem.getArtGallerySystemId());
+   
+      //Test Delete
+      artGallerySystemRepository.deleteById(sid);
+      assertEquals(null,artGallerySystemRepository.findArtGallerySystemById(sid));
 	}
 
 
