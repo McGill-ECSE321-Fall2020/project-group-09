@@ -25,7 +25,7 @@ return this.inStorePickUpStatus;
     }
 private Address storeAddress;
 
-@ManyToOne(optional=false)
+@ManyToOne // (optional=false)
 public Address getStoreAddress() {
    return this.storeAddress;
 }
