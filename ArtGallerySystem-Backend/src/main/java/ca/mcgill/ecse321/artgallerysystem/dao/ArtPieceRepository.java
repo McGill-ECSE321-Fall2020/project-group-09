@@ -8,5 +8,5 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 @Repository
 public interface ArtPieceRepository extends CrudRepository <ArtPiece, String>  {
 public ArtPiece findArtPieceByArtPieceId(String artPieceId);
-public List<ArtPiece> findArtPieceByUserRoleId(String artistId);
+// public List<ArtPiece> findArtPieceByUserRoleId(String artistId);
 }

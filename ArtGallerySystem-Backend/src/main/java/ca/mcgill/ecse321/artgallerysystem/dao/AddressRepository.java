@@ -8,5 +8,5 @@ import ca.mcgill.ecse321.artgallerysystem.model.Address;
 @Repository
 public interface AddressRepository extends CrudRepository <Address, String>  {
 public Address findAddressByAddressId(String addressId);
-public List<Address> findAddressByUserRoleId(String customerId);
+// public List<Address> findAddressByUserRoleId(String customerId);
 }

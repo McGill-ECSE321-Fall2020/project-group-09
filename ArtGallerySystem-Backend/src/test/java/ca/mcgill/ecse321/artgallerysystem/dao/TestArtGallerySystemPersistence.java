@@ -55,7 +55,6 @@ public class TestArtGallerySystemPersistence {
 	@BeforeEach
 	@AfterEach
 	public void clearDatabase() {
-		addressRepository.deleteAll();
 		purchaseRepository.deleteAll();
 		paymentRepository.deleteAll();
 		artpieceRepository.deleteAll();
@@ -69,6 +68,7 @@ public class TestArtGallerySystemPersistence {
 		parcelDeliveryRepository.deleteAll();
 		artistRepository.deleteAll();
 		customerRepository.deleteAll();
+		addressRepository.deleteAll();
 		
 	}
 	public ArtPiece createArtPiece() {
@@ -575,7 +575,7 @@ public class TestArtGallerySystemPersistence {
 		parcelDelivery.setDeliveryAddress(address);
 		parcelDelivery.setParcelDeliveryStatus(ParcelDeliveryStatus.Delivered);
 		parcelDelivery.setTrackingNumber("123");
-		parcelDelivery.setDeliveryAddress(address); //<-
+		// parcelDelivery.setDeliveryAddress(address); // repeated set (575)
 		purchaseRepository.save(purchase); // save parent
 		parcelDelivery.setPurchase(purchase); // child.setParent
 		parcelDeliveryRepository.save(parcelDelivery); // save child -> null value in column "store_address_address_id"??? Failing row contains (ParcelDelivery, TestParcel, null, null, n, 2, 123, TestOrder, null, TestAddress1).
