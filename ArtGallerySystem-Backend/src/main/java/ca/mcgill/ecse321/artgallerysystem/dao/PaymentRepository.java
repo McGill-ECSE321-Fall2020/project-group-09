@@ -8,5 +8,5 @@ import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 @Repository
 public interface PaymentRepository extends CrudRepository <Payment, String>  {
 public Payment findPaymentByPaymentId(String paymentId);
-
+public List<Payment> findPaymentByPurchaseId(String purchaseId);
 }
