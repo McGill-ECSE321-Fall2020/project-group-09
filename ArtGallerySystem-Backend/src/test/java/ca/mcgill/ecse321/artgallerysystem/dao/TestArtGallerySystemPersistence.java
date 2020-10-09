@@ -240,76 +240,6 @@ public class TestArtGallerySystemPersistence {
 		assertEquals(null,artpieceRepository.findArtPieceByArtPieceId("123"));
 		
 	}
-	//Test Artpiece
-	/*@Test May contains some useful methods, but it is not working
-	public void testPersistAndLoadArtPiece(){
-		ArtGallerySystem sys = new ArtGallerySystem();
-		sys.setArtGallerySystemId("test");
-		artGallerySystemRepository.save(sys);
-		String oid = "TestOrder1";
-		Purchase purchase = new Purchase();
-		purchase.setOrderId(oid);
-		purchase.setArtGallerySystem(sys);
-		ArtGallerySystemUser u = new ArtGallerySystemUser();
-		u.setName("userTest1");
-		u.setArtGallerySystem(sys);
-		userRepository.save(u);
-		//UserRole userole = new UserRole();
-		//userole.setArtGallerySystemUser(u);
-		//userole.setUserRoleId("id2");
-		//userRoleRepository.save(userole);
-		Customer customer = new Customer();
-		ArtGallerySystemUser u1 = new ArtGallerySystemUser();
-		u1.setName("userTest2");
-		u1.setArtGallerySystem(sys);
-		userRepository.save(u1);
-		customer.setArtGallerySystemUser(u1);
-		customer.setUserRoleId("id4");
-		customer.setBalance(0.0);
-		customerRepository.save(customer);
-		purchase.setDate(Date.valueOf("2020-01-01"));
-		purchase.setOrderStatus(OrderStatus.Successful);
-		purchase.setCustomer(customer);
-		Artist artist = new Artist();
-		artist.setArtGallerySystemUser(u);
-		artist.setUserRoleId("id3");
-		artist.setCredit(0.0);
-		artistRepository.save(artist);
-		Set<Artist> arts = new HashSet<Artist>();
-		arts.add(artist);
-		ArtPiece test = new ArtPiece();
-		test.setArtPieceId("456");
-		test.setAuthor("author");
-		test.setDescription("des");
-		test.setPrice(10.0);
-		test.setDate(Date.valueOf("2020-01-01"));
-		test.setArtGallerySystem(sys);
-		test.setArtist(arts);
-		test.setArtPieceStatus(ArtPieceStatus.Available);
-		test.setName("name");
-		test.setPurchase(purchase);
-		purchase.setArtPiece(test);
-		purchaseRepository.save(purchase);
-		artpieceRepository.save(test);
-		
-		
-		//test.setArtist(arts);
-		
-		//artpieceRepository.save(test);
-		
-		
-		
-		test = null;
-
-		//Test Load
-		test = artpieceRepository.findArtPieceByArtPieceId("456");
-		assertNotNull(test,"failed adding art piece to repository");
-		assertEquals("456",test.getArtPieceId());
-
-		//Test Delete
-		artpieceRepository.deleteById("456");
-		assertEquals(null,artpieceRepository.findArtPieceByArtPieceId("456"));
-	}*/
 
 	//Test Purchase
 	@Test
@@ -416,23 +346,6 @@ public class TestArtGallerySystemPersistence {
 		purchase.setDate(Date.valueOf("2020-01-01"));
 		purchase.setOrderStatus(OrderStatus.Successful);
 		purchase.setCustomer(customer);
-		/*Useful for delivery, just ignore
-		 * String location = "TestAddress";
-		Address address = new Address();
-		address.setAddressId(location);
-		address.setArtGallerySystem(sys);
-		addressRepository.save(address);
-		String pdid = "TestParcel";
-		ParcelDelivery parcelDelivery = new ParcelDelivery();
-		parcelDelivery.setDeliveryId(pdid);
-		parcelDelivery.setCarrier("n");
-		parcelDelivery.setDeliveryAddress(address);
-		parcelDelivery.setParcelDeliveryStatus(ParcelDeliveryStatus.Delivered);
-		parcelDelivery.setTrackingNumber("123");
-		purchase.setDelivery(parcelDelivery);
-		parcelDelivery.setPurchase(purchase);
-		parcelDeliveryRepository.save(parcelDelivery);
-		purchase.setDelivery(parcelDelivery);*/
 		String pid = "TestPayment";
 		Payment payment = new Payment();
 		payment.setPaymentId(pid);
@@ -451,32 +364,6 @@ public class TestArtGallerySystemPersistence {
 		assertEquals(null,paymentRepository.findPaymentByPaymentId(pid));
 	}
 
-
-	//Test Delivery
-	/*@Test Can be removed, just ignore, might help
-	public void testPersistAndLoadDelivery(){
-
-		String pdid = "TestParcel";
-		String isid = "TestPickUp";
-
-		Delivery parcelDelivery = new ParcelDelivery();
-		Delivery inStorePickUp = new InStorePickUp();
-
-
-		parcelDelivery.setDeliveryId(pdid);
-		inStorePickUp.setDeliveryId(isid);
-		deliveryRepository.save(parcelDelivery);
-		deliveryRepository.save(inStorePickUp);
-		parcelDelivery = null;
-		inStorePickUp = null;
-
-		parcelDelivery = deliveryRepository.findDeliveryByDeliveryId(pdid);
-		inStorePickUp = deliveryRepository.findDeliveryByDeliveryId(isid);
-		assertNotNull(parcelDelivery,"failed adding parcel delivery to repository");
-		assertEquals(pdid,parcelDelivery.getDeliveryId());
-		assertNotNull(inStorePickUp,"failed adding instore pick up to repository");
-		assertEquals(isid,inStorePickUp.getDeliveryId());
-	}*/
 	@Test
 	public void testPersistAndLoadParcelDelivery(){//bug: Null pointer exception when purchase connects to delivery
 		ArtGallerySystem sys = new ArtGallerySystem();
@@ -497,8 +384,6 @@ public class TestArtGallerySystemPersistence {
 		artistRepository.save(artist);
 		Set<Artist> arts = new HashSet<Artist>();
 		arts.add(artist);
-/*		sys.setArtGallerySystemId("test");*/
-/*		artGallerySystemRepository.save(sys);*/
 		ArtPiece test = new ArtPiece();
 		test.setArtPieceId("id");
 		test.setAuthor("author");
@@ -592,8 +477,6 @@ public class TestArtGallerySystemPersistence {
 		artistRepository.save(artist);
 		Set<Artist> arts = new HashSet<Artist>();
 		arts.add(artist);
-		/*		sys.setArtGallerySystemId("test");*/
-		/*		artGallerySystemRepository.save(sys);*/
 		ArtPiece test = new ArtPiece();
 		test.setArtPieceId("id");
 		test.setAuthor("author");
