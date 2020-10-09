@@ -30,7 +30,7 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | Angelina Duan	| 18 | Domain model, Requirements model, Continuous Integration, Build System, Test Suite |
 | Zhekai Jiang | 18 | Domain model, Bug fixing,  Continuous Integration, Test Suite |
 | Zheyan Tu | 11 | Persistence Layer, Test Suite, Documentation, Bug fixing |
-| Tianyu Zhao | 5 | Persistence Layer, Test Suite |
+| Tianyu Zhao | 8 | Persistence Layer, Test Suite |
 
 #### Links
 * [Requirements Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Requirements-Model)
