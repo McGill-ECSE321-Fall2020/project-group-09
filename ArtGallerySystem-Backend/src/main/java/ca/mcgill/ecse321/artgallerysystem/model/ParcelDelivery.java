@@ -33,7 +33,7 @@ return this.parcelDeliveryStatus;
     }
 private Address deliveryAddress;
 
-@ManyToOne(optional=false)
+@ManyToOne // (optional=false)
 public Address getDeliveryAddress() {
    return this.deliveryAddress;
 }

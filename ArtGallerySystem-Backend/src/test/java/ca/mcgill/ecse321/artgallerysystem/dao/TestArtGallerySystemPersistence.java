@@ -514,7 +514,7 @@ public class TestArtGallerySystemPersistence {
 	public void testPersistAndLoadParcelDelivery(){//bug: Null pointer exception when purchase connects to delivery
 		ArtGallerySystem sys = new ArtGallerySystem();
 		sys.setArtGallerySystemId("test");
-		//artGallerySystemRepository.save(sys);
+		artGallerySystemRepository.save(sys); // save sys before purchase.setArtGallerySystem
 		String oid = "TestOrder";
 		Purchase purchase = new Purchase();
 		purchase.setOrderId(oid);
@@ -530,8 +530,8 @@ public class TestArtGallerySystemPersistence {
 		artistRepository.save(artist);
 		Set<Artist> arts = new HashSet<Artist>();
 		arts.add(artist);
-		sys.setArtGallerySystemId("test");
-		artGallerySystemRepository.save(sys);
+/*		sys.setArtGallerySystemId("test");*/
+/*		artGallerySystemRepository.save(sys);*/
 		ArtPiece test = new ArtPiece();
 		test.setArtPieceId("id");
 		test.setAuthor("author");
@@ -575,8 +575,12 @@ public class TestArtGallerySystemPersistence {
 		parcelDelivery.setDeliveryAddress(address);
 		parcelDelivery.setParcelDeliveryStatus(ParcelDeliveryStatus.Delivered);
 		parcelDelivery.setTrackingNumber("123");
-		purchase.setDelivery(parcelDelivery);
-		parcelDelivery.setPurchase(purchase);
+		parcelDelivery.setDeliveryAddress(address); //<-
+		purchaseRepository.save(purchase); // save parent
+		parcelDelivery.setPurchase(purchase); // child.setParent
+		parcelDeliveryRepository.save(parcelDelivery); // save child -> null value in column "store_address_address_id"??? Failing row contains (ParcelDelivery, TestParcel, null, null, n, 2, 123, TestOrder, null, TestAddress1).
+			// temporarily resolved by dropping not-null in database
+		purchase.setDelivery(parcelDelivery); // parent.saveChild
 		String pid = "TestPayment";
 		Payment payment = new Payment();
 		payment.setPaymentId(pid);
@@ -616,7 +620,7 @@ public class TestArtGallerySystemPersistence {
 		pickup.setInStorePickUpStatus(InStorePickUpStatus.PickedUp);
 		pickup.setStoreAddress(address);
 		pickup.setPickUpReferenceNumber("number");
-		pickup.setPurchase(null);
+		pickup.setPurchase(null); // should be not-null
 		inStorePickUpRepository.save(pickup);
 		pickup = null;
 		pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pdid);
