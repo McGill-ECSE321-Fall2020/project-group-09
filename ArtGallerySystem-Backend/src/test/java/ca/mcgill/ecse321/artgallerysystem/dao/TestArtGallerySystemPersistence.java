@@ -605,28 +605,97 @@ public class TestArtGallerySystemPersistence {
 		
 	}
 	@Test
-	public void testPersistAndLoadInStorePickUp(){ //bug: null pointer exception when purchase connects to delivery
+	public void testPersistAndLoadInStorePickUp(){
+
 		ArtGallerySystem sys = new ArtGallerySystem();
-		   sys.setArtGallerySystemId("test");
-		   artGallerySystemRepository.save(sys);
-		   String location = "TestAddress";
-		   Address address = new Address();
-		   address.setAddressId(location);
-		   address.setArtGallerySystem(sys);
-		   addressRepository.save(address);
-		String pdid = "TestPickUp";
-		 InStorePickUp pickup = new InStorePickUp();
-		pickup.setDeliveryId(pdid);
-		pickup.setInStorePickUpStatus(InStorePickUpStatus.PickedUp);
-		pickup.setStoreAddress(address);
-		pickup.setPickUpReferenceNumber("number");
-		pickup.setPurchase(null); // should be not-null
-		inStorePickUpRepository.save(pickup);
-		pickup = null;
-		pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pdid);
-		assertNotNull(pickup,"failed adding parcel delivery to repository");
-		assertEquals(pdid,pickup.getDeliveryId());
-		
+		sys.setArtGallerySystemId("test");
+		artGallerySystemRepository.save(sys); // save sys before purchase.setArtGallerySystem
+		String oid = "TestOrder";
+		Purchase purchase = new Purchase();
+		purchase.setOrderId(oid);
+		purchase.setArtGallerySystem(sys);
+		ArtGallerySystemUser u = new ArtGallerySystemUser();
+		u.setName("userTest");
+		u.setArtGallerySystem(sys);
+		userRepository.save(u);
+		Artist artist = new Artist();
+		artist.setArtGallerySystemUser(u);
+		artist.setUserRoleId("id1");
+		artist.setCredit(0.0);
+		artistRepository.save(artist);
+		Set<Artist> arts = new HashSet<Artist>();
+		arts.add(artist);
+		/*		sys.setArtGallerySystemId("test");*/
+		/*		artGallerySystemRepository.save(sys);*/
+		ArtPiece test = new ArtPiece();
+		test.setArtPieceId("id");
+		test.setAuthor("author");
+		test.setDescription("des");
+		test.setPrice(10.0);
+		test.setDate(Date.valueOf("2020-01-01"));
+		test.setArtGallerySystem(sys);
+		test.setArtist(arts);
+		test.setArtPieceStatus(ArtPieceStatus.Available);
+		test.setName("name");
+		artpieceRepository.save(test);
+		purchase.setArtPiece(test);
+		Customer customer = new Customer();
+		ArtGallerySystemUser u1 = new ArtGallerySystemUser();
+		u1.setName("userTest");
+		u1.setArtGallerySystem(sys);
+		userRepository.save(u1);
+		customer.setArtGallerySystemUser(u1);
+		customer.setUserRoleId("id2");
+		customer.setBalance(0.0);
+		customerRepository.save(customer);
+		purchase.setDate(Date.valueOf("2020-01-01"));
+		purchase.setOrderStatus(OrderStatus.Successful);
+		purchase.setCustomer(customer);
+		String location = "TestAddress1";
+		Address address = new Address();
+		address.setAddressId(location);
+		address.setCity("montreal");
+		address.setCountry("canada");
+		address.setName("no");
+		address.setPhoneNumber("124");
+		address.setPostalCode("H");
+		address.setProvince("qc");
+		address.setStreetAddress("qwer");
+		address.setArtGallerySystem(sys);
+		addressRepository.save(address);
+		String pdid = "TestParcel";
+		InStorePickUp inStorePickUp = new InStorePickUp();
+		inStorePickUp.setDeliveryId(pdid);
+		inStorePickUp.setInStorePickUpStatus(InStorePickUpStatus.PickedUp);
+		inStorePickUp.setStoreAddress(address);
+		inStorePickUp.setPickUpReferenceNumber("number");
+		//inStorePickUp.setPurchase(null); // should be not-null
+		purchaseRepository.save(purchase); // save parent
+		inStorePickUp.setPurchase(purchase); // child.setParent
+		inStorePickUpRepository.save(inStorePickUp); // save child -> null value in column "store_address_address_id"??? Failing row contains (ParcelDelivery, TestParcel, null, null, n, 2, 123, TestOrder, null, TestAddress1).
+		// temporarily resolved by dropping not-null in database
+		purchase.setDelivery(inStorePickUp); // parent.saveChild
+		String pid = "TestPayment";
+		Payment payment = new Payment();
+		payment.setPaymentId(pid);
+		payment.setPaymentMethod(PaymentMethod.Balance);
+		payment.setIsSuccessful(true);
+		payment.setPurchase(purchase);
+		paymentRepository.save(payment);
+		Set<Payment> payments = new HashSet<Payment>();
+		payments.add(payment);
+		purchase.setPayment(payments);
+		test.setPurchase(purchase);
+		Set<Purchase> purchases = new HashSet<Purchase>();
+		purchases.add(purchase);
+		customer.setPurchase(purchases);
+		paymentRepository.save(payment);
+		purchaseRepository.save(purchase);
+		inStorePickUpRepository.save(inStorePickUp);
+		inStorePickUp = null;
+		inStorePickUp = inStorePickUpRepository.findInStorePickUpByDeliveryId(pdid);
+		assertNotNull(inStorePickUp,"failed adding pick up to repository");
+		assertEquals(pdid,inStorePickUp.getDeliveryId());
 	}
 
 }
