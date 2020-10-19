@@ -45,8 +45,15 @@ public class UserRoleService {
 	}
 	@Transactional
 	public UserRole getUserRole(String id) {
+		if(id==null) {
+			throw new UserRoleException("userrole id invalid");
+		}
 		UserRole userRole=userRoleRepository.findUserRoleByUserRoleId(id);
-		return userRole;
+		if(userRole==null) {
+			throw new UserRoleException("userrole id not found");
+		}else {
+			return userRole;
+		}
 	}
 	@Transactional
 	public List<UserRole> getAllUserRoles(){

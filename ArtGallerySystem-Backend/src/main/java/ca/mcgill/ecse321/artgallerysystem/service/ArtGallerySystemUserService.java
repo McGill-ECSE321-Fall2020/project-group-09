@@ -55,8 +55,15 @@ public class ArtGallerySystemUserService {
 	}
 	@Transactional
 	public ArtGallerySystemUser getUser(String name) {
+		if(name==null) {
+			throw new ArtGallerySystemUserException("name invalid");
+		}
 		ArtGallerySystemUser user=artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
-		return user;
+		if(user==null) {
+			throw new ArtGallerySystemUserException("user not found");
+		}else {
+			return user;
+		}
 	}
 	@Transactional
 	public List<ArtGallerySystemUser> getAllUsers(){
