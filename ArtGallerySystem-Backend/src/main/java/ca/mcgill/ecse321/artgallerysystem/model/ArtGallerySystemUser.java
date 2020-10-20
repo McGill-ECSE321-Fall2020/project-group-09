@@ -55,7 +55,7 @@ public void setUserRole(Set<UserRole> userRoles) {
 
 private ArtGallerySystem artGallerySystem;
 
-@ManyToOne(optional=false)
+@ManyToOne // (optional=false)
 public ArtGallerySystem getArtGallerySystem() {
    return this.artGallerySystem;
 }

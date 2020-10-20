@@ -93,7 +93,7 @@ public void setPurchase(Purchase purchase) {
 
 private ArtGallerySystem artGallerySystem;
 
-@ManyToOne(optional=false)
+@ManyToOne // (optional=false)
 public ArtGallerySystem getArtGallerySystem() {
    return this.artGallerySystem;
 }

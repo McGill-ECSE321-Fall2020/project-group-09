@@ -73,7 +73,7 @@ return this.country;
     }
 private ArtGallerySystem artGallerySystem;
 
-@ManyToOne(optional=false)
+@ManyToOne // (optional=false)
 public ArtGallerySystem getArtGallerySystem() {
    return this.artGallerySystem;
 }
