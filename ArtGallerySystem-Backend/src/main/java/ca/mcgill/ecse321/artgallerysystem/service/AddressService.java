@@ -97,18 +97,18 @@ public class AddressService {
 		}
 	}
 	public AddressDTO convertToDto(Address address) {
-        AddressDTO addressDTO = new AddressDTO();
-        addressDTO.setAddressId("123");
-        addressDTO.setCity("mtl");
-        addressDTO.setCountry("canada");
-        addressDTO.setName("234");
-        addressDTO.setPhoneNumber("513");
-        addressDTO.setPostalCode("H");
-        addressDTO.setProvince("qc");
-        addressDTO.setStreetAddress("mcgill");
-        addressDTO.setArtGallerySystem(address.getArtGallerySystem());
-        return addressDTO;
-    }
+	    AddressDTO addressDTO = new AddressDTO();
+	    addressDTO.setAddressId(address.getAddressId());
+	    addressDTO.setCity(address.getCity());
+	    addressDTO.setCountry(address.getCountry());
+	    addressDTO.setName(address.getName());
+	    addressDTO.setPhoneNumber(address.getPhoneNumber());
+	    addressDTO.setPostalCode(address.getPostalCode());
+	    addressDTO.setProvince(address.getProvince());
+	    addressDTO.setStreetAddress(address.getStreetAddress());
+	    addressDTO.setArtGallerySystem(address.getArtGallerySystem());
+	    return addressDTO;
+	}
 
 	private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();
