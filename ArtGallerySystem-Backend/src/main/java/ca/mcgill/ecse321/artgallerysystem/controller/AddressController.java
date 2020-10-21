@@ -1,6 +1,9 @@
 package ca.mcgill.ecse321.artgallerysystem.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,12 +34,15 @@ private ArtGallerySystemService systemservice;
 private ArtGallerySystemRepository artgallerySystemRepository;
 @GetMapping(value = {"/addresses", "/addresses/"})
 public List<AddressDTO> getAllAddresses(){
-	return addressservice.getAllAddresses();
+	
+	List<Address> addresses = addressservice.getAllAddresses();
+	return toList(addresses.stream().map(this::convertToDto).collect(Collectors.toList()));
+	
 }
 @PostMapping(value = {"/address/{id}", "/address/{id}/"})
-public AddressDTO createAddress(@PathVariable("id")String id, @RequestParam("country")String country, @RequestParam("city")String city, @RequestParam("province")String province, @RequestParam("postCode")String postCode, @RequestParam("Name")String name, @RequestParam("phonenumber")String number, @RequestParam("address")String streetaddress, @RequestParam("system") String sysID) {
-	ArtGallerySystem system = systemservice.getSystemById(id);
-	Address address = addressservice.createAddress(id, city, country, postCode, province, streetaddress, number, name, system);
+public AddressDTO createAddress(@PathVariable("id")String id, @RequestParam("country")String country, @RequestParam("city")String city, @RequestParam("postcode")String postCode, @RequestParam("province")String province, @RequestParam("streetaddress")String streetaddress, @RequestParam("number")String number, @RequestParam("name")String name) {
+	//ArtGallerySystem system = systemservice.getSystemById(id);
+	Address address = addressservice.createAddress(id, city, country, postCode, province, streetaddress, number, name);
 	return convertToDto(address);
 }
 @GetMapping(value = {"/addresses/{id}", "/addresses/{id}/"})
@@ -70,4 +76,11 @@ public AddressDTO convertToDto(Address address) {
 /*public ArtGallerySystem converToEntity(ArtGallerySystemDTO dto) {
 	
 }*/
+private <T> List<T> toList(Iterable<T> iterable) {
+    List<T> resultList = new ArrayList<>();
+    for (T t : iterable) {
+        resultList.add(t);
+    }
+    return resultList;
+}
 }

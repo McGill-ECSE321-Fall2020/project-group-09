@@ -25,37 +25,43 @@ public class AddressService {
 	@Autowired
 	AddressRepository addressRepository;
 	@Transactional
-	public List<AddressDTO> getAllAddresses() {
-		return toList(addressRepository.findAll()).stream().map(this::convertToDto).collect(Collectors.toList());
+	public List<Address> getAllAddresses() {
+		//return toList(addressRepository.findAll()).stream().map(this::convertToDto).collect(Collectors.toList());
+		return toList(addressRepository.findAll()).stream().collect(Collectors.toList());
 		
 	}
+	
 	@Transactional
 	public Address getAddressById(String id) {
-		Optional<Address> address = addressRepository.findById(id);
-		if(address.isPresent()) {
-			return address.get();
+		Address address = addressRepository.findAddressByAddressId(id);
+		if (id == null || id == "") {
+			throw new AddressException ("provide id please");
+		}
+		if(address != null) {
+			return address;
 		}else {
 			throw new AddressException ("Address Not Found");
 		}
 		
 	}
 	@Transactional
-	public Address createAddress(String id, String city, String country, String postCode, String province, String streetAddress, String number, String name, ArtGallerySystem system) {
-		if (city==null||country==null||postCode==null||province==null||streetAddress==null ) {
+	public Address createAddress(String id, String city, String country, String postCode, String province, String streetAddress, String number, String name) {
+		if (city==null||country==null||postCode==null||province==null||streetAddress==null 
+				||city==""||country==""||postCode==""||province==""||streetAddress=="") {
 			throw new AddressException ("not complete address");
 		}
-		if (number==null) {
+		if (number==null||number =="") {
 			throw new AddressException ("phone number cannot be null");
 		}
-		if (name==null) {
+		if (name==null||name=="") {
 			throw new AddressException ("please give a name for the address");
 		}
-		if (id==null) {
+		if (id==null||id=="") {
 			throw new AddressException ("please give an id for the address");
 		}
 		Address address = new Address();
 		//ArtGallerySystem system = artGallerySystemRepository.findArtGallerySystemByArtGallerySystemId(sysID);
-		address.setArtGallerySystem(system);
+		//address.setArtGallerySystem(system);
 		address.setCity(city);
 		address.setAddressId(id);
 		address.setCountry(country);
@@ -64,17 +70,17 @@ public class AddressService {
 		address.setPostalCode(postCode);
 		address.setProvince(province);
 		address.setStreetAddress(streetAddress);
-		Set<Address> sysAddress = system.getAddress();
-		sysAddress.add(address);
-		system.setAddress(sysAddress);
-		artGallerySystemRepository.save(system);
+		//Set<Address> sysAddress = system.getAddress();
+		//sysAddress.add(address);
+		//s//ystem.setAddress(sysAddress);
+		//artGallerySystemRepository.save(system);
 		addressRepository.save(address);
 		return address;
 	}
 	@Transactional
 	public void deleteAddress(String id) {
-		Optional<Address> add = addressRepository.findById(id);
-		if (add.isPresent()) {
+		Address add = addressRepository.findAddressByAddressId(id);
+		if (add !=null) {
 			addressRepository.deleteById(id);
 		}else {
 			throw new AddressException ("address not exist");
@@ -82,9 +88,12 @@ public class AddressService {
 	}
 	@Transactional
 	public Address updateAddress(String id, String newaddress) {
-		Optional<Address> address = addressRepository.findById(id);
-		if (address.isPresent()) {
-			Address newAddress = address.get();
+		Address address = addressRepository.findAddressByAddressId(id);
+		if (newaddress == null|| newaddress == "") {
+			throw new AddressException ("please provide a not null address");
+		}
+		if (address != null) {
+			Address newAddress = address;
 			if (newAddress.getStreetAddress().equals(newaddress)) {
 				throw new AddressException ("address is the same");
 			}
@@ -96,7 +105,7 @@ public class AddressService {
 			throw new AddressException ("address not exist");
 		}
 	}
-	public AddressDTO convertToDto(Address address) {
+	/*public AddressDTO convertToDto(Address address) {
 	    AddressDTO addressDTO = new AddressDTO();
 	    addressDTO.setAddressId(address.getAddressId());
 	    addressDTO.setCity(address.getCity());
@@ -108,7 +117,7 @@ public class AddressService {
 	    addressDTO.setStreetAddress(address.getStreetAddress());
 	    addressDTO.setArtGallerySystem(address.getArtGallerySystem());
 	    return addressDTO;
-	}
+	}*/
 
 	private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();
