@@ -9,9 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemUserRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
-/*import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemUserDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;*/
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtGallerySystemUserException;
@@ -26,7 +23,7 @@ public class ArtGallerySystemUserService {
 	@Autowired
 	ArtGallerySystemUserRepository artGallerySystemUserRepository;
 	@Transactional
-	public ArtGallerySystemUser createUser(String name, String email, String password, String avatar, ArtGallerySystem system) {
+	public ArtGallerySystemUser createUser(String name, String email, String password, String avatar) {
 		if(name==null) {
 			throw new ArtGallerySystemUserException("Please give a name for the user");
 			
@@ -41,15 +38,10 @@ public class ArtGallerySystemUserService {
 			throw new ArtGallerySystemUserException("Please give the avatar");
 		}
 		ArtGallerySystemUser user = new ArtGallerySystemUser();
-		user.setArtGallerySystem(system);
 		user.setAvatar(avatar);
 		user.setEmail(email);
 		user.setName(name);
 		user.setPassword(password);
-		Set<ArtGallerySystemUser> sysUser=system.getArtGallerySystemUser();
-		sysUser.add(user);
-		system.setArtGallerySystemUser(sysUser);
-		artGallerySystemRepository.save(system);
 		artGallerySystemUserRepository.save(user);
 		return user;
 	}
