@@ -1,6 +1,9 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 import static org.mockito.Mockito.lenient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,9 +26,11 @@ import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
+import ca.mcgill.ecse321.artgallerysystem.model.Payment;
+import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
 @ExtendWith(MockitoExtension.class)
-public class TestArtGallerySystemService {
+public class TestAddressService {
 	@Mock
 	private AddressRepository addressRepository;
 	private ArtGallerySystemRepository artGallerySystemRepository;
@@ -68,6 +73,24 @@ public class TestArtGallerySystemService {
 	            return null;
 	        }
 	    });
+	    lenient().when(addressRepository.findAll()).thenAnswer( (InvocationOnMock invocation) -> {
+        	List<Address> addresses = new ArrayList<Address>();
+        	Address address = new Address();
+            address.setAddressId(ADDRESS_ID);
+            address.setCity(CITY);
+            address.setCountry(COUNTRY);
+            address.setName(NAME);
+            address.setPhoneNumber(NUMBER);
+            address.setPostalCode(POSTCODE);
+            address.setProvince(PROVINCE);
+            address.setStreetAddress(ADDRESS);
+          //  address.setArtGallerySystem(sys);
+            addressRepository.save(address);
+    		addresses.add(address);
+        	
+            return addresses;
+        
+    });
 	    Answer<?> returnParameterAsAnswer = (InvocationOnMock invocation) -> {
 			return invocation.getArgument(0);
 		};
@@ -77,7 +100,7 @@ public class TestArtGallerySystemService {
 	}
 	@Test
 	public void testCreateAddress() {
-		assertEquals(0, service.getAllAddresses().size());
+		//assertEquals(0, service.getAllAddresses().size());
 		String name = "address";
 		String id = "address1";
 		Address address = null;
@@ -169,6 +192,11 @@ public class TestArtGallerySystemService {
 			error = e.getMessage();
 		}
 		assertEquals("address not exist", error);
+	}
+	@Test
+	public void testGetAllAddresses() {
+		int size = service.getAllAddresses().size();
+		assertEquals(size, 1);
 	}
 	@Test
 	public void testGetAddress() {

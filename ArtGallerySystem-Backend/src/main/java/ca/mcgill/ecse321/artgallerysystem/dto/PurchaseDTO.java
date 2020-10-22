@@ -44,58 +44,58 @@ public class PurchaseDTO {
 	public OrderStatus getOrderStatus() {
 	return this.orderStatus;
 	    }
-	private DeliveryDTO delivery;
+	private Delivery delivery;
 
 	
-	public DeliveryDTO getDelivery() {
+	public Delivery  getDelivery() {
 	   return this.delivery;
 	}
 
-	public void setDelivery(DeliveryDTO delivery) {
+	public void setDelivery(Delivery delivery) {
 	   this.delivery = delivery;
 	}
 
-	private Set<PaymentDTO> payment;
+	private Set<Payment> payment;
 
 	
-	public Set<PaymentDTO> getPayment() {
+	public Set<Payment> getPayment() {
 	   return this.payment;
 	}
 
-	public void setPayment(Set<PaymentDTO> payments) {
+	public void setPayment(Set<Payment> payments) {
 	   this.payment = payments;
 	}
 
-	private CustomerDTO customer;
+	private Customer customer;
 
 
-	public CustomerDTO getCustomer() {
+	public Customer getCustomer() {
 	   return this.customer;
 	}
 
-	public void setCustomer(CustomerDTO customer) {
+	public void setCustomer(Customer customer) {
 	   this.customer = customer;
 	}
 
-	private ArtPieceDTO artPiece;
+	private ArtPiece artPiece;
 
 	
-	public ArtPieceDTO getArtPiece() {
+	public ArtPiece getArtPiece() {
 	   return this.artPiece;
 	}
 
-	public void setArtPiece(ArtPieceDTO artPiece) {
+	public void setArtPiece(ArtPiece artPiece) {
 	   this.artPiece = artPiece;
 	}
 
-	private ArtGallerySystemDTO artGallerySystem;
+	private ArtGallerySystem artGallerySystem;
 
 
-	public ArtGallerySystemDTO getArtGallerySystem() {
+	public ArtGallerySystem getArtGallerySystem() {
 	   return this.artGallerySystem;
 	}
 
-	public void setArtGallerySystem(ArtGallerySystemDTO artGallerySystem) {
+	public void setArtGallerySystem(ArtGallerySystem artGallerySystem) {
 	   this.artGallerySystem = artGallerySystem;
 	}
 }

@@ -34,13 +34,13 @@ public class PaymentDTO {
 	public boolean isIsSuccessful() {
 	return this.isSuccessful;
 	    }
-	private PurchaseDTO purchase;
+	private Purchase purchase;
 
-	public PurchaseDTO getPurchase() {
+	public Purchase getPurchase() {
 	   return this.purchase;
 	}
 
-	public void setPurchase(PurchaseDTO purchase) {
+	public void setPurchase(Purchase purchase) {
 	   this.purchase = purchase;
 	}
 

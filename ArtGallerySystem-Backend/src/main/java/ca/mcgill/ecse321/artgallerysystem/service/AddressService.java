@@ -78,13 +78,15 @@ public class AddressService {
 		return address;
 	}
 	@Transactional
-	public void deleteAddress(String id) {
+	public Address deleteAddress(String id) {
+		Address address = null;
 		Address add = addressRepository.findAddressByAddressId(id);
 		if (add !=null) {
 			addressRepository.deleteById(id);
 		}else {
 			throw new AddressException ("address not exist");
 		}
+		return address;
 	}
 	@Transactional
 	public Address updateAddress(String id, String newaddress) {

@@ -39,8 +39,8 @@ public List<AddressDTO> getAllAddresses(){
 	return toList(addresses.stream().map(this::convertToDto).collect(Collectors.toList()));
 	
 }
-@PostMapping(value = {"/address/{id}", "/address/{id}/"})
-public AddressDTO createAddress(@PathVariable("id")String id, @RequestParam("country")String country, @RequestParam("city")String city, @RequestParam("postcode")String postCode, @RequestParam("province")String province, @RequestParam("streetaddress")String streetaddress, @RequestParam("number")String number, @RequestParam("name")String name) {
+@PostMapping(value = {"/address", "/address/"})
+public AddressDTO createAddress(@RequestParam("id")String id, @RequestParam("country")String country, @RequestParam("city")String city, @RequestParam("postcode")String postCode, @RequestParam("province")String province, @RequestParam("streetaddress")String streetaddress, @RequestParam("number")String number, @RequestParam("name")String name) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
 	Address address = addressservice.createAddress(id, city, country, postCode, province, streetaddress, number, name);
 	return convertToDto(address);
@@ -53,8 +53,8 @@ public AddressDTO getAddressById(@PathVariable("id")String id) {
 public void deleteAddress(@PathVariable("id") String id) {
 	addressservice.deleteAddress(id);
 }
-@PutMapping (value = {"/update-address/{address}", "/update-address/{address}/"})
-public AddressDTO updateAddress(@PathVariable("address")String newaddress, @RequestParam("id")String id) {
+@PutMapping (value = {"/address/update/{id}", "/address/update/{id}/"})
+public AddressDTO updateAddress(@PathVariable("id")String id, @RequestParam("address")String newaddress) {
 	return convertToDto(addressservice.updateAddress(id, newaddress));
 }
 public AddressDTO convertToDto(Address address) {
@@ -70,12 +70,7 @@ public AddressDTO convertToDto(Address address) {
     addressDTO.setArtGallerySystem(address.getArtGallerySystem());
     return addressDTO;
 }
-/*public ArtGallerySystemDTO convertToDto(ArtGallerySystem sys) {
-	//Art
-}*/
-/*public ArtGallerySystem converToEntity(ArtGallerySystemDTO dto) {
-	
-}*/
+
 private <T> List<T> toList(Iterable<T> iterable) {
     List<T> resultList = new ArrayList<>();
     for (T t : iterable) {
