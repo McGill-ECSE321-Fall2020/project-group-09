@@ -24,17 +24,17 @@ public class ArtGallerySystemUserService {
 	ArtGallerySystemUserRepository artGallerySystemUserRepository;
 	@Transactional
 	public ArtGallerySystemUser createUser(String name, String email, String password, String avatar) {
-		if(name==null) {
+		if(name==null||name=="") {
 			throw new ArtGallerySystemUserException("Please give a name for the user");
 			
 		}
-		if(email==null) {
+		if(email==null||email=="") {
 			throw new ArtGallerySystemUserException("Please provide user's email");
 		}
-		if(password==null) {
+		if(password==null||password=="") {
 			throw new ArtGallerySystemUserException("Please set the password");
 		}
-		if(avatar==null) {
+		if(avatar==null||avatar=="") {
 			throw new ArtGallerySystemUserException("Please give the avatar");
 		}
 		ArtGallerySystemUser user = new ArtGallerySystemUser();
@@ -47,8 +47,8 @@ public class ArtGallerySystemUserService {
 	}
 	@Transactional
 	public ArtGallerySystemUser getUser(String name) {
-		if(name==null) {
-			throw new ArtGallerySystemUserException("name invalid");
+		if(name==null||name=="") {
+			throw new ArtGallerySystemUserException("provide name please");
 		}
 		ArtGallerySystemUser user=artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
 		if(user==null) {
@@ -63,28 +63,22 @@ public class ArtGallerySystemUserService {
 	}
 	@Transactional
 	public boolean deleteArtGallerySystemUser(String name) {
-		if(name==null) {
-			throw new ArtGallerySystemUserException("name invalid");
-		}
 		boolean deleted=false;
 		ArtGallerySystemUser user=artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
 		if(user!=null) {
 			artGallerySystemUserRepository.delete(user);
 			deleted=true;
 		}else {
-			throw new ArtGallerySystemUserException("user must be valid");
+			throw new ArtGallerySystemUserException("user not exist");
 		}
 		return deleted;
 	}
 	@Transactional
 	public ArtGallerySystemUser updateArtGallerySystemUserName(String name, String newusername) {
-		if(name==null) {
-			throw new ArtGallerySystemUserException("name of user cannot be empty");
-		}
-		if(newusername==null) {
-			throw new ArtGallerySystemUserException("new user name cannot be empty");
-		}
 		ArtGallerySystemUser user= artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
+		if(newusername==null||newusername=="") {
+			throw new ArtGallerySystemUserException("new user name cannot be empty or null");
+		}
 		if(user==null) {
 			throw new ArtGallerySystemUserException("user does not exist");
 		}else {

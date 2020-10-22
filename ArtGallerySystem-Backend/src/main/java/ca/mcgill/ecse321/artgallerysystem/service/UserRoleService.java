@@ -32,12 +32,12 @@ public class UserRoleService {
 	}
 	@Transactional
 	public UserRole getUserRole(String id) {
-		if(id==null) {
-			throw new UserRoleException("userrole id invalid");
+		if(id==null||id=="") {
+			throw new UserRoleException("provide id please");
 		}
 		UserRole userRole=userRoleRepository.findUserRoleByUserRoleId(id);
 		if(userRole==null) {
-			throw new UserRoleException("userrole id not found");
+			throw new UserRoleException("userrole not found");
 		}else {
 			return userRole;
 		}
@@ -48,16 +48,13 @@ public class UserRoleService {
 	}
 	@Transactional
 	public boolean deleteUserRole(String id) {
-		if(id==null) {
-			throw new UserRoleException("userRole id invalid");
-		}
 		boolean deleted = false;
 		UserRole userRole = userRoleRepository.findUserRoleByUserRoleId(id);
 		if(userRole!=null) {
 			userRoleRepository.delete(userRole);
 			deleted=true;
 		}else {
-			throw new UserRoleException("user role must be valid");
+			throw new UserRoleException("user role not exist");
 		}
 		return deleted;
 	}
