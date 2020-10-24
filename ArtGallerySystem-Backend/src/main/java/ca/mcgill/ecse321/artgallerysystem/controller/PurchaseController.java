@@ -43,7 +43,7 @@ public class PurchaseController {
 	@Autowired
 	private PurchaseService purchaseService;
 	@Autowired 
-	private CustomerService customerservice;
+	private CustomerService customerService;
 	@Autowired
 	private ArtPieceService artpieceService;
 	@GetMapping(value = {"/purchases", "/purchases/"})
@@ -57,8 +57,8 @@ public class PurchaseController {
 	public PurchaseDTO createPurchase(@RequestParam("id")String id,@RequestParam("status")String status, @RequestParam("date")String date, @RequestParam("artpieceid")String artpieceid, @RequestParam("customerid")String customerid) {
 		Date dates = Date.valueOf(date);
 		OrderStatus ostatus = convertToStatus(status);
-		ArtPiece artpiece = artpieceService.getArtPiece(artpieceid);
-		Customer customer = customerservice.getCustomer(customerid);
+		ArtPiece artpiece = artPieceService.getArtPiece(artpieceid);
+		Customer customer = customerService.getCustomer(customerid);
 		Purchase purchase = purchaseService.createPurchase(id, dates, ostatus, artpiece, customer);
 		return convertToDto(purchase);
 	}
@@ -103,6 +103,5 @@ public class PurchaseController {
 	    }
 	    return resultList;
 	}
-
 
 }

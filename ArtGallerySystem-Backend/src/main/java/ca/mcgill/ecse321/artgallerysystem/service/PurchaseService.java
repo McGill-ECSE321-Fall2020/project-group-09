@@ -3,6 +3,7 @@ package ca.mcgill.ecse321.artgallerysystem.service;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -23,13 +24,12 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
+import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.PurchaseException;
 @Service
 public class PurchaseService {
 	@Autowired
@@ -41,19 +41,19 @@ public class PurchaseService {
 	@Transactional
 	public Purchase createPurchase(String id, Date date,OrderStatus status, ArtPiece artpiece, Customer customer ) {
 		if(id == null||id == "") {
-			throw new PurchaseException ("provide valid id");
+			throw new IllegalArgumentException ("provide valid id");
 		}
 		if (date == null) {
-			throw new PurchaseException ("specify date");
+			throw new IllegalArgumentException ("specify date");
 		}
 		if(status == null) {
-			throw new PurchaseException ("specify status");
+			throw new IllegalArgumentException ("specify status");
 		}
 		if(artpiece == null) {
-			throw new PurchaseException ("specify artpiece");
+			throw new IllegalArgumentException ("specify artpiece");
 		}
 		if(customer == null) {
-			throw new PurchaseException ("specify customer");
+			throw new IllegalArgumentException ("specify customer");
 		}
 		Purchase purchase = new Purchase ();
 		purchase.setArtPiece(artpiece);
@@ -67,11 +67,11 @@ public class PurchaseService {
 	@Transactional
 	public Purchase getPurchase(String id) {
 		if (id == null||id == "") {
-			throw new PurchaseException ("provide vaild id");
+			throw new IllegalArgumentException ("provide vaild id");
 		}
 		Purchase purchase = purchaseRepository.findPurchaseByOrderId(id);
 		if (purchase == null) {
-			throw new PurchaseException ("not exist purchase");
+			throw new IllegalArgumentException ("not exist purchase");
 		}
 		return purchase;
 	}
@@ -82,14 +82,14 @@ public class PurchaseService {
 	@Transactional
 	public Purchase deletePurchase (String id) {
 		if (id == null||id == "") {
-			throw new PurchaseException ("provide vaild id");
+			throw new IllegalArgumentException ("provide vaild id");
 		}
 		Purchase purchase = purchaseRepository.findPurchaseByOrderId(id);
 		if (purchase == null) {
-			throw new PurchaseException ("not exist payment");
+			throw new IllegalArgumentException ("not exist payment");
 		}
 		if(purchase.getDelivery()!=null || purchase.getPayment() !=null) {
-			throw new PurchaseException ("unable to delete");
+			throw new IllegalArgumentException ("unable to delete");
 		}
 		Purchase pur = null;
 		purchaseRepository.deleteById(id);
@@ -98,19 +98,71 @@ public class PurchaseService {
 	@Transactional
 	public Purchase updatePurchaseStatus (String id, OrderStatus status) {
 		if (id == null||id == "") {
-			throw new PurchaseException ("provide vaild id");
+			throw new IllegalArgumentException ("provide vaild id");
 		}
 		Purchase purchase = purchaseRepository.findPurchaseByOrderId(id);
 		if (purchase == null) {
-			throw new PurchaseException ("not exist payment");
+			throw new IllegalArgumentException ("not exist payment");
 		}
 		if(purchase.getOrderStatus()==status) {
-			throw new PurchaseException ("same status");
+			throw new IllegalArgumentException ("same status");
 		}
 		purchase.setOrderStatus(status);
 		purchaseRepository.save(purchase);
 		return purchase;
 	}
+	
+	@Transactional
+	public Purchase setDelivery(Purchase purchase, Delivery delivery) {
+		String error = "";
+		if(purchase == null) {
+			error += "Purchase cannot be empty! ";
+		}
+		if(delivery == null) {
+			error += "Delivery cannot be empty! ";
+		}
+		error = error.trim();
+		if(error.length() > 0) {
+			throw new IllegalArgumentException(error);
+		}
+		
+		purchase.setDelivery(delivery);
+		purchaseRepository.save(purchase);
+		return purchase;
+	}
+	
+	@Transactional
+	public Purchase addPayment(Purchase purchase, Payment payment) {
+		String error = "";
+		if(purchase == null) {
+			error += "Purchase cannot be empty! ";
+		}
+		if(payment == null) {
+			error += "Payment cannot be empty! ";
+		}
+		error = error.trim();
+		if(error.length() > 0) {
+			throw new IllegalArgumentException(error);
+		}
+		
+		if(purchase.getPayment() == null) {
+			purchase.setPayment(new HashSet<Payment>()); // ?
+		}
+		purchase.getPayment().add(payment);
+		purchaseRepository.save(purchase);
+		return purchase;
+	}
+	
+
+	@Transactional
+	public List<Purchase> getPurchasesMadeByCustomer(Customer customer) {
+		if(customer == null) {
+			throw new IllegalArgumentException("Customer cannot be empty!");
+		}
+		return purchaseRepository.findByCustomer(customer);
+	}
+	
+	// Helper method from tutorial notes 2.8.1
 	private <T> List<T> toList(Iterable<T> iterable) {
 	    List<T> resultList = new ArrayList<>();
 	    for (T t : iterable) {
@@ -118,5 +170,6 @@ public class PurchaseService {
 	    }
 	    return resultList;
 	}
+
 
 }
