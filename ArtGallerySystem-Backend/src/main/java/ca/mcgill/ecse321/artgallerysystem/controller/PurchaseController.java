@@ -38,42 +38,48 @@ import ca.mcgill.ecse321.artgallerysystem.service.PurchaseService;
 @CrossOrigin(origins="*")
 @RestController
 public class PurchaseController {
+	
 	@Autowired 
-	private PaymentService service;
+	private PaymentService paymentService;
 	@Autowired
 	private PurchaseService purchaseService;
 	@Autowired 
 	private CustomerService customerService;
 	@Autowired
-	private ArtPieceService artpieceService;
+	private ArtPieceService artPieceService;
+	
 	@GetMapping(value = {"/purchases", "/purchases/"})
 	public List<PurchaseDTO> getAllPurchases(){
-		
 		List<Purchase> purchases = purchaseService.getAllPurchases();
 		return toList(purchases.stream().map(this::convertToDto).collect(Collectors.toList()));
-		
 	}
+	
 	@PostMapping(value = {"/purchase", "/purchase/"})
-	public PurchaseDTO createPurchase(@RequestParam("id")String id,@RequestParam("status")String status, @RequestParam("date")String date, @RequestParam("artpieceid")String artpieceid, @RequestParam("customerid")String customerid) {
+	public PurchaseDTO createPurchase(@RequestParam("id") String id, @RequestParam("status") String status, @RequestParam("date") String date, @RequestParam("artpieceid") String artPieceId, @RequestParam("customerid") String customerId) {
 		Date dates = Date.valueOf(date);
-		OrderStatus ostatus = convertToStatus(status);
-		ArtPiece artpiece = artPieceService.getArtPiece(artpieceid);
-		Customer customer = customerService.getCustomer(customerid);
-		Purchase purchase = purchaseService.createPurchase(id, dates, ostatus, artpiece, customer);
+		OrderStatus orderStatus = convertToStatus(status);
+		ArtPiece artPiece = artPieceService.getArtPiece(artPieceId);
+		Customer customer = customerService.getCustomer(customerId);
+		Purchase purchase = purchaseService.createPurchase(id, dates, orderStatus, artPiece, customer);
 		return convertToDto(purchase);
 	}
+	
 	@GetMapping(value = {"/purchases/{id}", "/purchases/{id}/"})
-	public PurchaseDTO getPurchaseById(@PathVariable("id")String id) {
+	public PurchaseDTO getPurchaseById(@PathVariable("id") String id) {
 		return convertToDto(purchaseService.getPurchase(id));
 	}
+	
 	@DeleteMapping(value = {"/purchases/{id}", "/purchases/{id}/"})
 	public void deletePurchase(@PathVariable("id") String id) {
 		purchaseService.deletePurchase(id);
 	}
+	
+	// -> updatePurchase*Status*
 	@PutMapping (value = {"/purchase/update/{id}", "/purchase/update/{id}/"})
-	public PurchaseDTO updatePurchase(@PathVariable("id")String id, @RequestParam("status")String status) {
+	public PurchaseDTO updatePurchase(@PathVariable("id") String id, @RequestParam("status") String status) {
 		return convertToDto(purchaseService.updatePurchaseStatus(id, convertToStatus(status)));
 	}
+	
 	public OrderStatus convertToStatus(String status) {
 		switch (status) {
 		case "Successful":
@@ -87,15 +93,18 @@ public class PurchaseController {
 		}
 		return null;
 	}
+	
 	public PurchaseDTO convertToDto(Purchase purchase) {
-		PurchaseDTO purchasedto = new PurchaseDTO();
-		purchasedto.setArtPiece(purchase.getArtPiece());
-		purchasedto.setCustomer(purchase.getCustomer());
-		purchasedto.setDate(purchase.getDate());
-		purchasedto.setOrderId(purchase.getOrderId());
-		purchasedto.setOrderStatus(purchase.getOrderStatus());
-		return purchasedto;
+		PurchaseDTO purchaseDto = new PurchaseDTO();
+		purchaseDto.setArtPiece(purchase.getArtPiece());
+		purchaseDto.setCustomer(purchase.getCustomer());
+		purchaseDto.setDate(purchase.getDate());
+		purchaseDto.setOrderId(purchase.getOrderId());
+		purchaseDto.setOrderStatus(purchase.getOrderStatus());
+		return purchaseDto;
 	}
+	
+	// Helper method from tutorial notes
 	private <T> List<T> toList(Iterable<T> iterable) {
 	    List<T> resultList = new ArrayList<>();
 	    for (T t : iterable) {
