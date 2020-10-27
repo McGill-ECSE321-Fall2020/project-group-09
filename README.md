@@ -36,3 +36,19 @@ The gallery wants to focus on local artists and encourage them to use their webs
 * [Requirements Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Requirements-Model)
 * [Domain Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Domain-Model)
 * [Deliverable 1 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_1)
+
+### Deliverable 2
+
+#### Overview Table
+
+| Team Members |	Total Hours	| Responsibility |
+| ------------ | ------------ | -------------- |
+| Amelia Cui |  | Service ,controller, testing suites for Address Payment ; project report ; documentation |
+| Angelina Duan	|  |  |
+| Zhekai Jiang | |  |
+| Zheyan Tu |  |  |
+| Tianyu Zhao |  |  |
+
+#### Links
+* [Software Quality Asssurance Plan ](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Requirements-Model)
+* [Deliverable 2 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_2)
