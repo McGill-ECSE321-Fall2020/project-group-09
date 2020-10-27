@@ -1,7 +1,6 @@
 package ca.mcgill.ecse321.artgallerysystem.controller;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,21 +14,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
-import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.PaymentDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.PurchaseDTO;
-import ca.mcgill.ecse321.artgallerysystem.model.Address;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
-import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
-import ca.mcgill.ecse321.artgallerysystem.service.AddressService;
-import ca.mcgill.ecse321.artgallerysystem.service.ArtGallerySystemService;
 import ca.mcgill.ecse321.artgallerysystem.service.ArtPieceService;
 import ca.mcgill.ecse321.artgallerysystem.service.CustomerService;
 import ca.mcgill.ecse321.artgallerysystem.service.PaymentService;
@@ -47,6 +37,8 @@ public class PurchaseController {
 	private CustomerService customerService;
 	@Autowired
 	private ArtPieceService artPieceService;
+/*	@Autowired
+	private DeliveryService deliveryService; // pending completion */
 	
 	@GetMapping(value = {"/purchases", "/purchases/"})
 	public List<PurchaseDTO> getAllPurchases(){
@@ -54,8 +46,10 @@ public class PurchaseController {
 		return toList(purchases.stream().map(this::convertToDto).collect(Collectors.toList()));
 	}
 	
-	@PostMapping(value = {"/purchase", "/purchase/"})
-	public PurchaseDTO createPurchase(@RequestParam("id") String id, @RequestParam("status") String status, @RequestParam("date") String date, @RequestParam("artpieceid") String artPieceId, @RequestParam("customerid") String customerId) {
+	@PostMapping(value = {"/purchase/{id}", "/purchase/{id}/"})
+	public PurchaseDTO createPurchase(@PathVariable("id") String id, // previous: @RequestParam
+			@RequestParam("status") String status, @RequestParam("date") String date, 
+			@RequestParam("artpieceid") String artPieceId, @RequestParam("customerid") String customerId) {
 		Date dates = Date.valueOf(date);
 		OrderStatus orderStatus = convertToStatus(status);
 		ArtPiece artPiece = artPieceService.getArtPiece(artPieceId);
@@ -69,15 +63,34 @@ public class PurchaseController {
 		return convertToDto(purchaseService.getPurchase(id));
 	}
 	
+	@GetMapping(value = {"/purchases", "/purchases/"})
+	public List<PurchaseDTO> getPurchasesMadeByCustomer(@RequestParam("customerid") String customerId) {
+		Customer customer = customerService.getCustomer(customerId);
+		List<Purchase> purchases = purchaseService.getPurchasesMadeByCustomer(customer);
+		return toList(purchases.stream().map(this::convertToDto).collect(Collectors.toList()));
+	}
+	
 	@DeleteMapping(value = {"/purchases/{id}", "/purchases/{id}/"})
 	public void deletePurchase(@PathVariable("id") String id) {
 		purchaseService.deletePurchase(id);
 	}
 	
-	// -> updatePurchase*Status*
-	@PutMapping (value = {"/purchase/update/{id}", "/purchase/update/{id}/"})
-	public PurchaseDTO updatePurchase(@PathVariable("id") String id, @RequestParam("status") String status) {
+	// previous: updatePurchase
+	@PutMapping(value = {"/purchase/update/{id}", "/purchase/update/{id}/"})
+	public PurchaseDTO updatePurchaseStatus(@PathVariable("id") String id, @RequestParam("status") String status) {
 		return convertToDto(purchaseService.updatePurchaseStatus(id, convertToStatus(status)));
+	}
+	
+/*	@PutMapping(value = {"/purchase/update/{id}", "/purchase/update/{id}/"})
+	public PurchaseDTO updatePurchaseDelivery(@PathVariable("id") String id, @RequestParam("deliveryid") String deliveryId) {
+		Delivery delivery = deliveryService.getDelivery(deliveryId);
+		return convertToDto(purchaseService.setDelivery(id, delivery));
+	}*/
+	
+	@PutMapping(value = {"/purchase/update/{id}", "/purchase/update/{id}/"})
+	public PurchaseDTO addPayment(@PathVariable("id") String id, @RequestParam("paymentid") String paymentId) {
+		Payment payment = paymentService.getPayment(paymentId);
+		return convertToDto(purchaseService.addPayment(id, payment));
 	}
 	
 	public OrderStatus convertToStatus(String status) {
