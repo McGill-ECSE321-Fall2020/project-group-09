@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.ParcelDeliveryDTO;
+import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
+import ca.mcgill.ecse321.artgallerysystem.model.ParcelDeliveryStatus;
+import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
 import ca.mcgill.ecse321.artgallerysystem.service.ArtGallerySystemService;
 import ca.mcgill.ecse321.artgallerysystem.service.ParcelDeliveryService;
 
@@ -29,6 +33,8 @@ private ParcelDeliveryService parcelDeliveryService;
 private ArtGallerySystemService systemservice;
 @Autowired
 private ArtGallerySystemRepository artgallerySystemRepository;
+@Autowired
+private AddressRepository addressRepository;
 @GetMapping(value = {"/parcelDeliveries", "/parcelDeliveries/"})
 public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 	
@@ -37,14 +43,15 @@ public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 	
 }
 @PostMapping(value = {"/parcelDelivery", "/parcelDelivery/"})
-public ParcelDeliveryDTO createParcelDelivery(@RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String parcelDeliveryStatus, @RequestParam("deliveryAddress")String deliveryAddress) {
+public ParcelDeliveryDTO createParcelDelivery(@RequestParam("deliveryID")String id, @RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String parcelDeliveryStatus, @RequestParam("deliveryAddress")String deliveryAddress) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
-	ParcelDelivery parcelDelivery = ParcelDeliveryService.createParcelDelivery(trackingNumber, carrier, parcelDeliveryStatus, deliveryAddress);
+	Address address = addressRepository.findAddressByAddressId(deliveryAddress);
+	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(id, trackingNumber, carrier,getStatus(parcelDeliveryStatus), address);
 	return convertToDto(parcelDelivery);
 }
 @GetMapping(value = {"/parcelDeliveryes/{id}", "/parcelDeliveryes/{id}/"})
 public ParcelDeliveryDTO getparcelDeliveryById(@PathVariable("id")String id) {
-	return convertToDto(ParcelDeliveryService.getParcelDelivery(id));
+	return convertToDto(parcelDeliveryService.getParcelDelivery(id));
 }
 @DeleteMapping(value = {"/parcelDeliveryes/{id}", "/parcelDeliveryes/{id}/"})
 public void deleteparcelDelivery(@PathVariable("id") String deliveryid) {
@@ -52,7 +59,7 @@ public void deleteparcelDelivery(@PathVariable("id") String deliveryid) {
 }
 @PutMapping (value = {"/parcelDelivery/update/{id}", "/parcelDelivery/update/{id}/"})
 public ParcelDeliveryDTO updateparcelDelivery(@PathVariable("id")String id, @RequestParam("parcelDelivery")String newparcelDelivery) {
-	return convertToDto(parcelDeliveryService.updateparcelDelivery(id, newparcelDelivery));
+	return convertToDto(parcelDeliveryService.updateparcelDeliveryStatus(id,getStatus( newparcelDelivery)));
 }
 public ParcelDeliveryDTO convertToDto(ParcelDelivery parcelDelivery) {
     ParcelDeliveryDTO parcelDeliveryDTO = new ParcelDeliveryDTO();
@@ -60,6 +67,19 @@ public ParcelDeliveryDTO convertToDto(ParcelDelivery parcelDelivery) {
     
     
     return parcelDeliveryDTO;
+}
+public ParcelDeliveryStatus getStatus (String status) {
+	switch(status) {
+	case "Delivered":
+		return ParcelDeliveryStatus.Delivered;
+	case "Pending":
+		return ParcelDeliveryStatus.Pending;
+	case "Shipped":
+		return ParcelDeliveryStatus.Shipped;
+	
+	
+	}
+	return null;
 }
 
 private <T> List<T> toList(Iterable<T> iterable) {

@@ -90,7 +90,7 @@ public class ParcelDeliveryService {
 		return pardel;
 	}
 	@Transactional
-	public List<ParcelDelivery> getAllParcelDeliveris(String trackingNumber) {
+	public List<ParcelDelivery> getAllParcelDeliveris() {
 		return toList(parcelDeliveryRepository.findAll());
 	}
 	
