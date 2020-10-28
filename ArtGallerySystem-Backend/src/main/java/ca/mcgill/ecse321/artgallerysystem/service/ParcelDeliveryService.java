@@ -28,26 +28,39 @@ import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ParcelDeliveryException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
+import ca.mcgill.ecse321.artgallerysystem.model.ParcelDeliveryStatus;
 @Service
 public class ParcelDeliveryService {
 	@Autowired
 	ArtGallerySystemRepository artGallerySystemRepository;
 	@Autowired
+	DeliveryRepository deliveryRepository;
+	@Autowired
 	ParcelDeliveryRepository parcelDeliveryRepository;
     @Transactional
-	public ParcelDelivery createParcelDelivery(String trackingNumber, String carrier,
-			String parcelDeliveryStatus, String deliveryAddress) {
-		// TODO Auto-generated method stub
-    	if (trackingNumber == null|| trackingNumber == "") {
-			throw new ParcelDeliveryException ("Please provide valid trackingNumber");
+	public ParcelDelivery createParcelDelivery(String deliveryid, String trackingNumber, String carrier,
+			ParcelDeliveryStatus status, Address deliveryAddress) {
+    	if(deliveryid == null || deliveryid.length() == 0) {
+    		throw new ParcelDeliveryException ("Please provide valid deliveryid.");
+		}
+		if (trackingNumber == null|| trackingNumber == "") {
+			throw new ParcelDeliveryException ("Please provide valid trackingNumber.");
 		}
 		if (deliveryAddress == null) {
-			throw new ParcelDeliveryException ("Please provide valid Address");
+			throw new ParcelDeliveryException ("Please provide valid Address.");
 		}
 		if (carrier == null) {
-			throw new ParcelDeliveryException ("Please provide valid carrier");
+			throw new ParcelDeliveryException ("Carrier can not be empty! ");
+		}if(status == null) {
+			throw new ParcelDeliveryException ("Status can not be empty! ");
 		}
     	ParcelDelivery pardel = new ParcelDelivery();
+    	pardel.setDeliveryId(deliveryid);
+    	pardel.setCarrier(carrier);
+    	pardel.setParcelDeliveryStatus(status);
+    	pardel.setTrackingNumber(trackingNumber);
+    	pardel.setDeliveryAddress(deliveryAddress);
+    	parcelDeliveryRepository.save(pardel);
 		return pardel;
 	}
 	
@@ -58,7 +71,7 @@ public class ParcelDeliveryService {
 		}
 	    ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(deliveryid);
 		if (pardel == null) {
-			throw new ParcelDeliveryException ("not exist payment");
+			throw new ParcelDeliveryException ("ParcelDelivery with id " + deliveryid + " does not exist.");
 		}
 		
 	    parcelDeliveryRepository.deleteById(deliveryid);
@@ -66,13 +79,13 @@ public class ParcelDeliveryService {
 		return par;
 	}
 	@Transactional
-	public ParcelDelivery getParcelDelivery(String trackingNumber) {
-		if (trackingNumber == null||trackingNumber == "") {
-			throw new ParcelDeliveryException ("provide vaild trackingnumber");
+	public ParcelDelivery getParcelDelivery(String deliveryid) {
+		if (deliveryid == null||deliveryid == "") {
+			throw new ParcelDeliveryException ("Please provide vaild deliveryid.");
 		}
-		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
+		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(deliveryid);
 		if (pardel == null) {
-			throw new ParcelDeliveryException ("not exist parceldelivery");
+			throw new ParcelDeliveryException ("ParcelDelivery with id " + deliveryid + " does not exist.");
 		}
 		return pardel;
 	}
@@ -80,6 +93,7 @@ public class ParcelDeliveryService {
 	public List<ParcelDelivery> getAllParcelDeliveris(String trackingNumber) {
 		return toList(parcelDeliveryRepository.findAll());
 	}
+	
 	@Transactional
 	public ParcelDelivery updateparcelDelivery(String trackingNumber, String newparcelDelivery) {
 		if (trackingNumber == null||trackingNumber == "") {

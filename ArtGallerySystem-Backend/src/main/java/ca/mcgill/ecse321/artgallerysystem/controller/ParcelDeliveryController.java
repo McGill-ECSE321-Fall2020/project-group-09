@@ -32,38 +32,32 @@ private ArtGallerySystemRepository artgallerySystemRepository;
 @GetMapping(value = {"/parcelDeliveries", "/parcelDeliveries/"})
 public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 	
-	List<ParcelDelivery> parcelDeliveryes = ParcelDeliveryService.getAllParcelDeliveris();
-	return toList(parcelDeliveryes.stream().map(this::convertToDto).collect(Collectors.toList()));
+	List<ParcelDelivery> parcelDeliveries = parcelDeliveryService.getAllParcelDeliveris();
+	return toList(parcelDeliveries.stream().map(this::convertToDto).collect(Collectors.toList()));
 	
 }
 @PostMapping(value = {"/parcelDelivery", "/parcelDelivery/"})
 public ParcelDeliveryDTO createParcelDelivery(@RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String parcelDeliveryStatus, @RequestParam("deliveryAddress")String deliveryAddress) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
-	ParcelDelivery parcelDelivery = ParcelDeliveryService.createparcelDelivery(trackingNumber, carrier, parcelDeliveryStatus, deliveryAddress);
+	ParcelDelivery parcelDelivery = ParcelDeliveryService.createParcelDelivery(trackingNumber, carrier, parcelDeliveryStatus, deliveryAddress);
 	return convertToDto(parcelDelivery);
 }
 @GetMapping(value = {"/parcelDeliveryes/{id}", "/parcelDeliveryes/{id}/"})
 public ParcelDeliveryDTO getparcelDeliveryById(@PathVariable("id")String id) {
-	return convertToDto(ParcelDeliveryService.getparcelDeliveryBy(id));
+	return convertToDto(ParcelDeliveryService.getParcelDelivery(id));
 }
 @DeleteMapping(value = {"/parcelDeliveryes/{id}", "/parcelDeliveryes/{id}/"})
-public void deleteparcelDelivery(@PathVariable("id") String id) {
-	parcelDeliveryService.deleteparcelDelivery(id);
+public void deleteparcelDelivery(@PathVariable("id") String deliveryid) {
+	parcelDeliveryService.deleteParcelDelivery(deliveryid);
 }
 @PutMapping (value = {"/parcelDelivery/update/{id}", "/parcelDelivery/update/{id}/"})
 public ParcelDeliveryDTO updateparcelDelivery(@PathVariable("id")String id, @RequestParam("parcelDelivery")String newparcelDelivery) {
 	return convertToDto(parcelDeliveryService.updateparcelDelivery(id, newparcelDelivery));
 }
 public ParcelDeliveryDTO convertToDto(ParcelDelivery parcelDelivery) {
-    parcelDeliveryDTO parcelDeliveryDTO = new ParcelDeliveryDTO();
+    ParcelDeliveryDTO parcelDeliveryDTO = new ParcelDeliveryDTO();
     parcelDeliveryDTO.setTrackingNumber(parcelDelivery.getTrackingNumber());
-    parcelDeliveryDTO.setCity(parcelDelivery.getCity());
-    parcelDeliveryDTO.setCountry(parcelDelivery.getCountry());
-    parcelDeliveryDTO.setName(parcelDelivery.getName());
-    parcelDeliveryDTO.setPhoneNumber(parcelDelivery.getPhoneNumber());
-    parcelDeliveryDTO.setPostalCode(parcelDelivery.getPostalCode());
-    parcelDeliveryDTO.setProvince(parcelDelivery.getProvince());
-    parcelDeliveryDTO.setStreetparcelDelivery(parcelDelivery.getStreetparcelDelivery());
+    
     
     return parcelDeliveryDTO;
 }
