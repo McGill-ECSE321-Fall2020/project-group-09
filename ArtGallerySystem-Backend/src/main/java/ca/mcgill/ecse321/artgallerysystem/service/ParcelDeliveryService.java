@@ -95,15 +95,15 @@ public class ParcelDeliveryService {
 	}
 	
 	@Transactional
-	public ParcelDelivery updateparcelDelivery(String trackingNumber, String newparcelDelivery) {
-		if (trackingNumber == null||trackingNumber == "") {
-			throw new ParcelDeliveryException ("provide vaild trackingNumber");
+	public ParcelDelivery updateparcelDeliveryStatus(String deliveryid, ParcelDeliveryStatus status) {
+		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(deliveryid);
+		if (deliveryid == null|| deliveryid == "") {
+			throw new ParcelDeliveryException ("provide vaild deliveryid");
 		}
-		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
 		if (pardel == null) {
 			throw new ParcelDeliveryException ("not exist delivery");
 		}
-		
+		pardel.setParcelDeliveryStatus(status);;
 		parcelDeliveryRepository.save(pardel);
 		return pardel;
 	}
