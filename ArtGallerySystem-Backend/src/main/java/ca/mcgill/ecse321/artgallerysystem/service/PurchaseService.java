@@ -98,14 +98,13 @@ public class PurchaseService {
 	public Purchase deletePurchase(String id) {
 		Purchase purchase = getPurchase(id);
 		
-		if(purchase.getDelivery()!=null || purchase.getPayment() !=null) {	//???
-			throw new IllegalArgumentException ("unable to delete");		//???
-		}
-		Purchase pur = null;												//???	
+/*		if(purchase.getDelivery()!=null || purchase.getPayment() !=null) {
+			throw new IllegalArgumentException ("unable to delete");
+		}*/
 		
 		purchaseRepository.deleteById(id);
 		
-		return pur;															//???
+		return purchase;
 	}
 	
 	@Transactional
@@ -174,7 +173,7 @@ public class PurchaseService {
 		}
 		
 		if(purchase.getPayment() == null) {
-			purchase.setPayment(new HashSet<Payment>()); // ?
+			purchase.setPayment(new HashSet<Payment>());
 		}
 		purchase.getPayment().add(payment);
 		purchaseRepository.save(purchase);
@@ -185,6 +184,9 @@ public class PurchaseService {
 	
 	// Helper method from tutorial notes - 2.8.1
 	private <T> List<T> toList(Iterable<T> iterable) {
+		if(iterable == null) {
+			return new ArrayList<T>();
+		}
 	    List<T> resultList = new ArrayList<>();
 	    for (T t : iterable) {
 	        resultList.add(t);

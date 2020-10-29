@@ -22,8 +22,6 @@ import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
-import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
-import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ParcelDeliveryException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
@@ -66,17 +64,14 @@ public class ParcelDeliveryService {
 	
 	@Transactional
 	public ParcelDelivery deleteParcelDelivery(String deliveryid) {
-		if (deliveryid == null||deliveryid == "") {
-			throw new PaymentException ("provide vaild id");
+		ParcelDelivery pardel=null;
+		ParcelDelivery par = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(deliveryid);
+	    if (par != null) {
+	    	parcelDeliveryRepository.deleteById(deliveryid);
+		}else {
+			throw new ParcelDeliveryException("Order not exist.");
 		}
-	    ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(deliveryid);
-		if (pardel == null) {
-			throw new ParcelDeliveryException ("ParcelDelivery with id " + deliveryid + " does not exist.");
-		}
-		
-	    parcelDeliveryRepository.deleteById(deliveryid);
-		ParcelDelivery par = null;
-		return par;
+		return pardel;
 	}
 	@Transactional
 	public ParcelDelivery getParcelDelivery(String deliveryid) {
@@ -99,6 +94,9 @@ public class ParcelDeliveryService {
 		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(deliveryid);
 		if (deliveryid == null|| deliveryid == "") {
 			throw new ParcelDeliveryException ("provide vaild deliveryid");
+		}
+		if(status == null) {
+			throw new ParcelDeliveryException ("Status cannot be empty!");
 		}
 		if (pardel == null) {
 			throw new ParcelDeliveryException ("not exist delivery");

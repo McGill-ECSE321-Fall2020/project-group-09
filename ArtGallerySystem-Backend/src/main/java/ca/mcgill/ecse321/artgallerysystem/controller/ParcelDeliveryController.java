@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
-import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.ParcelDeliveryDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
+import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDeliveryStatus;
-import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
-import ca.mcgill.ecse321.artgallerysystem.service.ArtGallerySystemService;
 import ca.mcgill.ecse321.artgallerysystem.service.ParcelDeliveryService;
 
 @CrossOrigin(origins="*")
@@ -29,10 +27,6 @@ import ca.mcgill.ecse321.artgallerysystem.service.ParcelDeliveryService;
 public class ParcelDeliveryController {
 @Autowired 
 private ParcelDeliveryService parcelDeliveryService;
-@Autowired 
-private ArtGallerySystemService systemservice;
-@Autowired
-private ArtGallerySystemRepository artgallerySystemRepository;
 @Autowired
 private AddressRepository addressRepository;
 @GetMapping(value = {"/parcelDeliveries", "/parcelDeliveries/"})
@@ -43,10 +37,11 @@ public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 	
 }
 @PostMapping(value = {"/parcelDelivery", "/parcelDelivery/"})
-public ParcelDeliveryDTO createParcelDelivery(@RequestParam("deliveryID")String id, @RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String parcelDeliveryStatus, @RequestParam("deliveryAddress")String deliveryAddress) {
+public ParcelDeliveryDTO createParcelDelivery(@RequestParam("deliveryID")String id, @RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String status, @RequestParam("deliveryAddress")String deliveryAddress) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
 	Address address = addressRepository.findAddressByAddressId(deliveryAddress);
-	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(id, trackingNumber, carrier,getStatus(parcelDeliveryStatus), address);
+	ParcelDeliveryStatus parcelDeliverystatus = getStatus(status);
+	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(id, trackingNumber, carrier, parcelDeliverystatus, address);
 	return convertToDto(parcelDelivery);
 }
 @GetMapping(value = {"/parcelDeliveryes/{id}", "/parcelDeliveryes/{id}/"})
@@ -58,15 +53,18 @@ public void deleteparcelDelivery(@PathVariable("id") String deliveryid) {
 	parcelDeliveryService.deleteParcelDelivery(deliveryid);
 }
 @PutMapping (value = {"/parcelDelivery/update/{id}", "/parcelDelivery/update/{id}/"})
-public ParcelDeliveryDTO updateparcelDelivery(@PathVariable("id")String id, @RequestParam("parcelDelivery")String newparcelDelivery) {
-	return convertToDto(parcelDeliveryService.updateparcelDeliveryStatus(id,getStatus( newparcelDelivery)));
+public ParcelDeliveryDTO updateparcelDeliveryStatus(@PathVariable("deliveryID")String id, @RequestParam("parcelDelivery")String newparcelDelivery) {
+	return convertToDto(parcelDeliveryService.updateparcelDeliveryStatus(id,getStatus(newparcelDelivery)));
 }
 public ParcelDeliveryDTO convertToDto(ParcelDelivery parcelDelivery) {
-    ParcelDeliveryDTO parcelDeliveryDTO = new ParcelDeliveryDTO();
-    parcelDeliveryDTO.setTrackingNumber(parcelDelivery.getTrackingNumber());
+    ParcelDeliveryDTO parcelDeliveryDto = new ParcelDeliveryDTO();
+    parcelDeliveryDto.setTrackingNumber(parcelDelivery.getTrackingNumber());
+    parcelDeliveryDto.setCarrier(parcelDelivery.getCarrier()); 
+    parcelDeliveryDto.setDeliveryId(parcelDelivery.getDeliveryId());
+    parcelDeliveryDto.setDeliveryAddress(parcelDelivery.getDeliveryAddress());
+    parcelDeliveryDto.setParcelDeliveryStatus(parcelDelivery.getParcelDeliveryStatus());
     
-    
-    return parcelDeliveryDTO;
+    return parcelDeliveryDto;
 }
 public ParcelDeliveryStatus getStatus (String status) {
 	switch(status) {
