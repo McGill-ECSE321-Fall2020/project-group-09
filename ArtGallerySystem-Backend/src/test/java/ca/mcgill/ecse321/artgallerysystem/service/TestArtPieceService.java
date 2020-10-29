@@ -4,8 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.lenient;
+
+import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
+import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemUserRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtPieceRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtistRepository;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
@@ -32,6 +37,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -40,6 +46,8 @@ public class TestArtPieceService {
     @Mock
     private ArtPieceRepository artPieceRepository;
     private ArtistRepository artistRepository;
+    private ArtGallerySystemUserRepository userRepository;
+    private ArtGallerySystemRepository artGallerySystemRepository;
     private static final String ap_id = "test ap";
     private static final String NAME = "name";
     private static final String DES = "description";
@@ -47,7 +55,8 @@ public class TestArtPieceService {
     private static final String AUTHOR = "author";
     private static final Date DATE = java.sql.Date.valueOf("2020-12-12");
     private static final ArtPieceStatus STATUS = ArtPieceStatus.Available;
-    private Set<Artist> ARTISTS;
+    private Set<Artist> ARTISTS = createArtist();
+    private Set<Artist> EARTISTS;
 
     @InjectMocks
     private ArtPieceService artPieceService;
@@ -65,6 +74,8 @@ public class TestArtPieceService {
                 artPiece.setPrice(PRICE);
                 artPiece.setName(NAME);
                 artPiece.setArtPieceStatus(STATUS);
+               // ARTISTS = createArtist();
+                artPiece.setArtist(ARTISTS);
 
                 artPieceRepository.save(artPiece);
                 return artPiece;
@@ -82,6 +93,8 @@ public class TestArtPieceService {
             artPiece.setPrice(PRICE);
             artPiece.setName(NAME);
             artPiece.setArtPieceStatus(STATUS);
+            //ARTISTS = createArtist();
+            artPiece.setArtist(ARTISTS);
             artPieceRepository.save(artPiece);
             artPieces.add(artPiece);
             return artPieces;
@@ -320,5 +333,17 @@ public class TestArtPieceService {
             error = e.getMessage();
         }
         assertEquals("same price",error);
+    }
+    public Set<Artist> createArtist(){
+    	
+		ArtGallerySystemUser u = new ArtGallerySystemUser();
+		u.setName("userTest");
+		Artist artist = new Artist();
+		artist.setArtGallerySystemUser(u);
+		artist.setUserRoleId("id1");
+		artist.setCredit(0.0);
+		Set<Artist> arts = new HashSet<Artist>();
+		arts.add(artist);
+		return arts;
     }
 }
