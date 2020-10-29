@@ -197,7 +197,7 @@ public class CustomerService {
         }
         ArtGallerySystemUser user = customer.getArtGallerySystemUser();
         Customer cus = null;
-        userRepository.delete(user);
+        //userRepository.delete(user);
         customerRepository.deleteById(id);
         return cus;
 
