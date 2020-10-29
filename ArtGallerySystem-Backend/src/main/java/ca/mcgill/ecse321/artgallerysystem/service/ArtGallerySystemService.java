@@ -57,12 +57,10 @@ public class ArtGallerySystemService {
 	}
 	
 	@Transactional
-	public void deleteSystem(String id) {
-		if(id == null || id.length() == 0) {
-			throw new IllegalArgumentException("System id cannot be empty!");
-		}
-		
+	public ArtGallerySystem deleteSystem(String id) {
+		ArtGallerySystem system = getSystemById(id);
 		artGallerySystemRepository.deleteById(id);
+		return system;
 	}
 	
 	@Transactional

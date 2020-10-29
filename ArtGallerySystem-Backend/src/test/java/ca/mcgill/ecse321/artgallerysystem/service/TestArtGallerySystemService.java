@@ -217,6 +217,61 @@ public class TestArtGallerySystemService {
 	}
 	
 	@Test
+	public void testDeleteSystem() {
+		String id = ARTGALLERYSYSTEM_KEY;
+		ArtGallerySystem system = null;
+		try {
+			system = artGallerySystemService.deleteSystem(id);
+		} catch(Exception e) {
+			fail();
+		}
+		assertNotNull(system);
+		assertEquals(id, system.getArtGallerySystemId());
+	}
+	
+	@Test
+	public void testDeleteSystemNull() {
+		String id = null;
+		ArtGallerySystem system = null;
+		String error = "";
+		try {
+			system = artGallerySystemService.deleteSystem(id);
+		} catch(Exception e) {
+			error = e.getMessage();
+		}
+		assertNull(system);
+		assertEquals("System id cannot be empty!", error);
+	}
+	
+	@Test
+	public void testDeleteSystemEmpty() {
+		String id = "";
+		ArtGallerySystem system = null;
+		String error = "";
+		try {
+			system = artGallerySystemService.deleteSystem(id);
+		} catch(Exception e) {
+			error = e.getMessage();
+		}
+		assertNull(system);
+		assertEquals("System id cannot be empty!", error);
+	}
+	
+	@Test
+	public void testDeleteSystemNonExistent() {
+		String id = "?";
+		ArtGallerySystem system = null;
+		String error = "";
+		try {
+			system = artGallerySystemService.deleteSystem(id);
+		} catch(Exception e) {
+			error = e.getMessage();
+		}
+		assertNull(system);
+		assertEquals("System with id " + id + " does not exist.", error);
+	}
+	
+	@Test
 	public void testSetIncome() {
 		String id = ARTGALLERYSYSTEM_KEY;
 		ArtGallerySystem system = null;
