@@ -34,6 +34,12 @@ public class ArtPieceController {
     public ArtPieceDTO getArtPieceById(@PathVariable("id") String id){
         return convertToDto(artPieceService.getArtPiece(id));
     }
+    
+    @GetMapping("/getArtPiecesByArtist/{id}")
+    public List<ArtPieceDTO> getgetArtPiecesByArtist(@PathVariable("id") String id){
+        List<ArtPiece> artistArtPieces = artPieceService.getArtPiecesByArtist(id);
+        return toList(artistArtPieces.stream().map(this::convertToDto).collect(Collectors.toList()));
+    }
 
     @PostMapping("/createArtPiece")
     public ArtPieceDTO createArtPiece(@RequestParam("id") String id, @RequestParam("name") String name, @RequestParam("des") String des, @RequestParam("author") String author, @RequestParam("price") double price, @RequestParam("date") Date date, @RequestParam("status")ArtPieceStatus status, @RequestParam("artist") Set<Artist> artist) {
@@ -64,6 +70,17 @@ public class ArtPieceController {
     public ArtPieceDTO updateArtPiecePrice(@PathVariable("id") String id, @RequestParam("price") double price){
         return convertToDto(artPieceService.updateArtPiecePrice(id,price));
     }
+    
+    @PutMapping("/updateArtPieceStatus/{id}")
+    public ArtPieceDTO updateArtPieceStatus(@PathVariable("id") String id, @RequestParam("status") String status){
+        return convertToDto(artPieceService.updateArtPieceStatus(id,status));
+    }
+
+    @PutMapping("/updateArtPieceAuthor/{id}")
+    public ArtPieceDTO updateArtPieceAuthor(@PathVariable("id") String id, @RequestParam("author") String author){
+        return convertToDto(artPieceService.updateArtPieceAuthor(id,author));
+    }
+
 
 
     public ArtPieceDTO convertToDto(ArtPiece artPiece){
