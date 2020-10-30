@@ -252,7 +252,7 @@ public class TestParcelDeliveryService {
 	    public void testUpdateParcelDelivery(){
 	        String error = null;
 	        try{
-	            parcelDeliveryService.updateparcelDelivery(TRACKINGNUMBER, STATUS.Delivered);
+	            parcelDeliveryService.updateparcelDelivery(TRACKINGNUMBER,ParcelDeliveryStatus.Shipped);
 	        }catch (ParcelDeliveryException e){
 	            fail();
 	        }
