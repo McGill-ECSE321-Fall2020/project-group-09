@@ -62,8 +62,8 @@ public class TestArtPieceService {
     @BeforeEach
     public void setMockOutput() {
         MockitoAnnotations.initMocks(this);
-        lenient().when(artPieceRepository.findArtPieceByArtPieceId(anyString())).thenAnswer((InvocationOnMock inovation) -> {
-            if (inovation.getArgument(0).equals(ap_id)){
+        lenient().when(artPieceRepository.findArtPieceByArtPieceId(anyString())).thenAnswer((InvocationOnMock invocation) -> {
+            if (invocation.getArgument(0).equals(ap_id)){
                 ArtPiece artPiece = new ArtPiece();
                 artPiece.setArtPieceId(ap_id);
                 artPiece.setDate(DATE);
