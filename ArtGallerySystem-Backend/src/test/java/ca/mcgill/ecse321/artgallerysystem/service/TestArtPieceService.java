@@ -1,5 +1,6 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 
+import static java.lang.String.valueOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -15,11 +16,9 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtistException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Answers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -27,7 +26,6 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -168,6 +166,30 @@ public class TestArtPieceService {
     }
 
     @Test
+    public void testCreateArtPieceWithoutArtist(){
+        String error = null;
+        ArtPiece artPiece = new ArtPiece();
+        try{
+            artPiece = artPieceService.createArtPiece(ap_id,NAME,DES,AUTHOR,PRICE,DATE,STATUS,null);
+        }catch(ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide artist",error);
+    }
+
+    @Test
+    public void testCreateArtPieceWithoutStatus(){
+        String error = null;
+        ArtPiece artPiece = new ArtPiece();
+        try{
+            artPiece = artPieceService.createArtPiece(ap_id,NAME,DES,AUTHOR,PRICE,DATE,null,ARTISTS);
+        }catch(ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide status",error);
+    }
+
+    @Test
     public void testCreateArtPiece(){
         ArtPiece artPiece = new ArtPiece();
         try{
@@ -199,6 +221,28 @@ public class TestArtPieceService {
     }
 
     @Test
+    public void testDeleteByEmptyId(){
+        String error = null;
+        try{
+            artPieceService.deleteArtPiece("");
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testDeleteByNullId(){
+        String error = null;
+        try{
+            artPieceService.deleteArtPiece(null);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
     public void testGetAll(){
         int size = artPieceService.getAllArtPieces().size();
         assertEquals(size,1);
@@ -225,7 +269,7 @@ public class TestArtPieceService {
     }
 
     @Test
-    public void testGetByEmptId(){
+    public void testGetByEmptyId(){
         String error = null;
         try{
             artPieceService.getArtPiece("");
@@ -267,12 +311,67 @@ public class TestArtPieceService {
     }
 
     @Test
+    public void testUpdateNameByEmptyId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceName("",NAME);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateNameByNullId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceName(null,NAME);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateNameByNotExistId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceName("NEWAP",NAME);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("not exist artpiece",error);
+    }
+
+    @Test
     public void testUpdateStatus(){
         try{
             artPieceService.updateArtPieceStatus(ap_id,"Sold");
         }catch (ArtPieceException e){
             fail();
         }
+    }
+
+    @Test
+    public void testUpdateStatusByEmptyId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceAuthor("","Sold");
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateStatusByNullId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceAuthor(null,"Sold");
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
     }
 
     @Test
@@ -287,6 +386,17 @@ public class TestArtPieceService {
     }
 
     @Test
+    public void testUpdateStatusByNotExistId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceStatus("NEWAP",valueOf(STATUS.Sold));
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("not exist artpiece",error);
+    }
+
+    @Test
     public void testUpdateDes(){
         try{
             artPieceService.updateArtPieceDescription(ap_id,"NEWDES");
@@ -296,12 +406,78 @@ public class TestArtPieceService {
     }
 
     @Test
+    public void testUpdateDesByEmptyId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceDescription("",DES);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateDesByNullId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceDescription(null,DES);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateDesByNotExistId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceDescription("NEWAP",DES);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("not exist artpiece",error);
+    }
+
+    @Test
     public void testUpdateAuthor(){
         try{
             artPieceService.updateArtPieceAuthor(ap_id,"NEWAUTHOR");
         }catch (ArtPieceException e){
             fail();
         }
+    }
+
+    @Test
+    public void testUpdateAuthorByNotExistId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceAuthor("NEWAP",AUTHOR);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("not exist artpiece",error);
+    }
+
+    @Test
+    public void testUpdateAuthorByEmptyId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceAuthor("",AUTHOR);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateAuthorByNullId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceAuthor(null,AUTHOR);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
     }
 
     @Test
@@ -325,6 +501,92 @@ public class TestArtPieceService {
     }
 
     @Test
+    public void testUpdatePriceByEmptyId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPiecePrice("",PRICE);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdatePriceByNullId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPiecePrice(null,PRICE);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdatePriceByNotExistId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPiecePrice("NEWAP",PRICE);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("not exist artpiece",error);
+    }
+
+    @Test
+    public void testUpdateDate(){
+        try{
+            artPieceService.updateArtPieceDate(ap_id,java.sql.Date.valueOf("2023-10-12"));
+        } catch (ArtPieceException e){
+            fail();
+        }
+    }
+
+    @Test
+    public void testUpdateDateByEmptyId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceDate("",java.sql.Date.valueOf("2023-10-12"));
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateDateByNullId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceDate(null,java.sql.Date.valueOf("2023-10-12"));
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateDateByNotExistId(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceDate("NEWAP",java.sql.Date.valueOf("2023-10-12"));
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("not exist artpiece",error);
+    }
+
+    @Test
+    public void testUpdateDateBySameDate(){
+        String error = null;
+        try{
+            artPieceService.updateArtPieceDate(ap_id,DATE);
+        } catch (ArtPieceException e){
+            error = e.getMessage();
+        }
+        assertEquals("same date",error);
+    }
+
+    @Test
     public void testUpdateSamePrice(){
         String error = null;
         try{
@@ -334,6 +596,7 @@ public class TestArtPieceService {
         }
         assertEquals("same price",error);
     }
+
     public Set<Artist> createArtist(){
     	
 		ArtGallerySystemUser u = new ArtGallerySystemUser();

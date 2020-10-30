@@ -6,7 +6,6 @@ import ca.mcgill.ecse321.artgallerysystem.dao.CustomerRepository;
 
 import ca.mcgill.ecse321.artgallerysystem.model.*;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtistException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.CustomerException;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,9 +17,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -36,7 +35,7 @@ public class TestCustomerService {
     private static final String CID = "Test CID";
     private static final double BALANCE = 80.00;
     private Set<Purchase> PURCHASE;
-    private Set<Address> ADDRESS;
+    private Set<Address> ADDRESS = createAddress();
 
 
     @InjectMocks
@@ -47,6 +46,8 @@ public class TestCustomerService {
         lenient().when(customerRepository.findCustomerByUserRoleId(anyString())).thenAnswer( (InvocationOnMock invocation) -> {
             if(invocation.getArgument(0).equals(CID)) {
                 Customer customer = new Customer();
+                Set<Address> addresses = createAddress();
+                customer.setAddress(addresses);
                 customer.setUserRoleId(CID);
                 customer.setBalance(BALANCE);
                 customerRepository.save(customer);
@@ -131,6 +132,28 @@ public class TestCustomerService {
     }
 
     @Test
+    public void testDeleteByNullId(){
+        String error = null;
+        try{
+            customerService.deleteCustomer(null);
+        }catch(CustomerException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testDeleteByEmptyId(){
+        String error = null;
+        try{
+            customerService.deleteCustomer("");
+        }catch(CustomerException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
     public void testGetAll(){
         int size = customerService.getAllCustomers().size();
         assertEquals(size,1);
@@ -198,15 +221,107 @@ public class TestCustomerService {
         assertEquals("same balance",error);
     }
 
-    //todo
+    @Test
+    public void testUpdateBalanceByEmptyId(){
+        String error = null;
+        try{
+            customerService.updateCustomerBalance("",BALANCE);
+        }catch(CustomerException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateBalanceByNullId(){
+        String error = null;
+        try{
+            customerService.updateCustomerBalance(null,BALANCE);
+        }catch(CustomerException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateBalanceByNotExistId(){
+        String error = null;
+        try{
+            customerService.updateCustomerBalance("NEWCUSTOMER",BALANCE);
+        }catch(CustomerException e){
+            error = e.getMessage();
+        }
+        assertEquals("not exist customer",error);
+    }
+
+    @Test
+    public void testUpdateNegativeBalance(){
+        String error = null;
+        try{
+            customerService.updateCustomerBalance(CID,-10);
+        }catch(CustomerException e){
+            error = e.getMessage();
+        }
+        assertEquals("neg balance",error);
+    }
+
     @Test
     public void testUpdateCustomerAddress(){
+        try{
+            customerService.updateCustomerAddress(CID,ADDRESS);
+        } catch (CustomerException e){
+            fail();
+        }
 
     }
 
-    //todo
     @Test
-    public void testUpdateSameCustomerAddress(){
+    public void testUpdateAddressByEmptyId(){
+        String error = null;
+        try{
+            customerService.updateCustomerAddress("",ADDRESS);
+        } catch (CustomerException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateAddressByNullId(){
+        String error = null;
+        try{
+            customerService.updateCustomerAddress(null,ADDRESS);
+        } catch (CustomerException e){
+            error = e.getMessage();
+        }
+        assertEquals("provide valid id",error);
+    }
+
+    @Test
+    public void testUpdateAddressByNotExistId(){
+        String error = null;
+        try{
+            customerService.updateCustomerAddress("NEWC",ADDRESS);
+        } catch (CustomerException e){
+            error = e.getMessage();
+        }
+        assertEquals("not exist customer",error);
+    }
+
+    public Set<Address> createAddress(){
+
+        Address address = new Address();
+        address.setAddressId("aid");
+        address.setCountry("CA");
+        address.setCity("MTL");
+        address.setProvince("QC");
+        address.setName("");
+        address.setStreetAddress("Sherbrooke");
+        address.setPostalCode("H2X");
+        address.setPhoneNumber("11111");
+        Set<Address> addresses = new HashSet<Address>();
+        addresses.add(address);
+        return addresses;
 
     }
 

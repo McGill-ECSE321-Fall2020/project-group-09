@@ -189,7 +189,7 @@ public class CustomerService {
     @Transactional
     public Customer deleteCustomer(String id) {
         if (id == null||id == "") {
-            throw new CustomerException ("provide vaild id");
+            throw new CustomerException ("provide valid id");
         }
         Customer customer = customerRepository.findCustomerByUserRoleId(id);
         if (customer == null) {
@@ -205,7 +205,7 @@ public class CustomerService {
     @Transactional
     public Customer updateCustomerBalance (String id, double balance) {
         if (id == null||id == "") {
-            throw new CustomerException ("provide vaild id");
+            throw new CustomerException ("provide valid id");
         }
         Customer customer = customerRepository.findCustomerByUserRoleId(id);
         if (customer == null) {
@@ -224,7 +224,7 @@ public class CustomerService {
     @Transactional
     public Customer updateCustomerAddress (String id, Set<Address> addresses) {
         if (id == null||id == "") {
-            throw new CustomerException ("provide vaild id");
+            throw new CustomerException ("provide valid id");
         }
         Customer customer = customerRepository.findCustomerByUserRoleId(id);
         if (customer == null) {

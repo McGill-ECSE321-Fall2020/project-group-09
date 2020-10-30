@@ -110,7 +110,7 @@ public class ArtPieceService {
     @Transactional
     public ArtPiece deleteArtPiece (String id) {
         if (id == null||id == "") {
-            throw new ArtPieceException ("provide vaild id");
+            throw new ArtPieceException ("provide valid id");
         }
         ArtPiece artpiece = artpieceRepository.findArtPieceByArtPieceId(id);
         if (artpiece == null) {
@@ -126,7 +126,7 @@ public class ArtPieceService {
     @Transactional
     public ArtPiece updateArtPieceDate (String id, Date newdate) {
         if (id == null||id == "") {
-            throw new ArtPieceException ("provide vaild id");
+            throw new ArtPieceException ("provide valid id");
         }
         ArtPiece artpiece = artpieceRepository.findArtPieceByArtPieceId(id);
         if (artpiece == null) {
@@ -142,7 +142,7 @@ public class ArtPieceService {
     @Transactional
     public ArtPiece updateArtPieceDescription (String id, String des) {
         if (id == null||id == "") {
-            throw new ArtPieceException ("provide vaild id");
+            throw new ArtPieceException ("provide valid id");
         }
         ArtPiece artpiece = artpieceRepository.findArtPieceByArtPieceId(id);
         if (artpiece == null) {
@@ -156,7 +156,7 @@ public class ArtPieceService {
     @Transactional
     public ArtPiece updateArtPiecePrice (String id, double price) {
         if (id == null||id == "") {
-            throw new ArtPieceException ("provide vaild id");
+            throw new ArtPieceException ("provide valid id");
         }
         ArtPiece artpiece = artpieceRepository.findArtPieceByArtPieceId(id);
         if (artpiece == null) {
@@ -172,7 +172,7 @@ public class ArtPieceService {
     @Transactional
     public ArtPiece updateArtPieceName (String id, String name) {
         if (id == null||id == "") {
-            throw new ArtPieceException ("provide vaild id");
+            throw new ArtPieceException ("provide valid id");
         }
         ArtPiece artpiece = artpieceRepository.findArtPieceByArtPieceId(id);
         if (artpiece == null) {
@@ -189,7 +189,7 @@ public class ArtPieceService {
     @Transactional
     public ArtPiece updateArtPieceStatus (String id, String status){
         if (id == null||id == "") {
-            throw new ArtPieceException ("provide vaild id");
+            throw new ArtPieceException ("provide valid id");
         }
         ArtPiece artPiece = artpieceRepository.findArtPieceByArtPieceId(id);
         if (artPiece == null) {
@@ -211,7 +211,7 @@ public class ArtPieceService {
     @Transactional
     public ArtPiece updateArtPieceAuthor (String id, String author){
         if (id == null||id == "") {
-            throw new ArtPieceException ("provide vaild id");
+            throw new ArtPieceException ("provide valid id");
         }
         ArtPiece artPiece = artpieceRepository.findArtPieceByArtPieceId(id);
         if (artPiece == null) {

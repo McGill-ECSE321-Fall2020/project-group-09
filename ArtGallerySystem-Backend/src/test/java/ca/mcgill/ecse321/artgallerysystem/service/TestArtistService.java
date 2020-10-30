@@ -4,8 +4,8 @@ package ca.mcgill.ecse321.artgallerysystem.service;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtistRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtistException;
 
+import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtistException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +23,6 @@ import static org.mockito.ArgumentMatchers.anyString;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.lenient;
 
 @ExtendWith(MockitoExtension.class)
@@ -125,6 +124,28 @@ public class TestArtistService {
     }
 
     @Test
+    public void testDeleteByEmptyId(){
+        String error = null;
+        try{
+            artistService.deleteArtist("");
+        }catch(ArtistException e){
+            error = e.getMessage();
+        }
+        assertEquals("invalid id",error);
+    }
+
+    @Test
+    public void testDeleteByNullId(){
+        String error = null;
+        try{
+            artistService.deleteArtist(null);
+        }catch(ArtistException e){
+            error = e.getMessage();
+        }
+        assertEquals("invalid id",error);
+    }
+
+    @Test
     public void testGetAll(){
         int size = artistService.getAllArtists().size();
         assertEquals(size,1);
@@ -204,5 +225,35 @@ public class TestArtistService {
         assertEquals("negative credit",error);
     }
 
+    @Test
+    public void testUpdateCreditByEmptyId(){
+        String error = null;
+        try{
+            artistService.updateArtistCredit("",CREDIT);
+        }catch(ArtistException e){
+            error = e.getMessage();
+        }
+        assertEquals("invalid id",error);
+    }
 
+    @Test
+    public void testUpdateCreditByNullId(){
+        String error = null;
+        try{
+            artistService.updateArtistCredit(null,CREDIT);
+        }catch(ArtistException e){
+            error = e.getMessage();
+        }
+        assertEquals("invalid id",error);
+    }
+
+    @Test void testUpdateByNotExistId(){
+        String error = null;
+        try{
+            artistService.updateArtistCredit("NEWARTIST",CREDIT);
+        }catch(ArtistException e){
+            error = e.getMessage();
+        }
+        assertEquals("not exist artist",error);
+    }
 }
