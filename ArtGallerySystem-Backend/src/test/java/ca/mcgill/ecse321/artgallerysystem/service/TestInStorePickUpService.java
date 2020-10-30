@@ -242,11 +242,10 @@ public class TestInStorePickUpService {
 	 
 	 @Test
 		public void testUpdateInStorePickUpWithNotExistPickUpReferenceNumber() {
-		    InStorePickUp inStorePickUp = null;
-			String error = null;
+		    String error = null;
 			try {
 				inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER_N, STATUS);
-			} catch (AddressException e) {
+			} catch (InStorePickUpException e) {
 				error = e.getMessage();
 			}
 			assertEquals("not exist inStorePickUp", error);
@@ -256,7 +255,7 @@ public class TestInStorePickUpService {
 		public void testUpdateInStorePickUpWithSameNewPickUpReferenceNumber() {
 			InStorePickUp inStorePickUp = null;
 			String error = null;
-			String newTrackingnNUMBER = PICKUPREFERENCENUMBER;
+			String newpickUpReferenceNUMBER = PICKUPREFERENCENUMBER;
 			try {
 				inStorePickUp = inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER, STATUS);
 			} catch (InStorePickUpException e) {

@@ -76,7 +76,7 @@ public class ParcelDeliveryService {
 		}
 		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
 		if (pardel == null) {
-			throw new ParcelDeliveryException ("ParcelDelivery with id " + trackingNumber + " does not exist.");
+			throw new ParcelDeliveryException ("not exist parcelDelivery");
 		}
 		return pardel;
 	}

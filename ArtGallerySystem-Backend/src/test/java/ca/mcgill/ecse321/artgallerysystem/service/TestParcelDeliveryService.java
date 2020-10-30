@@ -119,7 +119,7 @@ public class TestParcelDeliveryService {
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
-        assertEquals("invalid trackingnumber",error);
+        assertEquals("Please provide valid trackingNumber.",error);
     }
 	@Test
 	public void testCreateParcelDeliveryWithoutCarrier() {
@@ -130,7 +130,7 @@ public class TestParcelDeliveryService {
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
-        assertEquals("please enter valid carrier",error);
+        assertEquals("Carrier can not be empty! ",error);
     }
 	@Test
 	public void testCreateParcelDeliveryWithoutStatus() {
@@ -141,7 +141,7 @@ public class TestParcelDeliveryService {
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
-        assertEquals("provide status",error);
+        assertEquals("Status can not be empty! ",error);
     }
 	@Test
 	public void testCreateParcelDeliveryWithoutDeliveryAddress() {
@@ -152,7 +152,7 @@ public class TestParcelDeliveryService {
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
-        assertEquals("please provide valid delivery address",error);
+        assertEquals("Please provide valid Address.",error);
     }
 	
 	@Test
@@ -172,7 +172,7 @@ public class TestParcelDeliveryService {
 	        } catch (ParcelDeliveryException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("not exist parcelDelivery",error);
+	        assertEquals("Order not exist.",error);
 	    }
 	 
 	 @Test
@@ -183,7 +183,7 @@ public class TestParcelDeliveryService {
 	        } catch (ParcelDeliveryException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("provide valid tracking number",error);
+	        assertEquals("Order not exist.",error);
 	    }
 	 
 	 @Test
@@ -194,7 +194,7 @@ public class TestParcelDeliveryService {
 	        } catch (ParcelDeliveryException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("provide valid tracking number",error);
+	        assertEquals("Order not exist.",error);
 	    }
 	 
 	 @Test
@@ -228,7 +228,7 @@ public class TestParcelDeliveryService {
 	        }catch (ParcelDeliveryException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("provide valid trackingnumber", error);
+	        assertEquals("Please provide vaild trackingNumber.", error);
 	    }
 	 
 	 @Test
@@ -240,7 +240,7 @@ public class TestParcelDeliveryService {
 	        }catch (ParcelDeliveryException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("provide valid trackingnumber", error);
+	        assertEquals("Please provide vaild trackingNumber.", error);
 	    }
 	 
 	 @Test
@@ -285,7 +285,7 @@ public class TestParcelDeliveryService {
 			}catch (ParcelDeliveryException e) {
 				error = e.getMessage();
 			}
-			assertEquals("please provide a not null trackingNumber", error);
+			assertEquals("provide vaild trackingNumber", error);
 		}
 	 @Test
 		public void testUpdateParcelDeliveryWithNullTrackingNumber(){
@@ -295,7 +295,7 @@ public class TestParcelDeliveryService {
 			}catch (ParcelDeliveryException e) {
 				error = e.getMessage();
 			}
-			assertEquals("please provide a not null trackingNumber", error);
+			assertEquals("provide vaild trackingNumber", error);
 		}
 	 public Address createAddress(){
 			Address address = new Address();
