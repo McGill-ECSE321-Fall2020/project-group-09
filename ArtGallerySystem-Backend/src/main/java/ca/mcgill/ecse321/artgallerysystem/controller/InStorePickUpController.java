@@ -41,7 +41,7 @@ public InStorePickUpDTO createInStorePickUp(@RequestParam("deliveryID")String id
 	//ArtGallerySystem system = systemservice.getSystemById(id);
 	Address address = addressRepository.findAddressByAddressId(storeAddress);
 	InStorePickUpStatus inStorePickUpstatus = getStatus(status);
-	InStorePickUp inStorePickUp = inStorePickUpService.createInStorePickUp(id, pickUpReferenceNumber, inStorePickUpstatus, address);
+	InStorePickUp inStorePickUp = inStorePickUpService.createInStorePickUp(pickUpReferenceNumber, inStorePickUpstatus, address);
 	return convertToDto(inStorePickUp);
 }
 @GetMapping(value = {"/inStorePickUps/{id}", "/inStorePickUps/{id}/"})
@@ -54,7 +54,7 @@ public void deleteinStorePickUp(@PathVariable("id") String deliveryid) {
 }
 @PutMapping (value = {"/inStorePickUp/update/{id}", "/inStorePickUp/update/{id}/"})
 public InStorePickUpDTO updateparcelDeliveryStatus(@PathVariable("deliveryID")String id, @RequestParam("inStorePickUp")String newinStorePickUp) {
-	return convertToDto(inStorePickUpService.updateinStorePickUpStatus(id,getStatus(newinStorePickUp)));
+	return convertToDto(inStorePickUpService.updateinStorePickUp(id,getStatus(newinStorePickUp)));
 }
 public InStorePickUpDTO convertToDto(InStorePickUp inStorePickUp) {
 	InStorePickUpDTO inStorePickUpDto = new InStorePickUpDTO();
