@@ -93,16 +93,15 @@ public class InStorePickUpService {
 	}
 	@Transactional
 	public InStorePickUp updateinStorePickUp(String pickUpReferenceNumber, InStorePickUpStatus status) {
-		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
+		
 		if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
 			throw new InStorePickUpException ("provide valid pickUpReferenceNumber");
 		}
-		if (valueOf(InStorePickUp.getInStorePickUpStatus()) == status){
-            throw new InStorePickUpException ("same status");
-        }
+		
 		if(status == null) {
 			throw new InStorePickUpException ("Status cannot be empty!");
-		}if (pickup == null) {
+		}InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
+		if (pickup == null) {
 			throw new InStorePickUpException ("not exist inStorePickUp");
 		}
 		pickup.setInStorePickUpStatus(status);;

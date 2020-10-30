@@ -245,7 +245,7 @@ public class TestInStorePickUpService {
 		    InStorePickUp inStorePickUp = null;
 			String error = null;
 			try {
-				inStorePickUp = inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER_N, STATUS);
+				inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER_N, STATUS);
 			} catch (AddressException e) {
 				error = e.getMessage();
 			}
