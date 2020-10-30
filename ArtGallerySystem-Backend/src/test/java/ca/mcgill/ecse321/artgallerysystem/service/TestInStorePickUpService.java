@@ -65,7 +65,7 @@ public class TestInStorePickUpService {
 	@BeforeEach
 	public void setMockOutput() {
 		 MockitoAnnotations.initMocks(this);
-	        lenient().when(inStorePickUpRepository.findById(anyString())).thenAnswer((InvocationOnMock invocation) -> {
+	        lenient().when(inStorePickUpRepository.findInStorePickUpByDeliveryId((anyString()))).thenAnswer((InvocationOnMock invocation) -> {
 	            if (invocation.getArgument(0).equals(PICKUPREFERENCENUMBER)){
 	            	InStorePickUp inStorePickUp = new InStorePickUp();
 	            	inStorePickUp.setPickUpReferenceNumber(PICKUPREFERENCENUMBER);

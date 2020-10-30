@@ -32,7 +32,9 @@ import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ParcelDeliveryRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
+import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
@@ -59,6 +61,7 @@ public class TestParcelDeliveryService {
 	private static final String TRACKINGNUMBER_N = "Test TrackingNumber 2";
 	private ParcelDelivery parcelDelivery;
 	private Delivery delivery;
+	private Purchase purchase = createPurchase();
 	private List<ParcelDelivery> allParcelDeliveries;
 
 	@InjectMocks
@@ -66,14 +69,16 @@ public class TestParcelDeliveryService {
 	@BeforeEach
 	public void setMockOutput() {
 		 MockitoAnnotations.initMocks(this);
-	        lenient().when(parcelDeliveryRepository.findById(anyString())).thenAnswer((InvocationOnMock inovation) -> {
+	        lenient().when(parcelDeliveryRepository.findParcelDeliveryByDeliveryId((anyString()))).thenAnswer((InvocationOnMock inovation) -> {
 	            if (inovation.getArgument(0).equals(TRACKINGNUMBER)){
 	            	ParcelDelivery parcelDelivery = new ParcelDelivery();
 	            	parcelDelivery.setTrackingNumber(TRACKINGNUMBER);
 	            	parcelDelivery.setCarrier(CARRIER);
 	            	parcelDelivery.setDeliveryAddress(DELIVERADDRESS);
 	            	parcelDelivery.setParcelDeliveryStatus(STATUS);
-	                
+	                parcelDelivery.setDeliveryId(TRACKINGNUMBER);
+	                parcelDelivery.setPurchase(purchase);
+	          
 	            	parcelDeliveryRepository.save(parcelDelivery);
 	                return parcelDelivery;
 	            }else{
@@ -259,10 +264,10 @@ public class TestParcelDeliveryService {
 			String error = null;
 			try {
 				parcelDelivery = parcelDeliveryService.updateparcelDelivery(TRACKINGNUMBER_N, STATUS);
-			} catch (AddressException e) {
+			} catch (ParcelDeliveryException e) {
 				error = e.getMessage();
 			}
-			assertEquals("TrackingNumber not exist", error);
+			assertEquals("not exist delivery", error);
 		}
 	 
 	 @Test
@@ -308,6 +313,49 @@ public class TestParcelDeliveryService {
 			address.setPostalCode("H8G");
 			address.setPhoneNumber("666");
 			return address;
+		}
+	 public Purchase createPurchase() {
+			
+			String oid = "TestOrder1";
+			Purchase purchase = new Purchase();
+			purchase.setOrderId(oid);
+			//purchase.setArtGallerySystem(sys);
+			ArtGallerySystemUser u = new ArtGallerySystemUser();
+			u.setName("userTest");
+			//u.setArtGallerySystem(sys);
+			//userRepository.save(u);
+			Artist artist = new Artist();
+			artist.setArtGallerySystemUser(u);
+			artist.setUserRoleId("id1");
+			artist.setCredit(0.0);
+			//artistRepository.save(artist);
+			Set<Artist> arts = new HashSet<Artist>();
+			arts.add(artist);
+			ArtPiece test = new ArtPiece();
+			test.setArtPieceId("id");
+			test.setAuthor("author");
+			test.setDescription("des");
+			test.setPrice(10.0);
+			test.setDate(Date.valueOf("2020-01-01"));
+			//test.setArtGallerySystem(sys);
+			test.setArtist(arts);
+			test.setArtPieceStatus(ArtPieceStatus.Available);
+			test.setName("name");
+			//artPieceRepository.save(test);
+			purchase.setArtPiece(test);
+			Customer customer = new Customer();
+			ArtGallerySystemUser u1 = new ArtGallerySystemUser();
+			u1.setName("userTest");
+			//u1.setArtGallerySystem(sys);
+			//userRepository.save(u1);
+			customer.setArtGallerySystemUser(u1);
+			customer.setUserRoleId("id2");
+			customer.setBalance(0.0);
+			//customerRepository.save(customer);
+			purchase.setDate(Date.valueOf("2020-01-01"));
+			purchase.setOrderStatus(OrderStatus.Successful);
+			purchase.setCustomer(customer);
+			return purchase;
 		}
 	 
 }
