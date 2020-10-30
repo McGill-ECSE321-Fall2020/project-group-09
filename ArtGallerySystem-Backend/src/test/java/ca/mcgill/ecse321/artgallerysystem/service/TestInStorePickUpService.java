@@ -53,7 +53,7 @@ public class TestInStorePickUpService {
 	private AddressRepository addressRepository;
 	private DeliveryRepository deliveryRepository;
 	private static final String PICKUPREFERENCENUMBER = "00123";
-	private static final Address STOREADDRESS 
+	private Address STOREADDRESS = createAddress();
 	private static final InStorePickUpStatus STATUS = InStorePickUpStatus.PickedUp;
 	private static final String PICKUPREFERENCENUMBER_N = "Test PickUpReferenceNumber 2";
 	private InStorePickUp inStorePickUp;
@@ -65,8 +65,8 @@ public class TestInStorePickUpService {
 	@BeforeEach
 	public void setMockOutput() {
 		 MockitoAnnotations.initMocks(this);
-	        lenient().when(inStorePickUpRepository.findById(anyString())).thenAnswer((InvocationOnMock inovation) -> {
-	            if (inovation.getArgument(0).equals(PICKUPREFERENCENUMBER)){
+	        lenient().when(inStorePickUpRepository.findById(anyString())).thenAnswer((InvocationOnMock invocation) -> {
+	            if (invocation.getArgument(0).equals(PICKUPREFERENCENUMBER)){
 	            	InStorePickUp inStorePickUp = new InStorePickUp();
 	            	inStorePickUp.setPickUpReferenceNumber(PICKUPREFERENCENUMBER);
 	            	inStorePickUp.setStoreAddress(STOREADDRESS);
@@ -138,8 +138,9 @@ public class TestInStorePickUpService {
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
-        assertEquals("provide status",error);
+        assertEquals("Status can not be empty! ",error);
     }
+
 	@Test
 	public void testCreateInStorePickUpWithoutStoreAddress() {
 		String error = null;
@@ -231,13 +232,12 @@ public class TestInStorePickUpService {
 	 @Test
 	    public void testGetInStorePickUpByNullPickUpReferenceNumber(){
 	        String error = null;
-	        String pickUpReferenceNumber = null;
 	        try{
 	            inStorePickUpService.getInStorePickUp(null);
 	        }catch (InStorePickUpException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("provide valid pickUpReferenceNumber", error);
+	        assertEquals("Please provide valid pickUpReferenceNumber.", error);
 	    }
 	 
 	 @Test
@@ -294,7 +294,19 @@ public class TestInStorePickUpService {
 			}
 			assertEquals("please provide a not null pickUpReferenceNumber", error);
 		}
-	 
+
+		public Address createAddress(){
+			Address address = new Address();
+			address.setAddressId("addressid");
+			address.setCountry("CA");
+			address.setCity("MTL");
+			address.setProvince("QC");
+			address.setName("xxx");
+			address.setStreetAddress("Sherbrooke");
+			address.setPostalCode("H3A");
+			address.setPhoneNumber("222");
+			return address;
+		}
 }
 
 

@@ -62,7 +62,7 @@ public class InStorePickUpService {
 	public InStorePickUp getInStorePickUp(String pickUpReferenceNumber) {
 
 		if (pickUpReferenceNumber == null||pickUpReferenceNumber == "") {
-			throw new InStorePickUpException ("Please provide vaild pickUpReferenceNumber.");
+			throw new InStorePickUpException ("Please provide valid pickUpReferenceNumber.");
 		}
 		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
 		if (pickup== null) {

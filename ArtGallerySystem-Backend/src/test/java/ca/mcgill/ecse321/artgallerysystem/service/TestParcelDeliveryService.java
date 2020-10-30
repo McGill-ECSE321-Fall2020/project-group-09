@@ -53,7 +53,7 @@ public class TestParcelDeliveryService {
 	private DeliveryRepository deliveryRepository;
 	private static final String TRACKINGNUMBER = "00213";
 	private static final String CARRIER = "000";
-	private static final Address DELIVERADDRESS 
+	private  Address DELIVERADDRESS;
 	private static final ParcelDeliveryStatus STATUS = ParcelDeliveryStatus.Delivered;
 	private static final String TRACKINGNUMBER_N = "Test TrackingNumber 2";
 	private ParcelDelivery parcelDelivery;
