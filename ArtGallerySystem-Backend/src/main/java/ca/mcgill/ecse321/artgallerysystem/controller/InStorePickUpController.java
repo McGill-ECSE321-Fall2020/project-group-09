@@ -29,14 +29,14 @@ public class InStorePickUpController {
 private InStorePickUpService inStorePickUpService;
 @Autowired
 private AddressRepository addressRepository;
-@GetMapping(value = {"/parcelDeliveries", "/parcelDeliveries/"})
+/*@GetMapping(value = {"/parcelDeliveries", "/parcelDeliveries/"})
 public List<InStorePickUpDTO> getAllParcelDeliveries(){
 	
 	List<InStorePickUp> inStorePickUps = inStorePickUpService.getAllInStorePickUps();
 	return toList(inStorePickUps.stream().map(this::convertToDto).collect(Collectors.toList()));
 	
-}
-@PostMapping(value = {"/parcelDelivery", "/parcelDelivery/"})
+}*/
+@PostMapping(value = {"/inStorePickUp", "/inStorePickUp/"})
 public InStorePickUpDTO createInStorePickUp(@RequestParam("deliveryID")String id, @RequestParam("pickUpReferenceNumber")String pickUpReferenceNumber, @RequestParam("inStorePickUpStatus")String status, @RequestParam("storeAddress")String storeAddress) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
 	Address address = addressRepository.findAddressByAddressId(storeAddress);
