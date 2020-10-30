@@ -234,7 +234,7 @@ public class TestInStorePickUpService {
 	    public void testUpdateInStorePickUp(){
 	      
 	       try{
-	            inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER, STATUS.PickedUp);
+	            inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER, InStorePickUpStatus.Pending);
 	        }catch (InStorePickUpException e){
 	            fail();
 	        }
