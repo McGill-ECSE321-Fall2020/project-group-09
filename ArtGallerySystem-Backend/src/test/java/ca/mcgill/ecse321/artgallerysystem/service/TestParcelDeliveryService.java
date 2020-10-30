@@ -271,7 +271,7 @@ public class TestParcelDeliveryService {
 		}
 	 
 	 @Test
-		public void testUpdateParcelDeliveryWithSameTrackingNumber() {
+		public void testUpdateParcelDeliveryWithSameStatus() {
 			ParcelDelivery parcelDelivery = null;
 			String error = null;
 			String newTrackingnNUMBER = TRACKINGNUMBER;
@@ -280,7 +280,7 @@ public class TestParcelDeliveryService {
 			} catch (ParcelDeliveryException e) {
 				error = e.getMessage();
 			}
-			assertEquals("TrackingNumber is the same", error);
+			assertEquals("same status", error);
 		}
 	 @Test
 		public void testUpdateParcelDeliveryWithEmptyTrackingNumber(){

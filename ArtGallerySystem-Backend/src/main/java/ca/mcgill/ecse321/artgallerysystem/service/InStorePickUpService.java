@@ -96,13 +96,15 @@ public class InStorePickUpService {
 		
 		if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
 			throw new InStorePickUpException ("provide valid pickUpReferenceNumber");
-		}
-		
+		}InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
 		if(status == null) {
 			throw new InStorePickUpException ("Status cannot be empty!");
-		}InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
+		}
 		if (pickup == null) {
 			throw new InStorePickUpException ("not exist inStorePickUp");
+		}
+		if (pickup.getInStorePickUpStatus() == status) {
+			throw new InStorePickUpException("same status");
 		}
 		pickup.setInStorePickUpStatus(status);;
 		inStorePickUpRepository.save(pickup);

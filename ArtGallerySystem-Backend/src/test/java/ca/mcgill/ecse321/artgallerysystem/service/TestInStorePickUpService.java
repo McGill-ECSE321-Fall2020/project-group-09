@@ -232,8 +232,8 @@ public class TestInStorePickUpService {
 	 
 	 @Test
 	    public void testUpdateInStorePickUp(){
-	        String error = null;
-	        try{
+	      
+	       try{
 	            inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER, STATUS.PickedUp);
 	        }catch (InStorePickUpException e){
 	            fail();
@@ -252,17 +252,16 @@ public class TestInStorePickUpService {
 		}
 	 
 	 @Test
-		public void testUpdateInStorePickUpWithSameNewPickUpReferenceNumber() {
-			InStorePickUp inStorePickUp = null;
+		public void testUpdateInStorePickUpWithSameStatus() {
 			String error = null;
-			String newpickUpReferenceNUMBER = PICKUPREFERENCENUMBER;
 			try {
 				inStorePickUp = inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER, STATUS);
 			} catch (InStorePickUpException e) {
 				error = e.getMessage();
 			}
-			assertEquals("PickUpReferenceNumber is the same", error);
+			assertEquals("same status", error);
 		}
+	 
 	 @Test
 		public void testUpdateInStorePickUpWithEmptyPickUpReferenceNumber(){
 			String error = null;

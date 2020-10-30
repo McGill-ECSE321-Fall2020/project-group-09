@@ -97,6 +97,9 @@ public class ParcelDeliveryService {
 		if (pardel == null) {
 			throw new ParcelDeliveryException ("not exist delivery");
 		}
+		if (pardel.getParcelDeliveryStatus()==status) {
+			throw new ParcelDeliveryException ("same status");
+		}
 		pardel.setParcelDeliveryStatus(status);;
 		parcelDeliveryRepository.save(pardel);
 		return pardel;
