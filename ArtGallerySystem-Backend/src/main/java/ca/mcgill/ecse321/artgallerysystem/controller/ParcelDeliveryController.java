@@ -37,24 +37,24 @@ public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 	
 }
 @PostMapping(value = {"/parcelDelivery", "/parcelDelivery/"})
-public ParcelDeliveryDTO createParcelDelivery(@RequestParam("deliveryID")String id, @RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String status, @RequestParam("deliveryAddress")String deliveryAddress) {
+public ParcelDeliveryDTO createParcelDelivery( @RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String status, @RequestParam("deliveryAddress")String deliveryAddress) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
 	Address address = addressRepository.findAddressByAddressId(deliveryAddress);
 	ParcelDeliveryStatus parcelDeliverystatus = getStatus(status);
-	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(id, trackingNumber, carrier, parcelDeliverystatus, address);
+	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(trackingNumber, carrier, parcelDeliverystatus, address);
 	return convertToDto(parcelDelivery);
 }
-@GetMapping(value = {"/parcelDeliveryes/{id}", "/parcelDeliveryes/{id}/"})
-public ParcelDeliveryDTO getparcelDeliveryById(@PathVariable("id")String id) {
-	return convertToDto(parcelDeliveryService.getParcelDelivery(id));
+@GetMapping(value = {"/parcelDeliveryes/{trackingNumber}", "/parcelDeliveryes/{trackingNumber}/"})
+public ParcelDeliveryDTO getparcelDeliveryById(@PathVariable("trackingNumber")String trackingNumber) {
+	return convertToDto(parcelDeliveryService.getParcelDelivery(trackingNumber));
 }
-@DeleteMapping(value = {"/parcelDeliveryes/{id}", "/parcelDeliveryes/{id}/"})
-public void deleteparcelDelivery(@PathVariable("id") String deliveryid) {
-	parcelDeliveryService.deleteParcelDelivery(deliveryid);
+@DeleteMapping(value = {"/parcelDeliveryes/{trackingNumber}", "/parcelDeliveryes/{trackingNumber}/"})
+public void deleteparcelDelivery(@PathVariable("trackingNumber") String trackingNumber) {
+	parcelDeliveryService.deleteParcelDelivery(trackingNumber);
 }
-@PutMapping (value = {"/parcelDelivery/update/{id}", "/parcelDelivery/update/{id}/"})
-public ParcelDeliveryDTO updateparcelDeliveryStatus(@PathVariable("deliveryID")String id, @RequestParam("parcelDelivery")String newparcelDelivery) {
-	return convertToDto(parcelDeliveryService.updateparcelDeliveryStatus(id,getStatus(newparcelDelivery)));
+@PutMapping (value = {"/parcelDelivery/update/{trackingNumber}", "/parcelDelivery/update/{trackingNumber}/"})
+public ParcelDeliveryDTO updateparcelDelivery(@PathVariable("trackingNumber")String trackingNumber, @RequestParam("parcelDelivery")String newparcelDelivery) {
+	return convertToDto(parcelDeliveryService.updateparcelDelivery(trackingNumber,getStatus(newparcelDelivery)));
 }
 public ParcelDeliveryDTO convertToDto(ParcelDelivery parcelDelivery) {
     ParcelDeliveryDTO parcelDeliveryDto = new ParcelDeliveryDTO();

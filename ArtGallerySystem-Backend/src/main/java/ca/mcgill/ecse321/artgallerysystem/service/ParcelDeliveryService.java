@@ -36,12 +36,9 @@ public class ParcelDeliveryService {
 	@Autowired
 	ParcelDeliveryRepository parcelDeliveryRepository;
     @Transactional
-	public ParcelDelivery createParcelDelivery(String deliveryid, String trackingNumber, String carrier,
+	public ParcelDelivery createParcelDelivery(String trackingNumber, String carrier,
 			ParcelDeliveryStatus status, Address deliveryAddress) {
-    	if(deliveryid == null || deliveryid.length() == 0) {
-    		throw new ParcelDeliveryException ("Please provide valid deliveryid.");
-		}
-		if (trackingNumber == null|| trackingNumber == "") {
+    	if (trackingNumber == null|| trackingNumber == "") {
 			throw new ParcelDeliveryException ("Please provide valid trackingNumber.");
 		}
 		if (deliveryAddress == null) {
@@ -53,7 +50,6 @@ public class ParcelDeliveryService {
 			throw new ParcelDeliveryException ("Status can not be empty! ");
 		}
     	ParcelDelivery pardel = new ParcelDelivery();
-    	pardel.setDeliveryId(deliveryid);
     	pardel.setCarrier(carrier);
     	pardel.setParcelDeliveryStatus(status);
     	pardel.setTrackingNumber(trackingNumber);
@@ -63,24 +59,24 @@ public class ParcelDeliveryService {
 	}
 	
 	@Transactional
-	public ParcelDelivery deleteParcelDelivery(String deliveryid) {
+	public ParcelDelivery deleteParcelDelivery(String trackingNumber) {
 		ParcelDelivery pardel=null;
-		ParcelDelivery par = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(deliveryid);
+		ParcelDelivery par = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
 	    if (par != null) {
-	    	parcelDeliveryRepository.deleteById(deliveryid);
+	    	parcelDeliveryRepository.deleteById(trackingNumber);
 		}else {
 			throw new ParcelDeliveryException("Order not exist.");
 		}
 		return pardel;
 	}
 	@Transactional
-	public ParcelDelivery getParcelDelivery(String deliveryid) {
-		if (deliveryid == null||deliveryid == "") {
-			throw new ParcelDeliveryException ("Please provide vaild deliveryid.");
+	public ParcelDelivery getParcelDelivery(String trackingNumber) {
+		if (trackingNumber == null||trackingNumber == "") {
+			throw new ParcelDeliveryException ("Please provide vaild trackingNumber.");
 		}
-		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(deliveryid);
+		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
 		if (pardel == null) {
-			throw new ParcelDeliveryException ("ParcelDelivery with id " + deliveryid + " does not exist.");
+			throw new ParcelDeliveryException ("ParcelDelivery with id " + trackingNumber + " does not exist.");
 		}
 		return pardel;
 	}
@@ -90,10 +86,10 @@ public class ParcelDeliveryService {
 	}
 	
 	@Transactional
-	public ParcelDelivery updateparcelDeliveryStatus(String deliveryid, ParcelDeliveryStatus status) {
-		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(deliveryid);
-		if (deliveryid == null|| deliveryid == "") {
-			throw new ParcelDeliveryException ("provide vaild deliveryid");
+	public ParcelDelivery updateparcelDelivery(String trackingNumber, ParcelDeliveryStatus status) {
+		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
+		if (trackingNumber == null|| trackingNumber == "") {
+			throw new ParcelDeliveryException ("provide vaild trackingNumber");
 		}
 		if(status == null) {
 			throw new ParcelDeliveryException ("Status cannot be empty!");
