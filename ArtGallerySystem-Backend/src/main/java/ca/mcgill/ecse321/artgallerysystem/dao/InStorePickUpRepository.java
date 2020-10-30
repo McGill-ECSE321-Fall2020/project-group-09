@@ -8,6 +8,6 @@ import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
 
 @Repository
 public interface InStorePickUpRepository extends CrudRepository <InStorePickUp, String>{
-	public InStorePickUp findInStorePickUpByDeliveryId(String deliveryId);
+	public InStorePickUp findInStorePickUpByDeliveryId(String pickUpReferenceNumber);
 }
 

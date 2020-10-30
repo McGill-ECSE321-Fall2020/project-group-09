@@ -41,11 +41,8 @@ public class InStorePickUpService {
 	@Autowired
 	InStorePickUpRepository inStorePickUpRepository;
 	@Transactional
-	public InStorePickUp createInStorePickUp(String deliveryid, String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress) {
-    	if(deliveryid == null || deliveryid.length() == 0) {
-    		throw new InStorePickUpException ("Please provide valid deliveryid.");
-		}
-		if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
+	public InStorePickUp createInStorePickUp(String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress) {
+    	if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
 			throw new InStorePickUpException ("Please provide valid pickUpReferenceNumber.");
 		}
 		if (storeAddress == null) {
@@ -55,7 +52,6 @@ public class InStorePickUpService {
 			throw new InStorePickUpException ("Status can not be empty! ");
 		}
 		InStorePickUp pickup = new InStorePickUp();
-    	pickup.setDeliveryId(deliveryid);
     	pickup.setPickUpReferenceNumber(pickUpReferenceNumber);
     	pickup.setStoreAddress(storeAddress);
     	pickup.setInStorePickUpStatus(status);
@@ -63,14 +59,14 @@ public class InStorePickUpService {
 		return pickup;
 	}
 	@Transactional
-	public InStorePickUp getInStorePickUp(String deliveryid) {
+	public InStorePickUp getInStorePickUp(String pickUpReferenceNumber) {
 
-		if (deliveryid == null||deliveryid == "") {
+		if (pickUpReferenceNumber == null||pickUpReferenceNumber == "") {
 			throw new InStorePickUpException ("Please provide vaild pickUpReferenceNumber.");
 		}
-		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(deliveryid);
+		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
 		if (pickup== null) {
-			throw new InStorePickUpException ("InStorePickUp with id " + deliveryid + " does not exist.");
+			throw new InStorePickUpException ("InStorePickUp with id " + pickUpReferenceNumber + " does not exist.");
 		}
 		return pickup;
 	}
@@ -79,24 +75,24 @@ public class InStorePickUpService {
 		return toList(inStorePickUpRepository.findAll());
 	}
 	@Transactional
-	public InStorePickUp deleteInStorePickUp(String deliveryid) {
-		if (deliveryid == null||deliveryid == "") {
+	public InStorePickUp deleteInStorePickUp(String pickUpReferenceNumber) {
+		if (pickUpReferenceNumber == null||pickUpReferenceNumber == "") {
 			throw new InStorePickUpException ("provide vaild id");
 		}
-		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(deliveryid);
+		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
 		if (pickup == null) {
-			throw new InStorePickUpException ("InStorePickUp with id " + deliveryid + " does not exist.");
+			throw new InStorePickUpException ("InStorePickUp with id " + pickUpReferenceNumber + " does not exist.");
 		}
 		InStorePickUp pic = null;
-		inStorePickUpRepository.deleteById(deliveryid);
+		inStorePickUpRepository.deleteById(pickUpReferenceNumber);
 		
 		return pic;
 	}
 	@Transactional
-	public InStorePickUp updateinStorePickUpStatus(String deliveryid, InStorePickUpStatus status) {
-		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(deliveryid);
-		if (deliveryid == null|| deliveryid == "") {
-			throw new InStorePickUpException ("provide vaild deliveryid");
+	public InStorePickUp updateinStorePickUp(String pickUpReferenceNumber, InStorePickUpStatus status) {
+		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
+		if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
+			throw new InStorePickUpException ("provide vaild pickUpReferenceNumber");
 		}
 		if(status == null) {
 			throw new InStorePickUpException ("Status cannot be empty!");

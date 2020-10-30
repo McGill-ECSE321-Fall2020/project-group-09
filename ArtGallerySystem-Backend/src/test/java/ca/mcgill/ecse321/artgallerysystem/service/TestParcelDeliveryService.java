@@ -53,7 +53,7 @@ public class TestParcelDeliveryService {
 	private DeliveryRepository deliveryRepository;
 	private static final String TRACKINGNUMBER = "00213";
 	private static final String CARRIER = "000";
-	private static final Address DELIVERADDRESS = "Test Address";
+	private static final Address DELIVERADDRESS 
 	private static final ParcelDeliveryStatus STATUS = ParcelDeliveryStatus.Delivered;
 	private static final String TRACKINGNUMBER_N = "Test TrackingNumber 2";
 	private ParcelDelivery parcelDelivery;
@@ -246,7 +246,7 @@ public class TestParcelDeliveryService {
 	    public void testUpdateParcelDelivery(){
 	        String error = null;
 	        try{
-	            parcelDeliveryService.updateparcelDelivery(TRACKINGNUMBER, STATUS);
+	            parcelDeliveryService.updateparcelDelivery(TRACKINGNUMBER, STATUS.Delivered);
 	        }catch (ParcelDeliveryException e){
 	            fail();
 	        }
@@ -265,7 +265,7 @@ public class TestParcelDeliveryService {
 		}
 	 
 	 @Test
-		public void testUpdateParcelDeliveryStatusWithSameNewTrackingNumber() {
+		public void testUpdateParcelDeliveryWithSameTrackingNumber() {
 			ParcelDelivery parcelDelivery = null;
 			String error = null;
 			String newTrackingnNUMBER = TRACKINGNUMBER;
@@ -277,7 +277,7 @@ public class TestParcelDeliveryService {
 			assertEquals("TrackingNumber is the same", error);
 		}
 	 @Test
-		public void testUpdateParcelDeliveryStatusWithEmptyTrackingNumber(){
+		public void testUpdateParcelDeliveryWithEmptyTrackingNumber(){
 			String error = null;
 			try {
 				parcelDelivery = parcelDeliveryService.updateparcelDelivery("", STATUS);
@@ -287,7 +287,7 @@ public class TestParcelDeliveryService {
 			assertEquals("please provide a not null trackingNumber", error);
 		}
 	 @Test
-		public void testUpdateParcelDeliveryStatusWithNullTrackingNumber(){
+		public void testUpdateParcelDeliveryWithNullTrackingNumber(){
 			String error = null;
 			try {
 				parcelDelivery = parcelDeliveryService.updateparcelDelivery(null, STATUS);
