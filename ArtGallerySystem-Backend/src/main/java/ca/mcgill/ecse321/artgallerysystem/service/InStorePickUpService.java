@@ -1,5 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 
+import static java.lang.String.valueOf;
+
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
+import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.InStorePickUpException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ParcelDeliveryException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
@@ -77,11 +80,11 @@ public class InStorePickUpService {
 	@Transactional
 	public InStorePickUp deleteInStorePickUp(String pickUpReferenceNumber) {
 		if (pickUpReferenceNumber == null||pickUpReferenceNumber == "") {
-			throw new InStorePickUpException ("provide vaild id");
+			throw new InStorePickUpException ("provide valid non-empty pickupreferencenumber");
 		}
 		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
 		if (pickup == null) {
-			throw new InStorePickUpException ("InStorePickUp with id " + pickUpReferenceNumber + " does not exist.");
+			throw new InStorePickUpException ("provide valid pickupreferencenumber");
 		}
 		InStorePickUp pic = null;
 		inStorePickUpRepository.deleteById(pickUpReferenceNumber);
@@ -92,8 +95,11 @@ public class InStorePickUpService {
 	public InStorePickUp updateinStorePickUp(String pickUpReferenceNumber, InStorePickUpStatus status) {
 		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
 		if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
-			throw new InStorePickUpException ("provide vaild pickUpReferenceNumber");
+			throw new InStorePickUpException ("provide valid pickUpReferenceNumber");
 		}
+		if (valueOf(InStorePickUp.getInStorePickUpStatus()) == status){
+            throw new InStorePickUpException ("same status");
+        }
 		if(status == null) {
 			throw new InStorePickUpException ("Status cannot be empty!");
 		}if (pickup == null) {

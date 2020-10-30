@@ -116,19 +116,9 @@ public class TestInStorePickUpService {
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
-        assertEquals("invalid pickUpReferenceNumber",error);
+        assertEquals("Please provide valid pickUpReferenceNumber.",error);
     }
-	@Test
-	public void testCreateInStorePickUpWithoutCarrier() {
-		String error = null;
-		InStorePickUp inStorePickUp = new InStorePickUp();
-        try{
-        	inStorePickUp = inStorePickUpService.createInStorePickUp(PICKUPREFERENCENUMBER,STATUS,STOREADDRESS);
-        }catch(InStorePickUpException e){
-            error = e.getMessage();
-        }
-        assertEquals("please enter valid carrier",error);
-    }
+	
 	@Test
 	public void testCreateInStorePickUpWithoutStatus() {
 		String error = null;
@@ -150,7 +140,7 @@ public class TestInStorePickUpService {
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
-        assertEquals("please provide valid Store address",error);
+        assertEquals("Please provide valid StoreAddress.",error);
     }
 	
 	@Test
@@ -170,7 +160,7 @@ public class TestInStorePickUpService {
 	        } catch (InStorePickUpException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("not exist inStorePickUp",error);
+	        assertEquals("provide valid pickupreferencenumber",error);
 	    }
 	 
 	 @Test
@@ -181,7 +171,7 @@ public class TestInStorePickUpService {
 	        } catch (InStorePickUpException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("provide valid tracking number",error);
+	        assertEquals("provide valid non-empty pickupreferencenumber",error);
 	    }
 	 
 	 @Test
@@ -192,7 +182,7 @@ public class TestInStorePickUpService {
 	        } catch (InStorePickUpException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("provide valid tracking number",error);
+	        assertEquals("provide valid pickupreferencenumber",error);
 	    }
 	 
 	 @Test
@@ -216,7 +206,7 @@ public class TestInStorePickUpService {
 	        } catch (InStorePickUpException e){
 	        	error = e.getMessage();
 	        }
-	        assertEquals("not exist inStorePickUp",error);
+	        assertEquals("InStorePickUp with id Test PickUpReferenceNumber 2 does not exist.",error);
 	    }
 	 @Test
 	    public void testGetInStorePickUpByEmptyPickUpReferenceNumber(){
@@ -226,7 +216,7 @@ public class TestInStorePickUpService {
 	        }catch (InStorePickUpException e){
 	            error = e.getMessage();
 	        }
-	        assertEquals("provide valid pickUpReferenceNumber", error);
+	        assertEquals("Please provide valid pickUpReferenceNumber.", error);
 	    }
 	 
 	 @Test
@@ -252,18 +242,18 @@ public class TestInStorePickUpService {
 	 
 	 @Test
 		public void testUpdateInStorePickUpWithNotExistPickUpReferenceNumber() {
-		 InStorePickUp inStorePickUp = null;
+		    InStorePickUp inStorePickUp = null;
 			String error = null;
 			try {
 				inStorePickUp = inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER_N, STATUS);
 			} catch (AddressException e) {
 				error = e.getMessage();
 			}
-			assertEquals("pickUpReferenceNumber not exist", error);
+			assertEquals("not exist inStorePickUp", error);
 		}
 	 
 	 @Test
-		public void testUpdateInStorePickUpStatusWithSameNewPickUpReferenceNumber() {
+		public void testUpdateInStorePickUpWithSameNewPickUpReferenceNumber() {
 			InStorePickUp inStorePickUp = null;
 			String error = null;
 			String newTrackingnNUMBER = PICKUPREFERENCENUMBER;
@@ -275,14 +265,14 @@ public class TestInStorePickUpService {
 			assertEquals("PickUpReferenceNumber is the same", error);
 		}
 	 @Test
-		public void testUpdateInStorePickUpStatusWithEmptyPickUpReferenceNumber(){
+		public void testUpdateInStorePickUpWithEmptyPickUpReferenceNumber(){
 			String error = null;
 			try {
 				inStorePickUp = inStorePickUpService.updateinStorePickUp("", STATUS);
 			}catch (InStorePickUpException e) {
 				error = e.getMessage();
 			}
-			assertEquals("please provide a not null pickUpReferenceNumber", error);
+			assertEquals("provide valid pickUpReferenceNumber", error);
 		}
 	 @Test
 		public void testUpdateInStorePickUpStatusWithNullPickUpReferenceNumber(){
@@ -292,7 +282,7 @@ public class TestInStorePickUpService {
 			}catch (InStorePickUpException e) {
 				error = e.getMessage();
 			}
-			assertEquals("please provide a not null pickUpReferenceNumber", error);
+			assertEquals("provide valid pickUpReferenceNumber", error);
 		}
 
 		public Address createAddress(){

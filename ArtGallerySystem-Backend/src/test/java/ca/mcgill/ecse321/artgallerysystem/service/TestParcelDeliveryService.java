@@ -35,6 +35,7 @@ import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
+import ca.mcgill.ecse321.artgallerysystem.model.Artist;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDeliveryStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
@@ -53,7 +54,7 @@ public class TestParcelDeliveryService {
 	private DeliveryRepository deliveryRepository;
 	private static final String TRACKINGNUMBER = "00213";
 	private static final String CARRIER = "000";
-	private  Address DELIVERADDRESS;
+	private Address DELIVERADDRESS = createAddress();
 	private static final ParcelDeliveryStatus STATUS = ParcelDeliveryStatus.Delivered;
 	private static final String TRACKINGNUMBER_N = "Test TrackingNumber 2";
 	private ParcelDelivery parcelDelivery;
@@ -295,6 +296,18 @@ public class TestParcelDeliveryService {
 				error = e.getMessage();
 			}
 			assertEquals("please provide a not null trackingNumber", error);
+		}
+	 public Address createAddress(){
+			Address address = new Address();
+			address.setAddressId("addressid");
+			address.setCountry("CA");
+			address.setCity("MTL");
+			address.setProvince("QC");
+			address.setName("xxx");
+			address.setStreetAddress("Sherbrooke");
+			address.setPostalCode("H8G");
+			address.setPhoneNumber("666");
+			return address;
 		}
 	 
 }
