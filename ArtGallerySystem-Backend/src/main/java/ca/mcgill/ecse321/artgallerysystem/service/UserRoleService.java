@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemUserRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.UserRoleRepository;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.UserRoleException;
 /**
@@ -21,12 +22,14 @@ public class UserRoleService {
 	@Autowired
 	UserRoleRepository userRoleRepository;
 	@Transactional
-	public UserRole createUserRole(String userRoleId) {
+	public UserRole createUserRole(String userRoleId, String userID) {
 		if(userRoleId==null) {
 			throw new UserRoleException("Please enter the userRole id");
 		}
 		UserRole userRole = new UserRole();
 		userRole.setUserRoleId(userRoleId);
+		ArtGallerySystemUser user = artGallerySystemUserRepository.findArtGallerySystemUserByName(userID);
+		userRole.setArtGallerySystemUser(user);
 		userRoleRepository.save(userRole);
 		return userRole;
 	}

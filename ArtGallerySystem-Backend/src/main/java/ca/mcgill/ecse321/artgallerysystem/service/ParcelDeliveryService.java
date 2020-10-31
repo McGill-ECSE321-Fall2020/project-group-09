@@ -16,12 +16,14 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.DeliveryRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ParcelDeliveryRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
+import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
+import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ParcelDeliveryException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
@@ -35,9 +37,11 @@ public class ParcelDeliveryService {
 	DeliveryRepository deliveryRepository;
 	@Autowired
 	ParcelDeliveryRepository parcelDeliveryRepository;
+	@Autowired
+	PurchaseRepository purchaseRepository;
     @Transactional
 	public ParcelDelivery createParcelDelivery(String trackingNumber, String carrier,
-			ParcelDeliveryStatus status, Address deliveryAddress) {
+			ParcelDeliveryStatus status, Address deliveryAddress, String purid) {
     	if (trackingNumber == null|| trackingNumber == "") {
 			throw new ParcelDeliveryException ("Please provide valid trackingNumber.");
 		}
@@ -51,9 +55,12 @@ public class ParcelDeliveryService {
 		}
     	ParcelDelivery pardel = new ParcelDelivery();
     	pardel.setCarrier(carrier);
+    	Purchase purchase = purchaseRepository.findPurchaseByOrderId(purid);
     	pardel.setParcelDeliveryStatus(status);
     	pardel.setTrackingNumber(trackingNumber);
     	pardel.setDeliveryAddress(deliveryAddress);
+    	pardel.setPurchase(purchase);
+    	pardel.setDeliveryId(trackingNumber);
     	parcelDeliveryRepository.save(pardel);
 		return pardel;
 	}

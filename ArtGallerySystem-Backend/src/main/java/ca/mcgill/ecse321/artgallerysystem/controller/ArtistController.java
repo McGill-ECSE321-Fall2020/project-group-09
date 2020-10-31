@@ -4,6 +4,7 @@ package ca.mcgill.ecse321.artgallerysystem.controller;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtistDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
+import ca.mcgill.ecse321.artgallerysystem.service.ArtGallerySystemUserService;
 import ca.mcgill.ecse321.artgallerysystem.service.ArtistService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class ArtistController {
 
     @Autowired
     ArtistService artistService;
+    @Autowired
+    ArtGallerySystemUserService userService;
+    
 
     @GetMapping("/artistList")
     public List<ArtistDTO> getAllArtists(){
@@ -31,8 +35,9 @@ public class ArtistController {
         return convertToDto(artistService.getArtist(id));
     }
 
-    @PostMapping("/createArtist")
-    public ArtistDTO createArtist(@RequestParam("user") ArtGallerySystemUser user, @RequestParam("id") String id, @RequestParam("credit") double credit){
+    @PostMapping(value = {"/createArtist/{id}", "/createArtist/{id}/"})
+    public ArtistDTO createArtist(@PathVariable("id") String id, @RequestParam("user") String userid, @RequestParam("credit") double credit){
+    	ArtGallerySystemUser user = userService.getUser(userid);
         Artist artist = artistService.createArtist(user,id,credit);
         return convertToDto(artist);
     }

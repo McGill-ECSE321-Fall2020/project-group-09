@@ -27,8 +27,8 @@ public List<UserRoleDTO> getAllUserRoles(){
 	return toList(userRoles.stream().map(this::convertToDto).collect(Collectors.toList()));
 }
 @PostMapping(value = {"/userRole","/userRole/"})
-public UserRoleDTO createUserRole(@RequestParam("id")String id) {
-	UserRole userRole=userRoleService.createUserRole(id);
+public UserRoleDTO createUserRole(@RequestParam("id")String id, @RequestParam("userid") String uid) {
+	UserRole userRole=userRoleService.createUserRole(id, uid);
 	return convertToDto(userRole);
 }
 @GetMapping(value = {"/userRoles/{id}","/userRoles/{id}"})

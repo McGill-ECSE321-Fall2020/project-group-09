@@ -19,6 +19,7 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.DeliveryRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.InStorePickUpRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
+import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
@@ -43,8 +44,10 @@ public class InStorePickUpService {
 	DeliveryRepository deliveryRepository;
 	@Autowired
 	InStorePickUpRepository inStorePickUpRepository;
+	@Autowired
+	PurchaseRepository purchaseRepository;
 	@Transactional
-	public InStorePickUp createInStorePickUp(String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress) {
+	public InStorePickUp createInStorePickUp(String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress, String purid) {
     	if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
 			throw new InStorePickUpException ("Please provide valid pickUpReferenceNumber.");
 		}
@@ -55,9 +58,12 @@ public class InStorePickUpService {
 			throw new InStorePickUpException ("Status can not be empty! ");
 		}
 		InStorePickUp pickup = new InStorePickUp();
+		Purchase purchase = purchaseRepository.findPurchaseByOrderId(purid);
     	pickup.setPickUpReferenceNumber(pickUpReferenceNumber);
     	pickup.setStoreAddress(storeAddress);
+    	pickup.setDeliveryId(pickUpReferenceNumber);
     	pickup.setInStorePickUpStatus(status);
+    	pickup.setPurchase(purchase);
     	inStorePickUpRepository.save(pickup);
 		return pickup;
 	}

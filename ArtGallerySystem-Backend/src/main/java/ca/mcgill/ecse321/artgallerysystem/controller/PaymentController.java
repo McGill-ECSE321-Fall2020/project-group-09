@@ -34,6 +34,7 @@ import ca.mcgill.ecse321.artgallerysystem.service.PurchaseService;
 public class PaymentController {
 @Autowired 
 private PaymentService service;
+@Autowired 
 private PurchaseService purchaseService;
 //@Autowired 
 //private PurchaseService systemservice;

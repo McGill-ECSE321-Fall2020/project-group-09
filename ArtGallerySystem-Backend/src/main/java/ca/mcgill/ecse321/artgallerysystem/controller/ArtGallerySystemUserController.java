@@ -52,7 +52,7 @@ public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
 	userDTO.setEmail(user.getEmail());
 	userDTO.setPassword(user.getPassword());
 	userDTO.setAvatar(user.getAvatar());
-	userDTO.setArtGallerySystem(user.getArtGallerySystem());
+	//userDTO.setArtGallerySystem(user.getArtGallerySystem());
 	return userDTO;
 }
 private <T> List<T> toList(Iterable<T> iterable) {

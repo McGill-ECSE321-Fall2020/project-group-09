@@ -96,6 +96,7 @@ public class ArtGallerySystemService {
 		}
 		
 		system.getArtGallerySystemUser().add(user);
+		user.setArtGallerySystem(system);
 		artGallerySystemRepository.save(system);
 		return system;
 	}

@@ -40,6 +40,7 @@ public class AddressService {
 		if(address != null) {
 			return address;
 		}else {
+			//return null;
 			throw new AddressException ("Address Not Found");
 		}
 		
