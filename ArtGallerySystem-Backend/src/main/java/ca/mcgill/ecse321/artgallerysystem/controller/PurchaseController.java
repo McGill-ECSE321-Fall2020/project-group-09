@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import ca.mcgill.ecse321.artgallerysystem.dto.CustomerDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.PurchaseDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
@@ -121,13 +123,17 @@ public class PurchaseController {
 	public PurchaseDTO convertToDto(Purchase purchase) {
 		PurchaseDTO purchaseDto = new PurchaseDTO();
 		purchaseDto.setArtPiece(purchase.getArtPiece());
-		purchaseDto.setCustomer(purchase.getCustomer());
+		purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
 		purchaseDto.setDate(purchase.getDate());
 		purchaseDto.setOrderId(purchase.getOrderId());
 		purchaseDto.setOrderStatus(purchase.getOrderStatus());
 		return purchaseDto;
 	}
-	
+	public CustomerDTO convertToDto(Customer customer){
+        CustomerDTO customerDTO = new CustomerDTO();
+        BeanUtils.copyProperties(customer,customerDTO);
+        return customerDTO;
+    }
 	// Helper method from tutorial notes
 	private <T> List<T> toList(Iterable<T> iterable) {
 	    List<T> resultList = new ArrayList<>();

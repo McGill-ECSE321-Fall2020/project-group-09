@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,9 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.CustomerDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.PaymentDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.PurchaseDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
+import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
@@ -79,7 +83,7 @@ public PaymentDTO convertToDto(Payment payment) {
    paymentdto.setIsSuccessful(payment.isIsSuccessful());
    paymentdto.setPaymentId(payment.getPaymentId());
    paymentdto.setPaymentMethod(payment.getPaymentMethod());
-   //paymentdto.setPurchase(payment.getPurchase());
+   paymentdto.setPurchase(convertToDto(payment.getPurchase()));
    return paymentdto;
 }
 public PaymentMethod convertToMethod(String method) {
@@ -97,6 +101,20 @@ public PaymentMethod convertToMethod(String method) {
 	
 	}
 	return null;
+}
+public PurchaseDTO convertToDto(Purchase purchase) {
+	PurchaseDTO purchaseDto = new PurchaseDTO();
+	purchaseDto.setArtPiece(purchase.getArtPiece());
+	purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
+	purchaseDto.setDate(purchase.getDate());
+	purchaseDto.setOrderId(purchase.getOrderId());
+	purchaseDto.setOrderStatus(purchase.getOrderStatus());
+	return purchaseDto;
+}
+public CustomerDTO convertToDto(Customer customer){
+    CustomerDTO customerDTO = new CustomerDTO();
+    BeanUtils.copyProperties(customer,customerDTO);
+    return customerDTO;
 }
 private <T> List<T> toList(Iterable<T> iterable) {
     List<T> resultList = new ArrayList<>();

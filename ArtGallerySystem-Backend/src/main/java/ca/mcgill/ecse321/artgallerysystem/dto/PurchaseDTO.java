@@ -66,14 +66,14 @@ public class PurchaseDTO {
 	   this.payment = payments;
 	}
 
-	private Customer customer;
+	private CustomerDTO customer;
 
 
-	public Customer getCustomer() {
+	public CustomerDTO getCustomer() {
 	   return this.customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(CustomerDTO customer) {
 	   this.customer = customer;
 	}
 
