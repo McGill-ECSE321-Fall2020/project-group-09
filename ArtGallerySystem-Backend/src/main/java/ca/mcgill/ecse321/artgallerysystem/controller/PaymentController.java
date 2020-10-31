@@ -19,12 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemUserDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtPieceDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.CustomerDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.PaymentDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.PurchaseDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
@@ -113,10 +115,30 @@ public PurchaseDTO convertToDto(Purchase purchase) {
 	purchaseDto.setOrderStatus(purchase.getOrderStatus());
 	return purchaseDto;
 }
-public CustomerDTO convertToDto(Customer customer){
+/*public CustomerDTO convertToDto(Customer customer){
     CustomerDTO customerDTO = new CustomerDTO();
     BeanUtils.copyProperties(customer,customerDTO);
     return customerDTO;
+}*/
+public CustomerDTO convertToDto(Customer customer){
+    CustomerDTO customerDTO = new CustomerDTO();
+    customerDTO.setAddress(null);
+    customerDTO.setArtGallerySystemUser(convertToDto(customer.getArtGallerySystemUser()));
+    customerDTO.setBalance(customer.getBalance());
+    customerDTO.setPurchase(null);
+    customerDTO.setUserRoleId(customer.getUserRoleId());
+    //BeanUtils.copyProperties(customer,customerDTO);
+    return customerDTO;
+}
+
+public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
+	ArtGallerySystemUserDTO userDTO = new ArtGallerySystemUserDTO();
+	userDTO.setName(user.getName());
+	userDTO.setEmail(user.getEmail());
+	userDTO.setPassword(user.getPassword());
+	userDTO.setAvatar(user.getAvatar());
+	//userDTO.setArtGallerySystem(user.getArtGallerySystem());
+	return userDTO;
 }
 public ArtPieceDTO convertToDto(ArtPiece artPiece){
     ArtPieceDTO artPieceDTO = new ArtPieceDTO();

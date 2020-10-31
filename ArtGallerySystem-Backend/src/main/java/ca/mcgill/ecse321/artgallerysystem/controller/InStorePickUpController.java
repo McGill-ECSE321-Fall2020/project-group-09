@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,8 +19,15 @@ import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.InStorePickUpRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemUserDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.ArtPieceDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.CustomerDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.InStorePickUpDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.PurchaseDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
+import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUpStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
@@ -70,6 +78,7 @@ public InStorePickUpDTO convertToDto(InStorePickUp inStorePickUp) {
 	inStorePickUpDto.setDeliveryId(inStorePickUp.getDeliveryId());
 	inStorePickUpDto.setStoreAddress(convertToDto(inStorePickUp.getStoreAddress()));
     inStorePickUpDto.setInStorePickUpStatus(inStorePickUp.getInStorePickUpStatus());
+    inStorePickUpDto.setPurchase(convertToDto(inStorePickUp.getPurchase()));
     
     return inStorePickUpDto;
 }
@@ -85,6 +94,45 @@ public InStorePickUpStatus getStatus (String status) {
 	
 	}
 	return null;
+}
+public PurchaseDTO convertToDto(Purchase purchase) {
+	PurchaseDTO purchaseDto = new PurchaseDTO();
+	purchaseDto.setArtPiece(convertToDto(purchase.getArtPiece()));
+	purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
+	purchaseDto.setDate(purchase.getDate());
+	purchaseDto.setOrderId(purchase.getOrderId());
+	purchaseDto.setOrderStatus(purchase.getOrderStatus());
+	return purchaseDto;
+}
+/*public CustomerDTO convertToDto(Customer customer){
+    CustomerDTO customerDTO = new CustomerDTO();
+    BeanUtils.copyProperties(customer,customerDTO);
+    return customerDTO;
+}*/
+public CustomerDTO convertToDto(Customer customer){
+    CustomerDTO customerDTO = new CustomerDTO();
+    customerDTO.setAddress(null);
+    customerDTO.setArtGallerySystemUser(convertToDto(customer.getArtGallerySystemUser()));
+    customerDTO.setBalance(customer.getBalance());
+    customerDTO.setPurchase(null);
+    customerDTO.setUserRoleId(customer.getUserRoleId());
+    //BeanUtils.copyProperties(customer,customerDTO);
+    return customerDTO;
+}
+
+public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
+	ArtGallerySystemUserDTO userDTO = new ArtGallerySystemUserDTO();
+	userDTO.setName(user.getName());
+	userDTO.setEmail(user.getEmail());
+	userDTO.setPassword(user.getPassword());
+	userDTO.setAvatar(user.getAvatar());
+	//userDTO.setArtGallerySystem(user.getArtGallerySystem());
+	return userDTO;
+}
+public ArtPieceDTO convertToDto(ArtPiece artPiece){
+    ArtPieceDTO artPieceDTO = new ArtPieceDTO();
+    BeanUtils.copyProperties(artPiece,artPieceDTO);
+    return artPieceDTO;
 }
 public AddressDTO convertToDto(Address address) {
     AddressDTO addressDTO = new AddressDTO();

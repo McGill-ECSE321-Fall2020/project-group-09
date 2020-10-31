@@ -48,9 +48,9 @@ public class InStorePickUpService {
 	PurchaseRepository purchaseRepository;
 	@Transactional
 	public InStorePickUp createInStorePickUp(String id, String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress, Purchase purchase) {
-		if (id == null|| id == "") {
-			throw new InStorePickUpException ("Please provide valid id.");
-		}
+		//if (id == null|| id == "") {
+		//	throw new InStorePickUpException ("Please provide valid id.");
+		//}
 		if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
 			throw new InStorePickUpException ("Please provide valid pickUpReferenceNumber.");
 		}
