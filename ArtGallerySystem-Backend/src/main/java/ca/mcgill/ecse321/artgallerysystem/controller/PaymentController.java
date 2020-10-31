@@ -79,7 +79,7 @@ public PaymentDTO convertToDto(Payment payment) {
    paymentdto.setIsSuccessful(payment.isIsSuccessful());
    paymentdto.setPaymentId(payment.getPaymentId());
    paymentdto.setPaymentMethod(payment.getPaymentMethod());
-   paymentdto.setPurchase(payment.getPurchase());
+   //paymentdto.setPurchase(payment.getPurchase());
    return paymentdto;
 }
 public PaymentMethod convertToMethod(String method) {
