@@ -29,32 +29,34 @@ public class InStorePickUpController {
 private InStorePickUpService inStorePickUpService;
 @Autowired
 private AddressRepository addressRepository;
-/*@GetMapping(value = {"/parcelDeliveries", "/parcelDeliveries/"})
-public List<InStorePickUpDTO> getAllParcelDeliveries(){
+@GetMapping(value = {"/inStorePickUps", "/inStorePickUps/"})
+public List<InStorePickUpDTO> getInStorePickUps(){
 	
 	List<InStorePickUp> inStorePickUps = inStorePickUpService.getAllInStorePickUps();
 	return toList(inStorePickUps.stream().map(this::convertToDto).collect(Collectors.toList()));
 	
-}*/
+}
 @PostMapping(value = {"/inStorePickUp", "/inStorePickUp/"})
-public InStorePickUpDTO createInStorePickUp(@RequestParam("deliveryID")String id, @RequestParam("pickUpReferenceNumber")String pickUpReferenceNumber, @RequestParam("inStorePickUpStatus")String status, @RequestParam("storeAddress")String storeAddress, @RequestParam("purchaseid")String purid) {
+
+public InStorePickUpDTO createInStorePickUp(@RequestParam("pickUpReferenceNumber")String pickUpReferenceNumber,@RequestParam("inStorePickUpStatus")String status, @RequestParam("storeAddress")String storeAddress, @RequestParam("purchaseid")String purid) {
+
 	//ArtGallerySystem system = systemservice.getSystemById(id);
 	Address address = addressRepository.findAddressByAddressId(storeAddress);
 	InStorePickUpStatus inStorePickUpstatus = getStatus(status);
 	InStorePickUp inStorePickUp = inStorePickUpService.createInStorePickUp(pickUpReferenceNumber, inStorePickUpstatus, address, purid);
 	return convertToDto(inStorePickUp);
 }
-@GetMapping(value = {"/inStorePickUps/{id}", "/inStorePickUps/{id}/"})
-public InStorePickUpDTO getinStorePickUpById(@PathVariable("id")String id) {
-	return convertToDto(inStorePickUpService.getInStorePickUp(id));
+@GetMapping(value = {"/inStorePickUps/{pickUpReferenceNumber}", "/inStorePickUps/{pickUpReferenceNumber}/"})
+public InStorePickUpDTO getinStorePickUpById(@PathVariable("pickUpReferenceNumber")String pickUpReferenceNumber) {
+	return convertToDto(inStorePickUpService.getInStorePickUp(pickUpReferenceNumber));
 }
-@DeleteMapping(value = {"/inStorePickUps/{id}", "/inStorePickUps/{id}/"})
-public void deleteinStorePickUp(@PathVariable("id") String deliveryid) {
-	inStorePickUpService.deleteInStorePickUp(deliveryid);
+@DeleteMapping(value = {"/inStorePickUps/{pickUpReferenceNumber}", "/inStorePickUps/{pickUpReferenceNumber}/"})
+public void deleteinStorePickUp(@PathVariable("pickUpReferenceNumber") String pickUpReferenceNumber) {
+	inStorePickUpService.deleteInStorePickUp(pickUpReferenceNumber);
 }
-@PutMapping (value = {"/inStorePickUp/update/{id}", "/inStorePickUp/update/{id}/"})
-public InStorePickUpDTO updateparcelDeliveryStatus(@PathVariable("deliveryID")String id, @RequestParam("inStorePickUp")String newinStorePickUp) {
-	return convertToDto(inStorePickUpService.updateinStorePickUp(id,getStatus(newinStorePickUp)));
+@PutMapping (value = {"/inStorePickUp/update/{pickUpReferenceNumber}", "/inStorePickUp/update/{pickUpReferenceNumber}/"})
+public InStorePickUpDTO updateparcelDeliveryStatus(@PathVariable("pickUpReferenceNumber")String pickUpReferenceNumber, @RequestParam("inStorePickUp")String newinStorePickUp) {
+	return convertToDto(inStorePickUpService.updateinStorePickUp(pickUpReferenceNumber,getStatus(newinStorePickUp)));
 }
 public InStorePickUpDTO convertToDto(InStorePickUp inStorePickUp) {
 	InStorePickUpDTO inStorePickUpDto = new InStorePickUpDTO();
