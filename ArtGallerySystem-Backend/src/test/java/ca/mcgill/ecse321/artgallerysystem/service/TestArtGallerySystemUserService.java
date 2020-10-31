@@ -26,6 +26,9 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtGallerySystemUserException;
 @ExtendWith(MockitoExtension.class)
+/** 
+ * @author Angelina Duan
+ */
 public class TestArtGallerySystemUserService {
 	@Mock
 	private ArtGallerySystemUserRepository userRepository;
@@ -191,56 +194,6 @@ public class TestArtGallerySystemUserService {
 			error=e.getMessage();
 		}
 		assertEquals("provide name please", error);
-	}
-	@Test
-	public void testUpdateUser() {
-		try {
-			String newName = "Duan";
-			userService.updateArtGallerySystemUserName(NAME, newName);
-		} catch (ArtGallerySystemUserException e) {
-			fail();
-		}
-	}
-	@Test
-	public void testUpdateUserWithNotExistUser() {
-		String error = null;
-		String newName = "Pei";
-		try {
-			userService.updateArtGallerySystemUserName(NAME_2, newName);
-		} catch (ArtGallerySystemUserException e) {
-			error=e.getMessage();
-		}
-		assertEquals("user does not exist", error);
-	}
-	@Test
-	public void testUpdateUserWithSameName() {
-		String error=null;
-		try {
-			userService.updateArtGallerySystemUserName(NAME, NAME);
-		} catch (ArtGallerySystemUserException e) {
-			error=e.getMessage();
-		}
-		assertEquals("new user name is the same as the old one", error);
-	}
-	@Test
-	public void testUpdateUserWithEmptyName() {
-		String error = null;
-		try {
-			userService.updateArtGallerySystemUserName(NAME, "");
-		} catch (ArtGallerySystemUserException e) {
-			error=e.getMessage();
-		}
-		assertEquals("new user name cannot be empty or null", error);
-	}
-	@Test
-	public void testUpdateUserWithNullName() {
-		String error = null;
-		try {
-			userService.updateArtGallerySystemUserName(NAME, null);
-		} catch (ArtGallerySystemUserException e) {
-			error=e.getMessage();
-		}
-		assertEquals("new user name cannot be empty or null", error);
 	}
 	@Test
 	public void testUpdateUserEmail() {

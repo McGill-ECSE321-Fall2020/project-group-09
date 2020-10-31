@@ -1,7 +1,6 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemUserRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtGallerySystemUserException;
 /**
  * @author Angelina Duan
- * @version initial
  */
 @Service
 public class ArtGallerySystemUserService {
@@ -72,23 +69,6 @@ public class ArtGallerySystemUserService {
 			throw new ArtGallerySystemUserException("user not exist");
 		}
 		return deleted;
-	}
-	@Transactional
-	public ArtGallerySystemUser updateArtGallerySystemUserName(String name, String newusername) {
-		ArtGallerySystemUser user= artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
-		if(newusername==null||newusername=="") {
-			throw new ArtGallerySystemUserException("new user name cannot be empty or null");
-		}
-		if(user==null) {
-			throw new ArtGallerySystemUserException("user does not exist");
-		}else {
-			if(user.getName().equals(newusername)) {
-				throw new ArtGallerySystemUserException("new user name is the same as the old one");
-			}
-			user.setName(newusername);
-			artGallerySystemUserRepository.save(user);
-			return user;
-		}
 	}
 	@Transactional
 	public ArtGallerySystemUser updateArtGallerySystemUserEmail(String name, String newemail) {

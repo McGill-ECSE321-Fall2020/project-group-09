@@ -1,5 +1,6 @@
 package ca.mcgill.ecse321.artgallerysystem.controller;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,8 +18,12 @@ import ca.mcgill.ecse321.artgallerysystem.dto.UserRoleDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 import ca.mcgill.ecse321.artgallerysystem.service.UserRoleService;
+
 @CrossOrigin(origins ="*")
 @RestController
+/**
+ * @author Angelina Duan
+ */
 public class UserRoleController {
 @Autowired
 private UserRoleService userRoleService;
@@ -53,7 +58,6 @@ public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
 	userDTO.setEmail(user.getEmail());
 	userDTO.setPassword(user.getPassword());
 	userDTO.setAvatar(user.getAvatar());
-	//userDTO.setArtGallerySystem(user.getArtGallerySystem());
 	return userDTO;
 }
 private <T> List<T> toList(Iterable<T> iterable) {

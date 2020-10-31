@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemUserDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.service.ArtGallerySystemUserService;
-
+/**
+ * @author Angelina Duan
+ */
 @CrossOrigin(origins ="*")
 @RestController
 public class ArtGallerySystemUserController {
@@ -42,10 +44,6 @@ public ArtGallerySystemUserDTO getUserByName(@PathVariable("name")String name) {
 public void deleteUser(@PathVariable("name") String name) {
 	userService.deleteArtGallerySystemUser(name);
 }
-@PutMapping(value= {"/user/updateName/{name}","/user/updateName/{name}/"})
-public ArtGallerySystemUserDTO updateUserName(@PathVariable("name")String name,@RequestParam("name")String newName) {
-	return convertToDto(userService.updateArtGallerySystemUserName(name, newName));
-}
 @PutMapping(value= {"/user/updateEmail/{name}","/user/updateEmail/{name}/"})
 public ArtGallerySystemUserDTO updateUserEmail(@PathVariable("name")String name,@RequestParam("email")String newEmail) {
 	return convertToDto(userService.updateArtGallerySystemUserEmail(name, newEmail));
@@ -64,7 +62,6 @@ public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
 	userDTO.setEmail(user.getEmail());
 	userDTO.setPassword(user.getPassword());
 	userDTO.setAvatar(user.getAvatar());
-	//userDTO.setArtGallerySystem(user.getArtGallerySystem());
 	return userDTO;
 }
 private <T> List<T> toList(Iterable<T> iterable) {

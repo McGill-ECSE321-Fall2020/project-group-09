@@ -29,6 +29,9 @@ import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 
 import ca.mcgill.ecse321.artgallerysystem.service.exception.UserRoleException;
 @ExtendWith(MockitoExtension.class)
+/**
+ * @author Angelina Duan
+ */
 public class TestUserRoleService {
 	@Mock
 	private UserRoleRepository userRoleRepository;

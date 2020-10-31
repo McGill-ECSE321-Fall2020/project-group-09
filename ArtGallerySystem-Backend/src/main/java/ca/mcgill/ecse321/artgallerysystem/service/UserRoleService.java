@@ -13,7 +13,6 @@ import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.UserRoleException;
 /**
  * @author Angelina Duan
- * @version initial
  */
 @Service
 public class UserRoleService {
