@@ -14,7 +14,7 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 
-
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -22,7 +22,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 
+import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemUserRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.UserRoleRepository;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 
 import ca.mcgill.ecse321.artgallerysystem.service.exception.UserRoleException;
@@ -32,8 +34,13 @@ public class TestUserRoleService {
 	private UserRoleRepository userRoleRepository;
 	private static final String ID = "123";
 	private static final String ID_2 = "456";
+	@Mock
+	private ArtGallerySystemUserRepository userDao;
 	@InjectMocks
 	private UserRoleService userRoleService;
+	
+	private static final String USER_KEY = "TestUser";
+	
 	@BeforeEach
 	public void setMockOutput() {
 		MockitoAnnotations.initMocks(this);
@@ -55,6 +62,15 @@ public class TestUserRoleService {
 			userRoles.add(userRole);
 			return userRoles;
 		});
+		lenient().when(userDao.findArtGallerySystemUserByName(anyString())).thenAnswer((InvocationOnMock invocation) -> {
+			if(invocation.getArgument(0).equals(USER_KEY)) {
+				ArtGallerySystemUser user = new ArtGallerySystemUser();
+				user.setName(USER_KEY);
+				return user;
+			}else {
+				return null;
+			}
+		});
 			Answer<?> returnParameterAsAnswer = (InvocationOnMock invocation)->{
 				return invocation.getArgument(0);
 			};
@@ -64,19 +80,22 @@ public class TestUserRoleService {
 	public void testCreateUserRole() {
 		UserRole userRole=null;
 		String id="789";
+		ArtGallerySystemUser user = userDao.findArtGallerySystemUserByName(USER_KEY);
 		try {
-			userRole=userRoleService.createUserRole(id);
+			userRole=userRoleService.createUserRole(id, user.getName());
 		} catch (UserRoleException e) {
 			fail();
 		}
 		assertNotNull(userRole);
+		assertEquals(id, userRole.getUserRoleId());
 	}
 	@Test
 	public void testCreateUserRoleWithNotCompleteId() {
 		UserRole userRole=null;
 		String error =null;
+		ArtGallerySystemUser user = userDao.findArtGallerySystemUserByName(USER_KEY);
 		try {
-			userRole=userRoleService.createUserRole(null);
+			userRole=userRoleService.createUserRole(null,user.getName());
 		} catch (UserRoleException e) {
 			error=e.getMessage();
 		}

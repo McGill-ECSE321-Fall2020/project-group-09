@@ -42,9 +42,21 @@ public ArtGallerySystemUserDTO getUserByName(@PathVariable("name")String name) {
 public void deleteUser(@PathVariable("name") String name) {
 	userService.deleteArtGallerySystemUser(name);
 }
-@PutMapping(value= {"/user/update/{name}","/user/update/{name}/"})
+@PutMapping(value= {"/user/updateName/{name}","/user/updateName/{name}/"})
 public ArtGallerySystemUserDTO updateUserName(@PathVariable("name")String name,@RequestParam("name")String newName) {
 	return convertToDto(userService.updateArtGallerySystemUserName(name, newName));
+}
+@PutMapping(value= {"/user/updateEmail/{name}","/user/updateEmail/{name}/"})
+public ArtGallerySystemUserDTO updateUserEmail(@PathVariable("name")String name,@RequestParam("email")String newEmail) {
+	return convertToDto(userService.updateArtGallerySystemUserEmail(name, newEmail));
+}
+@PutMapping(value= {"/user/updatePassword/{name}","/user/updatePassword/{name}/"})
+public ArtGallerySystemUserDTO updateUserPassword(@PathVariable("name")String name,@RequestParam("password")String newPassword) {
+	return convertToDto(userService.updateArtGallerySystemUserPassword(name, newPassword));
+}
+@PutMapping(value= {"/user/updateAvatar/{name}","/user/updateAvatar/{name}/"})
+public ArtGallerySystemUserDTO updateUserAvatar(@PathVariable("name")String name,@RequestParam("avatar")String newAvatar) {
+	return convertToDto(userService.updateArtGallerySystemUserAvatar(name, newAvatar));
 }
 public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
 	ArtGallerySystemUserDTO userDTO = new ArtGallerySystemUserDTO();

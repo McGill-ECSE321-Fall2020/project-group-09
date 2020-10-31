@@ -242,4 +242,154 @@ public class TestArtGallerySystemUserService {
 		}
 		assertEquals("new user name cannot be empty or null", error);
 	}
+	@Test
+	public void testUpdateUserEmail() {
+		try {
+			String newemail = "lin@123.com";
+			userService.updateArtGallerySystemUserEmail(NAME, newemail);
+		} catch (ArtGallerySystemUserException e) {
+			fail();
+		}
+	}
+	@Test
+	public void testUpdateUserEmailWithNotExistUser() {
+		String error = null;
+		String newEmail = "lin@456.com";
+		try {
+			userService.updateArtGallerySystemUserEmail(NAME_2, newEmail);
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("user does not exist", error);
+	}
+	@Test
+	public void testUpdateUserEmailWithSameEmail() {
+		String error=null;
+		try {
+			userService.updateArtGallerySystemUserEmail(NAME, EMAIL);
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("new email is the same as the old one", error);
+	}
+	@Test
+	public void testUpdateUserWithEmptyEmail() {
+		String error = null;
+		try {
+			userService.updateArtGallerySystemUserEmail(NAME, "");
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("new email cannot be empty or null", error);
+	}
+	@Test
+	public void testUpdateUserWithNullEmail() {
+		String error = null;
+		try {
+			userService.updateArtGallerySystemUserEmail(NAME, null);
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("new email cannot be empty or null", error);
+	}
+	@Test
+	public void testUpdateUserPassword() {
+		try {
+			String newPassword = "789";
+			userService.updateArtGallerySystemUserPassword(NAME, newPassword);
+		} catch (ArtGallerySystemUserException e) {
+			fail();
+		}
+	}
+	@Test
+	public void testUpdateUserPasswordWithNotExistUser() {
+		String error = null;
+		String newPassword = "789";
+		try {
+			userService.updateArtGallerySystemUserPassword(NAME_2, newPassword);
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("user does not exist", error);
+	}
+	@Test
+	public void testUpdateUserWithSamePassword() {
+		String error=null;
+		try {
+			userService.updateArtGallerySystemUserPassword(NAME, PASSWORD);
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("new password is the same as the old one", error);
+	}
+	@Test
+	public void testUpdateUserWithEmptyPassword() {
+		String error = null;
+		try {
+			userService.updateArtGallerySystemUserPassword(NAME, "");
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("new password cannot be empty or null", error);
+	}
+	@Test
+	public void testUpdateUserWithNullPassword() {
+		String error = null;
+		try {
+			userService.updateArtGallerySystemUserPassword(NAME, null);
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("new password cannot be empty or null", error);
+	}
+	@Test
+	public void testUpdateUserAvatar() {
+		try {
+			String newAvatar = "AA";
+			userService.updateArtGallerySystemUserAvatar(NAME, newAvatar);
+		} catch (ArtGallerySystemUserException e) {
+			fail();
+		}
+	}
+	@Test
+	public void testUpdateUserAvatarWithNotExistUser() {
+		String error = null;
+		String newAvatar = "AA";
+		try {
+			userService.updateArtGallerySystemUserAvatar(NAME_2, newAvatar);
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("user does not exist", error);
+	}
+	@Test
+	public void testUpdateUserWithSameAvatar() {
+		String error=null;
+		try {
+			userService.updateArtGallerySystemUserAvatar(NAME, AVATAR);
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("new avatar is the same as the old one", error);
+	}
+	@Test
+	public void testUpdateUserWithEmptyAvatar() {
+		String error = null;
+		try {
+			userService.updateArtGallerySystemUserAvatar(NAME, "");
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("new avatar cannot be empty or null", error);
+	}
+	@Test
+	public void testUpdateUserWithNullAvatar() {
+		String error = null;
+		try {
+			userService.updateArtGallerySystemUserAvatar(NAME, null);
+		} catch (ArtGallerySystemUserException e) {
+			error=e.getMessage();
+		}
+		assertEquals("new avatar cannot be empty or null", error);
+	}
 }

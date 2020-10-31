@@ -90,6 +90,56 @@ public class ArtGallerySystemUserService {
 			return user;
 		}
 	}
+	@Transactional
+	public ArtGallerySystemUser updateArtGallerySystemUserEmail(String name, String newemail) {
+		ArtGallerySystemUser user= artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
+		if(newemail==null||newemail=="") {
+			throw new ArtGallerySystemUserException("new email cannot be empty or null");
+		}
+		if(user==null) {
+			throw new ArtGallerySystemUserException("user does not exist");
+		}else {
+			if(user.getEmail().equals(newemail)) {
+				throw new ArtGallerySystemUserException("new email is the same as the old one");
+			}
+			user.setEmail(newemail);
+			artGallerySystemUserRepository.save(user);
+			return user;
+		}
+	}
+	@Transactional
+	public ArtGallerySystemUser updateArtGallerySystemUserPassword(String name, String newpassword) {
+		ArtGallerySystemUser user= artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
+		if(newpassword==null||newpassword=="") {
+			throw new ArtGallerySystemUserException("new password cannot be empty or null");
+		}
+		if(user==null) {
+			throw new ArtGallerySystemUserException("user does not exist");
+		}else {
+			if(user.getPassword().equals(newpassword)) {
+				throw new ArtGallerySystemUserException("new password is the same as the old one");
+			}
+			user.setPassword(newpassword);
+			artGallerySystemUserRepository.save(user);
+			return user;
+		}
+	}@Transactional
+	public ArtGallerySystemUser updateArtGallerySystemUserAvatar(String name, String newavatar) {
+		ArtGallerySystemUser user= artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
+		if(newavatar==null||newavatar=="") {
+			throw new ArtGallerySystemUserException("new avatar cannot be empty or null");
+		}
+		if(user==null) {
+			throw new ArtGallerySystemUserException("user does not exist");
+		}else {
+			if(user.getAvatar().equals(newavatar)) {
+				throw new ArtGallerySystemUserException("new avatar is the same as the old one");
+			}
+			user.setAvatar(newavatar);;
+			artGallerySystemUserRepository.save(user);
+			return user;
+		}
+	}
 	private <T> List<T> toList(Iterable<T> iterable){
         List<T> resultList = new ArrayList<T>();
         for (T t : iterable) {
