@@ -43,9 +43,9 @@ The gallery wants to focus on local artists and encourage them to use their webs
 
 | Team Members |	Total Hours	| Responsibility |
 | ------------ | ------------ | -------------- |
-| Amelia Cui |  | Service ,controller, testing suites for Address Payment ; project report ; documentation |
+| Amelia Cui |  | Service, controller, and testing suites for Address and Payment; project report; documentation |
 | Angelina Duan	|  |  |
-| Zhekai Jiang | |  |
+| Zhekai Jiang | | Service, controller, and testing suites for ArtGallerySystem and Purchase; documentation |
 | Zheyan Tu |  |  |
 | Tianyu Zhao |  |  |
 
