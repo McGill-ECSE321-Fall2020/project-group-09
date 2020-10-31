@@ -113,7 +113,7 @@ public class TestParcelDeliveryService {
 
 		ParcelDelivery parcelDelivery = null;
 		try {
-			parcelDelivery = parcelDeliveryService.createParcelDelivery("001","00213","000", STATUS, DELIVERADDRESS,"321");
+			parcelDelivery = parcelDeliveryService.createParcelDelivery("001","00213","000", STATUS, DELIVERADDRESS,purchase);
 		} catch (ParcelDeliveryException e) {
 			fail();
 		}
@@ -125,8 +125,8 @@ public class TestParcelDeliveryService {
 		String error = null;
 		ParcelDelivery parcelDelivery = new ParcelDelivery();
         try{
-        	parcelDelivery = parcelDeliveryService.createParcelDelivery(null,TRACKINGNUMBER,CARRIER,STATUS,DELIVERADDRESS,"321");
-        }catch(InStorePickUpException e){
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery("",TRACKINGNUMBER,CARRIER,STATUS,DELIVERADDRESS,purchase);
+        }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
         assertEquals("Please provide valid deliveryid.",error);
@@ -137,7 +137,7 @@ public class TestParcelDeliveryService {
 		String error = null;
 		ParcelDelivery parcelDelivery = new ParcelDelivery();
         try{
-        	parcelDelivery = parcelDeliveryService.createParcelDelivery("001",null,CARRIER,STATUS,DELIVERADDRESS,"321");
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery("001",null,CARRIER,STATUS,DELIVERADDRESS,purchase);
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
@@ -148,7 +148,7 @@ public class TestParcelDeliveryService {
 		String error = null;
 		ParcelDelivery parcelDelivery = new ParcelDelivery();
         try{
-        	parcelDelivery = parcelDeliveryService.createParcelDelivery("001",TRACKINGNUMBER,null,STATUS,DELIVERADDRESS,"321");
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery("001",TRACKINGNUMBER,null,STATUS,DELIVERADDRESS,purchase);
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
@@ -159,7 +159,7 @@ public class TestParcelDeliveryService {
 		String error = null;
 		ParcelDelivery parcelDelivery = new ParcelDelivery();
         try{
-        	parcelDelivery = parcelDeliveryService.createParcelDelivery("001",TRACKINGNUMBER,CARRIER,null,DELIVERADDRESS,"321");
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery("001",TRACKINGNUMBER,CARRIER,null,DELIVERADDRESS,purchase);
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
@@ -170,7 +170,7 @@ public class TestParcelDeliveryService {
 		String error = null;
 		ParcelDelivery parcelDelivery = new ParcelDelivery();
         try{
-        	parcelDelivery = parcelDeliveryService.createParcelDelivery(DELIVERYID,TRACKINGNUMBER,CARRIER,STATUS,null,"321");
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery(DELIVERYID,TRACKINGNUMBER,CARRIER,STATUS,null,purchase);
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }

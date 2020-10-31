@@ -34,10 +34,13 @@ import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.InStorePickUpRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
+import ca.mcgill.ecse321.artgallerysystem.model.Artist;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUpStatus;
+import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
@@ -52,10 +55,12 @@ public class TestInStorePickUpService {
 	private InStorePickUpRepository inStorePickUpRepository;
 	private AddressRepository addressRepository;
 	private DeliveryRepository deliveryRepository;
+	private PurchaseRepository purchaseRepository;
 	private static final String DELIVERYID = "111";
 	private static final String PURID = "123";
 	private static final String PICKUPREFERENCENUMBER = "00123";
 	private Address STOREADDRESS = createAddress();
+	private Purchase purchase = createPurchase();
 	private static final InStorePickUpStatus STATUS = InStorePickUpStatus.PickedUp;
 	private static final String PICKUPREFERENCENUMBER_N = "Test PickUpReferenceNumber 2";
 	private InStorePickUp inStorePickUp;
@@ -64,6 +69,7 @@ public class TestInStorePickUpService {
 
 	@InjectMocks
 	private InStorePickUpService inStorePickUpService;
+	
 	@BeforeEach
 	public void setMockOutput() {
 		 MockitoAnnotations.initMocks(this);
@@ -73,20 +79,21 @@ public class TestInStorePickUpService {
 	            	inStorePickUp.setPickUpReferenceNumber(PICKUPREFERENCENUMBER);
 	            	inStorePickUp.setStoreAddress(STOREADDRESS);
 	            	inStorePickUp.setInStorePickUpStatus(STATUS);
-	                
+	                inStorePickUp.setPurchase(purchase);
 	            	inStorePickUpRepository.save(inStorePickUp);
 	                return inStorePickUp;
 	            }else{
 	                return null;
 	            }
 	        });
+	        
 	        lenient().when(inStorePickUpRepository.findAll()).thenAnswer((InvocationOnMock invocation) -> {
 	            List<InStorePickUp> inStorePickUps = new ArrayList<InStorePickUp>();
 	            InStorePickUp inStorePickUp = new InStorePickUp();
             	inStorePickUp.setPickUpReferenceNumber(PICKUPREFERENCENUMBER);
             	inStorePickUp.setStoreAddress(STOREADDRESS);
             	inStorePickUp.setInStorePickUpStatus(STATUS);
-                
+            	inStorePickUp.setPurchase(purchase);
             	inStorePickUpRepository.save(inStorePickUp);
             	inStorePickUps.add(inStorePickUp);
 	            return inStorePickUps;
@@ -103,7 +110,7 @@ public class TestInStorePickUpService {
 
 		InStorePickUp inStorePickUp = null;
 		try {
-			inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER, STATUS, STOREADDRESS,"123");
+			inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER, STATUS, STOREADDRESS,purchase);
 		} catch (InStorePickUpException e) {
 			fail();
 		}
@@ -114,7 +121,7 @@ public class TestInStorePickUpService {
 		String error = null;
 		InStorePickUp inStorePickUp = new InStorePickUp();
         try{
-        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,null,STATUS,STOREADDRESS,PURID);
+        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,null,STATUS,STOREADDRESS,purchase);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
@@ -126,7 +133,7 @@ public class TestInStorePickUpService {
 		String error = null;
 		InStorePickUp inStorePickUp = new InStorePickUp();
         try{
-        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,null,STOREADDRESS,PURID);
+        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,null,STOREADDRESS,purchase);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
@@ -138,7 +145,7 @@ public class TestInStorePickUpService {
 		String error = null;
 		InStorePickUp inStorePickUp = new InStorePickUp();
         try{
-        	inStorePickUp = inStorePickUpService.createInStorePickUp(null,PICKUPREFERENCENUMBER,STATUS,STOREADDRESS,PURID);
+        	inStorePickUp = inStorePickUpService.createInStorePickUp(null,PICKUPREFERENCENUMBER,STATUS,STOREADDRESS,purchase);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
@@ -150,7 +157,7 @@ public class TestInStorePickUpService {
 		String error = null;
 		InStorePickUp inStorePickUp = new InStorePickUp();
         try{
-        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,STATUS,null,PURID);
+        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,STATUS,null,purchase);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
@@ -319,6 +326,49 @@ public class TestInStorePickUpService {
 			address.setPostalCode("H3A");
 			address.setPhoneNumber("222");
 			return address;
+		}
+		public Purchase createPurchase() {
+			
+			String oid = "TestOrder1";
+			Purchase purchase = new Purchase();
+			purchase.setOrderId(oid);
+			//purchase.setArtGallerySystem(sys);
+			ArtGallerySystemUser u = new ArtGallerySystemUser();
+			u.setName("userTest");
+			//u.setArtGallerySystem(sys);
+			//userRepository.save(u);
+			Artist artist = new Artist();
+			artist.setArtGallerySystemUser(u);
+			artist.setUserRoleId("id1");
+			artist.setCredit(0.0);
+			//artistRepository.save(artist);
+			Set<Artist> arts = new HashSet<Artist>();
+			arts.add(artist);
+			ArtPiece test = new ArtPiece();
+			test.setArtPieceId("id");
+			test.setAuthor("author");
+			test.setDescription("des");
+			test.setPrice(10.0);
+			test.setDate(Date.valueOf("2020-01-01"));
+			//test.setArtGallerySystem(sys);
+			test.setArtist(arts);
+			test.setArtPieceStatus(ArtPieceStatus.Available);
+			test.setName("name");
+			//artPieceRepository.save(test);
+			purchase.setArtPiece(test);
+			Customer customer = new Customer();
+			ArtGallerySystemUser u1 = new ArtGallerySystemUser();
+			u1.setName("userTest");
+			//u1.setArtGallerySystem(sys);
+			//userRepository.save(u1);
+			customer.setArtGallerySystemUser(u1);
+			customer.setUserRoleId("id2");
+			customer.setBalance(0.0);
+			//customerRepository.save(customer);
+			purchase.setDate(Date.valueOf("2020-01-01"));
+			purchase.setOrderStatus(OrderStatus.Successful);
+			purchase.setCustomer(customer);
+			return purchase;
 		}
 }
 

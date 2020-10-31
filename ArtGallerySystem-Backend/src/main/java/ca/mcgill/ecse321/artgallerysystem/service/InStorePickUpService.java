@@ -47,7 +47,7 @@ public class InStorePickUpService {
 	@Autowired
 	PurchaseRepository purchaseRepository;
 	@Transactional
-	public InStorePickUp createInStorePickUp(String id, String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress, String purid) {
+	public InStorePickUp createInStorePickUp(String id, String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress, Purchase purchase) {
 		if (id == null|| id == "") {
 			throw new InStorePickUpException ("Please provide valid id.");
 		}
@@ -60,11 +60,11 @@ public class InStorePickUpService {
 		if(status == null) {
 			throw new InStorePickUpException ("Status can not be empty! ");
 		}
-		if(purid == null || purid =="") {
+		if(purchase == null) {
 			throw new InStorePickUpException("Purchaseid can not be empty!");
 		}
 		InStorePickUp pickup = new InStorePickUp();
-		Purchase purchase = purchaseRepository.findPurchaseByOrderId(purid);
+		//Purchase purchase = purchaseRepository.findPurchaseByOrderId(purid);
     	pickup.setPickUpReferenceNumber(pickUpReferenceNumber);
     	pickup.setStoreAddress(storeAddress);
     	pickup.setDeliveryId(id);

@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.InStorePickUpRepository;
+import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.InStorePickUpDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUpStatus;
+import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.InStorePickUpService;
 
 @CrossOrigin(origins="*")
@@ -30,6 +32,8 @@ public class InStorePickUpController {
 private InStorePickUpService inStorePickUpService;
 @Autowired
 private AddressRepository addressRepository;
+@Autowired
+private PurchaseRepository purchaseRepository;
 @GetMapping(value = {"/inStorePickUps", "/inStorePickUps/"})
 public List<InStorePickUpDTO> getInStorePickUps(){
 	
@@ -42,9 +46,10 @@ public List<InStorePickUpDTO> getInStorePickUps(){
 public InStorePickUpDTO createInStorePickUp(@RequestParam("deliveryid") String id,@RequestParam("pickUpReferenceNumber")String pickUpReferenceNumber,@RequestParam("inStorePickUpStatus")String status, @RequestParam("storeAddress")String storeAddress, @RequestParam("purchaseid")String purid) {
 
 	//ArtGallerySystem system = systemservice.getSystemById(id);
+	Purchase purchase = purchaseRepository.findPurchaseByOrderId(purid);
 	Address address = addressRepository.findAddressByAddressId(storeAddress);
 	InStorePickUpStatus inStorePickUpstatus = getStatus(status);
-	InStorePickUp inStorePickUp = inStorePickUpService.createInStorePickUp(id,pickUpReferenceNumber, inStorePickUpstatus, address, purid);
+	InStorePickUp inStorePickUp = inStorePickUpService.createInStorePickUp(id,pickUpReferenceNumber, inStorePickUpstatus, address, purchase);
 	return convertToDto(inStorePickUp);
 }
 @GetMapping(value = {"/inStorePickUps/{pickUpReferenceNumber}", "/inStorePickUps/{pickUpReferenceNumber}/"})

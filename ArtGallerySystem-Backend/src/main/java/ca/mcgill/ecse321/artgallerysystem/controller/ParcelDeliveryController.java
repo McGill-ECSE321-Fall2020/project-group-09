@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ParcelDeliveryRepository;
+import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ParcelDeliveryDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDeliveryStatus;
+import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.ParcelDeliveryService;
 
 @CrossOrigin(origins="*")
@@ -28,8 +30,11 @@ import ca.mcgill.ecse321.artgallerysystem.service.ParcelDeliveryService;
 public class ParcelDeliveryController {
 @Autowired 
 private ParcelDeliveryService parcelDeliveryService;
+
 @Autowired
 private AddressRepository addressRepository;
+@Autowired
+private PurchaseRepository purchaseRepository;
 @GetMapping(value = {"/parcelDeliveries", "/parcelDeliveries/"})
 public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 	
@@ -40,9 +45,10 @@ public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 @PostMapping(value = {"/parcelDelivery", "/parcelDelivery/"})
 public ParcelDeliveryDTO createParcelDelivery(@RequestParam("deliveryid")String deliveryid, @RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String status, @RequestParam("deliveryAddress")String deliveryAddress, @RequestParam("purchaseid")String purid) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
+	Purchase purchase = purchaseRepository.findPurchaseByOrderId(purid);
 	Address address = addressRepository.findAddressByAddressId(deliveryAddress);
 	ParcelDeliveryStatus parcelDeliverystatus = getStatus(status);
-	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(deliveryid,trackingNumber, carrier, parcelDeliverystatus, address, purid);
+	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(deliveryid,trackingNumber, carrier, parcelDeliverystatus, address,purchase);
 	return convertToDto(parcelDelivery);
 }
 @GetMapping(value = {"/parcelDeliveryes/{trackingNumber}", "/parcelDeliveryes/{trackingNumber}/"})
