@@ -38,11 +38,11 @@ public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 	
 }
 @PostMapping(value = {"/parcelDelivery", "/parcelDelivery/"})
-public ParcelDeliveryDTO createParcelDelivery( @RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String status, @RequestParam("deliveryAddress")String deliveryAddress, @RequestParam("purchaseid")String purid) {
+public ParcelDeliveryDTO createParcelDelivery(@RequestParam("deliveryid")String deliveryid, @RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String status, @RequestParam("deliveryAddress")String deliveryAddress, @RequestParam("purchaseid")String purid) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
 	Address address = addressRepository.findAddressByAddressId(deliveryAddress);
 	ParcelDeliveryStatus parcelDeliverystatus = getStatus(status);
-	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(trackingNumber, carrier, parcelDeliverystatus, address, purid);
+	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(deliveryid,trackingNumber, carrier, parcelDeliverystatus, address, purid);
 	return convertToDto(parcelDelivery);
 }
 @GetMapping(value = {"/parcelDeliveryes/{trackingNumber}", "/parcelDeliveryes/{trackingNumber}/"})

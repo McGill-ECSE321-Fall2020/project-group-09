@@ -39,12 +39,12 @@ public List<InStorePickUpDTO> getInStorePickUps(){
 }
 @PostMapping(value = {"/inStorePickUp", "/inStorePickUp/"})
 
-public InStorePickUpDTO createInStorePickUp(@RequestParam("pickUpReferenceNumber")String pickUpReferenceNumber,@RequestParam("inStorePickUpStatus")String status, @RequestParam("storeAddress")String storeAddress, @RequestParam("purchaseid")String purid) {
+public InStorePickUpDTO createInStorePickUp(@RequestParam("deliveryid") String id,@RequestParam("pickUpReferenceNumber")String pickUpReferenceNumber,@RequestParam("inStorePickUpStatus")String status, @RequestParam("storeAddress")String storeAddress, @RequestParam("purchaseid")String purid) {
 
 	//ArtGallerySystem system = systemservice.getSystemById(id);
 	Address address = addressRepository.findAddressByAddressId(storeAddress);
 	InStorePickUpStatus inStorePickUpstatus = getStatus(status);
-	InStorePickUp inStorePickUp = inStorePickUpService.createInStorePickUp(pickUpReferenceNumber, inStorePickUpstatus, address, purid);
+	InStorePickUp inStorePickUp = inStorePickUpService.createInStorePickUp(id,pickUpReferenceNumber, inStorePickUpstatus, address, purid);
 	return convertToDto(inStorePickUp);
 }
 @GetMapping(value = {"/inStorePickUps/{pickUpReferenceNumber}", "/inStorePickUps/{pickUpReferenceNumber}/"})

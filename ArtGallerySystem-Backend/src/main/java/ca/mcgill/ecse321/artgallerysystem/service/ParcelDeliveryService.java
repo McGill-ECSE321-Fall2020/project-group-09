@@ -25,6 +25,7 @@ import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
+import ca.mcgill.ecse321.artgallerysystem.service.exception.InStorePickUpException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ParcelDeliveryException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
@@ -40,8 +41,10 @@ public class ParcelDeliveryService {
 	@Autowired
 	PurchaseRepository purchaseRepository;
     @Transactional
-	public ParcelDelivery createParcelDelivery(String trackingNumber, String carrier,
-			ParcelDeliveryStatus status, Address deliveryAddress, String purid) {
+	public ParcelDelivery createParcelDelivery(String deliveryid,String trackingNumber, String carrier, ParcelDeliveryStatus status, Address deliveryAddress, String purid) {
+    	if (deliveryid == null|| deliveryid == "") {
+			throw new ParcelDeliveryException ("Please provide valid deliveryid.");
+		}
     	if (trackingNumber == null|| trackingNumber == "") {
 			throw new ParcelDeliveryException ("Please provide valid trackingNumber.");
 		}
@@ -53,14 +56,17 @@ public class ParcelDeliveryService {
 		}if(status == null) {
 			throw new ParcelDeliveryException ("Status can not be empty! ");
 		}
+		if(purid == null || purid =="") {
+			throw new ParcelDeliveryException("Purchaseid can not be empty!");
+		}
     	ParcelDelivery pardel = new ParcelDelivery();
     	pardel.setCarrier(carrier);
     	Purchase purchase = purchaseRepository.findPurchaseByOrderId(purid);
+    	pardel.setDeliveryId(deliveryid);
     	pardel.setParcelDeliveryStatus(status);
     	pardel.setTrackingNumber(trackingNumber);
     	pardel.setDeliveryAddress(deliveryAddress);
     	pardel.setPurchase(purchase);
-    	pardel.setDeliveryId(trackingNumber);
     	parcelDeliveryRepository.save(pardel);
 		return pardel;
 	}

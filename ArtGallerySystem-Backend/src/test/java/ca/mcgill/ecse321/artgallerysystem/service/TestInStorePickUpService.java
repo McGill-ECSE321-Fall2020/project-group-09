@@ -52,6 +52,8 @@ public class TestInStorePickUpService {
 	private InStorePickUpRepository inStorePickUpRepository;
 	private AddressRepository addressRepository;
 	private DeliveryRepository deliveryRepository;
+	private static final String DELIVERYID = "111";
+	private static final String PURID = "123";
 	private static final String PICKUPREFERENCENUMBER = "00123";
 	private Address STOREADDRESS = createAddress();
 	private static final InStorePickUpStatus STATUS = InStorePickUpStatus.PickedUp;
@@ -101,7 +103,7 @@ public class TestInStorePickUpService {
 
 		InStorePickUp inStorePickUp = null;
 		try {
-			inStorePickUp = inStorePickUpService.createInStorePickUp("00123", STATUS, STOREADDRESS);
+			inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER, STATUS, STOREADDRESS,"123");
 		} catch (InStorePickUpException e) {
 			fail();
 		}
@@ -112,7 +114,7 @@ public class TestInStorePickUpService {
 		String error = null;
 		InStorePickUp inStorePickUp = new InStorePickUp();
         try{
-        	inStorePickUp = inStorePickUpService.createInStorePickUp(null,STATUS,STOREADDRESS);
+        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,null,STATUS,STOREADDRESS,PURID);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
@@ -124,11 +126,23 @@ public class TestInStorePickUpService {
 		String error = null;
 		InStorePickUp inStorePickUp = new InStorePickUp();
         try{
-        	inStorePickUp = inStorePickUpService.createInStorePickUp(PICKUPREFERENCENUMBER,null,STOREADDRESS);
+        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,null,STOREADDRESS,PURID);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
         assertEquals("Status can not be empty! ",error);
+    }
+	
+	@Test
+	public void testCreateInStorePickUpWithoutDeliveryid() {
+		String error = null;
+		InStorePickUp inStorePickUp = new InStorePickUp();
+        try{
+        	inStorePickUp = inStorePickUpService.createInStorePickUp(null,PICKUPREFERENCENUMBER,STATUS,STOREADDRESS,PURID);
+        }catch(InStorePickUpException e){
+            error = e.getMessage();
+        }
+        assertEquals("Please provide valid id.",error);
     }
 
 	@Test
@@ -136,11 +150,22 @@ public class TestInStorePickUpService {
 		String error = null;
 		InStorePickUp inStorePickUp = new InStorePickUp();
         try{
-        	inStorePickUp = inStorePickUpService.createInStorePickUp(PICKUPREFERENCENUMBER,STATUS,null);
+        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,STATUS,null,PURID);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
         assertEquals("Please provide valid StoreAddress.",error);
+    }
+	@Test
+	public void testCreateInStorePickUpWithoutPURID() {
+		String error = null;
+		InStorePickUp inStorePickUp = new InStorePickUp();
+        try{
+        	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,STATUS,STOREADDRESS,null);
+        }catch(InStorePickUpException e){
+            error = e.getMessage();
+        }
+        assertEquals("Purchaseid can not be empty!",error);
     }
 	
 	@Test

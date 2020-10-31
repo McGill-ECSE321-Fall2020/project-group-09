@@ -32,6 +32,7 @@ import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ParcelDeliveryRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
+import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
 import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
@@ -44,6 +45,7 @@ import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
+import ca.mcgill.ecse321.artgallerysystem.service.exception.InStorePickUpException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ParcelDeliveryException;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;;
 
@@ -54,8 +56,10 @@ public class TestParcelDeliveryService {
 	private ParcelDeliveryRepository parcelDeliveryRepository;
 	private AddressRepository addressRepository;
 	private DeliveryRepository deliveryRepository;
+	private static final String DELIVERYID = "001";
 	private static final String TRACKINGNUMBER = "00213";
 	private static final String CARRIER = "000";
+	private static final String PURID = "321";
 	private Address DELIVERADDRESS = createAddress();
 	private static final ParcelDeliveryStatus STATUS = ParcelDeliveryStatus.Delivered;
 	private static final String TRACKINGNUMBER_N = "Test TrackingNumber 2";
@@ -109,18 +113,31 @@ public class TestParcelDeliveryService {
 
 		ParcelDelivery parcelDelivery = null;
 		try {
-			parcelDelivery = parcelDeliveryService.createParcelDelivery("00213", "000", STATUS, DELIVERADDRESS);
+			parcelDelivery = parcelDeliveryService.createParcelDelivery("001","00213","000", STATUS, DELIVERADDRESS,"321");
 		} catch (ParcelDeliveryException e) {
 			fail();
 		}
 		assertNotNull(parcelDelivery);
 	}
+	
+	@Test
+	public void testCreateParcelDeliveryWithoutDeliveryid() {
+		String error = null;
+		ParcelDelivery parcelDelivery = new ParcelDelivery();
+        try{
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery(null,TRACKINGNUMBER,CARRIER,STATUS,DELIVERADDRESS,"321");
+        }catch(InStorePickUpException e){
+            error = e.getMessage();
+        }
+        assertEquals("Please provide valid deliveryid.",error);
+    }
+	
 	@Test
 	public void testCreateParcelDeliveryWithoutTrackingNumber() {
 		String error = null;
 		ParcelDelivery parcelDelivery = new ParcelDelivery();
         try{
-        	parcelDelivery = parcelDeliveryService.createParcelDelivery(null,CARRIER,STATUS,DELIVERADDRESS);
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery("001",null,CARRIER,STATUS,DELIVERADDRESS,"321");
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
@@ -131,7 +148,7 @@ public class TestParcelDeliveryService {
 		String error = null;
 		ParcelDelivery parcelDelivery = new ParcelDelivery();
         try{
-        	parcelDelivery = parcelDeliveryService.createParcelDelivery(TRACKINGNUMBER,null,STATUS,DELIVERADDRESS);
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery("001",TRACKINGNUMBER,null,STATUS,DELIVERADDRESS,"321");
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
@@ -142,7 +159,7 @@ public class TestParcelDeliveryService {
 		String error = null;
 		ParcelDelivery parcelDelivery = new ParcelDelivery();
         try{
-        	parcelDelivery = parcelDeliveryService.createParcelDelivery(TRACKINGNUMBER,CARRIER,null,DELIVERADDRESS);
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery("001",TRACKINGNUMBER,CARRIER,null,DELIVERADDRESS,"321");
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
@@ -153,11 +170,22 @@ public class TestParcelDeliveryService {
 		String error = null;
 		ParcelDelivery parcelDelivery = new ParcelDelivery();
         try{
-        	parcelDelivery = parcelDeliveryService.createParcelDelivery(TRACKINGNUMBER,CARRIER,STATUS,null);
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery(DELIVERYID,TRACKINGNUMBER,CARRIER,STATUS,null,"321");
         }catch(ParcelDeliveryException e){
             error = e.getMessage();
         }
         assertEquals("Please provide valid Address.",error);
+    }
+	@Test
+	public void testCreateParcelDeliveryWithoutPURID() {
+		String error = null;
+		ParcelDelivery parcelDelivery = new ParcelDelivery();
+        try{
+        	parcelDelivery = parcelDeliveryService.createParcelDelivery(DELIVERYID,TRACKINGNUMBER,CARRIER,STATUS,DELIVERADDRESS,null);
+        }catch(ParcelDeliveryException e){
+            error = e.getMessage();
+        }
+        assertEquals("Purchaseid can not be empty!",error);
     }
 	
 	@Test
