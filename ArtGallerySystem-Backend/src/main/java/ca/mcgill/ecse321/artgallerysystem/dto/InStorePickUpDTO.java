@@ -24,14 +24,14 @@ public class InStorePickUpDTO extends DeliveryDTO{
 	public InStorePickUpStatus getInStorePickUpStatus() {
 	return this.inStorePickUpStatus;
 	    }
-	private Address storeAddress;
+	private AddressDTO storeAddress;
 
 	
-	public Address getStoreAddress() {
+	public AddressDTO getStoreAddress() {
 	   return this.storeAddress;
 	}
 
-	public void setStoreAddress(Address storeAddress) {
+	public void setStoreAddress(AddressDTO storeAddress) {
 	   this.storeAddress = storeAddress;
 	}
 

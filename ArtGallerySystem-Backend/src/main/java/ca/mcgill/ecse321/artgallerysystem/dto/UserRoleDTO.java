@@ -6,14 +6,14 @@ import javax.persistence.ManyToOne;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 
 public class UserRoleDTO {
-	private ArtGallerySystemUser artGallerySystemUser;
+	private ArtGallerySystemUserDTO artGallerySystemUser;
 
 
-	public ArtGallerySystemUser getArtGallerySystemUser() {
+	public ArtGallerySystemUserDTO getArtGallerySystemUser() {
 	   return this.artGallerySystemUser;
 	}
 
-	public void setArtGallerySystemUser(ArtGallerySystemUser artGallerySystemUser) {
+	public void setArtGallerySystemUser(ArtGallerySystemUserDTO artGallerySystemUser) {
 	   this.artGallerySystemUser = artGallerySystemUser;
 	}
 

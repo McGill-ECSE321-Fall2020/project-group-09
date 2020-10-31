@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.ArtPieceDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.CustomerDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.PaymentDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.PurchaseDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
@@ -104,7 +106,7 @@ public PaymentMethod convertToMethod(String method) {
 }
 public PurchaseDTO convertToDto(Purchase purchase) {
 	PurchaseDTO purchaseDto = new PurchaseDTO();
-	purchaseDto.setArtPiece(purchase.getArtPiece());
+	purchaseDto.setArtPiece(convertToDto(purchase.getArtPiece()));
 	purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
 	purchaseDto.setDate(purchase.getDate());
 	purchaseDto.setOrderId(purchase.getOrderId());
@@ -115,6 +117,11 @@ public CustomerDTO convertToDto(Customer customer){
     CustomerDTO customerDTO = new CustomerDTO();
     BeanUtils.copyProperties(customer,customerDTO);
     return customerDTO;
+}
+public ArtPieceDTO convertToDto(ArtPiece artPiece){
+    ArtPieceDTO artPieceDTO = new ArtPieceDTO();
+    BeanUtils.copyProperties(artPiece,artPieceDTO);
+    return artPieceDTO;
 }
 private <T> List<T> toList(Iterable<T> iterable) {
     List<T> resultList = new ArrayList<>();

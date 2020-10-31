@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.InStorePickUpRepository;
+import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.InStorePickUpDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
@@ -62,7 +63,7 @@ public InStorePickUpDTO convertToDto(InStorePickUp inStorePickUp) {
 	InStorePickUpDTO inStorePickUpDto = new InStorePickUpDTO();
 	inStorePickUpDto.setPickUpReferenceNumber(inStorePickUp.getPickUpReferenceNumber());
 	inStorePickUpDto.setDeliveryId(inStorePickUp.getDeliveryId());
-	inStorePickUpDto.setStoreAddress(inStorePickUp.getStoreAddress());
+	inStorePickUpDto.setStoreAddress(convertToDto(inStorePickUp.getStoreAddress()));
     inStorePickUpDto.setInStorePickUpStatus(inStorePickUp.getInStorePickUpStatus());
     
     return inStorePickUpDto;
@@ -80,7 +81,19 @@ public InStorePickUpStatus getStatus (String status) {
 	}
 	return null;
 }
-
+public AddressDTO convertToDto(Address address) {
+    AddressDTO addressDTO = new AddressDTO();
+    addressDTO.setAddressId(address.getAddressId());
+    addressDTO.setCity(address.getCity());
+    addressDTO.setCountry(address.getCountry());
+    addressDTO.setName(address.getName());
+    addressDTO.setPhoneNumber(address.getPhoneNumber());
+    addressDTO.setPostalCode(address.getPostalCode());
+    addressDTO.setProvince(address.getProvince());
+    addressDTO.setStreetAddress(address.getStreetAddress());
+    addressDTO.setArtGallerySystem(address.getArtGallerySystem());
+    return addressDTO;
+}
 private <T> List<T> toList(Iterable<T> iterable) {
     List<T> resultList = new ArrayList<>();
     for (T t : iterable) {

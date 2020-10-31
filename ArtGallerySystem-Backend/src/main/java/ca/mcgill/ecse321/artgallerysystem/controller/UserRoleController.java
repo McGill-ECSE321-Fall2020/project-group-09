@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemUserDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.UserRoleDTO;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 import ca.mcgill.ecse321.artgallerysystem.service.UserRoleService;
 @CrossOrigin(origins ="*")
@@ -42,8 +44,17 @@ public void deleteUserRole(@PathVariable("id")String id) {
 public UserRoleDTO convertToDto(UserRole userRole) {
 	UserRoleDTO userRoleDTO = new UserRoleDTO();
 	userRoleDTO.setUserRoleId(userRole.getUserRoleId());
-	userRoleDTO.setArtGallerySystemUser(userRole.getArtGallerySystemUser());
+	userRoleDTO.setArtGallerySystemUser(convertToDto(userRole.getArtGallerySystemUser()));
 	return userRoleDTO;
+}
+public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
+	ArtGallerySystemUserDTO userDTO = new ArtGallerySystemUserDTO();
+	userDTO.setName(user.getName());
+	userDTO.setEmail(user.getEmail());
+	userDTO.setPassword(user.getPassword());
+	userDTO.setAvatar(user.getAvatar());
+	//userDTO.setArtGallerySystem(user.getArtGallerySystem());
+	return userDTO;
 }
 private <T> List<T> toList(Iterable<T> iterable) {
     List<T> resultList = new ArrayList<>();

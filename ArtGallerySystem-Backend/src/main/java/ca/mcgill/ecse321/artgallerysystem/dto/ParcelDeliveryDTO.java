@@ -32,14 +32,14 @@ public class ParcelDeliveryDTO extends DeliveryDTO{
 	public ParcelDeliveryStatus getParcelDeliveryStatus() {
 	return this.parcelDeliveryStatus;
 	    }
-	private Address deliveryAddress;
+	private AddressDTO deliveryAddress;
 
 
-	public Address getDeliveryAddress() {
+	public AddressDTO getDeliveryAddress() {
 	   return this.deliveryAddress;
 	}
 
-	public void setDeliveryAddress(Address deliveryAddress) {
+	public void setDeliveryAddress(AddressDTO deliveryAddress) {
 	   this.deliveryAddress = deliveryAddress;
 	}
 
