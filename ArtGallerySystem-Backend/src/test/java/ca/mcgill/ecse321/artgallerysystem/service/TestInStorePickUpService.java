@@ -293,6 +293,16 @@ public class TestInStorePickUpService {
 			}
 			assertEquals("same status", error);
 		}
+	 @Test
+		public void testUpdateInStorePickUpWithNullStatus() {
+			String error = null;
+			try {
+				inStorePickUp = inStorePickUpService.updateinStorePickUp(PICKUPREFERENCENUMBER, null);
+			} catch (InStorePickUpException e) {
+				error = e.getMessage();
+			}
+			assertEquals("Status cannot be empty!", error);
+		}
 	 
 	 @Test
 		public void testUpdateInStorePickUpWithEmptyPickUpReferenceNumber(){

@@ -310,6 +310,17 @@ public class TestParcelDeliveryService {
 			}
 			assertEquals("same status", error);
 		}
+	 
+	 @Test
+		public void testUpdateInStorePickUpWithNullStatus() {
+			String error = null;
+			try {
+				parcelDelivery = parcelDeliveryService.updateparcelDelivery(TRACKINGNUMBER, null);
+			} catch (ParcelDeliveryException e) {
+				error = e.getMessage();
+			}
+			assertEquals("Status cannot be empty!", error);
+		}
 	 @Test
 		public void testUpdateParcelDeliveryWithEmptyTrackingNumber(){
 			String error = null;
