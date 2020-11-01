@@ -120,7 +120,7 @@ public class ParcelDeliveryService {
 		}
 		pardel.setParcelDeliveryStatus(status);;
 		parcelDeliveryRepository.save(pardel);
-		deliverRepository.save(pardel);
+		// deliverRepository.save(pardel);
 		return pardel;
 	}
 	private <T> List<T> toList(Iterable<T> iterable) {
