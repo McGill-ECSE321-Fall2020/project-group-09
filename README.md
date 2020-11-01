@@ -50,5 +50,6 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | Tianyu Zhao |  |  |
 
 #### Links
-* [Software Quality Asssurance Plan ](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Software-QA-Plan-&-Report)
+* [RESTful Service Endpoints](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/RESTful-Service-Endpoints)
+* [Software Quality Asssurance Plan and Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Software-QA-Plan-&-Report)
 * [Deliverable 2 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_2)
