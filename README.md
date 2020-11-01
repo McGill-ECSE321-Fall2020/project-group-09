@@ -47,7 +47,7 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | Angelina Duan	|  |  |
 | Zhekai Jiang | | Service, controller, and testing suites for ArtGallerySystem and Purchase; documentation |
 | Zheyan Tu |  |  |
-| Tianyu Zhao |  |  |
+| Tianyu Zhao |  | Service, controller, and testing suites for ParcelDelivery and InStorePickUp; documentation |
 
 #### Links
 * [RESTful Service Endpoints](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/RESTful-Service-Endpoints)
