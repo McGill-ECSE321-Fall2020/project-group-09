@@ -69,7 +69,7 @@ public void deleteinStorePickUp(@PathVariable("pickUpReferenceNumber") String pi
 	inStorePickUpService.deleteInStorePickUp(pickUpReferenceNumber);
 }
 @PutMapping (value = {"/inStorePickUp/update/{pickUpReferenceNumber}", "/inStorePickUp/update/{pickUpReferenceNumber}/"})
-public InStorePickUpDTO updateparcelDeliveryStatus(@PathVariable("pickUpReferenceNumber")String pickUpReferenceNumber, @RequestParam("inStorePickUp")String newinStorePickUp) {
+public InStorePickUpDTO updateinStorePickUpStatus(@PathVariable("pickUpReferenceNumber")String pickUpReferenceNumber, @RequestParam("inStorePickUp")String newinStorePickUp) {
 	return convertToDto(inStorePickUpService.updateinStorePickUp(pickUpReferenceNumber,getStatus(newinStorePickUp)));
 }
 public InStorePickUpDTO convertToDto(InStorePickUp inStorePickUp) {
