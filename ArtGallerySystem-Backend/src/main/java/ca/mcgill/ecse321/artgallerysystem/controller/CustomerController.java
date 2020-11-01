@@ -52,7 +52,7 @@ public class CustomerController {
     @PostMapping(value = {"/createCustomer/{id}", "/createCustomer/{id}/"})
     public CustomerDTO createCustomer(@PathVariable("id") String id, @RequestParam("user") String userid, @RequestParam("balance") double balance){
     	ArtGallerySystemUser user = userService.getUser(userid);
-        Customer customer = customerService.createCustomer(user, id, balance, null, null);
+        Customer customer = customerService.createCustomer(user, id, balance, new HashSet<Purchase>(), new HashSet<Address>());
         return convertToDto(customer);
     }
     
