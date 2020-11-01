@@ -2,7 +2,6 @@ package ca.mcgill.ecse321.artgallerysystem.controller;
 
 
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtPieceDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.ArtistDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;

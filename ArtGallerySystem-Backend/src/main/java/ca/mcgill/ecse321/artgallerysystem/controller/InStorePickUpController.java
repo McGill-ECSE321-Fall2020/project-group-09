@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
-import ca.mcgill.ecse321.artgallerysystem.dao.InStorePickUpRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemUserDTO;

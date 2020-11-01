@@ -1,7 +1,6 @@
 package ca.mcgill.ecse321.artgallerysystem.controller;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,24 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.service.AddressService;
-import ca.mcgill.ecse321.artgallerysystem.service.ArtGallerySystemService;
 
 @CrossOrigin(origins="*")
 @RestController
 public class AddressController {
 @Autowired 
 private AddressService addressservice;
-@Autowired 
-private ArtGallerySystemService systemservice;
-@Autowired
-private ArtGallerySystemRepository artgallerySystemRepository;
 @GetMapping(value = {"/addresses", "/addresses/"})
 public List<AddressDTO> getAllAddresses(){
 	

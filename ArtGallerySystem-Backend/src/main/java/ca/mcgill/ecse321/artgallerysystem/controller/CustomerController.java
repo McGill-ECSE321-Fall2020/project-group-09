@@ -4,17 +4,13 @@ package ca.mcgill.ecse321.artgallerysystem.controller;
 import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemUserDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.ArtistDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.CustomerDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.PurchaseDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
-import ca.mcgill.ecse321.artgallerysystem.model.Artist;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.ArtGallerySystemUserService;
 import ca.mcgill.ecse321.artgallerysystem.service.CustomerService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,10 +57,7 @@ public class CustomerController {
         return convertToDto(customerService.updateCustomerBalance(id,balance));
     }
 
-    @PutMapping("/updateAddress/{id}")
-    private CustomerDTO updateCustomerAddress(@PathVariable("id") String id, @RequestParam("address") Set<Address> address){
-        return convertToDto(customerService.updateCustomerAddress(id,address));
-    }
+    
     @PutMapping("/addAddress/{id}")
     private CustomerDTO addCustomerAddress(@PathVariable("id") String id, @RequestParam("address") String addressid){
     	Set<Address> adds = customerService.getCustomer(id).getAddress();

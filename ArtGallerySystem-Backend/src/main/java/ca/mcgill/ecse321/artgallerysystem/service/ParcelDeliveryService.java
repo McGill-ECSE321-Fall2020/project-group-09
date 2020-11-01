@@ -40,6 +40,8 @@ public class ParcelDeliveryService {
 	ParcelDeliveryRepository parcelDeliveryRepository;
 	@Autowired
 	PurchaseRepository purchaseRepository;
+	@Autowired
+	DeliveryRepository deliverRepository;
     @Transactional
 	public ParcelDelivery createParcelDelivery(String deliveryid,String trackingNumber, String carrier, ParcelDeliveryStatus status, Address deliveryAddress, Purchase purchase) {
     	if (deliveryid == null|| deliveryid == "") {
@@ -68,6 +70,7 @@ public class ParcelDeliveryService {
     	pardel.setDeliveryAddress(deliveryAddress);
     	pardel.setPurchase(purchase);
     	parcelDeliveryRepository.save(pardel);
+    	//deliverRepository.save(pardel);
 		return pardel;
 	}
 	
@@ -76,7 +79,9 @@ public class ParcelDeliveryService {
 		ParcelDelivery pardel=null;
 		ParcelDelivery par = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
 	    if (par != null) {
-	    	parcelDeliveryRepository.deleteById(trackingNumber);
+	    	//parcelDeliveryRepository.deleteById(trackingNumber);
+	    	parcelDeliveryRepository.delete(par);
+	    	//deliverRepository.deleteById(trackingNumber);
 		}else {
 			throw new ParcelDeliveryException("Order not exist.");
 		}
@@ -115,6 +120,7 @@ public class ParcelDeliveryService {
 		}
 		pardel.setParcelDeliveryStatus(status);;
 		parcelDeliveryRepository.save(pardel);
+		deliverRepository.save(pardel);
 		return pardel;
 	}
 	private <T> List<T> toList(Iterable<T> iterable) {

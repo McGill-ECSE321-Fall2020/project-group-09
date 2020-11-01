@@ -1,7 +1,6 @@
 package ca.mcgill.ecse321.artgallerysystem.controller;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,24 +15,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
-import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;
+
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemUserDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtPieceDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.CustomerDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.PaymentDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.PurchaseDTO;
-import ca.mcgill.ecse321.artgallerysystem.model.Address;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
+
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
-import ca.mcgill.ecse321.artgallerysystem.service.AddressService;
-import ca.mcgill.ecse321.artgallerysystem.service.ArtGallerySystemService;
+
 import ca.mcgill.ecse321.artgallerysystem.service.PaymentService;
 import ca.mcgill.ecse321.artgallerysystem.service.PurchaseService;
 
