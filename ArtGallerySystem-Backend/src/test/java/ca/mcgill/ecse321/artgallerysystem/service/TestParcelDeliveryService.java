@@ -2,7 +2,6 @@ package ca.mcgill.ecse321.artgallerysystem.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -25,14 +24,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
-import ca.mcgill.ecse321.artgallerysystem.dao.ArtPieceRepository;
-import ca.mcgill.ecse321.artgallerysystem.dao.CustomerRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.DeliveryRepository;
-import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
-import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ParcelDeliveryRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
-import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
 import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
@@ -41,11 +35,7 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDeliveryStatus;
-import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.InStorePickUpException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ParcelDeliveryException;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;;
 
@@ -54,7 +44,9 @@ public class TestParcelDeliveryService {
 	
 	@Mock
 	private ParcelDeliveryRepository parcelDeliveryRepository;
+	@Mock
 	private AddressRepository addressRepository;
+	@Mock
 	private DeliveryRepository deliveryRepository;
 	private static final String DELIVERYID = "001";
 	private static final String TRACKINGNUMBER = "00213";
