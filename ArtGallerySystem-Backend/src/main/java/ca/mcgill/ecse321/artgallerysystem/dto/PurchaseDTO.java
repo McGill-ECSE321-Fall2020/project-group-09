@@ -44,47 +44,47 @@ public class PurchaseDTO {
 	public OrderStatus getOrderStatus() {
 	return this.orderStatus;
 	    }
-	private Delivery delivery;
+	private DeliveryDTO delivery;
 
 	
-	public Delivery  getDelivery() {
+	public DeliveryDTO  getDelivery() {
 	   return this.delivery;
 	}
 
-	public void setDelivery(Delivery delivery) {
+	public void setDelivery(DeliveryDTO delivery) {
 	   this.delivery = delivery;
 	}
 
-	private Set<Payment> payment;
+	private Set<PaymentDTO> payment;
 
 	
-	public Set<Payment> getPayment() {
+	public Set<PaymentDTO> getPayment() {
 	   return this.payment;
 	}
 
-	public void setPayment(Set<Payment> payments) {
+	public void setPayment(Set<PaymentDTO> payments) {
 	   this.payment = payments;
 	}
 
-	private Customer customer;
+	private CustomerDTO customer;
 
 
-	public Customer getCustomer() {
+	public CustomerDTO getCustomer() {
 	   return this.customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(CustomerDTO customer) {
 	   this.customer = customer;
 	}
 
-	private ArtPiece artPiece;
+	private ArtPieceDTO artPiece;
 
 	
-	public ArtPiece getArtPiece() {
+	public ArtPieceDTO getArtPiece() {
 	   return this.artPiece;
 	}
 
-	public void setArtPiece(ArtPiece artPiece) {
+	public void setArtPiece(ArtPieceDTO artPiece) {
 	   this.artPiece = artPiece;
 	}
 

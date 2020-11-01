@@ -44,25 +44,25 @@ public class ArtGallerySystemUserDTO {
 	public String getAvatar() {
 	return this.avatar;
 	    }
-	private Set<UserRoleDTO> userRole;
+	private Set<UserRole> userRole;
 
 	
-	public Set<UserRoleDTO> getUserRole() {
+	public Set<UserRole> getUserRole() {
 	   return this.userRole;
 	}
 
-	public void setUserRole(Set<UserRoleDTO> userRoles) {
+	public void setUserRole(Set<UserRole> userRoles) {
 	   this.userRole = userRoles;
 	}
 
-	private ArtGallerySystemDTO artGallerySystem;
+	private ArtGallerySystem artGallerySystem;
 
 	
-	public ArtGallerySystemDTO getArtGallerySystem() {
+	public ArtGallerySystem getArtGallerySystem() {
 	   return this.artGallerySystem;
 	}
 
-	public void setArtGallerySystem(ArtGallerySystemDTO artGallerySystem) {
+	public void setArtGallerySystem(ArtGallerySystem artGallerySystem) {
 	   this.artGallerySystem = artGallerySystem;
 	}
 

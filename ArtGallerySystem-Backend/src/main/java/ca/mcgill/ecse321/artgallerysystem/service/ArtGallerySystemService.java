@@ -1,7 +1,6 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 import java.util.HashSet;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,12 +56,10 @@ public class ArtGallerySystemService {
 	}
 	
 	@Transactional
-	public void deleteSystem(String id) {
-		if(id == null || id.length() == 0) {
-			throw new IllegalArgumentException("System id cannot be empty!");
-		}
-		
+	public ArtGallerySystem deleteSystem(String id) {
+		ArtGallerySystem system = getSystemById(id);
 		artGallerySystemRepository.deleteById(id);
+		return system;
 	}
 	
 	@Transactional
@@ -99,6 +96,7 @@ public class ArtGallerySystemService {
 		}
 		
 		system.getArtGallerySystemUser().add(user);
+		user.setArtGallerySystem(system);
 		artGallerySystemRepository.save(system);
 		return system;
 	}

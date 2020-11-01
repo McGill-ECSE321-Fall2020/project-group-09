@@ -1,7 +1,6 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,15 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemUserRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.UserRoleRepository;
-/*import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemUserDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
-import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;*/
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.UserRoleException;
 /**
  * @author Angelina Duan
- * @version initial
  */
 @Service
 public class UserRoleService {
@@ -26,31 +21,25 @@ public class UserRoleService {
 	@Autowired
 	UserRoleRepository userRoleRepository;
 	@Transactional
-	public UserRole createUserRole(String userRoleId, ArtGallerySystemUser user) {
+	public UserRole createUserRole(String userRoleId, String userID) {
 		if(userRoleId==null) {
 			throw new UserRoleException("Please enter the userRole id");
 		}
-		if(user==null) {
-			throw new UserRoleException("Please set a valid user");
-		}
 		UserRole userRole = new UserRole();
-		userRole.setArtGallerySystemUser(user);
 		userRole.setUserRoleId(userRoleId);
-		Set<UserRole> sysUserRole = user.getUserRole();
-		sysUserRole.add(userRole);
-		user.setUserRole(sysUserRole);
-		artGallerySystemUserRepository.save(user);
+		ArtGallerySystemUser user = artGallerySystemUserRepository.findArtGallerySystemUserByName(userID);
+		userRole.setArtGallerySystemUser(user);
 		userRoleRepository.save(userRole);
 		return userRole;
 	}
 	@Transactional
 	public UserRole getUserRole(String id) {
-		if(id==null) {
-			throw new UserRoleException("userrole id invalid");
+		if(id==null||id=="") {
+			throw new UserRoleException("provide id please");
 		}
 		UserRole userRole=userRoleRepository.findUserRoleByUserRoleId(id);
 		if(userRole==null) {
-			throw new UserRoleException("userrole id not found");
+			throw new UserRoleException("userrole not found");
 		}else {
 			return userRole;
 		}
@@ -61,16 +50,13 @@ public class UserRoleService {
 	}
 	@Transactional
 	public boolean deleteUserRole(String id) {
-		if(id==null) {
-			throw new UserRoleException("userRole id invalid");
-		}
 		boolean deleted = false;
 		UserRole userRole = userRoleRepository.findUserRoleByUserRoleId(id);
 		if(userRole!=null) {
 			userRoleRepository.delete(userRole);
 			deleted=true;
 		}else {
-			throw new UserRoleException("user role must be valid");
+			throw new UserRoleException("user role not exist");
 		}
 		return deleted;
 	}

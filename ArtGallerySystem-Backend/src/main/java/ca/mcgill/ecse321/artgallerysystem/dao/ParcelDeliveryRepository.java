@@ -8,6 +8,6 @@ import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
 
 @Repository
 public interface ParcelDeliveryRepository extends CrudRepository <ParcelDelivery, String>{
-	public ParcelDelivery findParcelDeliveryByDeliveryId(String deliveryId);
+	public ParcelDelivery findParcelDeliveryByDeliveryId(String trackingNumber);
 	// public List<ParcelDelivery> findParcelDliveryBydeliveryId(String deliveryId);
 }

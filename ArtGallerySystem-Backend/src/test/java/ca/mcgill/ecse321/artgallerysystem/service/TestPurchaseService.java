@@ -22,11 +22,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtPieceRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.CustomerRepository;
+import ca.mcgill.ecse321.artgallerysystem.dao.DeliveryRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
+import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
+import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
 import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
+import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 
@@ -41,6 +45,8 @@ public class TestPurchaseService {
 	private ArtPieceRepository artPieceDao;
 	@Mock
 	private PaymentRepository paymentDao;
+	@Mock
+	private DeliveryRepository deliveryDao;
 	
 	@InjectMocks
 	private PurchaseService purchaseService;
@@ -49,24 +55,32 @@ public class TestPurchaseService {
 	private static final String CUSTOMER_KEY = "TestCustomer";
 	private static final String ARTPIECE_KEY = "TestArtPiece";
 	private static final String PAYMENT_KEY = "TestPayment";
+	private static final String PARCELDELIVERY_KEY = "TestParcelDelivery";
+	private static final String INSTOREPICKUP_KEY = "TestInStorePickUp";
 	
-	private Purchase purchase;
+	private boolean isOnePurchaseInRepository;
+	
+/*	private Purchase purchase;
 	private Customer customer;
-	private List<Purchase> allPurchases;
+	private List<Purchase> allPurchases;*/
 	
 	@BeforeEach
 	public void setMockOutput() {
-		purchase = new Purchase();
+/*		purchase = new Purchase();
 		customer = new Customer();
 		purchase.setOrderId(PURCHASE_KEY);
 		customer.setUserRoleId(CUSTOMER_KEY);
 		purchase.setCustomer(customer);
 		allPurchases = new ArrayList<Purchase>();
-		allPurchases.add(purchase);
+		allPurchases.add(purchase);*/
+		
+		isOnePurchaseInRepository = false; 
 		
 
 		lenient().when(purchaseDao.findPurchaseByOrderId(anyString())).thenAnswer((InvocationOnMock invocation) -> {
 			if (invocation.getArgument(0).equals(PURCHASE_KEY)) {
+				Purchase purchase = new Purchase();
+				purchase.setOrderId(PURCHASE_KEY);
 				return purchase;
 			} else {
 				return null;
@@ -74,11 +88,27 @@ public class TestPurchaseService {
 		});
 		
 		lenient().when(purchaseDao.findAll()).thenAnswer((InvocationOnMock invocation) -> {
-			return allPurchases;
+			if(isOnePurchaseInRepository) {
+				Purchase purchase = new Purchase();
+				purchase.setOrderId(PURCHASE_KEY);
+				List<Purchase> allPurchases = new ArrayList<Purchase>();
+				allPurchases.add(purchase);
+				return allPurchases;
+			} else {
+				return null;
+			}
+			
 		});
 		
-		lenient().when(purchaseDao.findByCustomer(any())).thenAnswer((InvocationOnMock invocation) -> {
-			if(invocation.getArgument(0) instanceof Customer && ((Customer)(invocation.getArgument(0))).getUserRoleId().equals(CUSTOMER_KEY)) {
+		lenient().when(purchaseDao.findByCustomer(any(Customer.class))).thenAnswer((InvocationOnMock invocation) -> {
+			if(((Customer)(invocation.getArgument(0))).getUserRoleId().equals(CUSTOMER_KEY)) {
+				Customer customer = new Customer();
+				customer.setUserRoleId(CUSTOMER_KEY);
+				Purchase purchase = new Purchase();
+				purchase.setOrderId(PURCHASE_KEY);
+				purchase.setCustomer(customer);
+				List<Purchase> allPurchases = new ArrayList<Purchase>();
+				allPurchases.add(purchase);
 				return allPurchases;
 			} else {
 				return null;
@@ -97,6 +127,8 @@ public class TestPurchaseService {
 		
 		lenient().when(customerDao.findCustomerByUserRoleId(anyString())).thenAnswer((InvocationOnMock invocation) -> {
 			if (invocation.getArgument(0).equals(CUSTOMER_KEY)) {
+				Customer customer = new Customer();
+				customer.setUserRoleId(CUSTOMER_KEY);
 				return customer;
 			} else {
 				return null;
@@ -118,6 +150,20 @@ public class TestPurchaseService {
 				Payment payment = new Payment();
 				payment.setPaymentId(PAYMENT_KEY);
 				return payment;
+			} else {
+				return null;
+			}
+		});
+		
+		lenient().when(deliveryDao.findDeliveryByDeliveryId(anyString())).thenAnswer((InvocationOnMock invocation) -> {
+			if(invocation.getArgument(0).equals(PARCELDELIVERY_KEY)) {
+				Delivery delivery = new ParcelDelivery();
+				delivery.setDeliveryId(PARCELDELIVERY_KEY);
+				return delivery;
+			} else if(invocation.getArgument(0).equals(INSTOREPICKUP_KEY)) {
+				Delivery delivery = new InStorePickUp();
+				delivery.setDeliveryId(INSTOREPICKUP_KEY);
+				return delivery;
 			} else {
 				return null;
 			}
@@ -250,6 +296,7 @@ public class TestPurchaseService {
 	
 	@Test
 	public void testGetAllPurchases() {
+		isOnePurchaseInRepository = true;
 		List<Purchase> purchases = null;
 		try {
 			purchases = purchaseService.getAllPurchases();
@@ -262,8 +309,82 @@ public class TestPurchaseService {
 		assertEquals(PURCHASE_KEY, purchases.get(0).getOrderId());
 	}
 	
+	@Test
+	public void testGetAllPurchasesEmpty() {
+		List<Purchase> purchases = null;
+		try {
+			purchases = purchaseService.getAllPurchases();
+		} catch(Exception e) {
+			fail();
+		}
+		
+		assertEquals(0, purchases.size());
+	}
 	
-/*	@Test
+	@Test
+	public void testDeletePurchase() {
+		String id = PURCHASE_KEY;
+		Purchase purchase = null;
+		
+		try {
+			purchase = purchaseService.deletePurchase(id);
+		} catch(Exception e) {
+			fail();
+		}
+		
+		assertEquals(id, purchase.getOrderId());
+	}
+	
+	@Test
+	public void testDeletePurchaseNullId() {
+		String id = null;
+		Purchase purchase = null;
+		
+		String error = null;
+		try {
+			purchase = purchaseService.deletePurchase(id);
+		} catch(Exception e) {
+			error = e.getMessage();
+		}
+		
+		assertEquals("Id cannot be empty!", error);
+		assertNull(purchase);
+	}
+	
+	@Test
+	public void testDeletePurchaseEmptyId() {
+		String id = "";
+		Purchase purchase = null;
+		
+		String error = null;
+		try {
+			purchase = purchaseService.deletePurchase(id);
+		} catch(Exception e) {
+			error = e.getMessage();
+		}
+		
+		assertEquals("Id cannot be empty!", error);
+		assertNull(purchase);
+	}
+	
+	@Test
+	public void testDeletePurchaseNonExistentId() {
+		String id = "?";
+		Purchase purchase = null;
+		
+		String error = null;
+		try {
+			purchase = purchaseService.deletePurchase(id);
+		} catch(Exception e) {
+			error = e.getMessage();
+		}
+		
+		assertEquals("Purchase with id " + id + " does not exist.", error);
+		assertNull(purchase);
+	}
+	
+	
+	@Test
 	public void testGetPurchasesMadeByCustomer() {
 		List<Purchase> purchases = null;
 		String customerUserRoleId = CUSTOMER_KEY;
@@ -282,6 +403,21 @@ public class TestPurchaseService {
 	
 	@Test
 	public void testGetPurchaseMadeByCustomerNull() {
+		List<Purchase> purchases = null;
+		Customer customer = null;
+		String error = "";
+		try {
+			purchases = purchaseService.getPurchasesMadeByCustomer(customer);
+		} catch(Exception e) {
+			error = e.getMessage();
+		}
+		assertEquals("Customer cannot be empty!", error);
+		assertNull(purchases);
+	}
+	
+/*	???
+	@Test
+	public void testDeletePurchase() {
 		
 	}*/
 	
@@ -317,14 +453,76 @@ public class TestPurchaseService {
 	}
 	
 	@Test
+	public void testSetParcelDelivery() {
+		String id = PURCHASE_KEY;
+		Purchase purchase = null;
+		String deliveryId = PARCELDELIVERY_KEY;
+		Delivery delivery = null;
+		try {
+			delivery = deliveryDao.findDeliveryByDeliveryId(deliveryId);
+			purchase = purchaseService.setDelivery(id, delivery);
+		} catch(Exception e) {
+			fail();
+		}
+		assertNotNull(delivery);
+		assert(delivery instanceof ParcelDelivery);
+		assertEquals(deliveryId, delivery.getDeliveryId());
+		assertNotNull(purchase);
+		assertEquals(id, purchase.getOrderId());
+		assertNotNull(purchase.getDelivery());
+		assertEquals(delivery, purchase.getDelivery());
+	}
+	
+	@Test
+	public void testSetInStorePickUp() {
+		String id = PURCHASE_KEY;
+		Purchase purchase = null;
+		String deliveryId = INSTOREPICKUP_KEY;
+		Delivery delivery = null;
+		try {
+			delivery = deliveryDao.findDeliveryByDeliveryId(deliveryId);
+			purchase = purchaseService.setDelivery(id, delivery);
+		} catch(Exception e) {
+			fail();
+		}
+		assertNotNull(delivery);
+		assert(delivery instanceof InStorePickUp);
+		assertEquals(deliveryId, delivery.getDeliveryId());
+		assertNotNull(purchase);
+		assertEquals(id, purchase.getOrderId());
+		assertNotNull(purchase.getDelivery());
+		assertEquals(delivery, purchase.getDelivery());
+	}
+	
+	@Test
+	public void testSetDeliveryNull() {
+		String id = null;
+		Purchase purchase = null;
+		Delivery delivery = null;
+		String error = "";
+		try {
+			purchase = purchaseService.setDelivery(id, delivery);
+		} catch(Exception e) {
+			error = e.getMessage();
+		}
+		assertEquals("Id cannot be empty! Delivery cannot be empty!", error);
+		assertNull(purchase);
+	}
+	
+	@Test
 	public void testAddPayment() {
 		String id = PURCHASE_KEY;
-		Payment payment = new Payment();
+		String paymentId = PAYMENT_KEY;
+		Payment payment = null;
+		Purchase purchase = null;
 		try {
+			payment = paymentDao.findPaymentByPaymentId(paymentId);
 			purchase = purchaseService.addPayment(id, payment);
 		} catch (Exception e) {
 			fail();
 		}
+		assertNotNull(payment);
+		assertEquals(paymentId, payment.getPaymentId());
 		assert(purchase.getPayment().contains(payment));
 	}
 	

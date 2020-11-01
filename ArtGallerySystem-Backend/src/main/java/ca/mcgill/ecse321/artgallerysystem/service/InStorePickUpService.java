@@ -1,5 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 
+import static java.lang.String.valueOf;
+
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.DeliveryRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.InStorePickUpRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
+import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtGallerySystemDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
@@ -25,6 +28,7 @@ import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
+import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.InStorePickUpException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ParcelDeliveryException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
@@ -40,11 +44,13 @@ public class InStorePickUpService {
 	DeliveryRepository deliveryRepository;
 	@Autowired
 	InStorePickUpRepository inStorePickUpRepository;
+	@Autowired
+	PurchaseRepository purchaseRepository;
 	@Transactional
-	public InStorePickUp createInStorePickUp(String deliveryid, String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress) {
-    	if(deliveryid == null || deliveryid.length() == 0) {
-    		throw new InStorePickUpException ("Please provide valid deliveryid.");
-		}
+	public InStorePickUp createInStorePickUp(String id, String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress, Purchase purchase) {
+		if (id == null|| id == "") {
+			throw new InStorePickUpException ("Please provide valid id.");
+	    }
 		if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
 			throw new InStorePickUpException ("Please provide valid pickUpReferenceNumber.");
 		}
@@ -54,23 +60,28 @@ public class InStorePickUpService {
 		if(status == null) {
 			throw new InStorePickUpException ("Status can not be empty! ");
 		}
+		if(purchase == null) {
+			throw new InStorePickUpException("Purchaseid can not be empty!");
+		}
 		InStorePickUp pickup = new InStorePickUp();
-    	pickup.setDeliveryId(deliveryid);
+		//Purchase purchase = purchaseRepository.findPurchaseByOrderId(purid);
     	pickup.setPickUpReferenceNumber(pickUpReferenceNumber);
     	pickup.setStoreAddress(storeAddress);
+    	pickup.setDeliveryId(id);
     	pickup.setInStorePickUpStatus(status);
+    	pickup.setPurchase(purchase);
     	inStorePickUpRepository.save(pickup);
 		return pickup;
 	}
 	@Transactional
-	public InStorePickUp getInStorePickUp(String deliveryid) {
+	public InStorePickUp getInStorePickUp(String pickUpReferenceNumber) {
 
-		if (deliveryid == null||deliveryid == "") {
-			throw new InStorePickUpException ("Please provide vaild pickUpReferenceNumber.");
+		if (pickUpReferenceNumber == null||pickUpReferenceNumber == "") {
+			throw new InStorePickUpException ("Please provide valid pickUpReferenceNumber.");
 		}
-		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(deliveryid);
+		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
 		if (pickup== null) {
-			throw new InStorePickUpException ("InStorePickUp with id " + deliveryid + " does not exist.");
+			throw new InStorePickUpException ("InStorePickUp with id " + pickUpReferenceNumber + " does not exist.");
 		}
 		return pickup;
 	}
@@ -79,29 +90,33 @@ public class InStorePickUpService {
 		return toList(inStorePickUpRepository.findAll());
 	}
 	@Transactional
-	public InStorePickUp deleteInStorePickUp(String deliveryid) {
-		if (deliveryid == null||deliveryid == "") {
-			throw new InStorePickUpException ("provide vaild id");
+	public InStorePickUp deleteInStorePickUp(String pickUpReferenceNumber) {
+		if (pickUpReferenceNumber == null||pickUpReferenceNumber == "") {
+			throw new InStorePickUpException ("provide valid non-empty pickupreferencenumber");
 		}
-		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(deliveryid);
+		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
 		if (pickup == null) {
-			throw new InStorePickUpException ("InStorePickUp with id " + deliveryid + " does not exist.");
+			throw new InStorePickUpException ("provide valid pickupreferencenumber");
 		}
 		InStorePickUp pic = null;
-		inStorePickUpRepository.deleteById(deliveryid);
+		inStorePickUpRepository.deleteById(pickUpReferenceNumber);
 		
 		return pic;
 	}
 	@Transactional
-	public InStorePickUp updateinStorePickUpStatus(String deliveryid, InStorePickUpStatus status) {
-		InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(deliveryid);
-		if (deliveryid == null|| deliveryid == "") {
-			throw new InStorePickUpException ("provide vaild deliveryid");
-		}
+	public InStorePickUp updateinStorePickUp(String pickUpReferenceNumber, InStorePickUpStatus status) {
+		
+		if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {
+			throw new InStorePickUpException ("provide valid pickUpReferenceNumber");
+		}InStorePickUp pickup = inStorePickUpRepository.findInStorePickUpByDeliveryId(pickUpReferenceNumber);
 		if(status == null) {
 			throw new InStorePickUpException ("Status cannot be empty!");
-		}if (pickup == null) {
+		}
+		if (pickup == null) {
 			throw new InStorePickUpException ("not exist inStorePickUp");
+		}
+		if (pickup.getInStorePickUpStatus() == status) {
+			throw new InStorePickUpException("same status");
 		}
 		pickup.setInStorePickUpStatus(status);;
 		inStorePickUpRepository.save(pickup);

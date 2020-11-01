@@ -46,11 +46,10 @@ public class ArtGallerySystemController {
 	
 	@Autowired
 	private AddressController addressController;
-/*	pending completion
 	@Autowired
 	private ArtGallerySystemUserController userController;
 	@Autowired
-	private ArtPieceController artPieceController;*/
+	private ArtPieceController artPieceController;
 	@Autowired
 	private PurchaseController purchaseController;
 	
@@ -69,35 +68,35 @@ public class ArtGallerySystemController {
 		artGallerySystemService.deleteSystem(id);
 	}
 	
-	@PutMapping(value = {"/system/{id}", "/system/{id}/"})
+	@PutMapping(value = {"/system/setincome/{id}", "/system/setincome/{id}/"})
 	public ArtGallerySystemDTO setIncome(@PathVariable("id") String id, @RequestParam("income") double income) {
 		return convertToDto(artGallerySystemService.setIncome(id, income));
 	}
 	
-	@PutMapping(value = {"/system/{id}", "/system/{id}/"})
+	@PutMapping(value = {"/system/increaseincome/{id}", "/system/increaseincome/{id}/"})
 	public ArtGallerySystemDTO increaseIncome(@PathVariable("id") String id, @RequestParam("incomeincrement") double incomeIncrement) {
 		return convertToDto(artGallerySystemService.increaseIncome(id, incomeIncrement));
 	}
 	
-	@PutMapping(value = {"/system/{id}", "/system/{id}/"})
+	@PutMapping(value = {"/system/adduser/{id}", "/system/adduser/{id}/"})
 	public ArtGallerySystemDTO addUser(@PathVariable("id") String id, @RequestParam("userid") String userId) {
 		ArtGallerySystemUser user = userService.getUser(userId);
 		return convertToDto(artGallerySystemService.addUser(id, user));
 	}
 	
-	@PutMapping(value = {"/system/{id}", "/system/{id}/"})
+	@PutMapping(value = {"/system/addartpiece/{id}", "/system/addartpiece/{id}/"})
 	public ArtGallerySystemDTO addArtPiece(@PathVariable("id") String id, @RequestParam("artpieceid") String artPieceId) {
 		ArtPiece artPiece = artPieceService.getArtPiece(artPieceId);
 		return convertToDto(artGallerySystemService.addArtPiece(id, artPiece));
 	}
 	
-	@PutMapping(value = {"/system/{id}", "/system/{id}/"})
+	@PutMapping(value = {"/system/addpurchase/{id}", "/system/addpurchase/{id}/"})
 	public ArtGallerySystemDTO addPurchase(@PathVariable("id") String id, @RequestParam("purchaseid") String purchaseId) {
 		Purchase purchase = purchaseService.getPurchase(purchaseId);
 		return convertToDto(artGallerySystemService.addPurchase(id, purchase));
 	}
 	
-	@PutMapping(value = {"/system/{id}", "/system/{id}/"})
+	@PutMapping(value = {"/system/addaddress/{id}", "/system/addaddress/{id}/"})
 	public ArtGallerySystemDTO addAddress(@PathVariable("id") String id, @RequestParam("addressid") String addressId) {
 		Address address = addressService.getAddressById(addressId);
 		return convertToDto(artGallerySystemService.addAddress(id, address));
@@ -108,9 +107,8 @@ public class ArtGallerySystemController {
 		systemDto.setArtGallerySystemId(system.getArtGallerySystemId());
 		systemDto.setIncome(system.getIncome());
 		systemDto.setAddress(convertAddressSetToAddressDtoSet(system.getAddress()));
-/*		Pending completion
 		systemDto.setArtGallerySystemUser(convertUserSetToUserDtoSet(system.getArtGallerySystemUser()));
-		systemDto.setArtPiece(convertArtPieceSetToArtPieceDtoSet(system.getArtPiece())); */
+		systemDto.setArtPiece(convertArtPieceSetToArtPieceDtoSet(system.getArtPiece()));
 		systemDto.setPurchase(convertPurchaseSetToPurchaseDtoSet(system.getPurchase()));
 		return systemDto;
 	}
@@ -122,8 +120,6 @@ public class ArtGallerySystemController {
 		}
 		return addressDtos;
 	}
-	
-/*	Pending completion
 	
 	private Set<ArtGallerySystemUserDTO> convertUserSetToUserDtoSet(Set<ArtGallerySystemUser> users) {
 		Set<ArtGallerySystemUserDTO> userDtos = new HashSet<ArtGallerySystemUserDTO>();
@@ -139,7 +135,7 @@ public class ArtGallerySystemController {
 			artPieceDtos.add(artPieceController.convertToDto(artPiece));
 		}
 		return artPieceDtos;
-	}*/
+	}
 	
 	private Set<PurchaseDTO> convertPurchaseSetToPurchaseDtoSet(Set<Purchase> purchases) {
 		Set<PurchaseDTO> purchaseDtos = new HashSet<PurchaseDTO>();
