@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "32d6914d-7b34-47de-8416-2e85b2e6fb9d",
+		"name": "TestCustomer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TestCreateCustomer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62abed18-a32d-425b-a008-807a7bda45fa",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/customer/createCustomer/customer2?user=second&balance=1.1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"customer",
+						"createCustomer",
+						"customer2"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "second"
+						},
+						{
+							"key": "balance",
+							"value": "1.1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestGetCustomer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "64472bc0-8117-41eb-9c28-397fe966c79c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/customer/getCustomer/customer2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"customer",
+						"getCustomer",
+						"customer2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestUpdateBalance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f9a2bfd-2c08-40a8-ae6b-a1f5b67d5efd",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/customer/updateBalance/customer2?balance=3.0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"customer",
+						"updateBalance",
+						"customer2"
+					],
+					"query": [
+						{
+							"key": "balance",
+							"value": "3.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestAddAddress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "760b1cc0-7615-49a2-b6de-9795e971b629",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/customer/addAddress/customer2?address=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"customer",
+						"addAddress",
+						"customer2"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestDeleteCustomer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60b45b20-dcd5-4881-b182-eaec476b6133",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/customer/deleteCustomer/customer2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"customer",
+						"deleteCustomer",
+						"customer2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestGetCustomer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d40d5788-6185-4348-b5b9-89d46d5e9455",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/customer/getCustomer/customer2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"customer",
+						"getCustomer",
+						"customer2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestGetAllCustomers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bef914dc-cd75-4285-a4dc-40a193dc3332",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/customer/customerList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"customer",
+						"customerList"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

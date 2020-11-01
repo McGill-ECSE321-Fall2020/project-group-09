@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "1ab4479d-fae2-4755-b6e7-e60d7f57eee0",
+		"name": "TestPayment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createPayment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/payment/?id=1235&success=true&purchaseid=124&method=CreditCard&status=Successful",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"payment",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1235"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "des",
+							"value": "none",
+							"disabled": true
+						},
+						{
+							"key": "success",
+							"value": "true"
+						},
+						{
+							"key": "purchaseid",
+							"value": "124"
+						},
+						{
+							"key": "method",
+							"value": "CreditCard"
+						},
+						{
+							"key": "status",
+							"value": "Successful"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPayments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePayment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/payment/update/1235?method=Balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"payment",
+						"update",
+						"1235"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "Balance"
+						},
+						{
+							"key": "des",
+							"value": "none",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePayment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/payments/1235",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"payments",
+						"1235"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "des",
+							"value": "none",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPayment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/payments/1235",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"payments",
+						"1235"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "des",
+							"value": "none",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
