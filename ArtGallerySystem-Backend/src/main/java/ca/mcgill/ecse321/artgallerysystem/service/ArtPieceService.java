@@ -1,30 +1,19 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ca.mcgill.ecse321.artgallerysystem.model.Address;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
-import ca.mcgill.ecse321.artgallerysystem.model.Customer;
-import ca.mcgill.ecse321.artgallerysystem.model.Payment;
-import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
-import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.CustomerException;
 
 import static java.lang.String.valueOf;
 

@@ -1,6 +1,5 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -26,13 +25,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 
 import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
-import ca.mcgill.ecse321.artgallerysystem.dao.ArtPieceRepository;
-import ca.mcgill.ecse321.artgallerysystem.dao.CustomerRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.DeliveryRepository;
-import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.InStorePickUpRepository;
-import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
@@ -41,10 +36,7 @@ import ca.mcgill.ecse321.artgallerysystem.model.Artist;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUpStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
-import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.InStorePickUpException;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;;
 
@@ -53,19 +45,19 @@ public class TestInStorePickUpService {
 	
 	@Mock
 	private InStorePickUpRepository inStorePickUpRepository;
+	@Mock
 	private AddressRepository addressRepository;
+	@Mock
 	private DeliveryRepository deliveryRepository;
+	@Mock
 	private PurchaseRepository purchaseRepository;
 	private static final String DELIVERYID = "111";
-	private static final String PURID = "123";
 	private static final String PICKUPREFERENCENUMBER = "00123";
 	private Address STOREADDRESS = createAddress();
 	private Purchase purchase = createPurchase();
 	private static final InStorePickUpStatus STATUS = InStorePickUpStatus.PickedUp;
 	private static final String PICKUPREFERENCENUMBER_N = "Test PickUpReferenceNumber 2";
 	private InStorePickUp inStorePickUp;
-	private Delivery delivery;
-	private List<InStorePickUp> allInStorePickUps;
 
 	@InjectMocks
 	private InStorePickUpService inStorePickUpService;
@@ -119,60 +111,65 @@ public class TestInStorePickUpService {
 	@Test
 	public void testCreateInStorePickUpWithoutPickUpReferenceNumber() {
 		String error = null;
-		InStorePickUp inStorePickUp = new InStorePickUp();
+		InStorePickUp inStorePickUp = null;
         try{
         	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,null,STATUS,STOREADDRESS,purchase);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
         assertEquals("Please provide valid pickUpReferenceNumber.",error);
+        assertNull(inStorePickUp);
     }
 	
 	@Test
 	public void testCreateInStorePickUpWithoutStatus() {
 		String error = null;
-		InStorePickUp inStorePickUp = new InStorePickUp();
+		InStorePickUp inStorePickUp = null;
         try{
         	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,null,STOREADDRESS,purchase);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
         assertEquals("Status can not be empty! ",error);
+        assertNull(inStorePickUp);
     }
 	
 	@Test
 	public void testCreateInStorePickUpWithoutDeliveryid() {
 		String error = null;
-		InStorePickUp inStorePickUp = new InStorePickUp();
+		InStorePickUp inStorePickUp = null;
         try{
         	inStorePickUp = inStorePickUpService.createInStorePickUp(null,PICKUPREFERENCENUMBER,STATUS,STOREADDRESS,purchase);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
         assertEquals("Please provide valid id.",error);
+        assertNull(inStorePickUp);
     }
 
 	@Test
 	public void testCreateInStorePickUpWithoutStoreAddress() {
 		String error = null;
-		InStorePickUp inStorePickUp = new InStorePickUp();
+		InStorePickUp inStorePickUp = null;
         try{
         	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,STATUS,null,purchase);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
         assertEquals("Please provide valid StoreAddress.",error);
+        assertNull(inStorePickUp);
     }
 	@Test
 	public void testCreateInStorePickUpWithoutPURID() {
 		String error = null;
-		InStorePickUp inStorePickUp = new InStorePickUp();
+		InStorePickUp inStorePickUp = null;
         try{
         	inStorePickUp = inStorePickUpService.createInStorePickUp(DELIVERYID,PICKUPREFERENCENUMBER,STATUS,STOREADDRESS,null);
         }catch(InStorePickUpException e){
             error = e.getMessage();
         }
         assertEquals("Purchaseid can not be empty!",error);
+        assertNull(inStorePickUp);
     }
 	
 	@Test
@@ -292,6 +289,7 @@ public class TestInStorePickUpService {
 				error = e.getMessage();
 			}
 			assertEquals("same status", error);
+			assertNull(inStorePickUp);
 		}
 	 @Test
 		public void testUpdateInStorePickUpWithNullStatus() {
@@ -302,6 +300,7 @@ public class TestInStorePickUpService {
 				error = e.getMessage();
 			}
 			assertEquals("Status cannot be empty!", error);
+			assertNull(inStorePickUp);
 		}
 	 
 	 @Test
@@ -313,6 +312,7 @@ public class TestInStorePickUpService {
 				error = e.getMessage();
 			}
 			assertEquals("provide valid pickUpReferenceNumber", error);
+			assertNull(inStorePickUp);
 		}
 	 @Test
 		public void testUpdateInStorePickUpStatusWithNullPickUpReferenceNumber(){
@@ -323,6 +323,7 @@ public class TestInStorePickUpService {
 				error = e.getMessage();
 			}
 			assertEquals("provide valid pickUpReferenceNumber", error);
+			assertNull(inStorePickUp);
 		}
 
 		public Address createAddress(){

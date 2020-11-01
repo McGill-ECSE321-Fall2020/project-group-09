@@ -3,19 +3,8 @@ package ca.mcgill.ecse321.artgallerysystem.dto;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
-import ca.mcgill.ecse321.artgallerysystem.model.Customer;
-import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
-import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 
 public class PurchaseDTO {
 	private String orderId;
@@ -35,7 +24,6 @@ public class PurchaseDTO {
 	public Date getDate() {
 	return this.date;
 	    }
-	@Enumerated
 	private OrderStatus orderStatus;
 
 	public void setOrderStatus(OrderStatus value) {

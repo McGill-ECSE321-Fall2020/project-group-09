@@ -1,11 +1,8 @@
 package ca.mcgill.ecse321.artgallerysystem.dto;
 
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
-import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 
 public class PaymentDTO {
 	private String paymentId;

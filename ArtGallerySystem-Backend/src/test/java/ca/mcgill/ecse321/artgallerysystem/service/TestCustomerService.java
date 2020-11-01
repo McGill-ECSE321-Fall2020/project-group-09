@@ -1,11 +1,8 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 
-
-
 import ca.mcgill.ecse321.artgallerysystem.dao.CustomerRepository;
 
 import ca.mcgill.ecse321.artgallerysystem.model.*;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.CustomerException;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -89,7 +86,7 @@ public class TestCustomerService {
 
     @Test void testCreateCustomerWithoutId(){
         String error = null;
-        Customer customer = new Customer();
+        Customer customer = null;
         ArtGallerySystemUser user = new ArtGallerySystemUser();
         try{
             customer = customerService.createCustomer(user,null,BALANCE,PURCHASE,ADDRESS);
@@ -97,11 +94,12 @@ public class TestCustomerService {
             error = e.getMessage();
         }
         assertEquals("provide valid id",error);
+        assertNull(customer);
     }
 
     @Test void testCreateCustomerWithNegativeBalance(){
         String error = null;
-        Customer customer = new Customer();
+        Customer customer = null;
         ArtGallerySystemUser user = new ArtGallerySystemUser();
         try{
             customer = customerService.createCustomer(user,CID,-80,PURCHASE,ADDRESS);
@@ -109,6 +107,7 @@ public class TestCustomerService {
             error = e.getMessage();
         }
         assertEquals("no neg balance",error);
+        assertNull(customer);
     }
 
     @Test

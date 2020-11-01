@@ -2,11 +2,6 @@ package ca.mcgill.ecse321.artgallerysystem.dto;
 
 import java.util.Set;
 
-import javax.persistence.OneToMany;
-
-import ca.mcgill.ecse321.artgallerysystem.model.Address;
-import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
-
 public class CustomerDTO extends UserRoleDTO{
 
     private double balance;

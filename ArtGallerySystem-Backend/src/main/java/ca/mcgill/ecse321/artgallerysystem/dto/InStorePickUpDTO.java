@@ -1,9 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem.dto;
 
 import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
 
-import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUpStatus;
 
 public class InStorePickUpDTO extends DeliveryDTO{

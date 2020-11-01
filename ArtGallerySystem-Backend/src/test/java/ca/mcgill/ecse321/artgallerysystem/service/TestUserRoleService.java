@@ -1,4 +1,5 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
+
 import static org.mockito.Mockito.lenient;
 
 import java.util.ArrayList;
@@ -14,7 +15,6 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;

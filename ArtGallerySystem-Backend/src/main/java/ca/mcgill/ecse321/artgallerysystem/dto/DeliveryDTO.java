@@ -1,10 +1,5 @@
 package ca.mcgill.ecse321.artgallerysystem.dto;
 
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
-import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
-
 public class DeliveryDTO {
 	private String deliveryId;
 	   

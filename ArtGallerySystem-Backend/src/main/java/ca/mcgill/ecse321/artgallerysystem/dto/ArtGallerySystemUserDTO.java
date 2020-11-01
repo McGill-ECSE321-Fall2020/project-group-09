@@ -2,11 +2,6 @@ package ca.mcgill.ecse321.artgallerysystem.dto;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 

@@ -20,12 +20,10 @@ import org.mockito.stubbing.Answer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 
-import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemUserRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtPieceRepository;
@@ -33,8 +31,6 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtistRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.CustomerRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
-import ca.mcgill.ecse321.artgallerysystem.model.Address;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
@@ -49,11 +45,17 @@ import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
 public class TestPaymentService {
 	@Mock
 	private PaymentRepository paymentRepository;
+	@Mock
 	private PurchaseRepository purchaseRepository;
+	@Mock
 	private ArtGallerySystemRepository artGallerySystemRepository;
+	@Mock
 	private ArtGallerySystemUserRepository userRepository;
+	@Mock
 	private ArtistRepository artistRepository;
+	@Mock
 	private ArtPieceRepository artPieceRepository;
+	@Mock
 	private CustomerRepository customerRepository;
 	
 	private static final String PAYMENT_ID = "Test payment";
@@ -139,6 +141,8 @@ public class TestPaymentService {
 			error = e.getMessage();
 		}
 		assertEquals(error, null);
+		assertNotNull(payment);
+		assertEquals(PAYMENT_ID, payment.getPaymentId());
 	}
 	@Test
 	public void testCreatePaymentWithoutMethod() {
@@ -151,6 +155,7 @@ public class TestPaymentService {
 			error = e.getMessage();
 		}
 		assertEquals("provide valid method", error);
+		assertNull(payment);
 	}
 	@Test
 	public void testCreatePaymentWithoutPurchase() {
@@ -163,6 +168,7 @@ public class TestPaymentService {
 			error = e.getMessage();
 		}
 		assertEquals("provide valid purchase", error);
+		assertNull(payment);
 	}
 	@Test
 	public void testCreatePaymentWithoutId() {
@@ -175,6 +181,7 @@ public class TestPaymentService {
 			error = e.getMessage();
 		}
 		assertEquals("provide valid id", error);
+		assertNull(payment);
 	}
 	@Test
 	public void testGetPayment() {

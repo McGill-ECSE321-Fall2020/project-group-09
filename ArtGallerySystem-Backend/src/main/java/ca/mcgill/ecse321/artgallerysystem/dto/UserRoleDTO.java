@@ -1,10 +1,5 @@
 package ca.mcgill.ecse321.artgallerysystem.dto;
 
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
-
 public class UserRoleDTO {
 	private ArtGallerySystemUserDTO artGallerySystemUser;
 

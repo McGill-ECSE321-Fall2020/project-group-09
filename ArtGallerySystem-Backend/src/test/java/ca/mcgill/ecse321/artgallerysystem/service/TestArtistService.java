@@ -80,7 +80,7 @@ public class TestArtistService {
     @Test
     public void testCreateArtistWithoutAID(){
         String error = null;
-        Artist artist = new Artist();
+        Artist artist = null;
         ArtGallerySystemUser user = new ArtGallerySystemUser();
         try{
             artist = artistService.createArtist(user,null,CREDIT);
@@ -88,12 +88,13 @@ public class TestArtistService {
             error = e.getMessage();
         }
         assertEquals("invalid id",error);
+        assertNull(artist);
     }
 
     @Test
     public void testCreateArtistWithNegativeCredit(){
         String error = null;
-        Artist artist = new Artist();
+        Artist artist = null;
         ArtGallerySystemUser user = new ArtGallerySystemUser();
         try{
             artist = artistService.createArtist(user,AID,-80);
@@ -101,6 +102,7 @@ public class TestArtistService {
             error = e.getMessage();
         }
         assertEquals("negative credit",error);
+        assertNull(artist);
     }
 
     @Test
@@ -195,7 +197,6 @@ public class TestArtistService {
 
     @Test
     public void testUpdateCredit(){
-        String error = null;
         try{
             artistService.updateArtistCredit(AID,70);
         }catch(ArtistException e){
