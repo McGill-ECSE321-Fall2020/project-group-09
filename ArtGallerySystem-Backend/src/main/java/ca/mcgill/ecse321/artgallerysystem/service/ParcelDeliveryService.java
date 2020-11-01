@@ -79,8 +79,8 @@ public class ParcelDeliveryService {
 		ParcelDelivery pardel=null;
 		ParcelDelivery par = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
 	    if (par != null) {
-	    	//parcelDeliveryRepository.deleteById(trackingNumber);
-	    	parcelDeliveryRepository.delete(par);
+	    	parcelDeliveryRepository.deleteById(trackingNumber);
+	    	//parcelDeliveryRepository.delete(par);
 	    	//deliverRepository.deleteById(trackingNumber);
 		}else {
 			throw new ParcelDeliveryException("Order not exist.");
