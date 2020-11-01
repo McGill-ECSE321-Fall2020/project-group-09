@@ -45,7 +45,7 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | ------------ | ------------ | -------------- |
 | Amelia Cui | 23 | Service, controller, and testing suites for Address and Payment; project report; documentation; integration testing |
 | Angelina Duan	| 23 | Service, controller, and testing suites for ArtGallerySystemUser and UserRole; documentation; integration testing; project management  |
-| Zhekai Jiang | | Service, controller, and testing suites for ArtGallerySystem and Purchase; documentation; integration testing |
+| Zhekai Jiang | 22 | Service, controller, and testing suites for ArtGallerySystem and Purchase; documentation; integration testing |
 | Zheyan Tu | 22 | Service, controller, and testing suites for Artist, Customer and Art Piece; documentation; integration testing |
 | Tianyu Zhao |  | Service, controller, and testing suites for ParcelDelivery and InStorePickUp; documentation; integration testing |
 
