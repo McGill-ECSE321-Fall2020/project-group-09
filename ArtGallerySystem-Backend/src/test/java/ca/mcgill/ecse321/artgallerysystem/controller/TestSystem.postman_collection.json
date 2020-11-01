@@ -7,6 +7,53 @@
 	"item": [
 		{
 			"name": "TestCreateSystem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/system/123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"system",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestAddUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/system/adduser/123?userid=first",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"system",
+						"adduser",
+						"123"
+					],
+					"query": [
+						{
+							"key": "userid",
+							"value": "first"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestCreateSystem",
 			"event": [
 				{
 					"listen": "test",
@@ -224,7 +271,7 @@
 			"response": []
 		},
 		{
-			"name": "TestAddUser",
+			"name": "TestAddArtPiece",
 			"event": [
 				{
 					"listen": "test",
@@ -340,33 +387,6 @@
 						{
 							"key": "addressid",
 							"value": "123"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:5432/user/updatePassword/first?password=289",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5432/user/updatePassword/first?password=289",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5432",
-					"path": [
-						"user",
-						"updatePassword",
-						"first"
-					],
-					"query": [
-						{
-							"key": "password",
-							"value": "289"
 						}
 					]
 				}

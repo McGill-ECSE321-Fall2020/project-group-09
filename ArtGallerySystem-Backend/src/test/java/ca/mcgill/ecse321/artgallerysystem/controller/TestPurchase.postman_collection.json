@@ -6,6 +6,171 @@
 	},
 	"item": [
 		{
+			"name": "CreateArtist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/artist/createArtist/artist?user=first&credit=1.0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"artist",
+						"createArtist",
+						"artist"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "first"
+						},
+						{
+							"key": "credit",
+							"value": "1.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/customer/createCustomer/customer?user=second&balance=1.0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"customer",
+						"createCustomer",
+						"customer"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "second"
+						},
+						{
+							"key": "balance",
+							"value": "1.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateArtPiece",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/artPiece/createArtPiece?id=1&name=test&des=none&author=A&price=2.0&date=2000-01-01&status=Available",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"artPiece",
+						"createArtPiece"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "name",
+							"value": "test"
+						},
+						{
+							"key": "des",
+							"value": "none"
+						},
+						{
+							"key": "author",
+							"value": "A"
+						},
+						{
+							"key": "price",
+							"value": "2.0"
+						},
+						{
+							"key": "date",
+							"value": "2000-01-01"
+						},
+						{
+							"key": "status",
+							"value": "Available"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestCreatePurchase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/purchase/12?customerid=customer&artpieceid=1&date=2000-01-02&status=Successful",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"purchase",
+						"12"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "des",
+							"value": "none",
+							"disabled": true
+						},
+						{
+							"key": "customerid",
+							"value": "customer"
+						},
+						{
+							"key": "artpieceid",
+							"value": "1"
+						},
+						{
+							"key": "date",
+							"value": "2000-01-02"
+						},
+						{
+							"key": "status",
+							"value": "Successful"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "TestGetAllPurchases",
 			"event": [
 				{
@@ -182,6 +347,57 @@
 						{
 							"key": "deliveryid",
 							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateInStorePickUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/inStorePickUp?deliveryid=1112&storeAddress=123&purchaseid=124&pickUpReferenceNumber=1112&inStorePickUpStatus=Available",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"inStorePickUp"
+					],
+					"query": [
+						{
+							"key": "deliveryid",
+							"value": "1112"
+						},
+						{
+							"key": "carrier",
+							"value": "no",
+							"disabled": true
+						},
+						{
+							"key": "parcelDeliveryStatus",
+							"value": "Delivered",
+							"disabled": true
+						},
+						{
+							"key": "storeAddress",
+							"value": "123"
+						},
+						{
+							"key": "purchaseid",
+							"value": "124"
+						},
+						{
+							"key": "pickUpReferenceNumber",
+							"value": "1112"
+						},
+						{
+							"key": "inStorePickUpStatus",
+							"value": "Available"
 						}
 					]
 				}
