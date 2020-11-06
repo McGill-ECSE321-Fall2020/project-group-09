@@ -6,7 +6,8 @@ import App from './App'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
+import ElementUI from "element-ui";
+Vue.use(ElementUI);
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
