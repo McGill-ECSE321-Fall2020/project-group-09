@@ -1,5 +1,4 @@
 <template>
-
   <div class="login">
     <el-card>
       <h2>Login</h2>
@@ -34,7 +33,6 @@
       </el-form>
     </el-card>
   </div>
-
 </template>
 
 <script>
@@ -175,5 +173,6 @@ a {
   width: 340px;
   display: flex;
   justify-content: center;
+  background-color:white;
 }
 </style>

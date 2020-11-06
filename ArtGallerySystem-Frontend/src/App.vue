@@ -1,4 +1,5 @@
-<template>
+
+  <template>
   <div id="app">
     <div class="header">
       <h2 class="logo">LOGO HERE</h2>
@@ -93,4 +94,3 @@ body {
   }
 }
 </style>
-
