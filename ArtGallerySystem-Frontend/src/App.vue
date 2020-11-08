@@ -4,8 +4,7 @@
     <div class="header">
       <h2 class="logo">LOGO HERE</h2>
     </div>
-    <Login/>
-
+    <router-view></router-view>
     <div class="footer">
       <div class="links">
         <span>Feature 1</span>
@@ -19,16 +18,17 @@
 
 <script>
 import Login from "./components/Login";
-
+//import Purchase from "./components/Purchase";
 export default {
   name: "App",
-  components: {
-    Login
-  }
+ // components: {
+   // Login,
+    //Purchase
+  //}
 };
 </script>
 
-<style lang="scss">
+<!--<style lang="scss">
 #app {
   font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -94,3 +94,5 @@ body {
   }
 }
 </style>
+-->
+

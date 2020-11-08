@@ -35,11 +35,23 @@ public class CustomerController {
         List<Customer> customerList = customerService.getAllCustomers();
         return toList(customerList.stream().map(this::convertToDto).collect(Collectors.toList()));
     }
+    
 
     @GetMapping("/getCustomer/{id}")
     private CustomerDTO getCustomerById(@PathVariable("id") String id){
         return convertToDto(customerService.getCustomer(id));
     }
+    @GetMapping("/getCustomerAddress/{id}")
+    private List<AddressDTO> getCustomerAddress(@PathVariable("id") String id){
+    	Set<Address> addresses = customerService.getCustomer(id).getAddress();
+    	List<Address> add = new ArrayList<Address>();
+    	for (Address addess: addresses) {
+    		add.add(addess);
+    	}
+        return toList(add.stream().map(this::convertToDto).collect(Collectors.toList()));
+       
+    }
+
 
     @DeleteMapping("/deleteCustomer/{id}")
     private void deleteCustomerById(@PathVariable("id") String id){

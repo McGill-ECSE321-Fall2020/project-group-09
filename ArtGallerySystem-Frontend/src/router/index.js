@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Login from '@/components/Login'
-import Purchase from "../components/Purchase";
+import Purchase from '@/components/Purchase'
 
 Vue.use(Router)
 
@@ -19,7 +19,7 @@ export default new Router({
       component: Login
     },
     {
-      path: '/purchase',
+      path: '/purchase/:userid/:artpieceid',
       name: 'Purchase',
       component: Purchase
 
