@@ -7,6 +7,7 @@ var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPo
 var AXIOS = axios.create({
   baseURL: backendUrl,
   headers: { 'Access-Control-Allow-Origin': frontendUrl }
+  //header ('Access-Control-Allow-Origin: *')
 })
 function PurchaseDTO (orderId, date, orderStatus, delivery, payment, customer, artPiece){
   this.orderId = orderId;
@@ -49,7 +50,7 @@ function AddressDTO (addressId, name, phoneNumber, streetAddress, city, province
   this.addressId = addressId;
   this.name = name;
   this.phoneNumber = phoneNumber;
-  this.streetAddress= streetAddress;
+  this.streetaddress= streetAddress;
   this.city= city;
   this.province = province;
   this.postalCode= postalCode;
@@ -135,9 +136,10 @@ export default {
         e = e.response.data.message ? e.response.data.message : e;
         console.log(e);
       });
-    AXIOS.get('/getCustomerAddress'.concat(this.userid))
+    AXIOS.get('/customer/getCustomerAddress/'.concat(this.userid))
       .then(response => {
         this.parcelDeliverys = response.data;
+        console.log(this.parcelDeliverys);
       })
       .catch(e => {
         e = e.response.data.message ? e.response.data.message : e;
@@ -146,11 +148,24 @@ export default {
 
   },
   methods: {
+    chooseInstore(){
+      this.instorePickUps.push(this.ruleForm1.regionB)
+      console.log(this.instorePickUps)
+    },
+
     createPurchase(newPurchase) {
       AXIOS.post('/purchase/'.concat(this.ordernum.toString()), {}, {params: newPurchase})
         .then(response => {
           this.purchases.push(response.data)
-
+          console.log(this.purchases)
+          let pay = {
+            id : Math.random().toString(36).substr(2, 9),
+            success: "true",
+            method: this.ruleForm1.regionA,
+            purchaseid: this.ordernum,
+            status: "Successful"
+          }
+          this.createPayment(pay);
         })
         .catch(e =>{
           console.log(e)
@@ -160,7 +175,11 @@ export default {
     createAddress(address){
       AXIOS.post('/address',{}, {params: address})
         .then(response => {
+          console.log(response.data)
+          //his.newadd.push()
           this.newadd.push(response.data)
+          console.log(this.newadd)
+
         })
         .catch(e =>{
           console.log(e)
@@ -170,6 +189,55 @@ export default {
       AXIOS.post('/payment/', {}, {params: payment})
         .then(response => {
           this.payments.push(response.data)
+          console.log(this.payments)
+          if (this.ruleForm1.regionB == "storeA"){
+            let idp = Math.random().toString(36).substr(2, 9)
+            let store = {
+              deliveryid: idp,
+              pickUpReferenceNumber: idp,
+              inStorePickUpStatus: "Available",
+              storeAddress: "StoreA",
+              purchaseid: this.ordernum
+            }
+            this.createInstorePickUp(store);
+          }else if (this.ruleForm1.regionB == "storeB"){
+            let idp = Math.random().toString(36).substr(2, 9)
+            let store = {
+              deliveryid: idp,
+              pickUpReferenceNumber: idp,
+              inStorePickUpStatus: "Available",
+              storeAddress: "StoreB",
+              purchaseid: this.ordernum
+            }
+            this.createInstorePickUp(store);
+          }else if (this.ruleForm1.regionC){
+            let idp = Math.random().toString(36).substr(2, 9)
+            let parcel = {
+              deliveryid: idp,
+              trackingNumber: idp,
+              carrier: "default",
+              parcelDeliveryStatus: "Shipped",
+              deliveryAddress: this.ruleForm1.regionC,
+              purchaseid: this.ordernum
+            }
+            this.createParcelDelivery(parcel);
+          }else if (this.newadd.length !== 0){
+            console.log(this.newadd)
+            let idp = Math.random().toString(36).substr(2, 9)
+            let parcel = {
+              deliveryid: idp,
+              trackingNumber: idp,
+              carrier: "default",
+              parcelDeliveryStatus: "Shipped",
+              deliveryAddress: this.newadd[0].addressId,
+              purchaseid: this.ordernum
+            }
+            console.log(parcel)
+            console.log(this.newadd[0])
+            this.createParcelDelivery(parcel);
+          }
+          alert('Successful Payment');
+          window.location.href='../';
         })
         .catch(e =>{
           console.log(e)
@@ -188,6 +256,7 @@ export default {
       AXIOS.post('/parcelDelivery', {}, {params: delivery})
         .then(response => {
           this.parcelDeliverys.push(response.data)
+          console.log(this.parcelDeliverys)
         })
         .catch(e =>{
           console.log(e)
@@ -199,33 +268,49 @@ export default {
     },
 
     submitForm(formName) {
+      console.log(!this.ruleForm1.regionB)
+      console.log(this.newadd.length==0)
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          if (this.ruleForm1.regionB == "" && this.ruleForm1.regionC== "" && this.newadd== []){
+          if ((!this.ruleForm1.regionB) && (!this.ruleForm1.regionC) && (this.newadd.length==0)){
             alert('Fill in address');
             return ;
           }
-          if ((this.ruleForm1.regionB != "" && this.ruleForm1.regionC != "" )|| (this.ruleForm1.regionB != "" && this.newadd != [])||(this.ruleForm1.regionC != "" && this.newadd != [])){
+          if (( (this.ruleForm1.regionB) && (this.ruleForm1.regionC) )|| ( (this.ruleForm1.regionB) && ((this.newadd.length !==0)))||( (this.ruleForm1.regionC) && ((this.newadd.length !==0)))){
             alert('Fill in ONLY ONE address');
             return ;
           }
           console.log(this.ruleForm1.regionA);
           console.log(formName.toString());
-          if (dialogFormVisible== true){
+          if (this.dialogFormVisible== true){
             this.dialogFormVisible =  false;
           }
+          var today = new Date();
+          var dd = today.getDate();
+          var mm = today.getMonth()+1;
+          var yyyy = today.getFullYear();
+          if(dd<10)
+          {
+            dd='0'+dd;
+          }
+          if(mm<10)
+          {
+            mm='0'+mm;
+          }
+          today = yyyy+'-'+mm+'-'+dd;
           let pur = {
-            date : Date.now(),
-            status: "Success",
+            customerid: this.userid,
             artpieceid: this.artpieceid,
-            customerid: this.userid
+            date : today,
+            status: "Successful",
           }
           this.createPurchase(pur);
-          let pay = {
+          /*let pay = {
             id : Math.random().toString(36).substr(2, 9),
-            method: this.matchpayment(this.ruleForm1.regionA.toString()),
-            success: "success",
-            purchaseid: this.id
+            success: "true",
+            method: this.ruleForm1.regionA,
+            purchaseid: this.ordernum,
+            status: "Successful"
           }
           this.createPayment(pay);
           if (this.ruleForm1.regionB == "storeA"){
@@ -234,7 +319,7 @@ export default {
               pickUpReferenceNumber: this.deliveryid,
               inStorePickUpStatus: "Available",
               storeAddress: "StoreA",
-              purchaseid: this.purchaseid
+              purchaseid: this.ordernum
             }
             this.createInstorePickUp(store);
           }else if (this.ruleForm1.regionB == "storeB"){
@@ -243,7 +328,7 @@ export default {
               pickUpReferenceNumber: this.deliveryid,
               inStorePickUpStatus: "Available",
               storeAddress: "StoreB",
-              purchaseid: this.purchaseid
+              purchaseid: this.ordernum
             }
             this.createInstorePickUp(store);
           }else if (this.ruleForm1.regionC != ""){
@@ -253,7 +338,7 @@ export default {
               carrier: "default",
               parcelDeliveryStatus: "Shipped",
               deliveryAddress: this.ruleForm1.regionC.toString().split(" ")[0],
-              purchaseid: this.purchaseid
+              purchaseid: this.ordernum
             }
             this.createParcelDelivery(parcel);
           }else if (this.newadd != []){
@@ -263,10 +348,10 @@ export default {
               carrier: "default",
               parcelDeliveryStatus: "Shipped",
               deliveryAddress: this.newadd[0].addressId,
-              purchaseid: this.purchaseid
+              purchaseid: this.ordernum
             }
             this.createParcelDelivery(parcel);
-          }
+          }*/
 
 
 
@@ -276,19 +361,31 @@ export default {
         }
       });
     },
-    submitAddress(){
-      this.newadd = true;
-      let address = {
-        id : Math.random().toString(36).substr(2, 9),
-        country :this.ruleForm2.descA,
-        city: this.ruleForm2.descB ,
-        postcode: this.ruleForm2.descC,
-        province:this.ruleForm2.descD,
-        streetAddress:this.ruleForm2.descE,
-        number:this.ruleForm2.descF,
-        name:this.ruleForm2.descG
-      }
-      this.createAddress(address);
+    submitAddress(formName){
+      this.$refs[formName].validate((valid) => {
+      //this.newadd = true;
+       if (valid) {
+       let address = {
+         id : Math.random().toString(36).substr(2, 9),
+         country :this.ruleForm2.descA,
+         city: this.ruleForm2.descB ,
+         postcode: this.ruleForm2.descC,
+         province:this.ruleForm2.descD,
+         streetaddress:this.ruleForm2.descE,
+         number:this.ruleForm2.descF,
+         name:this.ruleForm2.descG
+       }
+       this.createAddress(address);
+         if (this.dialogFormVisible== true){
+           this.dialogFormVisible =  false;
+         }
+     }else {
+       console.log('error submit!!');
+       return false;
+     }
+
+
+    } )
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();

@@ -15,23 +15,22 @@
 
         <el-form-item class= "form1" label="Payment Method" prop="regionA">
           <el-select v-model="ruleForm1.regionA" placeholder="Choose One Payment Method">
-            <el-option label="Credit Card" value="Credit Card">Credit Card</el-option>
-            <el-option label="Debit Card" value="Debit Card">Debit Card</el-option>
+            <el-option label="CreditCard" value="CreditCard">CreditCard</el-option>
+            <el-option label="DebitCard" value="DebitCard">DebitCard</el-option>
           </el-select>
         </el-form-item>
         <el-form-item class= "form1" label="Card ID" prop="name">
           <el-input v-model="ruleForm1.name"></el-input>
         </el-form-item>
         <el-form-item class= "form1" label="Store PickUp" prop="regionB">
-          <el-select v-model="ruleForm1.regionB" placeholder="Choose One Address">
+          <el-select v-model="ruleForm1.regionB" clearable placeholder="Choose One Address" @click="chooseInstore">
             <el-option label="StoreA" value="storeA">StoreA</el-option>
             <el-option label="StoreB" value="storeB">StoreB</el-option>
           </el-select>
         </el-form-item>
         <el-form-item class= "form1" label="Parcel Delivery" prop="regionC">
-          <el-select v-model="ruleForm1.regionC" placeholder="Choose One Address">
-            <el-option v-for= "(address, i) in parcelDeliverys" v-bind:key="`address-${i}`" >{{address.deliveryAddress.addressId +" "+ address.deliveryAddress.name}}</el-option>
-
+          <el-select v-model="ruleForm1.regionC" clearable placeholder="Choose One Address">
+            <el-option v-for= "(address, i) in parcelDeliverys" :key="`address-${i}`" :label= "address.addressId" :value="address.addressId">{{address.addressId +" "+ address.streetAddress}}</el-option>
           </el-select>
         </el-form-item>
         <el-button type="text" @click="dialogFormVisible = true">Apply new address</el-button>
@@ -61,7 +60,7 @@
           </el-form>
           <span slot="footer" class="dialog-footer">
     <el-button @click="dialogFormVisible = false">Cancel</el-button>
-    <el-button type="primary" @click="submitAddress()">Confirm</el-button>
+    <el-button type="primary" @click="submitAddress('ruleForm2')">Confirm</el-button>
   </span>
         </el-dialog>
         <el-form-item>
@@ -80,12 +79,6 @@
 </script>
 <style scoped>
   @import url("//unpkg.com/element-ui@2.14.0/lib/theme-chalk/index.css");
-  .el-form {
-    /*align-content: center;
-    text-align: center;
-    align-items: center;
-    align-self: center;*/
-  }
   .el-form-item.form1 {
     /*align-items: center;
     align-content: center;
@@ -95,12 +88,7 @@
   .el-form-item [class="demo-ruleForm"]{
     margin-left: 500px;
   }
-  .el-button {
-   /* margin-left: 500px;*/
-  }
   .div .el-row .div .p {
     margin-left: 500px;
   }
-
-
 </style>

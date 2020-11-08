@@ -30,7 +30,7 @@ module.exports = {
     port: 8087,
 	  host: '127.0.0.1',
 	  backendHost: '127.0.0.1',
-	  backendPort: 5432,
+	  backendPort: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
