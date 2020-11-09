@@ -53,3 +53,19 @@ The gallery wants to focus on local artists and encourage them to use their webs
 * [RESTful Service Endpoints](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/RESTful-Service-Endpoints)
 * [Software Quality Asssurance Plan and Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Software-QA-Plan-&-Report)
 * [Deliverable 2 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_2)
+
+### Deliverable 3
+
+#### Overview Table
+
+| Team Members |	Total Hours	| Responsibility |
+| ------------ | ------------ | -------------- |
+| Amelia Cui |  |  |
+| Angelina Duan	|  |   |
+| Zhekai Jiang |  |  |
+| Zheyan Tu |  |  |
+| Tianyu Zhao |  |  |
+
+#### Links
+* [Architecture Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Software-QA-Plan-&-Report)
+* [Deliverable 3 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_3)
