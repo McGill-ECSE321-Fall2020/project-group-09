@@ -2,10 +2,6 @@ package ca.mcgill.ecse321.artgallerysystem.dto;
 
 import java.util.Set;
 
-import javax.persistence.ManyToMany;
-
-import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
-
 public class ArtistDTO {
 
     private Set<ArtPieceDTO> artPiece;

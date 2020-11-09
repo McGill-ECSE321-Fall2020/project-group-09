@@ -2,15 +2,6 @@ package ca.mcgill.ecse321.artgallerysystem.dto;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import ca.mcgill.ecse321.artgallerysystem.model.Address;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
-import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
-
 public class ArtGallerySystemDTO {
 	private Set<ArtGallerySystemUserDTO> artGallerySystemUser;
 

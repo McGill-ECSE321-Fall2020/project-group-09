@@ -1,8 +1,5 @@
 package ca.mcgill.ecse321.artgallerysystem.dto;
 
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 
 public class AddressDTO {

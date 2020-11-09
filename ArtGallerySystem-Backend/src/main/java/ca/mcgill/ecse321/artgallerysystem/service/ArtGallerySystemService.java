@@ -12,7 +12,6 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
-import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtGallerySystemException;
 
 @Service

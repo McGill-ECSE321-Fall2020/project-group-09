@@ -10,7 +10,6 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemUserRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtPieceRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtistRepository;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
@@ -27,11 +26,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 import static org.mockito.ArgumentMatchers.any;
 
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -43,8 +39,11 @@ import java.util.Set;
 public class TestArtPieceService {
     @Mock
     private ArtPieceRepository artPieceRepository;
+    @Mock
     private ArtistRepository artistRepository;
+    @Mock
     private ArtGallerySystemUserRepository userRepository;
+    @Mock
     private ArtGallerySystemRepository artGallerySystemRepository;
     private static final String ap_id = "test ap";
     private static final String NAME = "name";
@@ -54,7 +53,6 @@ public class TestArtPieceService {
     private static final Date DATE = java.sql.Date.valueOf("2020-12-12");
     private static final ArtPieceStatus STATUS = ArtPieceStatus.Available;
     private Set<Artist> ARTISTS = createArtist();
-    private Set<Artist> EARTISTS;
 
     @InjectMocks
     private ArtPieceService artPieceService;
@@ -108,85 +106,92 @@ public class TestArtPieceService {
     @Test
     public void testCreateArtPieceWithoutId(){
         String error = null;
-        ArtPiece artPiece = new ArtPiece();
+        ArtPiece artPiece = null;
         try{
             artPiece = artPieceService.createArtPiece(null,NAME,DES,AUTHOR,PRICE,DATE,STATUS,ARTISTS);
         }catch(ArtPieceException e){
             error = e.getMessage();
         }
         assertEquals("invalid id",error);
+        assertNull(artPiece);
     }
 
     @Test
     public void testCreateArtPieceWithoutName(){
         String error = null;
-        ArtPiece artPiece = new ArtPiece();
+        ArtPiece artPiece = null;
         try{
             artPiece = artPieceService.createArtPiece(ap_id,null,DES,AUTHOR,PRICE,DATE,STATUS,ARTISTS);
         }catch(ArtPieceException e){
             error = e.getMessage();
         }
         assertEquals("please provide name",error);
+        assertNull(artPiece);
     }
 
     @Test
     public void testCreateArtPieceWithNegativePrice(){
         String error = null;
-        ArtPiece artPiece = new ArtPiece();
+        ArtPiece artPiece = null;
         try{
             artPiece = artPieceService.createArtPiece(ap_id,NAME,DES,AUTHOR,-10,DATE,STATUS,ARTISTS);
         }catch(ArtPieceException e){
             error = e.getMessage();
         }
         assertEquals("invalid price",error);
+        assertNull(artPiece);
     }
 
     @Test
     public void testCreateArtPieceWithoutDate(){
         String error = null;
-        ArtPiece artPiece = new ArtPiece();
+        ArtPiece artPiece = null;
         try{
             artPiece = artPieceService.createArtPiece(ap_id,NAME,DES,AUTHOR,PRICE,null,STATUS,ARTISTS);
         }catch(ArtPieceException e){
             error = e.getMessage();
         }
         assertEquals("provide date",error);
+        assertNull(artPiece);
     }
 
     @Test
     public void testCreateArtPieceWithoutAuthor(){
         String error = null;
-        ArtPiece artPiece = new ArtPiece();
+        ArtPiece artPiece = null;
         try{
             artPiece = artPieceService.createArtPiece(ap_id,NAME,DES,null,PRICE,DATE,STATUS,ARTISTS);
         }catch(ArtPieceException e){
             error = e.getMessage();
         }
         assertEquals("provide author",error);
+        assertNull(artPiece);
     }
 
     @Test
     public void testCreateArtPieceWithoutArtist(){
         String error = null;
-        ArtPiece artPiece = new ArtPiece();
+        ArtPiece artPiece = null;
         try{
             artPiece = artPieceService.createArtPiece(ap_id,NAME,DES,AUTHOR,PRICE,DATE,STATUS,null);
         }catch(ArtPieceException e){
             error = e.getMessage();
         }
         assertEquals("provide artist",error);
+        assertNull(artPiece);
     }
 
     @Test
     public void testCreateArtPieceWithoutStatus(){
         String error = null;
-        ArtPiece artPiece = new ArtPiece();
+        ArtPiece artPiece = null;
         try{
             artPiece = artPieceService.createArtPiece(ap_id,NAME,DES,AUTHOR,PRICE,DATE,null,ARTISTS);
         }catch(ArtPieceException e){
             error = e.getMessage();
         }
         assertEquals("provide status",error);
+        assertNull(artPiece);
     }
 
     @Test
@@ -389,7 +394,7 @@ public class TestArtPieceService {
     public void testUpdateStatusByNotExistId(){
         String error = null;
         try{
-            artPieceService.updateArtPieceStatus("NEWAP",valueOf(STATUS.Sold));
+            artPieceService.updateArtPieceStatus("NEWAP",valueOf(ArtPieceStatus.Sold));
         } catch (ArtPieceException e){
             error = e.getMessage();
         }

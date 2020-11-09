@@ -17,7 +17,6 @@ import org.mockito.stubbing.Answer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -25,14 +24,12 @@ import static org.mockito.ArgumentMatchers.anyString;
 import ca.mcgill.ecse321.artgallerysystem.dao.AddressRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
-import ca.mcgill.ecse321.artgallerysystem.model.Payment;
-import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
 @ExtendWith(MockitoExtension.class)
 public class TestAddressService {
 	@Mock
 	private AddressRepository addressRepository;
+	@Mock
 	private ArtGallerySystemRepository artGallerySystemRepository;
 	private static final String ADDRESS_ID = "Test address";
 	private static final String CITY = "mtl";
@@ -141,7 +138,6 @@ public class TestAddressService {
 	}
 	@Test
 	public void testCreateAddressWithNotCompleteName() {
-		String name = "address";
 		Address address = null;
 		String id = "address1";
 		String error = null;
@@ -157,7 +153,6 @@ public class TestAddressService {
 	public void testCreateAddressWithNotCompleteId() {
 		String name = "address";
 		Address address = null;
-		String id = "address1";
 		String error = null;
 		try {
 			address = service.createAddress(null, "mtl", "Canada", "H", "QC", "random", "514", name);
@@ -169,7 +164,6 @@ public class TestAddressService {
 	}
 	@Test
 	public void testDeleteAddress() {
-		String error = null;
 		//assertTrue(service.deleteAddress(ADDRESS_ID));
 		//AddressDTO = 
 		try {
@@ -270,7 +264,7 @@ public class TestAddressService {
 			error = e.getMessage();
 		}
 		assertEquals("address not exist", error);
-		
+		assertNull(address);
 		
 	}
 	@Test
@@ -284,7 +278,7 @@ public class TestAddressService {
 			error = e.getMessage();
 		}
 		assertEquals("address is the same", error);
-		
+		assertNull(address);
 		
 	}
 	@Test

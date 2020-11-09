@@ -3,16 +3,7 @@ package ca.mcgill.ecse321.artgallerysystem.dto;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
-import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystem;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
-import ca.mcgill.ecse321.artgallerysystem.model.Artist;
-import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 
 public class ArtPieceDTO {
 
