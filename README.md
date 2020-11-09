@@ -67,5 +67,5 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | Tianyu Zhao |  |  |
 
 #### Links
-* [Architecture Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Software-QA-Plan-&-Report)
+* [Architecture Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Architecture-Model)
 * [Deliverable 3 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_3)
