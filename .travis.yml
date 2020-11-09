@@ -1,4 +1,5 @@
 language: java
+language: node_js
 before_install:
 - chmod +x gradlew
 script:
