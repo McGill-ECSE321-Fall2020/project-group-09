@@ -1,14 +1,34 @@
-#language: java
-language: node_js
-before_install:
-        #- chmod +x gradlew
-        - cd ArtGallerySystem-Frontend/
-        - npm install 
-        script:
+matrix:
+  include:
+    #Frontend
+    - language: node_js
+      node_js:
+        - "10.15"
+
+      before_install:
+        - cd ArtGallerySystem-Frontend
+        - npm install
+
+      script:
         - npm build
-        #- ./gradlew build
-language: java
-  before_install:
+
+      #deploy:
+       #provider: heroku
+       #api_key: 03273874-ad50-428a-b7d2-d55ecd114926
+       #app: pet-pawlace
+
+
+    #Backend
+    - language: java
+       
+      before_install: 
         - chmod +x gradlew
-  script:
+      script:
         - ./gradlew build
+
+      #deploy:
+        #provider: heroku
+        #api_key: 03273874-ad50-428a-b7d2-d55ecd114926
+        #app: petshelter-backend
+      #after_deploy:
+        #- curl -s https://assertible.com/apis/4f4ff831-1846-4c84-84e0-53e94a80519a/run?api_token=U0bS1o6ELYFvuxaq
