@@ -1,8 +1,5 @@
 #language: java
 language: node_js
-node_js:
-        -"12.17"
-
 before_install:
         #- chmod +x gradlew
 - cd ArtGallerySystem-Frontend/
