@@ -1,5 +1,5 @@
 #language: java
-        - language: node_js
+language: node_js
           before_install:
         #- chmod +x gradlew
         - cd ArtGallerySystem-Frontend
@@ -7,7 +7,7 @@
         script:
         - npm run build
         #- ./gradlew build
-- language: java
+language: java
   before_install:
         - chmod +x gradlew
   script:
