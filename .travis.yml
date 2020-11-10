@@ -1,14 +1,16 @@
 #language: java
-language: node_js
-before_install:
+matrix:
+include:
+        - language: node_js
+          before_install:
         #- chmod +x gradlew
-- cd ArtGallerySystem-Frontend/
-- npm install 
-script:
+        - cd ArtGallerySystem-Frontend
+        - npm install 
+        script:
         - npm run build
         #- ./gradlew build
-language: java
-before_install:
+- language: java
+  before_install:
         - chmod +x gradlew
-script:
+  script:
         - ./gradlew build
