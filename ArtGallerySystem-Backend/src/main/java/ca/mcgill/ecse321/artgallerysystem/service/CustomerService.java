@@ -15,7 +15,7 @@ import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
-
+import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.CustomerException;
 
 @Service
@@ -61,6 +61,31 @@ public class CustomerService {
         return toList(customerRepository.findAll());
 
     }
+    
+    /**
+     * Added Nov 10
+     * @author Zhekai Jiang
+     */
+    @Transactional
+    public Customer getCustomerByUserName(String userName) {
+    	if(userName == null || userName.length() == 0) {
+			throw new IllegalArgumentException("Username cannot be empty!");
+		}
+    	
+		ArtGallerySystemUser user = userRepository.findArtGallerySystemUserByName(userName);
+		if(user == null) { 
+			throw new IllegalArgumentException("User with username " + userName + " does not exist.");
+		}
+		
+		for(UserRole role : user.getUserRole()) {
+			if(role instanceof Customer) {
+				return (Customer) role;
+			}
+		}
+		
+		throw new IllegalArgumentException("User " + userName + " does not have a customer role.");
+    }
+    
     @Transactional
     public Customer deleteCustomer(String id) {
         if (id == null||id == "") {

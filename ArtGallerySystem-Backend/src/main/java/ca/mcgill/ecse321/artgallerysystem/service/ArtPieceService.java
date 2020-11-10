@@ -1,6 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem.service;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -214,7 +215,28 @@ public class ArtPieceService {
         return artPiece;
     }
 
-
+    /**
+     * Added Nov 10
+     * @author Zhekai Jiang
+     */
+    @Transactional
+    public ArtPiece addArtist(String id, Artist artist) {
+    	if(id == null || id.length() == 0) {
+    		throw new IllegalArgumentException("Art piece id cannot be empty!");
+    	}
+    	if(artist == null) {
+    		throw new IllegalArgumentException("Artist cannot be empty!");
+    	}
+    	ArtPiece artPiece = artpieceRepository.findArtPieceByArtPieceId(id);
+    	if(artPiece == null) {
+    		throw new IllegalArgumentException("Art piece with id " + id + " does not exist.");
+    	}
+    	if(artPiece.getArtist() == null) {
+    		artPiece.setArtist(new HashSet<Artist>());
+    	}
+    	artPiece.getArtist().add(artist);
+    	return artPiece;
+    }
 
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();

@@ -86,4 +86,26 @@ public class PurchaseDTO {
 	public void setArtGallerySystem(ArtGallerySystem artGallerySystem) {
 	   this.artGallerySystem = artGallerySystem;
 	}
+	
+	// Below are added by Zhekai on Nov 10 for more convenient frontend access
+	
+	private String deliveryStatus;
+	
+	public String getDeliveryStatus() {
+		return this.deliveryStatus;
+	}
+	
+	public void setDeliveryStatus(String deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
+	}
+	
+	private String deliveryMethod;
+	
+	public String getDeliveryMethod() {
+		return this.deliveryMethod;
+	}
+	
+	public void setDeliveryMethod(String deliveryMethod) {
+		this.deliveryMethod = deliveryMethod;
+	}
 }

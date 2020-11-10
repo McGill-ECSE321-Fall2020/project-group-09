@@ -4,6 +4,7 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemUserRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.ArtistRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
+import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,30 @@ public class ArtistService {
             throw new ArtistException("not exist artist");
         }
         return artist;
+    }
+    
+    /**
+     * Added Nov 10
+     * @author Zhekai Jiang
+     */
+    @Transactional
+    public Artist getArtistByUserName(String userName) {
+    	if(userName == null || userName.length() == 0) {
+			throw new IllegalArgumentException("Username cannot be empty!");
+		}
+    	
+		ArtGallerySystemUser user = artGallerySystemUserRepository.findArtGallerySystemUserByName(userName);
+		if(user == null) { 
+			throw new IllegalArgumentException("User with username " + userName + " does not exist.");
+		}
+		
+		for(UserRole role : user.getUserRole()) {
+			if(role instanceof Artist) {
+				return (Artist) role;
+			}
+		}
+		
+		throw new IllegalArgumentException("User " + userName + " does not have a artist role.");
     }
 
     @Transactional

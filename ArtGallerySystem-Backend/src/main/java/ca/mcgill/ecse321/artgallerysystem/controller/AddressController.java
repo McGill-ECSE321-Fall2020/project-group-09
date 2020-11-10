@@ -15,13 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
+import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.service.AddressService;
+import ca.mcgill.ecse321.artgallerysystem.service.CustomerService;
 
 @CrossOrigin(origins="*")
 @RestController
 public class AddressController {
 @Autowired 
 private AddressService addressservice;
+	@Autowired
+	private CustomerService customerService;
+	
 @GetMapping(value = {"/addresses", "/addresses/"})
 public List<AddressDTO> getAllAddresses(){
 	
@@ -39,6 +44,21 @@ public AddressDTO createAddress(@RequestParam("id")String id, @RequestParam("cou
 public AddressDTO getAddressById(@PathVariable("id")String id) {
 	return convertToDto(addressservice.getAddressById(id));
 }
+
+	/**
+	 * Added Nov 10
+	 * @author Zhekai Jiang
+	 */
+	@GetMapping(value = {"/addresses/user/{username}", "addresses/user/{username}"})
+	public List<AddressDTO> getAddressesByUser(@PathVariable("username") String userName) {
+		Customer customer = customerService.getCustomerByUserName(userName);
+		List<Address> addresses = new ArrayList<Address>();
+		for(Address address : customer.getAddress()) {
+			addresses.add(address);
+		}
+		return toList(addresses.stream().map(this::convertToDto).collect(Collectors.toList()));
+	}
+
 @DeleteMapping(value = {"/addresses/{id}", "/addresses/{id}/"})
 public void deleteAddress(@PathVariable("id") String id) {
 	addressservice.deleteAddress(id);
