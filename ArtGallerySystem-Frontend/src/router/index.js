@@ -27,11 +27,11 @@ export default new Router({
 
     },
     {
-<<<<<<< HEAD
       path: '/account/:username',
       name: 'Account',
       component: Account
-=======
+    },
+    {
       path: '/home/:userid/:artpieceid',
       name: 'ArtPieceInfo',
       component: ArtPieceInfo
@@ -40,7 +40,6 @@ export default new Router({
       path: '/home/:userid',
       name: 'Home',
       component: Home
->>>>>>> ameliad3
     }
   ]
 })

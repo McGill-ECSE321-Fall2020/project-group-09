@@ -23,7 +23,6 @@ export default {
   //}
 };
 </script>
-<<<<<<< Updated upstream
 <style>
 .el-main{
   width: 100%;height: 100%;
@@ -37,10 +36,6 @@ export default {
 }
 </style>
 <!--<style lang="scss">
-=======
-
-<style lang="scss">
->>>>>>> Stashed changes
 #app {
   font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
