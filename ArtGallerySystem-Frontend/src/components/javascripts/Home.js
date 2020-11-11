@@ -27,6 +27,7 @@ function UserRoleDTO (userRoleId){
 export default {
   data(){
     return{
+      artpieces:[],
       idList:[],
       imgList:[
         {
@@ -57,10 +58,11 @@ export default {
     }
   },
     created: function(){
-    AXIOS.get('/artPiece/getAllArtPieces')
+    AXIOS.get('/artPiece/artPieceList')
         .then(response => {
             if(!response.data || response.data.length <=0) return;
             this.artpieces= response.data;
+            console.log(this.artpieces);
         })
         .catch(e=>{
             e = e.response.data.message ? e.response.data.message : e;
@@ -74,8 +76,8 @@ export default {
       goUpload(){
         window.location.href=window.location.href.concat('/upload');
       },
-      goArtPieceInfo(){
-        window.location.href=window.location.href.concat('/').concat(this.artPieceId);
+      goArtPieceInfo(id){
+        window.location.href=window.location.href.concat('/').concat(id);
       }
     }
 }
