@@ -1,18 +1,14 @@
 
   <template>
   <div id="app">
-    <div class="header">
-      <h2 class="logo">LOGO HERE</h2>
-    </div>
-    <router-view></router-view>
-    <div class="footer">
-      <div class="links">
-        <span>Feature 1</span>
-        <span>Feature 2</span>
-        <span>Feature 3</span>
+    <el-main>
+      <div class="header">
+        <el-header>
+          Group 09 Art Gallery
+        </el-header>
       </div>
-      <div class="version">Version 1.02.05</div>
-    </div>
+      <router-view></router-view>
+    </el-main>
   </div>
 </template>
 
@@ -27,7 +23,18 @@ export default {
   //}
 };
 </script>
-
+<style>
+.el-main{
+  width: 100%;height: 100%;
+  background-image: url("assets/1.png");
+  background-size: cover;
+  position: absolute;
+}
+.el-header{
+  color: pink;
+  size: A3;
+}
+</style>
 <!--<style lang="scss">
 #app {
   font-family: Roboto, sans-serif;
