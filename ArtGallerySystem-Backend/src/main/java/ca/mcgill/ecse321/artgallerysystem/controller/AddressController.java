@@ -67,6 +67,20 @@ public void deleteAddress(@PathVariable("id") String id) {
 public AddressDTO updateAddress(@PathVariable("id")String id, @RequestParam("address")String newaddress) {
 	return convertToDto(addressservice.updateAddress(id, newaddress));
 }
+
+	/**
+	 * Added Nov 11
+	 * @author Zhekai Jiang
+	 */
+	@PutMapping(value = {"/address/updatefull/{id}", "/address/updatefull/{id}/"})
+	public AddressDTO updateFullAddress(@PathVariable("id") String id, @RequestParam("name") String name, 
+			@RequestParam("phone") String phoneNumber, @RequestParam("streetaddress") String streetAddress,
+			@RequestParam("city") String city, @RequestParam("province") String province, 
+			@RequestParam("postalcode") String postalCode, @RequestParam("country") String country) {
+		Address address = addressservice.updateAddress(id, name, phoneNumber, streetAddress, city, province, postalCode, country);
+		return convertToDto(address);
+	}
+
 public AddressDTO convertToDto(Address address) {
     AddressDTO addressDTO = new AddressDTO();
     addressDTO.setAddressId(address.getAddressId());

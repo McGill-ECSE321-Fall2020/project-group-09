@@ -134,6 +134,26 @@ public class CustomerService {
         customerRepository.save(customer);
         return customer;
     }
+    
+    /**
+     * Added Nov 11
+     * @author Zhekai Jiang
+     */
+    @Transactional
+    public Customer deleteCustomerAddress(String id, Address address) {
+    	if(id == null || id.length() == 0) {
+    		throw new IllegalArgumentException("Customer id cannot be empty!");
+    	}
+    	if(address == null) {
+    		throw new IllegalArgumentException("Address cannot be empty!");
+    	}
+    	Customer customer = getCustomer(id);
+    	if(customer.getAddress() != null) {
+    		customer.getAddress().remove(address);
+    	}
+    	customerRepository.save(customer);
+    	return customer;
+    }
 
 
     private <T> List<T> toList(Iterable<T> iterable) {

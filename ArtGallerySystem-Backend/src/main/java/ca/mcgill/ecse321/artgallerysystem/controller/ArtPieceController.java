@@ -53,7 +53,6 @@ public class ArtPieceController {
     @GetMapping(value = {"/user/{username}", "/user/{username}/"})
     public List<ArtPieceDTO> getArtPiecesByUserName(@PathVariable("username") String userName) {
     	Artist artist = artistService.getArtistByUserName(userName);
-    	System.out.println(artist != null);
     	return getgetArtPiecesByArtist(artist.getUserRoleId());
     }
     
