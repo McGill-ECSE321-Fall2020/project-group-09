@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Login from '@/components/Login'
+import Signup from '@/components/Signup'
 import Purchase from '@/components/Purchase'
 import Account from '@/components/Account'
 import ArtPieceInfo from "../components/ArtPieceInfo";
@@ -19,6 +20,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/Signup',
+      name: 'Signup',
+      component: Signup
     },
     {
       path: '/home/:userid/:artpieceid/purchase',
