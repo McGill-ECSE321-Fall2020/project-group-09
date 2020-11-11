@@ -23,6 +23,7 @@ export default {
   //}
 };
 </script>
+<<<<<<< Updated upstream
 <style>
 .el-main{
   width: 100%;height: 100%;
@@ -36,6 +37,10 @@ export default {
 }
 </style>
 <!--<style lang="scss">
+=======
+
+<style lang="scss">
+>>>>>>> Stashed changes
 #app {
   font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -47,14 +52,14 @@ export default {
   flex-direction: column;
   min-height: 100vh;
 }
-body {
+/* body {
   margin: 0;
   padding: 0;
   background: #102a43;
   background-image: url("https://uploads.codesandbox.io/uploads/user/c3fb8e8a-35ea-4232-b5d6-0f3c5373510b/LVs7-dots.png");
   background-size: contain;
 }
-.footer,
+.footer,*/
 .header {
   padding: 20px 20px;
   color: #f0f4f8;
@@ -101,5 +106,4 @@ body {
   }
 }
 </style>
--->
 
