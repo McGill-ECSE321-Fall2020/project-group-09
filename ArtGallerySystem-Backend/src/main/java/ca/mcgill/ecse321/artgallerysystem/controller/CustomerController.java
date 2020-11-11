@@ -9,6 +9,8 @@ import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
+import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
+import ca.mcgill.ecse321.artgallerysystem.service.AddressService;
 import ca.mcgill.ecse321.artgallerysystem.service.ArtGallerySystemUserService;
 import ca.mcgill.ecse321.artgallerysystem.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -28,6 +31,8 @@ public class CustomerController {
     CustomerService customerService;
     @Autowired
     ArtGallerySystemUserService userService;
+    @Autowired
+    AddressService addressService;
     @Autowired
     AddressRepository addressRepository;
     @GetMapping("/customerList")
@@ -41,6 +46,22 @@ public class CustomerController {
     private CustomerDTO getCustomerById(@PathVariable("id") String id){
         return convertToDto(customerService.getCustomer(id));
     }
+    
+    /**
+     * Added Nov 11
+     * @author Zhekai Jiang
+     */
+    @GetMapping(value = {"/user/{name}", "/user/{name}/"})
+    private CustomerDTO getCustomerByUserName(@PathVariable("name") String userName) {
+    	ArtGallerySystemUser user = userService.getUser(userName);
+    	for(UserRole role : user.getUserRole()) {
+    		if(role instanceof Customer) {
+    			return convertToDto((Customer) role);
+    		}
+    	}
+    	throw new IllegalArgumentException("User " + userName + " does not have a customer role.");
+    }
+    
     @GetMapping("/getCustomerAddress/{id}")
     private List<AddressDTO> getCustomerAddress(@PathVariable("id") String id){
     	Set<Address> addresses = customerService.getCustomer(id).getAddress();
@@ -77,7 +98,17 @@ public class CustomerController {
     	adds.add(e);
         return convertToDto(customerService.updateCustomerAddress(id,adds));
     }
-
+    
+    /**
+     * Added Nov 11
+     * @author Zhekai Jiang
+     */
+    @PutMapping(value = {"/deleteAddress/{id}", "/deleteAddress/{id}/"})
+    private CustomerDTO deleteCustomerAddress(@PathVariable("id") String id, @RequestParam("addressid") String addressId){
+    	Address address = addressService.getAddressById(addressId);
+    	Customer customer = customerService.deleteCustomerAddress(id, address);
+    	return convertToDto(customer);
+    }
 
     public CustomerDTO convertToDto(Customer customer){
         CustomerDTO customerDTO = new CustomerDTO();
