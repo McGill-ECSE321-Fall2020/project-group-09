@@ -27,7 +27,7 @@ export default new Router({
 
     },
     {
-      path: '/account/:username',
+      path: '/home/:userid/account',
       name: 'Account',
       component: Account
     },

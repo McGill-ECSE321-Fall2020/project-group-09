@@ -26,9 +26,11 @@
 <script src="./javascripts/Home.js"></script>
 <style>
 @import url("//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css");
+
 .el-button{
-  color: lightblue;
-  background-color: aliceblue;
+  color: white;
+  background-color: #99ccff;
+  border-color: #99ccff;
   margin-top: 30px;
   margin-bottom: 70px;
 }

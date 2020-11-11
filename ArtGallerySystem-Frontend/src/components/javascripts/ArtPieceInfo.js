@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     goBack(){
-      window.location.href='../';
+      this.$router.go(-1);
     },
     goNext(){
       window.location.href=window.location.href.concat('/purchase');

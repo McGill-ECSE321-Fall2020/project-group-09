@@ -71,7 +71,7 @@ export default {
     },
     methods: {
       goInfo(){
-        window.location.href=window.location.href.concat('/info');
+        window.location.href=window.location.href.concat('/account');
       },
       goUpload(){
         window.location.href=window.location.href.concat('/upload');

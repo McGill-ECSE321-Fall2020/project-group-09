@@ -75,7 +75,7 @@
             </el-dialog>
 
             <el-button type="text" @click="handleDeleteAddress(props.row.addressId)">Delete</el-button>
-            
+
           </p>
         </template>
       </el-table-column>
@@ -126,4 +126,12 @@
 
 <style scoped>
   @import url("//unpkg.com/element-ui@2.14.0/lib/theme-chalk/index.css");
+  .el-button{
+    color: white;
+    background-color: #99ccff;
+    border-color: #99ccff;
+    margin-top: 30px;
+    margin-bottom: 70px;
+  }
+
 </style>

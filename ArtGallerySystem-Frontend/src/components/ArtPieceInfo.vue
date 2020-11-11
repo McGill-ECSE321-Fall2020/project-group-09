@@ -25,7 +25,16 @@
 <style>
   @import url("//unpkg.com/element-ui@2.14.0/lib/theme-chalk/index.css");
   .el-row {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    font-size: x-large;
+
+  }
+  .el-button{
+    color: white;
+    background-color: #99ccff;
+    border-color: #99ccff;
+    margin-top: 30px;
+    margin-bottom: 70px;
   }
   .el-col {
     border-radius: 4px;

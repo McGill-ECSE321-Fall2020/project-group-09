@@ -107,6 +107,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-color:#99ccff;
 }
 
 .login-button {
@@ -115,17 +116,18 @@ export default {
 }
 .login-form {
   width: 290px;
+  border-color: #99ccff;
 }
 .forgot-password {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 </style>
 <style lang="scss">
-$teal: rgb(0, 124, 137);
+$teal: rgb(153, 204, 255);
 .el-button--primary {
   background: $teal;
   border-color: $teal;
-
+  color: white;
   &:hover,
   &.active,
   &:focus {
@@ -133,6 +135,7 @@ $teal: rgb(0, 124, 137);
     border-color: lighten($teal, 7);
   }
 }
+
 .login .el-input__inner:hover {
   border-color: $teal;
 }
@@ -145,6 +148,9 @@ $teal: rgb(0, 124, 137);
   border-radius: 3px;
   .el-input__icon {
     width: 30px;
+    color:pink;
+    background-color:white;
+    border-color: white;
   }
 }
 .login .el-input input {
@@ -159,6 +165,7 @@ h2 {
   letter-spacing: 1px;
   font-family: Roboto, sans-serif;
   padding-bottom: 20px;
+  color:pink;
 }
 a {
   color: $teal;
