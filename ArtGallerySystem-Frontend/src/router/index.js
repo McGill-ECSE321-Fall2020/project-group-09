@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Login from '@/components/Login'
 import Purchase from '@/components/Purchase'
-
+import ArtPieceInfo from "../components/ArtPieceInfo";
 Vue.use(Router)
 
 export default new Router({
@@ -19,10 +19,15 @@ export default new Router({
       component: Login
     },
     {
-      path: '/purchase/:userid/:artpieceid',
+      path: '/home/:userid/:artpieceid/purchase',
       name: 'Purchase',
       component: Purchase
 
+    },
+    {
+      path: '/home/:userid/:artpieceid',
+      name: 'ArtPieceInfo',
+      component: ArtPieceInfo
     }
   ]
 })

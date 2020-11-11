@@ -19,6 +19,7 @@
             <el-option label="DebitCard" value="DebitCard">DebitCard</el-option>
           </el-select>
         </el-form-item>
+
         <el-form-item class= "form1" label="Card ID" prop="name">
           <el-input v-model="ruleForm1.name"></el-input>
         </el-form-item>
@@ -32,6 +33,9 @@
           <el-select v-model="ruleForm1.regionC" clearable placeholder="Choose One Address">
             <el-option v-for= "(address, i) in parcelDeliverys" :key="`address-${i}`" :label= "address.addressId" :value="address.addressId">{{address.addressId +" "+ address.streetAddress}}</el-option>
           </el-select>
+
+
+
         </el-form-item>
         <el-button type="text" @click="dialogFormVisible = true">Apply new address</el-button>
         <el-dialog title="Shipping address" :visible.sync="dialogFormVisible">
