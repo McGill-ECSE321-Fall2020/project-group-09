@@ -22,7 +22,7 @@
 
 </template>
 <script src="./javascripts/ArtPieceInfo.js"></script>
-<style>
+<style scoped>
   @import url("//unpkg.com/element-ui@2.14.0/lib/theme-chalk/index.css");
   .el-row {
     margin-bottom: 50px;

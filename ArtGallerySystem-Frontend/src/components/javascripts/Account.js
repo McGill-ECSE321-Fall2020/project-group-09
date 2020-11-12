@@ -12,9 +12,18 @@ let backendConfigurer = function () {
     }
 }
 
-// let backendUrl = backendConfigurer();
-var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
-var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
+let frontendConfigurer = function () {
+    switch (process.env.NODE_ENV) {
+    case 'testing':
+    case 'development':
+        return 'http://' + config.dev.host + ':' + config.dev.port;
+    case 'production':
+        return 'https://' + config.build.host + ':' + config.build.port;
+    }
+}
+
+let backendUrl = backendConfigurer();
+let frontendUrl = frontendConfigurer();
 
 let AXIOS = axios.create({
     baseURL: backendUrl
@@ -25,7 +34,7 @@ export default {
     name: 'Account',
     data() {
         return {
-            userName: this.$route.params.username,
+            userName: this.$route.params.userid,
             customerId: '',
             artistId: '',
 
@@ -154,6 +163,10 @@ export default {
             let now = Date.now().toString()
             now += now + Math.floor(Math.random() * 10)
             return  [now.slice(0, 4), now.slice(4, 10), now.slice(10, 14)].join('-')
+        },
+
+        handleClickArtPiece: function(artPieceId) {
+            window.location.href = frontendUrl + '/#/home/' + this.userName + '/' + artPieceId;
         }
 
     }

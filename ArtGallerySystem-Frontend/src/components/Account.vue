@@ -4,25 +4,37 @@
     <h1> Account Information </h1>
 
     <h2> Purchases </h2>
-    <el-table :data = "purchases">
+    <el-table :data = "purchases" :default-sort = "{prop: 'date', order: 'descending'}">
       <el-table-column prop = "orderId" label = "Order ID"></el-table-column>
-      <el-table-column prop = "artPiece.artPieceId" label = "Art Piece"></el-table-column>
-      <el-table-column prop = "date" label = "Date"></el-table-column>
-      <el-table-column prop = "deliveryStatus" label = "Delivery Status"></el-table-column>
-      <el-table-column label = "Link">
-        <el-button @click="handleClickArtPiece(artPiece.artPieceId)" type="text" size="small"> Art Piece Detail Page </el-button>
+      <el-table-column prop = "artPiece.artPieceId" label = "Art Piece Name">
+        <template slot-scope="scope">
+          <el-button @click="handleClickArtPiece(purchases[scope.$index].artPiece.artPieceId)" type="text" size="small"> {{ purchases[scope.$index].artPiece.name }} </el-button>
+        </template>
       </el-table-column>
+      <el-table-column prop = "date" label = "Purchase Date"></el-table-column>
+      <el-table-column prop = "deliveryStatus" label = "Delivery Status"></el-table-column>
+      <!-- <el-table-column label = "Link">
+        <template slot-scope="scope">
+          <el-button @click="handleClickArtPiece(purchases[scope.$index].artPiece.artPieceId)" type="text" size="small"> Art Piece Detail Page </el-button>
+        </template>
+      </el-table-column> -->
     </el-table>
 
     <h2> Uploaded Art Pieces </h2>
-    <el-table :data = "artPieces">
+    <el-table :data = "artPieces" :default-sort = "{prop: 'date', order: 'descending'}">
       <el-table-column prop = "artPieceId" label = "Art Piece ID"></el-table-column>
-      <el-table-column prop = "name" label = "Name"></el-table-column>
-      <el-table-column prop = "date" label = "Date"></el-table-column>
-      <el-table-column prop = "artPieceStatus" label = "Status"></el-table-column>
-      <el-table-column label = "Link">
-        <el-button @click="handleClickArtPiece(artPieceId)" type="text" size="small"> Art Piece Detail Page </el-button>
+      <el-table-column prop = "name" label = "Name">
+        <template slot-scope="scope">
+          <el-button @click="handleClickArtPiece(artPieces[scope.$index].artPieceId)" type="text" size="small"> {{ artPieces[scope.$index].name }} </el-button>
+        </template>
       </el-table-column>
+      <el-table-column prop = "date" label = "Upload Date"></el-table-column>
+      <el-table-column prop = "artPieceStatus" label = "Status"></el-table-column>
+      <!-- <el-table-column label = "Link">
+        <template slot-scope="scope">
+          <el-button @click="handleClickArtPiece(purchases[scope.$index].artPieceId)" type="text" size="small"> Art Piece Detail Page </el-button>
+        </template>
+      </el-table-column> -->
     </el-table>
 
     <h2> Addresses </h2>
@@ -68,14 +80,19 @@
                   </el-form-item>
                 </el-form>
               </span>
+              <span id="update-address-error" v-if="errorUpdateAddress" style="color:red">Error: {{ errorUpdateAddress }}</span>
               <span slot="footer" class="dialog-footer">
                 <el-button @click="editAddressDialogVisible = false">Cancel</el-button>
-                <el-button type="primary" @click="confirmUpdateAddress()">Confirm</el-button>
+                <el-button type="primary" 
+                  @click="confirmUpdateAddress()" 
+                  :disabled = !updatingAddress.name||!updatingAddress.phoneNumber||!updatingAddress.streetAddress||!updatingAddress.city||!updatingAddress.province||!updatingAddress.postalCode||!updatingAddress.country>
+                  Confirm
+                </el-button>
               </span>
             </el-dialog>
 
             <el-button type="text" @click="handleDeleteAddress(props.row.addressId)">Delete</el-button>
-
+            
           </p>
         </template>
       </el-table-column>
@@ -114,9 +131,14 @@
           </el-form-item>
         </el-form>
       </span>
+      <span id="create-address-error" v-if="errorNewAddress" style="color:red">Error: {{ errorNewAddress }}</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="addAddressDialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="confirmCreateAddress()">Confirm</el-button>
+        <el-button type="primary"
+          @click="confirmCreateAddress()"
+          :disabled = !newAddress.name||!newAddress.number||!newAddress.streetaddress||!newAddress.city||!newAddress.province||!newAddress.postcode||!newAddress.country>
+          Confirm
+        </el-button>
       </span>
     </el-dialog>
   </div>
@@ -126,12 +148,11 @@
 
 <style scoped>
   @import url("//unpkg.com/element-ui@2.14.0/lib/theme-chalk/index.css");
-  .el-button{
+  /*.el-button{
     color: white;
     background-color: #99ccff;
     border-color: #99ccff;
     margin-top: 30px;
     margin-bottom: 70px;
-  }
-
+  }*/
 </style>
