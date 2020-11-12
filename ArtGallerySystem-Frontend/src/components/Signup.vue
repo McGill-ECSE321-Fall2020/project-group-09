@@ -8,7 +8,8 @@
         :rules="rules"
         ref="form"
         @submit.native.prevent="Signup"
-      >
+      />
+    </el-card>
   </div>
 </template>
 <script>
@@ -18,13 +19,13 @@ export default {
     return {
       emailRE: /\S+@\S+/,
       maxLength: 254,       // Email Maximum Length Reference: https://en.wikipedia.org/wiki/Email_address
-    
+
       newUser: {
         email: this.emailentry,
         password: '',
         confirmPassword: ''
       },
-      
+
       humanizedCSS: 'float-right ',
       knownEmails: ['a@b', 'test@test.com']
     }
@@ -62,7 +63,7 @@ export default {
         return validation[key]
       })
     },
- 
+
   }
 }
 </script>

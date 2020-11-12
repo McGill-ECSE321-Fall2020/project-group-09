@@ -31,6 +31,15 @@ public List<ArtGallerySystemUserDTO> getAllUsers(){
 	List<ArtGallerySystemUser> users=userService.getAllUsers();
 	return toList(users.stream().map(this::convertToDto).collect(Collectors.toList()));
 }
+@GetMapping (value = {"/usersids", "userids/"})
+public ArrayList<String> getAllUserIds(){
+	ArrayList<String> ids = new ArrayList<String>();
+	List<ArtGallerySystemUser> users=userService.getAllUsers();
+	for (ArtGallerySystemUser user: users) {
+		ids.add(user.getName());
+	}
+	return ids;
+}
 @PostMapping(value = {"/user","/user/"})
 public ArtGallerySystemUserDTO createUser(@RequestParam("name")String name,@RequestParam("email")String email,@RequestParam("password")String password,@RequestParam("avatar")String avatar){
 	ArtGallerySystemUser user=userService.createUser(name, email, password, avatar);

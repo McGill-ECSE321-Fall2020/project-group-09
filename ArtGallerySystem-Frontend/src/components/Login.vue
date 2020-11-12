@@ -20,7 +20,19 @@
             prefix-icon="fas fa-lock"
           ></el-input>
         </el-form-item>
+        <el-dialog title="Username Does not exist" :visible.sync="dialogFormVisible">
+          <el-button @click="dialogFormVisible=false">Close</el-button>
+          <el-button type="text" @click="signUp">Create New Account</el-button>
+        </el-dialog>
         <el-form-item>
+          <el-button
+            :loading="loading"
+            class="login-button"
+            type="primary"
+            native-type="submit"
+            block
+            @click="signUp"
+          >SignUp</el-button>
           <el-button
             :loading="loading"
             class="login-button"
@@ -35,73 +47,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "login",
-  data() {
-    return {
-      validCredentials: {
-        username: "lightscope",
-        password: "lightscope"
-      },
-      model: {
-        username: "",
-        password: ""
-      },
-      loading: false,
-      rules: {
-        username: [
-          {
-            required: true,
-            message: "Username is required",
-            trigger: "blur"
-          },
-          {
-            min: 4,
-            message: "Username length should be at least 5 characters",
-            trigger: "blur"
-          }
-        ],
-        password: [
-          { required: true, message: "Password is required", trigger: "blur" },
-          {
-            min: 5,
-            message: "Password length should be at least 5 characters",
-            trigger: "blur"
-          }
-        ]
-      }
-    };
-  },
-  methods: {
-    simulateLogin() {
-      return new Promise(resolve => {
-        setTimeout(resolve, 800);
-      });
-    },
-    async login() {
-      let valid = await this.$refs.form.validate();
-      if (!valid) {
-        return;
-      }
-      this.loading = true;
-      await this.simulateLogin();
-      this.loading = false;
-      if (
-        this.model.username === this.validCredentials.username &&
-        this.model.password === this.validCredentials.password
-      ) {
-        this.$message.success("Login successfull");
-      } else {
-        this.$message.error("Username or password is invalid");
-      }
-    }
-  }
-};
+<script src="./javascripts/Login.js">
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  @import url("//unpkg.com/element-ui@2.14.0/lib/theme-chalk/index.css");
 .login {
   flex: 1;
   display: flex;
