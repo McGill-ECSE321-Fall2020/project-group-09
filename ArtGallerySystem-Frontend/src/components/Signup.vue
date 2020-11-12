@@ -8,7 +8,55 @@
         :rules="rules"
         ref="form"
         @submit.native.prevent="Signup"
-      />
+      >
+       <el-form-item prop="username">
+          <el-input v-model="model.username" placeholder="Username" prefix-icon="fas fa-user"></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            v-model="model.password"
+            placeholder="Password1"
+            type="password"
+            prefix-icon="fas fa-lock"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            v-model="model.repeatpassword"
+            placeholder="PasswordB"
+            type="password"
+            prefix-icon="fas fa-lock"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="email">
+          <el-input v-model="model.email" placeholder="Email" prefix-icon="fas fa-user"></el-input>
+        </el-form-item>
+        <el-form-item prop="avatar">
+          <el-input v-model="model.avatar" placeholder="Avatar" prefix-icon="fas fa-user"></el-input>
+        </el-form-item>
+        <el-dialog title="Successfully create an account" :visible.sync="dialogFormVisible">
+          <el-button type="text" @click="goBack">Go To Login Page</el-button>
+          <el-button type="text" @click="goHome">Go To Home Page</el-button>
+        </el-dialog>
+        <el-form-item>
+          <el-button
+            :loading="loading"
+            class="login-button"
+            type="primary"
+            native-type="submit"
+            block
+            @click="goBack"
+          >Return</el-button>
+          <el-button
+            :loading="loading"
+            class="login-button"
+            type="primary"
+            native-type="submit"
+            block
+            @click="signUp"
+          >SignUp</el-button>
+        </el-form-item>
+      </el-form>
     </el-card>
   </div>
 </template>
