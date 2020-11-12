@@ -20,54 +20,137 @@ function UserDTO(name, email, password, avatar){
 
 }
 export default {
-  name: 'Signup',
-  data () {
+  name: "signup",
+  data() {
     return {
-      emailRE: /\S+@\S+/,
-      maxLength: 254,       // Email Maximum Length Reference: https://en.wikipedia.org/wiki/Email_address
-
-      newUser: {
-        email: this.emailentry,
-        password: '',
-        confirmPassword: ''
+      users:[],
+      userids:[],
+      dialogFormVisible: false,
+      model: {
+        username: "",
+        password: "",
+        repeatpassword:"",
+        email:"",
+        avatar:""
       },
-
-      humanizedCSS: 'float-right ',
-      knownEmails: ['a@b', 'test@test.com']
-    }
+      loading: false,
+      rules: {
+        username: [
+          {
+            required: true,
+            message: "Username is required",
+            trigger: "blur"
+          },
+          {
+            min: 4,
+            message: "Username length should be at least 5 characters",
+            trigger: "blur"
+          }
+        ],
+        password: [
+          { required: true, message: "Password is required", trigger: "blur" },
+          {
+            min: 5,
+            message: "Password length should be at least 5 characters",
+            trigger: "blur"
+          }
+        ],
+        email: [
+          { required: true, message: "Password is required", trigger: "blur" }
+        ],
+        avatar: [
+          { required: true, message: "Password is required", trigger: "blur" }
+        ]
+        /*password: [
+          { required: true, message: "Password is required", trigger: "blur" },
+          {
+            min: 5,
+            message: "Password length should be at least 5 characters",
+            trigger: "blur"
+          }
+        ]*/
+      }
+    };
+  },
+  created : function () {
+    AXIOS.get('/users')
+      .then(response => {
+        if (!response.data || response.data.length <= 0) return;
+        this.users = response.data;
+      })
+      .catch(e => {
+        e = e.response.data.message ? e.response.data.message : e;
+        console.log(e);
+      });
+    AXIOS.get('/userids')
+      .then(response => {
+        if (!response.data || response.data.length <= 0) return;
+        this.userids = response.data;
+      })
+      .catch(e => {
+        e = e.response.data.message ? e.response.data.message : e;
+        console.log(e);
+      });
   },
   methods: {
-    addUser: function () {
-      if (this.isValid) {
-        this.$emit('switchcomponent', ['checkemail', 'Check Email', this.newUser.email])
+    simulateLogin() {
+      return new Promise(resolve => {
+        setTimeout(resolve, 800);
+      });
+    },
+    async login() {
+      let valid = await this.$refs.form.validate();
+      if (!valid) {
+        return;
       }
+      this.loading = true;
+      await this.simulateLogin();
+      this.loading = false;
+      //if (
+      this.signUp()
+      //this.submitButton(this.model.username, this.model.password)
+      //) {
+      //  this.$message.success("Login successfull");
+      //} else {
+      //  this.$message.error("Username or password is invalid");
+      // }
     },
-    login: function () {
-//      console.log('sign up clicked')
-      this.$emit('switchcomponent', ['login', 'Login', this.newUser.email])
-    },
-  },
-  computed: {
-    userExists: function () {
-      // TODO: If user exists change view.
-      return this.knownEmails.indexOf(this.newUser.email) > -1
-    },
-    validation: function () {
-      return {
-        email: !!this.newUser.email.trim(),
-        emaillength: this.newUser.email.trim().length <= this.maxLength,
-        emailformat: this.emailRE.test(this.newUser.email),
-        password: !!this.newUser.password.trim(),
-        passwordlength: this.newUser.password.trim().length <= this.maxLength,
-        confirmpassword: !!this.newUser.confirmPassword.trim(),
-        passwordsmatch: this.newUser.password.trim() === this.newUser.confirmPassword.trim()
+    checkUser(id){
+      if (this.userids.includes(id)){
+        return true;
       }
+      return false;
     },
-    isValid: function () {
-      let validation = this.validation
-      return Object.keys(validation).every(function (key) {
-        return validation[key]
-      })
+    goBack(){
+      window.location.href='http://127.0.0.1:8087/#/login';
     },
+    goHome(){
+      window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.name);
+    },
+    signUp(){
+      if(this.model.password != this.model.repeatpassword){
+        alert("Password do not match ");
+      }
+      else if (this.checkUser(this.name)){
+        alert("user already exists");
+      }
+      else {
+        let user = {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          avatar: this.avatar
+        }
+        AXIOS.post('/user/', {}, {params: user})
+          .then(response => {
+            if (!response.data || response.data.length <= 0) return;
+            this.dialogFormVisible= true;
+          })
+          .catch(e => {
+            e = e.response.data.message ? e.response.data.message : e;
+            console.log(e);
+          });
+      }
+    }
   }
 }

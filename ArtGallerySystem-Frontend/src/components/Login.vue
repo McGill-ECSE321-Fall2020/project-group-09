@@ -73,7 +73,7 @@
   margin-top: 20px;
 }
 </style>
-<style lang="scss">
+<style lang="scss" scoped>
 $teal: rgb(153, 204, 255);
 .el-button--primary {
   background: $teal;

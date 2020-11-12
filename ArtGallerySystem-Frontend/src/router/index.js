@@ -7,7 +7,7 @@ import Purchase from '@/components/Purchase'
 import Account from '@/components/Account'
 import ArtPieceInfo from "../components/ArtPieceInfo";
 import Home from "../components/Home";
-import SignUpp from "../components/SignUpAmelia";
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,11 +27,7 @@ export default new Router({
       name: 'Signup',
       component: Signup
     },
-    {
-      path: '/Signupp',
-      name: 'Signupp',
-      component: SignUpp
-    },
+    
     {
       path: '/home/:userid/:artpieceid/purchase',
       name: 'Purchase',
