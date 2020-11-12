@@ -69,6 +69,36 @@
 
 <script>
 
+import axios from 'axios'
+let config = require('../../config');
+
+let backendConfigurer = function () {
+    switch (process.env.NODE_ENV) {
+    case 'testing':
+    case 'development':
+        return 'http://' + config.dev.backendHost + ':' + config.dev.backendPort;
+    case 'production':
+        return 'https://' + config.build.backendHost + ':' + config.build.backendPort;
+    }
+}
+
+let frontendConfigurer = function () {
+    switch (process.env.NODE_ENV) {
+    case 'testing':
+    case 'development':
+        return 'http://' + config.dev.host + ':' + config.dev.port;
+    case 'production':
+        return 'https://' + config.build.host + ':' + config.build.port;
+    }
+}
+
+let backendUrl = backendConfigurer();
+let frontendUrl = frontendConfigurer();
+
+let AXIOS = axios.create({
+    baseURL: backendUrl
+    // headers: {'Access-Control-Allow-Origin': frontendUrl}
+});
 
 export default {
     data() {
@@ -92,6 +122,7 @@ export default {
           },
         artistList:[],
         artpiece: {
+          id: this.generateArtPieceId(),
           name: '',
           author:'',
           price:'',
@@ -121,7 +152,7 @@ export default {
     },
     methods: {
     loadArtist:function(){
-        axios.get('/artist/artistList')
+        AXIOS.get('/artist/artistList')
     .then((response)=>{
         console.log('artistList res',response)
         this.artistList = response
@@ -145,7 +176,7 @@ export default {
         console.log(this.artpiece.date);
         console.log(this.artpiece.des)
         console.log(this.artpiece.selectedArtists)
-        axios.post('artPiece/createArtPiece',this.artpiece)
+        AXIOS.post('artPiece/createArtPiece', {}, {params: this.artpiece}) // id
       },
 
       onCancel(){
@@ -162,9 +193,17 @@ export default {
       handleRemove(file, fileList) {
         console.log(file, fileList);
       },
+      // Adapted from orderNumber in Purchase.js
+      generateArtPieceId: function () {
+          let now = Date.now().toString()
+          now += now + Math.floor(Math.random() * 10)
+          return  [now.slice(0, 4), now.slice(4, 10), now.slice(10, 14)].join('-')
+      }
 
     }
   }
+
+  
 
 
 

@@ -82,7 +82,7 @@ export default {
         e = e.response.data.message ? e.response.data.message : e;
         console.log(e);
       });
-    AXIOS.get('/userids')
+    AXIOS.get('/usersids')
       .then(response => {
         if (!response.data || response.data.length <= 0) return;
         this.userids = response.data;
@@ -136,11 +136,12 @@ export default {
       }
       else {
         let user = {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          avatar: this.avatar
+          name: this.model.name,
+          email: this.model.email,
+          password: this.model.password,
+          avatar: this.model.avatar
         }
+        console.log(user);
         AXIOS.post('/user/', {}, {params: user})
           .then(response => {
             if (!response.data || response.data.length <= 0) return;

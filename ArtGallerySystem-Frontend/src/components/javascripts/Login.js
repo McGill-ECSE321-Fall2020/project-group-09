@@ -69,7 +69,7 @@ export default {
         e = e.response.data.message ? e.response.data.message : e;
         console.log(e);
       });
-    AXIOS.get('/userids')
+    AXIOS.get('/usersids')
       .then(response => {
         if (!response.data || response.data.length <= 0) return;
         this.userids = response.data;
@@ -112,11 +112,11 @@ export default {
     },
     submitButton(username, password){
       if (this.checkUser(username)){
-        AXIOS.get('/user/'.concat(username))
+        AXIOS.get('/users/'.concat(username))
           .then(response => {
             if (!response.data || response.data.length <= 0) return;
             if (response.data.password == password){
-              window.location.href = 'http://127.0.0.1:8087/#/home'.concat(response.data.name);
+              window.location.href = 'http://127.0.0.1:8087/#/home/'.concat(response.data.name);
             }else {
               alert("wrong password");
             }

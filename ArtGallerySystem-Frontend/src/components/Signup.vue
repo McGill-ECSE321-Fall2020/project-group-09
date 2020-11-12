@@ -10,7 +10,7 @@
         @submit.native.prevent="login"
       >
         <el-form-item prop="username">
-          <el-input v-model="model.username" placeholder="Username" prefix-icon="fas fa-user"></el-input>
+          <el-input v-model="model.name" placeholder="Username" prefix-icon="fas fa-user"></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input
@@ -61,7 +61,7 @@
   </div>
 </template>
 
-<script src="./javascripts/SignupAmelia.js">
+<script src="./javascripts/Signup.js">
 
 </script>
 

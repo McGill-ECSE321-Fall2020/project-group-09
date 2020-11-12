@@ -41,6 +41,11 @@ export default new Router({
       component: Account
     },
     {
+      path: '/home/:userid/AddArtPiece',
+      name: 'AddArtPiece',
+      component: AddArtPiece
+    },
+    {
       path: '/home/:userid/:artpieceid',
       name: 'ArtPieceInfo',
       component: ArtPieceInfo
@@ -49,11 +54,6 @@ export default new Router({
       path: '/home/:userid',
       name: 'Home',
       component: Home
-    },
-    {
-      path: '/addArtPiece',
-      name: 'AddArtPiece',
-      component: AddArtPiece
     }
   ]
 })

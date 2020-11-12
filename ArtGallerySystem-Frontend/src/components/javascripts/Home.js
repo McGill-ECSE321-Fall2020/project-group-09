@@ -74,7 +74,7 @@ export default {
         window.location.href=window.location.href.concat('/account');
       },
       goUpload(){
-        window.location.href=window.location.href.concat('/upload');
+        window.location.href=window.location.href.concat('/AddArtPiece');
       },
       goArtPieceInfo(id){
         window.location.href=window.location.href.concat('/').concat(id);
