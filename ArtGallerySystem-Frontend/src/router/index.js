@@ -7,6 +7,7 @@ import Purchase from '@/components/Purchase'
 import Account from '@/components/Account'
 import ArtPieceInfo from "../components/ArtPieceInfo";
 import Home from "../components/Home";
+import AddArtPiece from "@/components/AddArtPiece";
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ export default new Router({
       path: '/home/:userid',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/addArtPiece',
+      name: 'AddArtPiece',
+      component: AddArtPiece
     }
   ]
 })
