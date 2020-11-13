@@ -56,10 +56,10 @@ export default {
           }
         ],
         email: [
-          { required: true, message: "Password is required", trigger: "blur" }
+          { required: true, message: "Email is required", trigger: "blur" }
         ],
         avatar: [
-          { required: true, message: "Password is required", trigger: "blur" }
+          { required: true, message: "Avatar is required", trigger: "blur" }
         ]
         /*password: [
           { required: true, message: "Password is required", trigger: "blur" },
@@ -121,22 +121,54 @@ export default {
       }
       return false;
     },
+    createCustomer(id){
+      let customer = {
+        user: id,
+        balance: 0
+      }
+      AXIOS.post('/customer/createCustomer/'.concat(id), {}, {params: customer})
+        .then(response => {
+          if (!response.data || response.data.length <= 0) return;
+          this.createArtist(id);
+        })
+        .catch(e => {
+          e = e.response.data.message ? e.response.data.message : e;
+          console.log(e);
+        });
+
+    },
+    createArtist(id){
+      let artist = {
+        user: id,
+        credit: 0
+      }
+      AXIOS.post('/artist/createArtist/'.concat(id), {}, {params: artist})
+        .then(response => {
+          if (!response.data || response.data.length <= 0) return;
+          this.dialogFormVisible= true;
+        })
+        .catch(e => {
+          e = e.response.data.message ? e.response.data.message : e;
+          console.log(e);
+        });
+
+    },
     goBack(){
       window.location.href='http://127.0.0.1:8087/#/login';
     },
     goHome(){
-      window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.name);
+      window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.model.username);
     },
     signUp(){
       if(this.model.password != this.model.repeatpassword){
         alert("Password do not match ");
       }
-      else if (this.checkUser(this.name)){
+      else if (this.checkUser(this.model.username)){
         alert("user already exists");
       }
       else {
         let user = {
-          name: this.model.name,
+          name: this.model.username,
           email: this.model.email,
           password: this.model.password,
           avatar: this.model.avatar
@@ -145,7 +177,7 @@ export default {
         AXIOS.post('/user/', {}, {params: user})
           .then(response => {
             if (!response.data || response.data.length <= 0) return;
-            this.dialogFormVisible= true;
+            this.createCustomer(this.model.username);
           })
           .catch(e => {
             e = e.response.data.message ? e.response.data.message : e;

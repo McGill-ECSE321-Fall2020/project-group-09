@@ -31,7 +31,7 @@ public List<ArtGallerySystemUserDTO> getAllUsers(){
 	List<ArtGallerySystemUser> users=userService.getAllUsers();
 	return toList(users.stream().map(this::convertToDto).collect(Collectors.toList()));
 }
-@GetMapping (value = {"/usersids", "userids/"})
+@GetMapping (value = {"/userids", "userids/"})
 public ArrayList<String> getAllUserIds(){
 	ArrayList<String> ids = new ArrayList<String>();
 	List<ArtGallerySystemUser> users=userService.getAllUsers();

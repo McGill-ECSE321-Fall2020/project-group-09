@@ -35,7 +35,15 @@ public class ArtistController {
     public ArtistDTO getArtistById(@PathVariable("id")String id){
         return convertToDto(artistService.getArtist(id));
     }
-
+    @GetMapping (value = {"/artistids"})
+    public ArrayList<String> getArtistIds(){
+    	ArrayList<String> ids = new ArrayList<String>();
+    	List<Artist> artists =artistService.getAllArtists();
+    	for (Artist art: artists) {
+    		ids.add(art.getUserRoleId());
+    	}
+    	return ids;
+    }
     @PostMapping(value = {"/createArtist/{id}", "/createArtist/{id}/"})
     public ArtistDTO createArtist(@PathVariable("id") String id, @RequestParam("user") String userid, @RequestParam("credit") double credit){
     	ArtGallerySystemUser user = userService.getUser(userid);

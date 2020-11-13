@@ -69,7 +69,7 @@ export default {
         e = e.response.data.message ? e.response.data.message : e;
         console.log(e);
       });
-    AXIOS.get('/usersids')
+    AXIOS.get('/userids')
       .then(response => {
         if (!response.data || response.data.length <= 0) return;
         this.userids = response.data;

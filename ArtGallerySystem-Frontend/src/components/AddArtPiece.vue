@@ -23,7 +23,7 @@
     <el-input v-model="artpiece.author"></el-input>
 </el-form-item>
 
-<el-form-item label= "Price" prop = "Price"> 
+<el-form-item label= "Price" prop = "Price">
     <el-input v-model="artpiece.price"></el-input>
 </el-form-item>
 
@@ -108,19 +108,20 @@ export default {
           { required: true, message: "Name is required", trigger: "blur" }
             ],
             Author: [
-          { required: true, message: "Author is required", trigger: "blur" }     
+          { required: true, message: "Author is required", trigger: "blur" }
             ],
             Price: [
            { required: true, message: "Price is required", trigger: "blur" }
             ],
             Date: [
-        { required: true, message: "Date is required", trigger: "blur" }    
+        { required: true, message: "Date is required", trigger: "blur" }
             ],
             Artists:[
         { required: true, message: "At least one artist is required", trigger: "blur" }
             ]
           },
         artistList:[],
+        artistids:[],
         artpiece: {
           id: this.generateArtPieceId(),
           name: '',
@@ -150,7 +151,28 @@ export default {
         }],
       }
     },
-    methods: {
+  created : function () {
+    AXIOS.get('/artist/artistList')
+      .then(response => {
+        if (!response.data || response.data.length <= 0) return;
+        this.artistList = response.data;
+      })
+      .catch(e => {
+        e = e.response.data.message ? e.response.data.message : e;
+        console.log(e);
+      });
+    AXIOS.get('/artist/artistids')
+      .then(response => {
+        if (!response.data || response.data.length <= 0) return;
+        this.artistids = response.data;
+      })
+      .catch(e => {
+        e = e.response.data.message ? e.response.data.message : e;
+        console.log(e);
+      });
+  },
+  methods: {
+      //change it to created? since we are loading all artists before loading page?
     loadArtist:function(){
         AXIOS.get('/artist/artistList')
     .then((response)=>{
@@ -190,6 +212,7 @@ export default {
         console.log(file);
       },
 
+
       handleRemove(file, fileList) {
         console.log(file, fileList);
       },
@@ -198,12 +221,47 @@ export default {
           let now = Date.now().toString()
           now += now + Math.floor(Math.random() * 10)
           return  [now.slice(0, 4), now.slice(4, 10), now.slice(10, 14)].join('-')
+      },
+    //modified create artpiece need to test if it works
+      createArtPiece(){
+      let artpiece = {
+        id: this.artpiece.id,
+        name: this.artpiece.name,
+        des: this.artpiece.des,
+        author: this.artpiece.author,
+        status: "Available"
       }
+        AXIOS.post('/artPiece/createArtPiece/', {}, {params: artpiece})
+          .then(response => {
+            if (!response.data || response.data.length <= 0) return;
+            this.addArtist(this.selectedArtists)
+          })
+          .catch(e => {
+            e = e.response.data.message ? e.response.data.message : e;
+            console.log(e);
+          });
+
+      },
+    addArtist(artists){
+      for (var i=0; i< artists.length();i++){
+        let artist = {
+          artistid: artists[i]
+        }
+        AXIOS.put('/artPiece/addArtist'.concat(artists[i]),{},{params: artist})
+          .then(response => {
+            if (!response.data || response.data.length <= 0) return;
+          })
+          .catch(e => {
+            e = e.response.data.message ? e.response.data.message : e;
+            console.log(e);
+          });
+      }
+    }
 
     }
   }
 
-  
+
 
 
 
