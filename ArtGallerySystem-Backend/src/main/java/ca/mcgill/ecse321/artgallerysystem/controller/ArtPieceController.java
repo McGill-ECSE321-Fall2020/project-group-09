@@ -34,6 +34,21 @@ public class ArtPieceController {
         List<ArtPiece> artPieceList= artPieceService.getAllArtPieces();
         return toList(artPieceList.stream().map(this::convertToDto).collect(Collectors.toList()));
     }
+    /**
+     * added by amelia
+     * @return
+     */
+    @GetMapping("/availableartPieceList")
+    public List<ArtPieceDTO> availableartPieceList(){
+        List<ArtPiece> artPieceList= artPieceService.getAllArtPieces();
+        List<ArtPiece> availables= new ArrayList<ArtPiece>();
+        for (ArtPiece art: artPieceList) {
+        	if (art.getArtPieceStatus()== ArtPieceStatus.Available) {
+        		availables.add(art);
+        	}
+        }
+        return toList(availables.stream().map(this::convertToDto).collect(Collectors.toList()));
+    }
 
     @GetMapping("/getArtPiece/{id}")
     public ArtPieceDTO getArtPieceById(@PathVariable("id") String id){

@@ -58,7 +58,7 @@ export default {
     }
   },
     created: function(){
-    AXIOS.get('/artPiece/artPieceList')
+    AXIOS.get('/artPiece/availableartPieceList')
         .then(response => {
             if(!response.data || response.data.length <=0) return;
             this.artpieces= response.data;
