@@ -42,7 +42,7 @@ export default {
         this.price= response.data.price;
         this.date= response.data.date;
         this.author = response.data.author;
-        this.description= require('../../assets/'+response.data.description+'.png')
+        this.description= response.data.description;
         //this.description= require(response.data.description);
         //this.description= "'".concat(response.data.description).concat("'");
         this.name= response.data.name;

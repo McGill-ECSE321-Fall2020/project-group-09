@@ -237,7 +237,7 @@ export default {
             this.createParcelDelivery(parcel);
           }
           alert('Successful Payment');
-          window.location.href='../';
+          window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.userid);
         })
         .catch(e =>{
           console.log(e)

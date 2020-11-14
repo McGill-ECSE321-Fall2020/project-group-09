@@ -27,8 +27,10 @@ function UserRoleDTO (userRoleId){
 export default {
   data(){
     return{
+      urlimg: 'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
       artpieces:[],
       idList:[],
+      deslist:[],
       imgList:[
         {
           url:'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg'
@@ -63,6 +65,7 @@ export default {
             if(!response.data || response.data.length <=0) return;
             this.artpieces= response.data;
             console.log(this.artpieces);
+            this.getDescriptionList();
         })
         .catch(e=>{
             e = e.response.data.message ? e.response.data.message : e;
@@ -76,8 +79,18 @@ export default {
       goUpload(){
         window.location.href=window.location.href.concat('/AddArtPiece');
       },
-      goArtPieceInfo(id){
+      goArtPieceInfo(id, des){
         window.location.href=window.location.href.concat('/').concat(id);
+        console.log(des);
+      },
+      getDescriptionList(){
+        var i;
+        console.log(this.artpieces.length);
+        for (i = 0;i<this.artpieces.length;i++){
+          console.log(this.artpieces[i]);
+          this.deslist.push(this.artpieces[i].description);
+        }
+        console.log(this.deslist);
       }
     }
 }
