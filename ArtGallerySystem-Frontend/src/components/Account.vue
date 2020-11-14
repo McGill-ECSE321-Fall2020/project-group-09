@@ -13,11 +13,6 @@
       </el-table-column>
       <el-table-column prop = "date" label = "Purchase Date"></el-table-column>
       <el-table-column prop = "deliveryStatus" label = "Delivery Status"></el-table-column>
-      <!-- <el-table-column label = "Link">
-        <template slot-scope="scope">
-          <el-button @click="handleClickArtPiece(purchases[scope.$index].artPiece.artPieceId)" type="text" size="small"> Art Piece Detail Page </el-button>
-        </template>
-      </el-table-column> -->
     </el-table>
 
     <h2> Uploaded Art Pieces </h2>
@@ -30,11 +25,6 @@
       </el-table-column>
       <el-table-column prop = "date" label = "Upload Date"></el-table-column>
       <el-table-column prop = "artPieceStatus" label = "Status"></el-table-column>
-      <!-- <el-table-column label = "Link">
-        <template slot-scope="scope">
-          <el-button @click="handleClickArtPiece(purchases[scope.$index].artPieceId)" type="text" size="small"> Art Piece Detail Page </el-button>
-        </template>
-      </el-table-column> -->
     </el-table>
 
     <h2> Addresses </h2>
@@ -53,29 +43,29 @@
               :visible.sync="editAddressDialogVisible"
               width="50%">
               <span>
-                <el-form ref="updateaddress-form" :model="updatingAddress" label-width="120px">
-                  <el-form-item label = "Address ID">
+                <el-form ref="updateaddress-form" :model="updatingAddress" label-width="120px" :rules = "rules">
+                  <el-form-item label = "Address ID" prop = "addressId">
                     <el-input v-model = "updatingAddress.addressId" disabled></el-input>
                   </el-form-item>
-                  <el-form-item label = "Name">
+                  <el-form-item label = "Name" prop = "name">
                     <el-input v-model = "updatingAddress.name"></el-input>
                   </el-form-item>
-                  <el-form-item label = "Phone Number">
+                  <el-form-item label = "Phone Number" prop = "phoneNumber">
                     <el-input v-model = "updatingAddress.phoneNumber"></el-input>
                   </el-form-item>
-                  <el-form-item label = "Street Address">
+                  <el-form-item label = "Street Address" prop = "streetAddress">
                     <el-input v-model = "updatingAddress.streetAddress"></el-input>
                   </el-form-item>
-                  <el-form-item label = "City">
+                  <el-form-item label = "City" prop = "city">
                     <el-input v-model = "updatingAddress.city"></el-input>
                   </el-form-item>
-                  <el-form-item label = "Province">
+                  <el-form-item label = "Province" prop = "province">
                     <el-input v-model = "updatingAddress.province"></el-input>
                   </el-form-item>
-                  <el-form-item label = "Postal Code">
+                  <el-form-item label = "Postal Code" prop = "postalCode">
                     <el-input v-model = "updatingAddress.postalCode"></el-input>
                   </el-form-item>
-                  <el-form-item label = "Country">
+                  <el-form-item label = "Country" prop = "country">
                     <el-input v-model = "updatingAddress.country"></el-input>
                   </el-form-item>
                 </el-form>
@@ -104,29 +94,29 @@
       :visible.sync="addAddressDialogVisible"
       width="50%">
       <span>
-        <el-form ref="addaddress-form" :model="newAddress" label-width="120px">
-          <el-form-item label = "Address ID">
+        <el-form ref="addaddress-form" :model="newAddress" label-width="120px" :rules = "rules">
+          <el-form-item label = "Address ID" prop = "addressId">
             <el-input v-model = "newAddress.id" disabled></el-input>
           </el-form-item>
-          <el-form-item label = "Name">
+          <el-form-item label = "Name" prop = "name">
             <el-input v-model = "newAddress.name"></el-input>
           </el-form-item>
-          <el-form-item label = "Phone Number">
+          <el-form-item label = "Phone Number" prop = "phoneNumber">
             <el-input v-model = "newAddress.number"></el-input>
           </el-form-item>
-          <el-form-item label = "Street Address">
+          <el-form-item label = "Street Address" prop = "streetAddress">
             <el-input v-model = "newAddress.streetaddress"></el-input>
           </el-form-item>
-          <el-form-item label = "City">
+          <el-form-item label = "City" prop = "city">
             <el-input v-model = "newAddress.city"></el-input>
           </el-form-item>
-          <el-form-item label = "Province">
+          <el-form-item label = "Province" prop = "province">
             <el-input v-model = "newAddress.province"></el-input>
           </el-form-item>
-          <el-form-item label = "Postal Code">
+          <el-form-item label = "Postal Code" prop = "postalCode">
             <el-input v-model = "newAddress.postcode"></el-input>
           </el-form-item>
-          <el-form-item label = "Country">
+          <el-form-item label = "Country" prop = "country">
             <el-input v-model = "newAddress.country"></el-input>
           </el-form-item>
         </el-form>
@@ -148,11 +138,4 @@
 
 <style scoped>
   @import url("//unpkg.com/element-ui@2.14.0/lib/theme-chalk/index.css");
-  /*.el-button{
-    color: white;
-    background-color: #99ccff;
-    border-color: #99ccff;
-    margin-top: 30px;
-    margin-bottom: 70px;
-  }*/
 </style>

@@ -75,6 +75,16 @@ export default {
             errorNewAddress: '', // error creating address
             errorDeleteAddress: '', // error deleting address
             response: [],
+
+            rules: {
+                name: [ { required: true, message: "Name cannot be empty!", trigger: "blur" } ],
+                phoneNumber: [ { required: true, message: "Phone number cannot be empty!", trigger: "blur" } ],
+                streetAddress: [ { required: true, message: "Street address cannot be empty!", trigger: "blur" } ],
+                city: [ { required: true, message: "City cannot be empty!", trigger: "blur" } ],
+                province: [ { required: true, message: "Province cannot be empty!", trigger: "blur" } ],
+                postalCode: [ { required: true, message: "Postal code cannot be empty!", trigger: "blur" } ],
+                country: [ { required: true, message: "Country cannot be empty!", trigger: "blur" } ]
+            }
         }
     },
     created: function () {

@@ -21,7 +21,7 @@
 </el-form-item>
 
 <el-form-item label= "Date" prop = "date" required>
-    <el-date-picker type="date" value-format="yyyy-mm-dd" placeholder="Please pick date" v-model="artpiece.date" style="width: 100%;"></el-date-picker>
+    <el-date-picker type="date" value-format="yyyy-MM-dd" placeholder="Please pick date" v-model="artpiece.date" style="width: 100%;"></el-date-picker>
 </el-form-item>
 
 <!-- <el-form-item label ="Artists" prop = "Artists">
@@ -203,6 +203,14 @@ export default {
             console.log('submit!');
             console.log(this.artpiece)
             AXIOS.post('artPiece/createArtPiece', {}, {params: this.artpiece}) // id
+              .then(_ => {
+                this.$notify({
+                  title: 'Success',
+                  message: 'Art piece created successfully!',
+                  type: 'success'
+                });
+              })
+              .catch(e => { console.log(e) });
           } else {
             console.log('error submit!!');
             return false;
@@ -212,7 +220,7 @@ export default {
       onCancel(){
           console.log('canceled.')
            this.$router.push({
-         path: '/home/:userid',
+         path: '/home/'.concat(this.$route.params.userid),
         })
       },
       handlePreview(file) {
