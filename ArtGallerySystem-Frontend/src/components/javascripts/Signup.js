@@ -142,7 +142,7 @@ export default {
         user: id,
         credit: 0
       }
-      AXIOS.post('/artist/createArtist/'.concat(id), {}, {params: artist})
+      AXIOS.post('/artist/createArtist/'.concat(id).concat("--Artist"), {}, {params: artist})
         .then(response => {
           if (!response.data || response.data.length <= 0) return;
           this.dialogFormVisible= true;
@@ -151,7 +151,6 @@ export default {
           e = e.response.data.message ? e.response.data.message : e;
           console.log(e);
         });
-
     },
     goBack(){
       window.location.href='http://127.0.0.1:8087/#/login';

@@ -3,12 +3,13 @@
 
         <div align="center">
           <el-header>
-            <p>
+            <p >
               Home Page
             </p>
           </el-header>
     <el-button type="primary" @click="goInfo">Info</el-button>
     <el-button type="primary" @click="goUpload">Upload</el-button></div>
+      <el-button type="primary" @click="goBack">Return</el-button>
       <el-carousel :interval="4000" type="card" height="400px">
         <el-carousel-item v-for="(img,index) in artpieces" :key="`img-${index}`">
           <img :src="img.description" width="100%" height="100%" @click="goArtPieceInfo(img.artPieceId, img.description)"></img>

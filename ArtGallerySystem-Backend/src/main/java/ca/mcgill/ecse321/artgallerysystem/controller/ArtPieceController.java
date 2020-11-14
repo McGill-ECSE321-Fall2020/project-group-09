@@ -2,6 +2,7 @@ package ca.mcgill.ecse321.artgallerysystem.controller;
 
 
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtPieceDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.ArtistDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
@@ -70,11 +71,19 @@ public class ArtPieceController {
     	Artist artist = artistService.getArtistByUserName(userName);
     	return getgetArtPiecesByArtist(artist.getUserRoleId());
     }
+    @GetMapping(value = {"/userrole/{userrole}", "/userrole/{userrole}/"})
+    public List<ArtPieceDTO> getArtPiecesByUserRole(@PathVariable("userrole") String userName) {
+    	Artist artist = artistService.getArtist(userName);
+    	return getgetArtPiecesByArtist(artist.getUserRoleId());
+    }
     
     @PostMapping("/createArtPiece")
     public ArtPieceDTO createArtPiece(@RequestParam("id") String id, @RequestParam("name") String name, @RequestParam("des") String des, @RequestParam("author") String author, @RequestParam("price") double price, @RequestParam("date") Date date, @RequestParam("status")String status) {
     	ArtPieceStatus artstatus = convertStatus(status);
     	Set<Artist> arts = new HashSet<Artist>();
+    	
+    	
+    	
     	
         return convertToDto(artPieceService.createArtPiece(id,name,des,author,price,date,artstatus,arts));
     }
@@ -137,10 +146,22 @@ public class ArtPieceController {
         artPieceDTO.setPrice(artPiece.getPrice());
         artPieceDTO.setDate(artPiece.getDate());
         artPieceDTO.setArtPieceStatus(artPiece.getArtPieceStatus());
+        
         // BeanUtils.copyProperties(artPiece,artPieceDTO);
         return artPieceDTO;
     }
-
+    public ArtistDTO convertToDto(Artist artist){
+        ArtistDTO artistDTO = new ArtistDTO();
+        HashSet<ArtPieceDTO> artPieces = new HashSet<ArtPieceDTO>();
+        
+        for (ArtPiece artpiece : artist.getArtPiece()) {
+        	artPieces.add(convertToDto(artpiece));
+        }
+        artistDTO.setArtPiece(artPieces);
+        artistDTO.setCredit(artist.getCredit());
+        //BeanUtils.copyProperties(artist,artistDTO);
+        return artistDTO;
+    }
 
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();

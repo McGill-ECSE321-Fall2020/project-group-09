@@ -97,7 +97,7 @@ export default {
             .then(response => { this.purchases = response.data; })
             .catch(e => { this.errorPurchases = e; console.log(e); });
 
-        AXIOS.get('/artPiece/user/'.concat(this.userName))
+        AXIOS.get('/artPiece/userrole/'.concat(this.userName).concat("--Artist"))
             .then(response => { this.artPieces = response.data; })
             .catch(e => { this.errorArtPieces = e; console.log(e); });
 

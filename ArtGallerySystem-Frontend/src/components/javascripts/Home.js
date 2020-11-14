@@ -91,6 +91,9 @@ export default {
           this.deslist.push(this.artpieces[i].description);
         }
         console.log(this.deslist);
+      },
+      goBack(){
+        window.location.href='http://127.0.0.1:8087/#/'
       }
     }
 }

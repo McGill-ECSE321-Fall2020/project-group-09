@@ -25,16 +25,16 @@
     <el-date-picker type="date" value-format="yyyy-MM-dd" placeholder="Please pick date" v-model="artpiece.date" style="width: 100%;"></el-date-picker>
 </el-form-item>
 
-<!-- <el-form-item label ="Artists" prop = "Artists">
-   <el-select v-model="artpiece.selectedArtists" multiple placeholder="Please select" style="width: 600px">
+ <el-form-item label ="Artists" prop = "Artists">
+   <el-select v-model="artpiece.artists" multiple placeholder="Please select" style="width: 600px">
     <el-option
-      v-for="item in artists"
-      :key="item.id"
-      :label="item.name"
-      :value="item.id">
+      v-for="(item,index) in artistids"
+      :key="`item-${index}`"
+      :label="item"
+      :value="item">
     </el-option>
   </el-select>
-</el-form-item> -->
+</el-form-item>
 
 <el-form-item>
     <el-button type="submit" @click="submitForm('artpiece')">Create!</el-button>
@@ -82,12 +82,20 @@ let frontendConfigurer = function () {
         return 'https://' + config.build.host + ':' + config.build.port;
     }
 }
-let backendUrl = backendConfigurer();
+/*let backendUrl = backendConfigurer();
 let frontendUrl = frontendConfigurer();
 let AXIOS = axios.create({
-    baseURL: backendUrl
-    // headers: {'Access-Control-Allow-Origin': frontendUrl}
-});
+  baseURL: backendUrl,
+  headers: { 'Access-Control-Allow-Origin': frontendUrl }
+});*/
+var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
+var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
+
+var AXIOS = axios.create({
+  baseURL: backendUrl,
+  headers: { 'Access-Control-Allow-Origin': frontendUrl }
+  //header ('Access-Control-Allow-Origin: *')
+})
 export default {
     data() {
 
@@ -126,6 +134,9 @@ export default {
           },
         artistList:[],
         artistids:[],
+        model: {
+          selectedArtists:[],
+        },
         artpiece: {
           id: this.generateArtPieceId(),
           name: '',
@@ -134,7 +145,7 @@ export default {
           date: '',
           des:'',
           status:'Available',
-          selectedArtists: []
+          artists:[]
         },
         artists: [{
           id: 'a1',
@@ -159,6 +170,7 @@ export default {
       .then(response => {
         if (!response.data || response.data.length <= 0) return;
         this.artistList = response.data;
+        console.log(this.artistList);
       })
       .catch(e => {
         e = e.response.data.message ? e.response.data.message : e;
@@ -203,14 +215,25 @@ export default {
         this.$refs[aForm].validate((valid) => {
           if (valid) {
             console.log('submit!');
-            console.log(this.artpiece)
-            AXIOS.post('artPiece/createArtPiece', {}, {params: this.artpiece}) // id
+            console.log(this.artpiece);
+            let a = {
+              id: this.artpiece.id,
+              name: this.artpiece.name,
+              des: this.artpiece.des,
+              author: this.artpiece.author,
+              status: "Available",
+              price: this.artpiece.price,
+              date: this.artpiece.date
+            }
+            AXIOS.post('artPiece/createArtPiece', {}, {params: a}) // id
               .then(_ => {
+                this.addArtist(this.artpiece.artists)
                 this.$notify({
                   title: 'Success',
                   message: 'Art piece created successfully!',
                   type: 'success'
                 });
+
               })
               .catch(e => { console.log(e) });
           } else {
@@ -244,7 +267,8 @@ export default {
         name: this.artpiece.name,
         des: this.artpiece.des,
         author: this.artpiece.author,
-        status: "Available"
+        status: "Available",
+        artists: this.selectedArtists
       }
         AXIOS.post('/artPiece/createArtPiece/', {}, {params: artpiece})
           .then(response => {
@@ -257,11 +281,12 @@ export default {
           });
       },
     addArtist(artists){
-      for (var i=0; i< artists.length();i++){
+      for (var i=0; i< artists.length;i++){
+        let userid = artists[i].split("--")[0];
         let artist = {
           artistid: artists[i]
         }
-        AXIOS.put('/artPiece/addArtist'.concat(artists[i]),{},{params: artist})
+        AXIOS.put('/artPiece/addArtist/'.concat(this.artpiece.id),{},{params: artist})
           .then(response => {
             if (!response.data || response.data.length <= 0) return;
           })
