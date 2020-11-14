@@ -102,6 +102,60 @@ public class AddressService {
 			throw new AddressException ("address not exist");
 		}
 	}
+	
+	/**
+	 * Added Nov 11
+	 * @author Zhekai Jiang
+	 */
+	@Transactional
+	public Address updateAddress(String id, String name, String phoneNumber, String streetAddress, String city, String province, String postalCode, String country) {
+		String error = "";
+		if(id == null || id.length() == 0) {
+			error += "Address id cannot be empty! ";
+		}
+		if(name == null || name.length() == 0) {
+			error += "Name cannot be empty! ";
+		}
+		if(phoneNumber == null || phoneNumber.length() == 0) {
+			error += "Phone number cannot be empty! ";
+		}
+		if(streetAddress == null || streetAddress.length() == 0) {
+			error += "Street address cannot be empty! ";
+		}
+		if(city == null || city.length() == 0) {
+			error += "City cannot be empty! ";
+		}
+		if(province == null || province.length() == 0) {
+			error += "Province cannot be empty! ";
+		}
+		if(postalCode == null || postalCode.length() == 0) {
+			error += "Postal code cannot be empty! ";
+		}
+		if(country == null || country.length() == 0) {
+			error += "Country cannot be empty!";
+		}
+		error = error.trim();
+		if(error.length() > 0) {
+			throw new IllegalArgumentException(error);
+		}
+		
+		Address address = addressRepository.findAddressByAddressId(id);
+		if(address == null) {
+			throw new IllegalArgumentException("Address with id " + id + " does not exist.");
+		}
+		
+		address.setName(name);
+		address.setPhoneNumber(phoneNumber);
+		address.setStreetAddress(streetAddress);
+		address.setCity(city);
+		address.setProvince(province);
+		address.setPostalCode(postalCode);
+		address.setCountry(country);
+		
+		addressRepository.save(address);
+		return address;
+	}
+	
 	/*public AddressDTO convertToDto(Address address) {
 	    AddressDTO addressDTO = new AddressDTO();
 	    addressDTO.setAddressId(address.getAddressId());

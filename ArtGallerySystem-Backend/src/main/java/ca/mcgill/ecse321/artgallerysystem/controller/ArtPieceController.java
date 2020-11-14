@@ -2,12 +2,14 @@ package ca.mcgill.ecse321.artgallerysystem.controller;
 
 
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtPieceDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.ArtistDTO;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
 import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
 import ca.mcgill.ecse321.artgallerysystem.service.ArtPieceService;
-import org.springframework.beans.BeanUtils;
+import ca.mcgill.ecse321.artgallerysystem.service.ArtistService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,17 +20,35 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/artPiece")
 public class ArtPieceController {
 
     @Autowired
     ArtPieceService artPieceService;
+    @Autowired
+    private ArtistService artistService;
 
     @GetMapping("/artPieceList")
     public List<ArtPieceDTO> artPieceList(){
         List<ArtPiece> artPieceList= artPieceService.getAllArtPieces();
         return toList(artPieceList.stream().map(this::convertToDto).collect(Collectors.toList()));
+    }
+    /**
+     * added by amelia
+     * @return
+     */
+    @GetMapping("/availableartPieceList")
+    public List<ArtPieceDTO> availableartPieceList(){
+        List<ArtPiece> artPieceList= artPieceService.getAllArtPieces();
+        List<ArtPiece> availables= new ArrayList<ArtPiece>();
+        for (ArtPiece art: artPieceList) {
+        	if (art.getArtPieceStatus()== ArtPieceStatus.Available) {
+        		availables.add(art);
+        	}
+        }
+        return toList(availables.stream().map(this::convertToDto).collect(Collectors.toList()));
     }
 
     @GetMapping("/getArtPiece/{id}")
@@ -41,13 +61,41 @@ public class ArtPieceController {
         List<ArtPiece> artistArtPieces = artPieceService.getArtPiecesByArtist(id);
         return toList(artistArtPieces.stream().map(this::convertToDto).collect(Collectors.toList()));
     }
-
+    
+    /**
+     * Added Nov 10
+     * @author Zhekai Jiang
+     */
+    @GetMapping(value = {"/user/{username}", "/user/{username}/"})
+    public List<ArtPieceDTO> getArtPiecesByUserName(@PathVariable("username") String userName) {
+    	Artist artist = artistService.getArtistByUserName(userName);
+    	return getgetArtPiecesByArtist(artist.getUserRoleId());
+    }
+    @GetMapping(value = {"/userrole/{userrole}", "/userrole/{userrole}/"})
+    public List<ArtPieceDTO> getArtPiecesByUserRole(@PathVariable("userrole") String userName) {
+    	Artist artist = artistService.getArtist(userName);
+    	return getgetArtPiecesByArtist(artist.getUserRoleId());
+    }
+    
     @PostMapping("/createArtPiece")
     public ArtPieceDTO createArtPiece(@RequestParam("id") String id, @RequestParam("name") String name, @RequestParam("des") String des, @RequestParam("author") String author, @RequestParam("price") double price, @RequestParam("date") Date date, @RequestParam("status")String status) {
     	ArtPieceStatus artstatus = convertStatus(status);
     	Set<Artist> arts = new HashSet<Artist>();
     	
+    	
+    	
+    	
         return convertToDto(artPieceService.createArtPiece(id,name,des,author,price,date,artstatus,arts));
+    }
+    
+    /**
+     * Added Nov 10
+     * @author Zhekai Jiang
+     */
+    @PutMapping(value = {"/addArtist/{id}", "/addArtist/{id}/"})
+    public ArtPieceDTO addArtist(@PathVariable("id") String id, @RequestParam("artistid") String artistId) {
+    	Artist artist = artistService.getArtist(artistId);
+    	return convertToDto(artPieceService.addArtist(id, artist));
     }
 
     @DeleteMapping("/deleteArtPiece/{id}")
@@ -86,13 +134,34 @@ public class ArtPieceController {
     }
 
 
-
+    /**
+     * Updated Nov 10 (to avoid infinite circular reference) by Zhekai Jiang
+     */
     public ArtPieceDTO convertToDto(ArtPiece artPiece){
         ArtPieceDTO artPieceDTO = new ArtPieceDTO();
-        BeanUtils.copyProperties(artPiece,artPieceDTO);
+        artPieceDTO.setArtPieceId(artPiece.getArtPieceId());
+        artPieceDTO.setName(artPiece.getName());
+        artPieceDTO.setDescription(artPiece.getDescription());
+        artPieceDTO.setAuthor(artPiece.getAuthor());
+        artPieceDTO.setPrice(artPiece.getPrice());
+        artPieceDTO.setDate(artPiece.getDate());
+        artPieceDTO.setArtPieceStatus(artPiece.getArtPieceStatus());
+        
+        // BeanUtils.copyProperties(artPiece,artPieceDTO);
         return artPieceDTO;
     }
-
+    public ArtistDTO convertToDto(Artist artist){
+        ArtistDTO artistDTO = new ArtistDTO();
+        HashSet<ArtPieceDTO> artPieces = new HashSet<ArtPieceDTO>();
+        
+        for (ArtPiece artpiece : artist.getArtPiece()) {
+        	artPieces.add(convertToDto(artpiece));
+        }
+        artistDTO.setArtPiece(artPieces);
+        artistDTO.setCredit(artist.getCredit());
+        //BeanUtils.copyProperties(artist,artistDTO);
+        return artistDTO;
+    }
 
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();

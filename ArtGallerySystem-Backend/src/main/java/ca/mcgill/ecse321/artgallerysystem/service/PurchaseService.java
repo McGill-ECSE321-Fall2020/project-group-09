@@ -13,6 +13,7 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PaymentRepository;
 import ca.mcgill.ecse321.artgallerysystem.dao.PurchaseRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
+import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Customer;
 import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
 import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
@@ -53,6 +54,7 @@ public class PurchaseService {
 		}
 		
 		Purchase purchase = new Purchase();
+		artPiece.setArtPieceStatus(ArtPieceStatus.Sold);
 		purchase.setArtPiece(artPiece);
 		purchase.setCustomer(customer);
 		purchase.setDate(date);
