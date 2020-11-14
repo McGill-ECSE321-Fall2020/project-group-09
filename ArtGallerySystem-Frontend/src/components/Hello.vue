@@ -1,7 +1,7 @@
 <template>
   <div align="center">
     <h1>{{ msg }}</h1>
-    <el-button type="primary" @click="goLogin">Login</el-button>
+    <el-button type="primary" @click="goLogin">Login/SignUp</el-button>
 
   </div>
 </template>

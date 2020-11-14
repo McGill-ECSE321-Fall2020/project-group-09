@@ -22,6 +22,13 @@ function UserDTO(name, email, password, avatar){
 export default {
   name: "signup",
   data() {
+    var validatePrefix = (rule, value, callback) =>{
+      if (this.reg.test(value)){
+        callback();
+      }else{
+        return callback(new Error('Please input valid email!'));
+      }
+    }
     return {
       users:[],
       userids:[],
@@ -34,6 +41,7 @@ export default {
         avatar:""
       },
       loading: false,
+      reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
       rules: {
         username: [
           {
@@ -56,7 +64,8 @@ export default {
           }
         ],
         email: [
-          { required: true, message: "Email is required", trigger: "blur" }
+          { required: true, message: "Email is required", trigger: "blur" },
+          {validator: validatePrefix , trigger: "blur"}
         ],
         avatar: [
           { required: true, message: "Avatar is required", trigger: "blur" }

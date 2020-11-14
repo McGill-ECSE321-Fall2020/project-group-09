@@ -29,7 +29,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item prop="email">
-          <el-input v-model="model.email" placeholder="Email" prefix-icon="fas fa-user"></el-input>
+          <el-input v-model="model.email" placeholder="Email" prefix-icon="fa fa-envelope"></el-input>
         </el-form-item>
         <el-form-item prop="avatar">
           <el-input v-model="model.avatar" placeholder="Avatar" prefix-icon="fas fa-user"></el-input>

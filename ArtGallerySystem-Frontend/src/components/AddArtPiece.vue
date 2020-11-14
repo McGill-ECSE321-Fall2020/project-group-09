@@ -35,7 +35,10 @@
     </el-option>
   </el-select>
 </el-form-item>
-
+  <el-dialog title="Congratulations! Successfully Uploaded" :visible.sync="dialogFormVisible">
+    <el-button type="text" @click="goHome">Go To Home Page</el-button>
+    <el-button type="text" @click="stayHere">Upload a new one</el-button>
+  </el-dialog>
 <el-form-item>
     <el-button type="submit" @click="submitForm('artpiece')">Create!</el-button>
     <el-button @click="resetForm('artpiece')">Reset</el-button>
@@ -134,6 +137,7 @@ export default {
           },
         artistList:[],
         artistids:[],
+        dialogFormVisible: false,
         model: {
           selectedArtists:[],
         },
@@ -227,12 +231,13 @@ export default {
             }
             AXIOS.post('artPiece/createArtPiece', {}, {params: a}) // id
               .then(_ => {
-                this.addArtist(this.artpiece.artists)
+                this.addArtist(this.artpiece.artists);
                 this.$notify({
                   title: 'Success',
                   message: 'Art piece created successfully!',
                   type: 'success'
                 });
+                this.dialogFormVisible= true;
 
               })
               .catch(e => { console.log(e) });
@@ -248,6 +253,14 @@ export default {
          path: '/home/'.concat(this.$route.params.userid),
         })
       },
+    goHome(){
+      this.dialogFormVisible= true;
+      window.location.href = 'http://127.0.0.1:8087/#/home/'.concat(this.$route.params.userid);
+    },
+    stayHere(){
+      this.dialogFormVisible= true;
+
+    },
       handlePreview(file) {
         console.log(file);
       },
