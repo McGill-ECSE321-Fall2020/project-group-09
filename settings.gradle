@@ -9,4 +9,4 @@
 
 rootProject.name = 'artgallery'
 include ':ArtGallerySystem-Backend'
-include ':ArtGallerySystem-Frontend'
+//include ':ArtGallerySystem-Frontend'
