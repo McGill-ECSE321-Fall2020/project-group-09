@@ -2,36 +2,29 @@
 <div>
 <p> Add New Art Piece </p>
 
-<el-form :model="artpiece" label-width="80px" :rules="rules">
+<el-form :model="artpiece" ref= artpiece  :rules="rules"  status-icon label-width="130px">
 
-<el-form-item label= "Name" prop = "Name" >
-    <el-input v-model="artpiece.name"></el-input>
+<el-form-item label= "Name" prop = "name">
+    <el-input placeholder="Please enter art piece name" v-model="artpiece.name"></el-input>
 </el-form-item>
 
-<el-form-item label= "Upload" prop = "Upload">
-    <el-upload v-model="artpiece.des"
-  class="artpiece-img"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :on-preview="handlePreview"
-  :on-remove="handleRemove"
-  :file-list="fileList">
-  <el-button size="small" type="primary">Click to upload file</el-button>
-</el-upload>
+<el-form-item label= "Image URL" prop = "des">
+    <el-input placeholder="Please enter art piece image URL" v-model="artpiece.des"></el-input>
 </el-form-item>
 
-<el-form-item label= "Author" prop = "Author">
-    <el-input v-model="artpiece.author"></el-input>
+<el-form-item label= "Author" prop = "author">
+    <el-input placeholder="Please enter art piece author" v-model="artpiece.author"></el-input>
 </el-form-item>
 
-<el-form-item label= "Price" prop = "Price">
-    <el-input v-model="artpiece.price"></el-input>
+<el-form-item label= "Price" prop = "price">
+    <el-input placeholder="Please enter art piece price" v-model.number="artpiece.price"></el-input>
 </el-form-item>
 
-<el-form-item label= "Date" prop = "Date">
-    <el-date-picker type="date" placeholder="Pick date" v-model="artpiece.date" style="width: 100%;"></el-date-picker>
+<el-form-item label= "Date" prop = "date" required>
+    <el-date-picker type="date" value-format="yyyy-mm-dd" placeholder="Please pick date" v-model="artpiece.date" style="width: 100%;"></el-date-picker>
 </el-form-item>
 
-<el-form-item label ="Artists" prop = "Artists">
+<!-- <el-form-item label ="Artists" prop = "Artists">
    <el-select v-model="artpiece.selectedArtists" multiple placeholder="Please select" style="width: 600px">
     <el-option
       v-for="item in artists"
@@ -40,13 +33,13 @@
       :value="item.id">
     </el-option>
   </el-select>
-</el-form-item>
+</el-form-item> -->
 
 <el-form-item>
-    <el-button type="submit" @click="onSubmit">Create!</el-button>
+    <el-button type="submit" @click="submitForm('artpiece')">Create!</el-button>
+    <el-button @click="resetForm('artpiece')">Reset</el-button>
     <el-button @click="onCancel">Cancel</el-button>
 </el-form-item>
-
 
 </el-form>
 
@@ -64,14 +57,11 @@
   .div .el-row .div .p {
     margin-left: 500px;
   }
-
 </style>
 
 <script>
-
 import axios from 'axios'
 let config = require('../../config');
-
 let backendConfigurer = function () {
     switch (process.env.NODE_ENV) {
     case 'testing':
@@ -81,7 +71,6 @@ let backendConfigurer = function () {
         return 'https://' + config.build.backendHost + ':' + config.build.backendPort;
     }
 }
-
 let frontendConfigurer = function () {
     switch (process.env.NODE_ENV) {
     case 'testing':
@@ -91,33 +80,46 @@ let frontendConfigurer = function () {
         return 'https://' + config.build.host + ':' + config.build.port;
     }
 }
-
 let backendUrl = backendConfigurer();
 let frontendUrl = frontendConfigurer();
-
 let AXIOS = axios.create({
     baseURL: backendUrl
     // headers: {'Access-Control-Allow-Origin': frontendUrl}
 });
-
 export default {
     data() {
+
+      var validatePrefix = (rule, value, callback) =>{
+        if (value.substring(0,8) === "https://"){
+          callback();
+        }else if (value.substring(0,7) === "http://"){
+          callback();
+        }else{
+           return callback(new Error('The URL must start with https:// or http://'));
+        }
+      }
+
       return {
           rules:{
-            Name: [
+            name: [
           { required: true, message: "Name is required", trigger: "blur" }
             ],
-            Author: [
+            author: [
           { required: true, message: "Author is required", trigger: "blur" }
             ],
-            Price: [
-           { required: true, message: "Price is required", trigger: "blur" }
+            des: [
+          { required: true, message: "Image URL is required", trigger: "blur" },
+          {validator: validatePrefix , trigger: "blur"}
             ],
-            Date: [
-        { required: true, message: "Date is required", trigger: "blur" }
+            price: [
+           { required: true, message: "Price is required", trigger: "blur" },
+           { type: 'number', message: 'Price must be a number'}
             ],
-            Artists:[
-        { required: true, message: "At least one artist is required", trigger: "blur" }
+            date: [
+          {  required: true, message: "Date is required", trigger: "change" }
+            ],
+            artists:[
+          { required: true, message: "At least one artist is required", trigger: "blur" }
             ]
           },
         artistList:[],
@@ -129,10 +131,9 @@ export default {
           price:'',
           date: '',
           des:'',
+          status:'Available',
           selectedArtists: []
         },
-        fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
-        ,
         artists: [{
           id: 'a1',
           name: 'tom'
@@ -181,7 +182,6 @@ export default {
         console.log('artistList actual',this.artistList)
     })
     },
-
     // upload:function(){
     //     axios.post('artPiece/createArtPiece',this.artpiece)
     //     .then((response)=>{
@@ -189,30 +189,35 @@ export default {
     //     }
     //     )
     // },
-
-      onSubmit() {
-        console.log('submit!');
-        console.log(this.artpiece.name);
-        console.log(this.artpiece.author);
-        console.log(this.artpiece.price);
-        console.log(this.artpiece.date);
-        console.log(this.artpiece.des)
-        console.log(this.artpiece.selectedArtists)
-        AXIOS.post('artPiece/createArtPiece', {}, {params: this.artpiece}) // id
+      // onSubmit() {
+      //   console.log('submit!');
+      //   console.log(this.artpiece)
+      //   AXIOS.post('artPiece/createArtPiece', {}, {params: this.artpiece}) // id
+      // },
+      resetForm(aForm) {
+        this.$refs[aForm].resetFields();
       },
-
+      submitForm(aForm) {
+        this.$refs[aForm].validate((valid) => {
+          if (valid) {
+            console.log('submit!');
+            console.log(this.artpiece)
+            AXIOS.post('artPiece/createArtPiece', {}, {params: this.artpiece}) // id
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
       onCancel(){
           console.log('canceled.')
            this.$router.push({
          path: '/home/:userid',
         })
       },
-
       handlePreview(file) {
         console.log(file);
       },
-
-
       handleRemove(file, fileList) {
         console.log(file, fileList);
       },
@@ -240,7 +245,6 @@ export default {
             e = e.response.data.message ? e.response.data.message : e;
             console.log(e);
           });
-
       },
     addArtist(artists){
       for (var i=0; i< artists.length();i++){
@@ -257,14 +261,6 @@ export default {
           });
       }
     }
-
     }
   }
-
-
-
-
-
-
-
 </script>
