@@ -24,24 +24,26 @@
           <el-button @click="dialogFormVisible=false">Close</el-button>
           <el-button type="text" @click="signUp">Create New Account</el-button>
         </el-dialog>
-        <el-form-item>
-          <el-button
-            :loading="loading"
-            class="login-button"
-            type="primary"
-            native-type="submit"
-            block
-            @click="signUp"
-          >SignUp</el-button>
-          <el-button
-            :loading="loading"
-            class="login-button"
-            type="primary"
-            native-type="submit"
-            block
-          >Login</el-button>
-        </el-form-item>
-        <a class="forgot-password" href="https://oxfordinformatics.com/">Forgot password ?</a>
+
+          <div align="center">
+            <el-form-item>
+              <el-button
+              :loading="loading"
+              class="login-button"
+              type="primary"
+              native-type="submit"
+              block
+              @click="signUp"
+            >Sign Up</el-button>
+              <el-button
+                :loading="loading"
+                class="login-button"
+                type="primary"
+                native-type="submit"
+                block
+              >Login</el-button>
+            </el-form-item>
+          </div>
       </el-form>
     </el-card>
   </div>
@@ -63,6 +65,7 @@
 
 .login-button {
   width: 100%;
+  margin-left: 0px;
   margin-top: 40px;
 }
 .login-form {
@@ -75,7 +78,7 @@
 </style>
 <style lang="scss" scoped>
 $teal: rgb(153, 204, 255);
-.el-button--primary {
+.el-button {
   background: $teal;
   border-color: $teal;
   color: white;
@@ -118,15 +121,7 @@ h2 {
   padding-bottom: 20px;
   color:pink;
 }
-a {
-  color: $teal;
-  text-decoration: none;
-  &:hover,
-  &:active,
-  &:focus {
-    color: lighten($teal, 7);
-  }
-}
+
 .login .el-card {
   width: 340px;
   display: flex;

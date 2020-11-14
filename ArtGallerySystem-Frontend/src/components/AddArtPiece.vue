@@ -1,6 +1,7 @@
 <template>
 <div>
-<p> Add New Art Piece </p>
+  <p>Upload New Art Piece</p>
+
 
 <el-form :model="artpiece" ref= artpiece  :rules="rules"  status-icon label-width="130px">
 
@@ -48,6 +49,7 @@
 
 <style scoped>
  @import url("//unpkg.com/element-ui@2.14.0/lib/theme-chalk/index.css");
+
   .el-form-item.form1 {
     margin-left: 500px;
   }

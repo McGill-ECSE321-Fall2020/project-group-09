@@ -361,6 +361,9 @@ export default {
         }
       });
     },
+    goBack(){
+      window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.userid);
+    },
     submitAddress(formName){
       this.$refs[formName].validate((valid) => {
       //this.newadd = true;

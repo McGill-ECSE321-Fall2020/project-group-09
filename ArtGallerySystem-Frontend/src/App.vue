@@ -32,7 +32,7 @@ export default {
 }
 .el-header{
   color: pink;
-  size: A3;
+  font-size: xx-large;
 }
 </style>
 <!--<style lang="scss">

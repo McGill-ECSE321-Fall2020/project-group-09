@@ -73,8 +73,8 @@
               <span id="update-address-error" v-if="errorUpdateAddress" style="color:red">Error: {{ errorUpdateAddress }}</span>
               <span slot="footer" class="dialog-footer">
                 <el-button @click="editAddressDialogVisible = false">Cancel</el-button>
-                <el-button type="primary" 
-                  @click="confirmUpdateAddress()" 
+                <el-button type="primary"
+                  @click="confirmUpdateAddress()"
                   :disabled = !updatingAddress.name||!updatingAddress.phoneNumber||!updatingAddress.streetAddress||!updatingAddress.city||!updatingAddress.province||!updatingAddress.postalCode||!updatingAddress.country>
                   Confirm
                 </el-button>
@@ -82,13 +82,14 @@
             </el-dialog>
 
             <el-button type="text" @click="handleDeleteAddress(props.row.addressId)">Delete</el-button>
-            
+
           </p>
         </template>
       </el-table-column>
     </el-table>
 
     <el-button type="primary" @click="startCreatingAddress(); addAddressDialogVisible = true">Add Address</el-button>
+    <el-button type="primary" @click="goBack">Back</el-button>
     <el-dialog
       title="Add Address"
       :visible.sync="addAddressDialogVisible"
@@ -138,4 +139,12 @@
 
 <style scoped>
   @import url("//unpkg.com/element-ui@2.14.0/lib/theme-chalk/index.css");
+  .el-button{
+    color: white;
+    background-color: #99ccff;
+    border-color: #99ccff;
+    margin-top: 30px;
+    margin-bottom: 70px;
+  }
+
 </style>

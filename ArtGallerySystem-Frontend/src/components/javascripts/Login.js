@@ -108,7 +108,7 @@ export default {
       return false;
     },
     signUp(){
-      window.location.href= 'http://127.0.0.1:8087/#/signUpp';
+      window.location.href= 'http://127.0.0.1:8087/#/signUp';
     },
     submitButton(username, password){
       if (this.checkUser(username)){

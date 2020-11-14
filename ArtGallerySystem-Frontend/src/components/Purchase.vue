@@ -20,7 +20,7 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item class= "form1" label="Card ID" prop="name">
+        <el-form-item class= "form1" label="Card ID" prop="name" >
           <el-input v-model="ruleForm1.name"></el-input>
         </el-form-item>
         <el-form-item class= "form1" label="Store PickUp" prop="regionB">
@@ -70,6 +70,7 @@
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm1')">Purchase</el-button>
           <el-button @click="resetForm('ruleForm1')">Reset</el-button>
+          <el-button @click="goBack">Back</el-button>
         </el-form-item>
       </el-form>
     </div>

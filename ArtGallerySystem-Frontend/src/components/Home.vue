@@ -16,7 +16,11 @@
           <!--<img :src="urlimg" width="100%" height="100%" @click="goArtPieceInfo(img.artPieceId, img.description)">-->
         </el-carousel-item>
       </el-carousel>
-
+    <el-footer align="center">
+      <p>
+        Please click the art piece to see its detailed information
+      </p>
+    </el-footer>
         <!--<el-carousel :interval="4000" type="card" height="400px">
           <el-carousel-item v-for="(img,index) in imgList" :key="index">
             <img :src="img.url" width="100%" height="100%" @click="goArtPieceInfo">
@@ -39,6 +43,11 @@
 .el-header{
   font-family: -apple-system;
   font-size: xx-large;
+  color: pink;
+}
+.el-footer{
+  font-family: -apple-system;
+  font-size: x-large;
   color: pink;
 }
 </style>

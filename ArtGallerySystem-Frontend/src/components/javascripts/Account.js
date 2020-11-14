@@ -96,7 +96,7 @@ export default {
         AXIOS.get('/purchasesbyuser/'.concat(this.userName))
             .then(response => { this.purchases = response.data; })
             .catch(e => { this.errorPurchases = e; console.log(e); });
-        
+
         AXIOS.get('/artPiece/user/'.concat(this.userName))
             .then(response => { this.artPieces = response.data; })
             .catch(e => { this.errorArtPieces = e; console.log(e); });
@@ -111,7 +111,9 @@ export default {
                 .then(response => { this.addresses = response.data; })
                 .catch(e => { this.errorAddresses = e });
         },
-
+        goBack(){
+        window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.userName);
+        },
         startUpdatingAddress: function (addressId) {
             AXIOS.get('/addresses/'.concat(addressId))
                 .then(response => { this.updatingAddress = response.data; })
@@ -125,7 +127,7 @@ export default {
             this.updatingAddress.postalcode = this.updatingAddress.postalCode;
 
             AXIOS.put('/address/updatefull/'.concat(this.updatingAddress.addressId), {}, { params: this.updatingAddress })
-                .then(_ => { 
+                .then(_ => {
                     this.editAddressDialogVisible = false;
                     this.getAddresses(); // refresh list of addresses
                 })
@@ -156,7 +158,7 @@ export default {
 
         confirmCreateAddress: function() {
             AXIOS.post('/address', {}, {params: this.newAddress})
-                .then(_ => { 
+                .then(_ => {
                     AXIOS.put('/customer/addAddress/'.concat(this.customerId), {}, { params: { address: this.newAddress.id } } )
                         // add address in customer's address list
                         .then(_ => {

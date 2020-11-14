@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <el-card>
-      <h2>SignUp</h2>
+      <h2>Sign Up</h2>
       <el-form
         class="login-form"
         :model="model"
@@ -15,7 +15,7 @@
         <el-form-item prop="password">
           <el-input
             v-model="model.password"
-            placeholder="Password1"
+            placeholder="Enter Your Password"
             type="password"
             prefix-icon="fas fa-lock"
           ></el-input>
@@ -23,7 +23,7 @@
         <el-form-item prop="password">
           <el-input
             v-model="model.repeatpassword"
-            placeholder="PasswordB"
+            placeholder="Repeat Your Password"
             type="password"
             prefix-icon="fas fa-lock"
           ></el-input>
@@ -54,7 +54,7 @@
             native-type="submit"
             block
             @click="signUp"
-          >SignUp</el-button>
+          >Sign Up</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -94,6 +94,7 @@
     background: $teal;
     border-color: $teal;
     color: white;
+    margin-left: 0px;
     &:hover,
     &.active,
     &:focus {
