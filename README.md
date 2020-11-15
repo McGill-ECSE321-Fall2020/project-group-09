@@ -62,9 +62,9 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | ------------ | ------------ | -------------- |
 | Amelia Cui | 25 | Backend bug fixing, architecture model, purchase page and artpiece information page frontend implementation and backend integration, project report|
 | Angelina Duan	| 23 |  Architecture model, home page and artpiece information page frontend implementation and backend integration, user manual, project management |
-| Zhekai Jiang |  | Backend bug fixing, architecture model, account information page frontend implementation and backend integration, Continuous Integration |
-| Zheyan Tu |  | Architecture model, art piece upload page frontend implementation and backend integration, Continuous Integration |
-| Tianyu Zhao |  | Architecture model, login page and sign up page frontend implementation and backend integration, Continuous Integration |
+| Zhekai Jiang | 24 | Backend bug fixing, architecture model, account information page frontend implementation and backend integration, Continuous Integration |
+| Zheyan Tu | 23 | Architecture model, art piece upload page frontend implementation and backend integration, Continuous Integration |
+| Tianyu Zhao | 23 | Architecture model, login page and sign up page frontend implementation and backend integration, Continuous Integration |
 
 #### Links
 * [Architecture Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Architecture-Model)
