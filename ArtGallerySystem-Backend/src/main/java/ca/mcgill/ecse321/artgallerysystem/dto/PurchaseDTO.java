@@ -87,7 +87,7 @@ public class PurchaseDTO {
 	   this.artGallerySystem = artGallerySystem;
 	}
 	
-	// Below are added by Zhekai on Nov 10 for more convenient frontend access
+	// Below are added by Zhekai on Nov 10 & 15 for more convenient frontend access
 	
 	private String deliveryStatus;
 	
@@ -107,5 +107,25 @@ public class PurchaseDTO {
 	
 	public void setDeliveryMethod(String deliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
+	}
+	
+	private boolean isParcelDelivery;
+	
+	public void setIsParcelDelivery() {
+		this.isParcelDelivery = true;
+	}
+	
+	public boolean isParcelDelivery() {
+		return this.isParcelDelivery;
+	}
+	
+	private boolean isInStorePickUp;
+	
+	public void setIsInStorePickUp() {
+		this.isInStorePickUp = true;
+	}
+	
+	public boolean isInStorePickUp() {
+		return this.isInStorePickUp;
 	}
 }

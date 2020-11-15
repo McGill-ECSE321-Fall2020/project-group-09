@@ -7,7 +7,7 @@
               Home Page
             </p>
           </el-header>
-    <el-button type="primary" @click="goInfo">Info</el-button>
+    <el-button type="primary" @click="goInfo">My Account</el-button>
     <el-button type="primary" @click="goUpload">Upload</el-button>
       <el-button type="primary" @click="goBack">Return</el-button></div>
       <el-carousel :interval="4000" type="card" height="400px">

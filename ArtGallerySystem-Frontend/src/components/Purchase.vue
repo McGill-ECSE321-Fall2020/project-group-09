@@ -58,7 +58,7 @@
             <el-form-item label="PhoneNumber" prop="descF">
               <el-input type="textarea" v-model="ruleForm2.descF"></el-input>
             </el-form-item>
-            <el-form-item label="AptNumber" prop="descG">
+            <el-form-item label="Name" prop="descG">
               <el-input type="textarea" v-model="ruleForm2.descG"></el-input>
             </el-form-item>
           </el-form>

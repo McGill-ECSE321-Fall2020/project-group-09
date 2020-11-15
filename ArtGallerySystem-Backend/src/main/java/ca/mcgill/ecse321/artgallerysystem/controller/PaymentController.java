@@ -103,7 +103,7 @@ public PaymentMethod convertToMethod(String method) {
 }
 public PurchaseDTO convertToDto(Purchase purchase) {
 	PurchaseDTO purchaseDto = new PurchaseDTO();
-	purchaseDto.setArtPiece(convertToDto(purchase.getArtPiece()));
+	// purchaseDto.setArtPiece(convertToDto(purchase.getArtPiece())); // removed Nov 15 by Zhekai Jiang (not useful)
 	purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
 	purchaseDto.setDate(purchase.getDate());
 	purchaseDto.setOrderId(purchase.getOrderId());

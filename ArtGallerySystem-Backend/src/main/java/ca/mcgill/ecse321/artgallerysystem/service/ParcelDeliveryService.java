@@ -27,20 +27,25 @@ public class ParcelDeliveryService {
 	PurchaseRepository purchaseRepository;
 	// @Autowired
 	// DeliveryRepository deliverRepository;
+	
+	/**
+	 * Updated Nov 15 by Zhekai Jiang - carrier and tracking number could be empty when the parcel is not shipped...
+	 */
     @Transactional
 	public ParcelDelivery createParcelDelivery(String deliveryid,String trackingNumber, String carrier, ParcelDeliveryStatus status, Address deliveryAddress, Purchase purchase) {
     	if (deliveryid == null|| deliveryid == "") {
 			throw new ParcelDeliveryException ("Please provide valid deliveryid.");
 		}
-    	if (trackingNumber == null|| trackingNumber == "") {
+    	/* if (trackingNumber == null|| trackingNumber == "") {
 			throw new ParcelDeliveryException ("Please provide valid trackingNumber.");
-		}
+		}*/
 		if (deliveryAddress == null) {
 			throw new ParcelDeliveryException ("Please provide valid Address.");
 		}
-		if (carrier == null) {
+		/* if (carrier == null) {
 			throw new ParcelDeliveryException ("Carrier can not be empty! ");
-		}if(status == null) {
+		}*/
+		if(status == null) {
 			throw new ParcelDeliveryException ("Status can not be empty! ");
 		}
 		if(purchase == null) {
@@ -108,6 +113,34 @@ public class ParcelDeliveryService {
 		deliveryRepository.save(pardel);
 		return pardel;
 	}
+	
+	
+	/**
+	 * Added Nov 15
+	 * @author Zhekai Jiang
+	 */
+	@Transactional
+	public ParcelDelivery updateParcelDelivery(String id, ParcelDeliveryStatus status, String carrier, String trackingNumber) {
+		ParcelDelivery parcelDelivery = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(id);
+		String error = "";
+		if(id == null || id.length() == 0) {
+			error += "Delivery id cannot be empty! ";
+		}
+		if(status == null) {
+			error += "Parcel delivery status cannot be empty! ";
+		}
+		error = error.trim();
+		if(error.length() > 0) {
+			throw new IllegalArgumentException(error);
+		}
+		parcelDelivery.setParcelDeliveryStatus(status);
+		parcelDelivery.setCarrier(carrier);
+		parcelDelivery.setTrackingNumber(trackingNumber);
+		parcelDeliveryRepository.save(parcelDelivery);
+		deliveryRepository.save(parcelDelivery);
+		return parcelDelivery;
+	}
+	
 	private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();
         for (T t : iterable) {

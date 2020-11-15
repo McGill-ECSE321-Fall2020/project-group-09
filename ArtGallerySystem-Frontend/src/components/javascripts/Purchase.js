@@ -1,8 +1,32 @@
-import axios from 'axios'
-var config = require('../../../config')
+import _ from 'lodash';
+import axios from 'axios';
+let config = require('../../../config');
 
-var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
-var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
+let backendConfigurer = function () {
+    switch (process.env.NODE_ENV) {
+    case 'testing':
+    case 'development':
+        return 'http://' + config.dev.backendHost + ':' + config.dev.backendPort;
+    case 'production':
+        return 'https://' + config.build.backendHost + ':' + config.build.backendPort;
+    }
+}
+
+let frontendConfigurer = function () {
+    switch (process.env.NODE_ENV) {
+    case 'testing':
+    case 'development':
+        return 'http://' + config.dev.host + ':' + config.dev.port;
+    case 'production':
+        return 'https://' + config.build.host + ':' + config.build.port;
+    }
+}
+
+let backendUrl = backendConfigurer();
+let frontendUrl = frontendConfigurer();
+
+// var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
+// var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
 
 var AXIOS = axios.create({
   baseURL: backendUrl,
@@ -119,7 +143,7 @@ export default {
           { required: true, message: 'Please input phone number', trigger: 'blur' }
         ],
         descG: [
-          { required: true, message: 'Please input apt number', trigger: 'blur' }
+          { required: true, message: 'Please input name', trigger: 'blur' }
         ]
       }
     };
@@ -195,7 +219,7 @@ export default {
             let store = {
               deliveryid: idp,
               pickUpReferenceNumber: idp,
-              inStorePickUpStatus: "Available",
+              inStorePickUpStatus: "Pending",
               storeAddress: "StoreA",
               purchaseid: this.ordernum
             }
@@ -205,7 +229,7 @@ export default {
             let store = {
               deliveryid: idp,
               pickUpReferenceNumber: idp,
-              inStorePickUpStatus: "Available",
+              inStorePickUpStatus: "Pending",
               storeAddress: "StoreB",
               purchaseid: this.ordernum
             }
@@ -214,9 +238,9 @@ export default {
             let idp = Math.random().toString(36).substr(2, 9)
             let parcel = {
               deliveryid: idp,
-              trackingNumber: idp,
-              carrier: "default",
-              parcelDeliveryStatus: "Shipped",
+              trackingNumber: "",
+              carrier: "",
+              parcelDeliveryStatus: "Pending",
               deliveryAddress: this.ruleForm1.regionC,
               purchaseid: this.ordernum
             }
@@ -226,9 +250,9 @@ export default {
             let idp = Math.random().toString(36).substr(2, 9)
             let parcel = {
               deliveryid: idp,
-              trackingNumber: idp,
-              carrier: "default",
-              parcelDeliveryStatus: "Shipped",
+              trackingNumber: "",
+              carrier: "",
+              parcelDeliveryStatus: "Pending",
               deliveryAddress: this.newadd[0].addressId,
               purchaseid: this.ordernum
             }
@@ -237,7 +261,7 @@ export default {
             this.createParcelDelivery(parcel);
           }
           alert('Successful Payment');
-          window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.userid);
+          window.location.href= frontendUrl + '/#/home/' + this.userid //'http://127.0.0.1:8087/#/home/'.concat(this.userid);
         })
         .catch(e =>{
           console.log(e)
@@ -362,7 +386,7 @@ export default {
       });
     },
     goBack(){
-      window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.userid);
+      window.location.href=frontendUrl + '/#/home/' + this.userid // 'http://127.0.0.1:8087/#/home/'.concat(this.userid);
     },
     submitAddress(formName){
       this.$refs[formName].validate((valid) => {

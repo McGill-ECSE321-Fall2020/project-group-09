@@ -96,7 +96,6 @@ public InStorePickUpStatus getStatus (String status) {
 }
 public PurchaseDTO convertToDto(Purchase purchase) {
 	PurchaseDTO purchaseDto = new PurchaseDTO();
-	purchaseDto.setArtPiece(convertToDto(purchase.getArtPiece()));
 	purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
 	purchaseDto.setDate(purchase.getDate());
 	purchaseDto.setOrderId(purchase.getOrderId());
