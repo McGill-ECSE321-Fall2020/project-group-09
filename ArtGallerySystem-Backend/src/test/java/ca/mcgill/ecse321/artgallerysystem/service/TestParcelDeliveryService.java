@@ -122,6 +122,7 @@ public class TestParcelDeliveryService {
         assertNull(parcelDelivery);
     }
 	
+	/*
 	@Test
 	public void testCreateParcelDeliveryWithoutTrackingNumber() {
 		String error = null;
@@ -134,6 +135,7 @@ public class TestParcelDeliveryService {
         assertEquals("Please provide valid trackingNumber.",error);
         assertNull(parcelDelivery);
     }
+    
 	@Test
 	public void testCreateParcelDeliveryWithoutCarrier() {
 		String error = null;
@@ -146,6 +148,8 @@ public class TestParcelDeliveryService {
         assertEquals("Carrier can not be empty! ",error);
         assertNull(parcelDelivery);
     }
+    */
+	
 	@Test
 	public void testCreateParcelDeliveryWithoutStatus() {
 		String error = null;
