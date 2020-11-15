@@ -258,7 +258,7 @@ export default {
       window.location.href = frontendUrl + '/#/home/' + this.$route.params.userid // 'http://127.0.0.1:8087/#/home/'.concat(this.$route.params.userid);
     },
     stayHere(){
-      this.dialogFormVisible= true;
+      this.dialogFormVisible= false;
 
     },
       handlePreview(file) {

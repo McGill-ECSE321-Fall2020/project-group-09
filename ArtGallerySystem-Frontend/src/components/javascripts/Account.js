@@ -136,9 +136,12 @@ export default {
         },
 
         getArtPieces: function() {
-            AXIOS.get('/artPiece/user/'.concat(this.userName))
-                .then(response => { this.artPieces = response.data })
-                .catch(e => { this.errorArtPieces = e; console.log(e); });
+            AXIOS.get('/artPiece/userrole/'.concat(this.userName).concat("--Artist"))
+            .then(response => { this.artPieces = response.data })
+            .catch(e => { this.errorArtPieces = e; console.log(e); });
+            /*AXIOS.get('/artPiece/user/'.concat(this.userName))
+                .then(response => { this.artPieces = response.data; console.log(response) })
+                .catch(e => { this.errorArtPieces = e; console.log(e); });*/
         },
 
         goBack(){

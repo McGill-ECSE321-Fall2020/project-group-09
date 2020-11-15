@@ -31,10 +31,10 @@
           <span v-if="purchases[scope.$index].inStorePickUp">
             <p> <b>Delivery ID / Pick-Up Reference Number</b>: {{ purchases[scope.$index].delivery.deliveryId }} </p>
             <p> <b>Store Address</b>: </p>
-            <p> {{ artPieces[scope.$index].purchase.delivery.storeAddress.name }} </p>
-            <p> {{ artPieces[scope.$index].purchase.delivery.storeAddress.phoneNumber }} </p>
-            <p> {{ artPieces[scope.$index].purchase.delivery.storeAddress.streetAddress }} </p>
-            <p> {{ artPieces[scope.$index].purchase.delivery.storeAddress.city }} {{ artPieces[scope.$index].purchase.delivery.storeAddress.province }} {{ artPieces[scope.$index].purchase.delivery.storeAddress.postalCode }} {{ artPieces[scope.$index].purchase.delivery.storeAddress.country }} </p>
+            <p> {{ purchases[scope.$index].delivery.storeAddress.name }} </p>
+            <p> {{ purchases[scope.$index].delivery.storeAddress.phoneNumber }} </p>
+            <p> {{ purchases[scope.$index].delivery.storeAddress.streetAddress }} </p>
+            <p> {{ purchases[scope.$index].delivery.storeAddress.city }} {{ purchases[scope.$index].delivery.storeAddress.province }} {{ purchases[scope.$index].delivery.storeAddress.postalCode }} {{ purchases[scope.$index].delivery.storeAddress.country }} </p>
           </span>
         </template>
       </el-table-column>
