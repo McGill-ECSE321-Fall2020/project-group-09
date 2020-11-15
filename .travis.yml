@@ -15,7 +15,7 @@ matrix:
       deploy:
        provider: heroku
        api_key: 30279c39-16a3-41ff-9b2d-2ef118cd0811
-       app: artgallerysystem-frontend
+       app: artgallerysystem-frontend-3223
 
 
     #Backend
@@ -28,7 +28,5 @@ matrix:
 
       #deploy:
         #provider: heroku
-        #api_key: 03273874-ad50-428a-b7d2-d55ecd114926
-        #app: petshelter-backend
-      #after_deploy:
-        #- curl -s https://assertible.com/apis/4f4ff831-1846-4c84-84e0-53e94a80519a/run?api_token=U0bS1o6ELYFvuxaq
+        #api_key: 30279c39-16a3-41ff-9b2d-2ef118cd0811
+        #app: artgallerysystem-backend-3223
