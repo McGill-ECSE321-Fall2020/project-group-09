@@ -72,4 +72,4 @@ The gallery wants to focus on local artists and encourage them to use their webs
 * [User Manual](https://linduan.wixsite.com/website-2)
 
 #### Note
-As Travis CI is currently unavailable for building the project, which includes automatic deployments to Heroku, and Heroku's RAM quota appears to be insufficient for our project when we tried to deploy manually, please run `ArtGallerySystem-Backend/src/main/java/ca.mcgill.ecse321.artgallerysystem/ArtGallerySystemApplication.java` as a Spring Boot App, execute `npm run dev` in the directory `ArtGallerySystem-Frontend`, and view the website locally at `127.0.0.1:8087`.
+As Travis CI is currently unavailable for building the project, which includes automatic deployments to Heroku, and Heroku's RAM quota appears to be insufficient for our web frontend when we tried to deploy manually, please run `ArtGallerySystem-Backend/src/main/java/ca.mcgill.ecse321.artgallerysystem/ArtGallerySystemApplication.java` as a Spring Boot App, execute `npm run dev` in the directory `ArtGallerySystem-Frontend`, and view the website locally at `127.0.0.1:8087`.
