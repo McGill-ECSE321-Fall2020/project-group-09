@@ -60,7 +60,7 @@ The gallery wants to focus on local artists and encourage them to use their webs
 
 | Team Members |	Total Hours	| Responsibility |
 | ------------ | ------------ | -------------- |
-| Amelia Cui |  |  |
+| Amelia Cui | 25 | Backend bug fixing, architecture model, purchase page and artpiece information page frontend implementation and backend integration |
 | Angelina Duan	|  |   |
 | Zhekai Jiang |  |  |
 | Zheyan Tu |  |  |
