@@ -1,1 +1,1 @@
-web: export NODE_OPTIONS=--max_old_space_size=4096 && npm run build
+web: export NODE_OPTIONS=--max_old_space_size=4096 && echo $PORT && export PORT && npm start

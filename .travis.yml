@@ -13,9 +13,9 @@ matrix:
         - npm build
 
       deploy:
-       provider: heroku
-       api_key: 30279c39-16a3-41ff-9b2d-2ef118cd0811
-       app: artgallery-frontend-3223
+        provider: heroku
+        api_key: 30279c39-16a3-41ff-9b2d-2ef118cd0811
+        app: artgallery-frontend-3223
 
 
     #Backend
@@ -26,7 +26,7 @@ matrix:
       script:
         - ./gradlew build
 
-      #deploy:
-        #provider: heroku
-        #api_key: 30279c39-16a3-41ff-9b2d-2ef118cd0811
-        #app: artgallery-backend-3223
+      deploy:
+        provider: heroku
+        api_key: 3afc3f89-f354-4c98-8f1e-60485543d0f9
+        app: artgallery-backend-3223
