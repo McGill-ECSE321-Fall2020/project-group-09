@@ -15,7 +15,7 @@ matrix:
       deploy:
        provider: heroku
        api_key: 30279c39-16a3-41ff-9b2d-2ef118cd0811
-       app: artgallerysystem-frontend-3223
+       app: artgallery-frontend-3223
 
 
     #Backend
@@ -29,4 +29,4 @@ matrix:
       #deploy:
         #provider: heroku
         #api_key: 30279c39-16a3-41ff-9b2d-2ef118cd0811
-        #app: artgallerysystem-backend-3223
+        #app: artgallery-backend-3223
