@@ -40,6 +40,22 @@ export default {
 
             purchases: [],
             artPieces: [],
+
+            updateParcelDeliveryInformationDialogVisible: false,
+            updatingParcelDelivery: {
+                deliveryId: '',
+                parcelDeliveryStatus: '',
+                carrier: '',
+                trackingNumber: ''
+            },
+
+            updateInStorePickUpInformationDialogVisible: false,
+            updatingInStorePickUp: {
+                deliveryId: '',
+                inStorePickUpStatus: '',
+                pickUpReferenceNumber: ''
+            },
+
             addresses: [], // addresses displayed
             editAddressDialogVisible: false,
             addAddressDialogVisible: false,
@@ -70,6 +86,8 @@ export default {
             errorCustomerId: '', // error retrieving customer id
             errorPurchases: '', // error retrieving purchases
             errorArtPieces: '', // error retrieving art pieces
+            errorParcelDelivery: '',
+            errorInStorePickUp: '',
             errorAddresses: '', // error retrieving addresses
             errorUpdateAddress: '', // error updating address
             errorNewAddress: '', // error creating address
@@ -79,10 +97,13 @@ export default {
             rules: {
                 name: [ { required: true, message: "Name cannot be empty!", trigger: "blur" } ],
                 phoneNumber: [ { required: true, message: "Phone number cannot be empty!", trigger: "blur" } ],
+                number: [ { required: true, message: "Phone number cannot be empty!", trigger: "blur" } ],
                 streetAddress: [ { required: true, message: "Street address cannot be empty!", trigger: "blur" } ],
+                streetaddress: [ { required: true, message: "Street address cannot be empty!", trigger: "blur" } ],
                 city: [ { required: true, message: "City cannot be empty!", trigger: "blur" } ],
                 province: [ { required: true, message: "Province cannot be empty!", trigger: "blur" } ],
                 postalCode: [ { required: true, message: "Postal code cannot be empty!", trigger: "blur" } ],
+                postcode: [ { required: true, message: "Postal code cannot be empty!", trigger: "blur" } ],
                 country: [ { required: true, message: "Country cannot be empty!", trigger: "blur" } ]
             }
         }
@@ -94,12 +115,14 @@ export default {
             .catch(e => { this.errorCustomerId = e; console.log(e); });
 
         AXIOS.get('/purchasesbyuser/'.concat(this.userName))
-            .then(response => { this.purchases = response.data; })
+            .then(response => { this.purchases = response.data })
             .catch(e => { this.errorPurchases = e; console.log(e); });
 
-        AXIOS.get('/artPiece/userrole/'.concat(this.userName).concat("--Artist"))
+        /* AXIOS.get('/artPiece/userrole/'.concat(this.userName).concat("--Artist"))
             .then(response => { this.artPieces = response.data; })
-            .catch(e => { this.errorArtPieces = e; console.log(e); });
+            .catch(e => { this.errorArtPieces = e; console.log(e); }); */
+            
+        this.getArtPieces();
 
         this.getAddresses();
     },
@@ -111,9 +134,65 @@ export default {
                 .then(response => { this.addresses = response.data; })
                 .catch(e => { this.errorAddresses = e });
         },
+
+        getArtPieces: function() {
+            AXIOS.get('/artPiece/user/'.concat(this.userName))
+                .then(response => { this.artPieces = response.data })
+                .catch(e => { this.errorArtPieces = e; console.log(e); });
+        },
+
         goBack(){
         window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.userName);
         },
+
+        startUpdatingParcelDeliveryInformation: function (deliveryId) {
+            AXIOS.get('/parcelDeliveryes/'.concat(deliveryId))
+                .then(response => {
+                    this.updateParcelDeliveryInformationDialogVisible = true
+                    this.updatingParcelDelivery = response.data; 
+                })
+                .catch(e => { this.errorParcelDelivery = e; console.log(e) })
+        },
+
+        confirmUpdateParcelDeliveryInformation: function() {
+            AXIOS.put('/parcelDelivery/updateFull/'.concat(this.updatingParcelDelivery.deliveryId), {}, {params: this.updatingParcelDelivery})
+                .then(_ => {
+                    this.updateParcelDeliveryInformationDialogVisible = false
+                    this.getArtPieces()
+                    this.$notify({
+                        title: 'Success',
+                        message: 'Parcel delivery information updated successfully!',
+                        type: 'success'
+                    })
+                })
+                .catch(e => { this.errorParcelDelivery = e; console.log(e) })
+        },
+
+        startUpdatingInStorePickUpInformation: function (deliveryId) {
+            AXIOS.get('/inStorePickUps/'.concat(deliveryId))
+                .then(response => {
+                    this.updateInStorePickUpInformationDialogVisible = true
+                    this.updatingInStorePickUp = response.data
+                })
+                .catch(e => { this.errorInStorePickUp = e; console.log(e) })
+            this.updatingInStorePickUp.pickUpReferenceNumber = deliveryId
+        },
+
+        confirmUpdateInStorePickUpInformation: function () {
+            AXIOS.put('/inStorePickUp/update/'.concat(this.updatingInStorePickUp.deliveryId), {}, 
+                {params: {inStorePickUp: this.updatingInStorePickUp.inStorePickUpStatus}})
+                .then(_ => {
+                    this.updateInStorePickUpInformationDialogVisible = false
+                    this.getArtPieces()
+                    this.$notify({
+                        title: 'Success',
+                        message: 'In-store pick-up information updated successfully!',
+                        type: 'success'
+                    })
+                })
+                .catch(e => { this.errorInStorePickUp = e; console.log(e) })
+        },
+
         startUpdatingAddress: function (addressId) {
             AXIOS.get('/addresses/'.concat(addressId))
                 .then(response => { this.updatingAddress = response.data; })
@@ -129,7 +208,12 @@ export default {
             AXIOS.put('/address/updatefull/'.concat(this.updatingAddress.addressId), {}, { params: this.updatingAddress })
                 .then(_ => {
                     this.editAddressDialogVisible = false;
-                    this.getAddresses(); // refresh list of addresses
+                    this.getAddresses() // refresh list of addresses
+                    this.$notify({
+                        title: 'Success',
+                        message: 'Address updated successfully!',
+                        type: 'success'
+                    })
                 })
                 .catch(e => { this.errorUpdateAddress = e; console.log(e); })
         },
@@ -138,7 +222,14 @@ export default {
             this.$confirm('Are you sure to delete this address?')
                 .then(_ => { // Confirmed
                     AXIOS.put('/customer/deleteAddress/'.concat(this.customerId), {}, { params: { addressid: addressId } })
-                    .then( _ => { this.getAddresses(); }) // refresh list of addresses
+                    .then( _ => {
+                        this.getAddresses() // refresh list of addresses
+                        this.$notify({
+                            title: 'Success',
+                            message: 'Address deleted successfully!',
+                            type: 'success'
+                        })
+                    }) 
                     .catch(e => { errorDeleteAddress = e; console.log(e); })
                 })
                 .catch(_ => { /* Cancelled */ });
@@ -162,8 +253,13 @@ export default {
                     AXIOS.put('/customer/addAddress/'.concat(this.customerId), {}, { params: { address: this.newAddress.id } } )
                         // add address in customer's address list
                         .then(_ => {
-                            this.getAddresses(); // refresh address list
                             this.addAddressDialogVisible = false;
+                            this.getAddresses() // refresh list of addresses
+                            this.$notify({
+                                title: 'Success',
+                                message: 'Address created successfully!',
+                                type: 'success'
+                            })
                         })
                         .catch(e => { this.errorNewAddress = e; console.log(e); });
                 })

@@ -70,6 +70,16 @@ public void deleteparcelDelivery(@PathVariable("trackingNumber") String tracking
 public ParcelDeliveryDTO updateparcelDelivery(@PathVariable("trackingNumber")String trackingNumber, @RequestParam("parcelDelivery")String newparcelDelivery) {
 	return convertToDto(parcelDeliveryService.updateparcelDelivery(trackingNumber,getStatus(newparcelDelivery)));
 }
+
+	/**
+	 * Added Nov 15
+	 * @author Zhekai Jiang
+	 */
+	@PutMapping(value = {"/parcelDelivery/updateFull/{deliveryId}", "/parcelDelivery/updateFull/{deliveryId}/"})
+	public ParcelDeliveryDTO updateParcelDelivery(@PathVariable("deliveryId") String id, @RequestParam("parcelDeliveryStatus") String status, @RequestParam("carrier") String carrier, @RequestParam("trackingNumber") String trackingNumber) {
+		return convertToDto(parcelDeliveryService.updateParcelDelivery(id, getStatus(status), carrier, trackingNumber));
+	}
+
 public ParcelDeliveryDTO convertToDto(ParcelDelivery parcelDelivery) {
     ParcelDeliveryDTO parcelDeliveryDto = new ParcelDeliveryDTO();
     parcelDeliveryDto.setTrackingNumber(parcelDelivery.getTrackingNumber());
@@ -95,7 +105,6 @@ public ParcelDeliveryStatus getStatus (String status) {
 }
 public PurchaseDTO convertToDto(Purchase purchase) {
 	PurchaseDTO purchaseDto = new PurchaseDTO();
-	purchaseDto.setArtPiece(convertToDto(purchase.getArtPiece()));
 	purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
 	purchaseDto.setDate(purchase.getDate());
 	purchaseDto.setOrderId(purchase.getOrderId());

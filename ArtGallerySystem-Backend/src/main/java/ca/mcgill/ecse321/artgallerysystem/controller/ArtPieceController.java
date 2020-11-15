@@ -1,12 +1,21 @@
 package ca.mcgill.ecse321.artgallerysystem.controller;
 
 
+import ca.mcgill.ecse321.artgallerysystem.dto.AddressDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtPieceDTO;
 import ca.mcgill.ecse321.artgallerysystem.dto.ArtistDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.InStorePickUpDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.ParcelDeliveryDTO;
+import ca.mcgill.ecse321.artgallerysystem.dto.PurchaseDTO;
+import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPieceStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Artist;
+import ca.mcgill.ecse321.artgallerysystem.model.Delivery;
+import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
+import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
 import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
+import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.ArtPieceService;
 import ca.mcgill.ecse321.artgallerysystem.service.ArtistService;
 
@@ -135,7 +144,7 @@ public class ArtPieceController {
 
 
     /**
-     * Updated Nov 10 (to avoid infinite circular reference) by Zhekai Jiang
+     * Updated Nov 10 (to avoid infinite circular reference) & Nov 15 (for frontend access) by Zhekai Jiang
      */
     public ArtPieceDTO convertToDto(ArtPiece artPiece){
         ArtPieceDTO artPieceDTO = new ArtPieceDTO();
@@ -146,10 +155,15 @@ public class ArtPieceController {
         artPieceDTO.setPrice(artPiece.getPrice());
         artPieceDTO.setDate(artPiece.getDate());
         artPieceDTO.setArtPieceStatus(artPiece.getArtPieceStatus());
-        
+        artPieceDTO.setPurchase(convertToDto(artPiece.getPurchase()));
         // BeanUtils.copyProperties(artPiece,artPieceDTO);
         return artPieceDTO;
     }
+    
+    /**
+     * Added Nov 15
+     * @author Zhekai Jiang
+     */
     public ArtistDTO convertToDto(Artist artist){
         ArtistDTO artistDTO = new ArtistDTO();
         HashSet<ArtPieceDTO> artPieces = new HashSet<ArtPieceDTO>();
@@ -162,6 +176,77 @@ public class ArtPieceController {
         //BeanUtils.copyProperties(artist,artistDTO);
         return artistDTO;
     }
+    
+    /**
+     * Added Nov 15
+     * @author Zhekai Jiang
+     */
+    public PurchaseDTO convertToDto(Purchase purchase) {
+    	if(purchase == null) {
+    		return null;
+    	}
+    	PurchaseDTO purchaseDto = new PurchaseDTO();
+		purchaseDto.setDate(purchase.getDate());
+		purchaseDto.setOrderId(purchase.getOrderId());
+		purchaseDto.setOrderStatus(purchase.getOrderStatus());
+		Delivery delivery = purchase.getDelivery();
+		if(delivery instanceof ParcelDelivery) {
+			purchaseDto.setDeliveryMethod("Parcel Delivery");
+			purchaseDto.setIsParcelDelivery();
+			purchaseDto.setDeliveryStatus(((ParcelDelivery) delivery).getParcelDeliveryStatus().toString());
+			purchaseDto.setDelivery(convertToDto((ParcelDelivery) delivery));
+		} else if(delivery instanceof InStorePickUp) {
+			purchaseDto.setDeliveryMethod("In-Store Pick-Up");
+			purchaseDto.setIsInStorePickUp();
+			purchaseDto.setDeliveryStatus(((InStorePickUp) delivery).getInStorePickUpStatus().toString());
+			purchaseDto.setDelivery(convertToDto((InStorePickUp) delivery));
+		}
+		return purchaseDto;
+    }
+    
+    /**
+	 * Added Nov 15
+	 * @author Zhekai Jiang
+	 */
+	public ParcelDeliveryDTO convertToDto(ParcelDelivery delivery) {
+		ParcelDeliveryDTO parcelDeliveryDto = new ParcelDeliveryDTO();
+		parcelDeliveryDto.setTrackingNumber(delivery.getTrackingNumber());
+		parcelDeliveryDto.setCarrier(delivery.getCarrier()); 
+		parcelDeliveryDto.setDeliveryId(delivery.getDeliveryId());
+		parcelDeliveryDto.setDeliveryAddress(convertToDto(delivery.getDeliveryAddress()));
+		parcelDeliveryDto.setParcelDeliveryStatus(delivery.getParcelDeliveryStatus());
+		return parcelDeliveryDto;
+	}
+	
+	/**
+	 * Added Nov 15
+	 * @author Zhekai Jiang
+	 */
+	public InStorePickUpDTO convertToDto(InStorePickUp delivery) {
+		InStorePickUpDTO inStorePickUpDto = new InStorePickUpDTO();
+		inStorePickUpDto.setPickUpReferenceNumber(delivery.getPickUpReferenceNumber());
+		inStorePickUpDto.setDeliveryId(delivery.getDeliveryId());
+		inStorePickUpDto.setStoreAddress(convertToDto(delivery.getStoreAddress()));
+	    inStorePickUpDto.setInStorePickUpStatus(delivery.getInStorePickUpStatus());
+	    return inStorePickUpDto;
+	}
+	
+	/**
+	 * Added Nov 15
+	 * @author Zhekai Jiang
+	 */
+	public AddressDTO convertToDto(Address address) {
+		AddressDTO addressDTO = new AddressDTO();
+		addressDTO.setAddressId(address.getAddressId());
+		addressDTO.setCity(address.getCity());
+		addressDTO.setCountry(address.getCountry());
+		addressDTO.setName(address.getName());
+		addressDTO.setPhoneNumber(address.getPhoneNumber());
+		addressDTO.setPostalCode(address.getPostalCode());
+		addressDTO.setProvince(address.getProvince());
+		addressDTO.setStreetAddress(address.getStreetAddress());
+		return addressDTO;
+	}
 
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();

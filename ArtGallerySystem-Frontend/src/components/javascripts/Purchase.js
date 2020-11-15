@@ -195,7 +195,7 @@ export default {
             let store = {
               deliveryid: idp,
               pickUpReferenceNumber: idp,
-              inStorePickUpStatus: "Available",
+              inStorePickUpStatus: "Pending",
               storeAddress: "StoreA",
               purchaseid: this.ordernum
             }
@@ -205,7 +205,7 @@ export default {
             let store = {
               deliveryid: idp,
               pickUpReferenceNumber: idp,
-              inStorePickUpStatus: "Available",
+              inStorePickUpStatus: "Pending",
               storeAddress: "StoreB",
               purchaseid: this.ordernum
             }
@@ -214,9 +214,9 @@ export default {
             let idp = Math.random().toString(36).substr(2, 9)
             let parcel = {
               deliveryid: idp,
-              trackingNumber: idp,
-              carrier: "default",
-              parcelDeliveryStatus: "Shipped",
+              trackingNumber: "",
+              carrier: "",
+              parcelDeliveryStatus: "Pending",
               deliveryAddress: this.ruleForm1.regionC,
               purchaseid: this.ordernum
             }
@@ -226,9 +226,9 @@ export default {
             let idp = Math.random().toString(36).substr(2, 9)
             let parcel = {
               deliveryid: idp,
-              trackingNumber: idp,
-              carrier: "default",
-              parcelDeliveryStatus: "Shipped",
+              trackingNumber: "",
+              carrier: "",
+              parcelDeliveryStatus: "Pending",
               deliveryAddress: this.newadd[0].addressId,
               purchaseid: this.ordernum
             }
