@@ -255,7 +255,7 @@ export default {
       },
     goHome(){
       this.dialogFormVisible= true;
-      window.location.href = 'http://127.0.0.1:8087/#/home/'.concat(this.$route.params.userid);
+      window.location.href = frontendUrl + '/#/home/' + this.$route.params.userid // 'http://127.0.0.1:8087/#/home/'.concat(this.$route.params.userid);
     },
     stayHere(){
       this.dialogFormVisible= true;

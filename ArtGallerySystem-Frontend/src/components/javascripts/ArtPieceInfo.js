@@ -1,8 +1,32 @@
+import _ from 'lodash';
 import axios from 'axios'
 var config = require('../../../config')
 
-var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
-var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
+let backendConfigurer = function () {
+  switch (process.env.NODE_ENV) {
+  case 'testing':
+  case 'development':
+      return 'http://' + config.dev.backendHost + ':' + config.dev.backendPort;
+  case 'production':
+      return 'https://' + config.build.backendHost + ':' + config.build.backendPort;
+  }
+}
+
+let frontendConfigurer = function () {
+  switch (process.env.NODE_ENV) {
+  case 'testing':
+  case 'development':
+      return 'http://' + config.dev.host + ':' + config.dev.port;
+  case 'production':
+      return 'https://' + config.build.host + ':' + config.build.port;
+  }
+}
+
+let backendUrl = backendConfigurer();
+let frontendUrl = frontendConfigurer();
+
+// var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
+// var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
 
 var AXIOS = axios.create({
   baseURL: backendUrl,

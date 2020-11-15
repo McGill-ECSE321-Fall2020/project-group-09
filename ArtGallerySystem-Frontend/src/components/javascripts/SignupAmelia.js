@@ -1,8 +1,32 @@
-import axios from 'axios'
-var config = require('../../../config')
+import _ from 'lodash';
+import axios from 'axios';
+let config = require('../../../config');
 
-var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
-var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
+let backendConfigurer = function () {
+    switch (process.env.NODE_ENV) {
+    case 'testing':
+    case 'development':
+        return 'http://' + config.dev.backendHost + ':' + config.dev.backendPort;
+    case 'production':
+        return 'https://' + config.build.backendHost + ':' + config.build.backendPort;
+    }
+}
+
+let frontendConfigurer = function () {
+    switch (process.env.NODE_ENV) {
+    case 'testing':
+    case 'development':
+        return 'http://' + config.dev.host + ':' + config.dev.port;
+    case 'production':
+        return 'https://' + config.build.host + ':' + config.build.port;
+    }
+}
+
+let backendUrl = backendConfigurer();
+let frontendUrl = frontendConfigurer();
+
+// var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
+// var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
 
 var AXIOS = axios.create({
   baseURL: backendUrl,
@@ -122,10 +146,10 @@ export default {
       return false;
     },
     goBack(){
-      window.location.href='http://127.0.0.1:8087/#/login';
+      window.location.href= frontendUrl + '/#/login' // 'http://127.0.0.1:8087/#/login';
     },
     goHome(){
-      window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.name);
+      window.location.href= frontendUrl + '/#/home/' + this.name // 'http://127.0.0.1:8087/#/home/'.concat(this.name);
     },
     signUp(){
       if(this.model.password != this.model.repeatpassword){

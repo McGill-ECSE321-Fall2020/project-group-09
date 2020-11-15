@@ -142,7 +142,8 @@ export default {
         },
 
         goBack(){
-        window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.userName);
+            window.location.href = frontendUrl + '/#/home/' + this.userName;
+        // window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.userName);
         },
 
         startUpdatingParcelDeliveryInformation: function (deliveryId) {
