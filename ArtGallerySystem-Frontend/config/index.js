@@ -5,8 +5,8 @@ module.exports = {
   build: {
     env: require('./prod.env'),
 	  host:'artgallery-frontend-3223.herokuapp.com',
-    port: process.env.PORT,
-	  //port:443,
+    //port: process.env.PORT,
+	  port:443,
 	  backendHost:'artgallery-backend-3223.herokuapp.com',
 	  backendPort:443,
     index: path.resolve(__dirname, '../dist/index.html'),
