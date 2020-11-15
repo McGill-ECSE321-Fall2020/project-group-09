@@ -70,3 +70,6 @@ The gallery wants to focus on local artists and encourage them to use their webs
 * [Architecture Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Architecture-Model)
 * [Deliverable 3 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_3)
 * [User Manual](https://linduan.wixsite.com/website-2)
+
+#### Note
+As Travis CI is currently unavailable for building the project, which includes automatic deployments to Heroku, please run `ArtGallerySystem-Backend/src/main/java/ca.mcgill.ecse321.artgallerysystem/ArtGallerySystemApplication.java` as a Spring Boot App, execute `npm run dev` in the directory `ArtGallerySystem-Frontend`, and view the website locally at `127.0.0.1:8087`.
