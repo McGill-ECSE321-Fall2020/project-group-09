@@ -1,8 +1,8 @@
 <template>
   <div align="center">
     <h1>{{ msg }}</h1>
-    <el-button type="primary" @click="goLogin">Login/SignUp</el-button>
-
+    <el-button type="primary"  @click="goLogin">Login/SignUp</el-button>
+    <el-button type="primary"  @click="goUserManual">User Manual</el-button>
   </div>
 </template>
 
@@ -17,6 +17,9 @@ export default {
   methods: {
     goLogin() {
       window.location.href = window.location.href.concat('login');
+    },
+    goUserManual(){
+      window.location.href='https://linduan.wixsite.com/website-2';
     }
   }
 }
@@ -34,5 +37,6 @@ h1 {
   border-color: #99ccff;
   margin-top: 30px;
   margin-bottom: 70px;
+  font-size: 2rem;
 }
 </style>
