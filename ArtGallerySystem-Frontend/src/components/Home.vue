@@ -1,22 +1,20 @@
 <template>
-    <div>
-
-        <div align="center">
-          <el-header>
-            <p >
-              Home Page
-            </p>
-          </el-header>
-    <el-button type="primary" @click="goInfo">My Account</el-button>
-    <el-button type="primary" @click="goUpload">Upload</el-button>
-      <el-button type="primary" @click="goBack">Return</el-button></div>
-      <el-carousel :interval="4000" type="card" height="400px">
-        <el-carousel-item v-for="(img,index) in artpieces" :key="`img-${index}`">
-          <img :src="img.description" width="100%" height="100%" @click="goArtPieceInfo(img.artPieceId, img.description)"></img>
-          <!--<img :src="require('../assets/'+img.description+'.png')" width="100%" height="100%" @click="goArtPieceInfo(img.artPieceId)">-->
-          <!--<img :src="urlimg" width="100%" height="100%" @click="goArtPieceInfo(img.artPieceId, img.description)">-->
-        </el-carousel-item>
-      </el-carousel>
+  <div>
+    <div align="center">
+      <el-header>
+        <p>Home Page</p>
+      </el-header>
+      <el-button type="primary" @click="goInfo">My Account</el-button>
+      <el-button type="primary" @click="goUpload">Upload</el-button>
+      <el-button type="primary" @click="goBack">Logout</el-button>
+    </div>
+    <el-carousel :interval="4000" type="card" height="400px">
+      <el-carousel-item v-for="(img,index) in artpieces" :key="`img-${index}`">
+        <img :src="img.description" width="100%" height="100%" @click="goArtPieceInfo(img.artPieceId, img.description)">
+        <!--<img :src="require('../assets/'+img.description+'.png')" width="100%" height="100%" @click="goArtPieceInfo(img.artPieceId)">-->
+        <!--<img :src="urlimg" width="100%" height="100%" @click="goArtPieceInfo(img.artPieceId, img.description)">-->
+      </el-carousel-item>
+    </el-carousel>
     <el-footer align="center">
       <p>
         Please click the art piece to see its detailed information
@@ -28,7 +26,7 @@
           </el-carousel-item>
         </el-carousel>-->
 
-    </div>
+  </div>
 </template>
 <script src="./javascripts/Home.js"></script>
 <style scoped>
