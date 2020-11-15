@@ -69,3 +69,4 @@ The gallery wants to focus on local artists and encourage them to use their webs
 #### Links
 * [Architecture Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Architecture-Model)
 * [Deliverable 3 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_3)
+* [User Manual](https://linduan.wixsite.com/website-2)
