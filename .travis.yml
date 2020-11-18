@@ -1,0 +1,32 @@
+matrix:
+  include:
+    #Frontend
+    - language: node_js
+      node_js:
+        - "10.15"
+
+      before_install:
+        - cd ArtGallerySystem-Frontend
+        - npm install
+
+      script:
+        - npm build
+
+      deploy:
+        provider: heroku
+        api_key: 30279c39-16a3-41ff-9b2d-2ef118cd0811
+        app: artgallery-frontend-3223
+
+
+    #Backend
+    - language: java
+       
+      before_install: 
+        - chmod +x gradlew
+      script:
+        - ./gradlew build
+
+      deploy:
+        provider: heroku
+        api_key: 3afc3f89-f354-4c98-8f1e-60485543d0f9
+        app: artgallery-backend-3223

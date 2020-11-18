@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "2f440a5d-ebd5-4524-bed9-7cc703b89f7f",
+		"name": "TestInStorePickUp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateArtPiece",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "555ae66e-7c2c-4e7f-a7f8-e7f15abab163",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/artPiece/createArtPiece?id=3&name=test3&des=none&author=C&price=3.0&date=2020-11-01&status=Available",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"artPiece",
+						"createArtPiece"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						},
+						{
+							"key": "name",
+							"value": "test3"
+						},
+						{
+							"key": "des",
+							"value": "none"
+						},
+						{
+							"key": "author",
+							"value": "C"
+						},
+						{
+							"key": "price",
+							"value": "3.0"
+						},
+						{
+							"key": "date",
+							"value": "2020-11-01"
+						},
+						{
+							"key": "status",
+							"value": "Available"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePurchase",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f3065cde-85f0-4ca5-8c8f-8bba5e84f7a4",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/purchase/125?customerid=customer&artpieceid=3&date=2000-01-02&status=Successful",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"purchase",
+						"125"
+					],
+					"query": [
+						{
+							"key": "customerid",
+							"value": "customer"
+						},
+						{
+							"key": "artpieceid",
+							"value": "3"
+						},
+						{
+							"key": "date",
+							"value": "2000-01-02"
+						},
+						{
+							"key": "status",
+							"value": "Successful"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestCreateInStorePickUp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1d8c2e4a-33c5-4c8e-9546-8708fe30f7bb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/inStorePickUp?deliveryid=1113&storeAddress=123&purchaseid=125&pickUpReferenceNumber=1113&inStorePickUpStatus=Available",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"inStorePickUp"
+					],
+					"query": [
+						{
+							"key": "deliveryid",
+							"value": "1113"
+						},
+						{
+							"key": "storeAddress",
+							"value": "123"
+						},
+						{
+							"key": "purchaseid",
+							"value": "125"
+						},
+						{
+							"key": "pickUpReferenceNumber",
+							"value": "1113"
+						},
+						{
+							"key": "inStorePickUpStatus",
+							"value": "Available"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestGetInStorePickUp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72590723-194d-4cc5-bcd1-ff37a43baeb1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/inStorePickUps/1113",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"inStorePickUps",
+						"1113"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllInStorePickUps",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2744235-4d64-4117-a524-7e993f989ba1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/inStorePickUps",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"inStorePickUps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestDeleteInStorePickUp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b199259-f332-4062-95c8-af0acaaf1019",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/inStorePickUps/1113",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"inStorePickUps",
+						"1113"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestGetInStorePickUp",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/inStorePickUps",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"inStorePickUps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestUpdateStatus",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4df64d3-f3e5-4d6d-b3f6-a3e32db17419",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5432/inStorePickUp/update/1113?inStorePickUp=PickedUp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5432",
+					"path": [
+						"inStorePickUp",
+						"update",
+						"1113"
+					],
+					"query": [
+						{
+							"key": "inStorePickUp",
+							"value": "PickedUp"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
