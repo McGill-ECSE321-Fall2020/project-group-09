@@ -110,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:insetLeft="40dp"
                     android:text="Back"
+                    android:onClick="goHome"
                     tools:layout_editor_absoluteX="258dp"
                     tools:layout_editor_absoluteY="593dp" />
             </LinearLayout>

@@ -37,6 +37,7 @@ public class ArtPieceInfo extends AppCompatActivity {
     private double price;
     private String description;
     private String name;
+    private String username;
     private void refreshErrorMessage() {
         // set the error message
         TextView tvError = (TextView) findViewById(R.id.error);
@@ -65,6 +66,7 @@ public class ArtPieceInfo extends AppCompatActivity {
             }
         });*/
         id = getIntent().getStringExtra("ARTPIECE_ID");
+        username = getIntent().getStringExtra("USERNAME");
         getDetail();
         TextView tv1 = (TextView) findViewById(R.id.textViewARTID);
         tv1.setText(id);
@@ -119,9 +121,12 @@ public class ArtPieceInfo extends AppCompatActivity {
         intent.putExtra("ARTPIECE_ID", id);
         intent.putExtra("ARTPIECE_NAME", name);
         intent.putExtra("ARTPIECE_PRICE", Double.toString(price));
-        intent.putExtra("USERNAME", "Angelina");
+        intent.putExtra("USERNAME", username);
         startActivity(intent);
-
-
+    }
+    public void goHome(View v){
+        Intent intent = new Intent(ArtPieceInfo.this, HomePage.class );
+        intent.putExtra("USERNAME", username);
+        startActivity(intent);
     }
 }

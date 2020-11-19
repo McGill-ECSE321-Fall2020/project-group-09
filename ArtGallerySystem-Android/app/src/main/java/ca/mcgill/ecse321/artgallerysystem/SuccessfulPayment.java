@@ -11,8 +11,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class HomePage extends AppCompatActivity {
+public class SuccessfulPayment extends AppCompatActivity {
     private String error= null;
+    private String username;
     private void refreshErrorMessage() {
         // set the error message
         TextView tvError = (TextView) findViewById(R.id.error);
@@ -28,24 +29,14 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.homepage);
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.successful_payment);
+        username=getIntent().getStringExtra("USERNAME");
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 
-    public void goDetail(View v){
-        Intent intent = new Intent(HomePage.this, ArtPieceInfo.class );
-        intent.putExtra("ARTPIECE_ID", "888888");
-        intent.putExtra("USERNAME", "Angelina");
+    public void goBack(View v){
+        Intent intent = new Intent(this, HomePage.class );
+        intent.putExtra("USERNAME", username);
         startActivity(intent);
     }
 }

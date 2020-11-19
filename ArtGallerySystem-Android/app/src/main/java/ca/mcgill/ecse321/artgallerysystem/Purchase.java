@@ -268,6 +268,9 @@ public class Purchase extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 refreshErrorMessage();
+                Intent intent = new Intent(Purchase.this, SuccessfulPayment.class );
+                intent.putExtra("USERNAME", username);
+                startActivity(intent);
             }
 
             @Override
@@ -296,8 +299,10 @@ public class Purchase extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 refreshErrorMessage();
+                Intent intent = new Intent(Purchase.this, SuccessfulPayment.class );
+                intent.putExtra("USERNAME", username);
+                startActivity(intent);
             }
-
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 //try {
@@ -323,6 +328,52 @@ public class Purchase extends AppCompatActivity {
         String c = Integer.toString(rand_int3);
         return a+"-"+ b+"-"+ c;
     }
+    public void applyNew(View v){
+        Spinner methods = (Spinner) findViewById(R.id.spinnerMethod);
+        String method = methods.getSelectedItem().toString();
+        TextView cardID = (TextView) findViewById(R.id.editTextNumber);
+        CharSequence card = cardID.getText();
+        if (method.equalsIgnoreCase("Please select...")){
+            AlertDialog alertDialog = new AlertDialog.Builder(this)
+                    .setMessage("Please select a payment method")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton("Alright", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
+        }
+        else if (card.length()!= 16){
+            AlertDialog alertDialog = new AlertDialog.Builder(this)
+                    .setMessage("Please enter 16-digit card ID")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton("Alright", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
+        }else{
+            Intent intent = new Intent(this, ApplyNewAddress.class );
+            intent.putExtra("ARTPIECE_ID", id);
+            intent.putExtra("USERNAME", username);
+            intent.putExtra("PAYMENT_METHOD", method);
+            intent.putExtra("ARTPIECE_NAME", name);
+            intent.putExtra("ARTPIECE_PRICE", price);
+            startActivity(intent);
+        }
+
+    }
+    public void cancel(View v){
+        Intent intent = new Intent(this, ArtPieceInfo.class );
+        intent.putExtra("ARTPIECE_ID", id);
+        intent.putExtra("USERNAME", username);
+        intent.putExtra("ARTPIECE_NAME", name);
+        intent.putExtra("ARTPIECE_PRICE", price);
+        startActivity(intent);
+    }
+
 
 
 }

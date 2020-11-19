@@ -23,6 +23,8 @@
         <activity android:name=".HomePage" />
         <activity android:name=".ArtPieceInfo" />
         <activity android:name=".Purchase"/>
+        <activity android:name=".ApplyNewAddress"/>
+        <activity android:name=".SuccessfulPayment"/>
 
     </application>
 
