@@ -11,6 +11,10 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * this page is used to display successful payment after each purchase and delivery set up
+ * @author amelia
+ */
 public class SuccessfulPayment extends AppCompatActivity {
     private String error= null;
     private String username;
@@ -26,13 +30,24 @@ public class SuccessfulPayment extends AppCompatActivity {
             tvError.setVisibility(View.VISIBLE);
         }
     }
+
+    /**
+     * show user information and display success message
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.successful_payment);
         username=getIntent().getStringExtra("USERNAME");
-
+        TextView tv = (TextView)findViewById(R.id.username);
+        tv.setText(username);
     }
+
+    /**
+     * this method is used when the user click go back button
+     * @param v
+     */
 
     public void goBack(View v){
         Intent intent = new Intent(this, HomePage.class );

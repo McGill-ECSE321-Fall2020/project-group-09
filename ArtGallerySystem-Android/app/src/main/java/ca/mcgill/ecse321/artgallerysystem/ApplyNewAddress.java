@@ -25,6 +25,11 @@ import java.util.Random;
 
 import cz.msebera.android.httpclient.Header;
 
+/**
+ * this is the apply new address page which allows the user to create an address on the fly when purchase
+ * so that he/she does not necessarily need to use the addresses saved for parcel delivery
+ * @author amelia
+ */
 public class ApplyNewAddress extends AppCompatActivity {
     private String error= null;
     private String addressID;
@@ -34,7 +39,10 @@ public class ApplyNewAddress extends AppCompatActivity {
     private String paymentMethod;
     private String artpieceName;
     private String price;
-    //public Intent intent = new Intent(this, Purchase.class);
+
+    /**
+     * this method is used in every class to detect error message
+     */
     private void refreshErrorMessage() {
         // set the error message
         TextView tvError = (TextView) findViewById(R.id.error);
@@ -47,6 +55,11 @@ public class ApplyNewAddress extends AppCompatActivity {
             tvError.setVisibility(View.VISIBLE);
         }
     }
+
+    /**
+     * get useful parameters from last page when create
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +73,11 @@ public class ApplyNewAddress extends AppCompatActivity {
         artpieceName= getIntent().getStringExtra("ARTPIECE_NAME");
         price= getIntent().getStringExtra("ARTPIECE_PRICE");
     }
+
+    /**
+     * random ID generator
+     * @return random ID
+     */
     private String orderNumber (){
         //String now = (new Date()).toString();
         Random rand = new Random();
@@ -71,6 +89,11 @@ public class ApplyNewAddress extends AppCompatActivity {
         String c = Integer.toString(rand_int3);
         return a+"-"+ b+"-"+ c;
     }
+
+    /**
+     * return to purchase page if cancel apply new address
+     * @param v
+     */
     public void goBackPurchase(View v){
         Intent intent = new Intent(ApplyNewAddress.this, Purchase.class );
         intent.putExtra("ARTPIECE_ID", artpieceID);
@@ -80,6 +103,13 @@ public class ApplyNewAddress extends AppCompatActivity {
         intent.putExtra("ARTPIECE_PRICE", price);
         startActivity(intent);
     }
+
+    /**
+     * main method to add new address, called when confirm button clicks
+     * it first check for empty boxes, show warning if there is empty field
+     * else, send a request to the backend to create a new address in the database
+     * @param v
+     */
     public void addAdress(View v){
         TextView tv2 = (TextView) findViewById(R.id.editTextaddressName);
         TextView tv3 = (TextView) findViewById(R.id.editTextStreetAddress);
@@ -129,20 +159,13 @@ public class ApplyNewAddress extends AppCompatActivity {
                 }
             });
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
+    /**
+     * the dialog shows after successfully created new address, the user can choose to use it or not
+     * if choose to use it, directly create corresponding purchase, payment, delivery
+     * else, return to the purchase page and pass parameters
+     */
     private void useitOrNot() {
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setMessage("Do you want to use it? ")
@@ -166,6 +189,13 @@ public class ApplyNewAddress extends AppCompatActivity {
         })
                 .show();
     }
+
+    /**
+     * this is the same create purchase method used in purchase page, put it here to create a purchase directly in this page so we dont have to go back
+     * @param username
+     * @param id
+     * @param successful
+     */
     private void createPur(String username, String id, String successful) {
         SimpleDateFormat currentDate = new SimpleDateFormat("yyyy-MM-dd");
         Date todayDate = new Date();
@@ -197,6 +227,11 @@ public class ApplyNewAddress extends AppCompatActivity {
         });
     }
 
+    /**
+     * this is the same create payment method as the purchase page
+     * @param orderNum  purchase id
+     */
+
     private void createPayment(String orderNum) {
         RequestParams rp = new RequestParams();
         rp.add("id", orderNumber());
@@ -223,6 +258,12 @@ public class ApplyNewAddress extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * this is the same parcel delivery creating method as purchase page, the address provided here is the newly created address in this page
+     * @param orderNum purchase id
+     * @param address address id
+     */
     private void createParcel(String orderNum, String address) {
         String deliveryID = orderNumber();
         RequestParams rp = new RequestParams();

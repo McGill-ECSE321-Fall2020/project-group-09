@@ -36,6 +36,10 @@ import java.util.Random;
 
 import cz.msebera.android.httpclient.Header;
 
+/**
+ * this class provides the user with the ability to pay and choose delivery for a specific artpiece
+ * @author amelia
+ */
 public class Purchase extends AppCompatActivity {
     private String error= null;
     private String id;
@@ -47,6 +51,10 @@ public class Purchase extends AppCompatActivity {
     private ArrayAdapter<String> storeAdapter;
     private ArrayAdapter<String> methodAdapter;
     private ArrayAdapter<String> parcelAdapter;
+
+    /**
+     * this is used to refresh error message, used for all classes
+     */
     private void refreshErrorMessage() {
         // set the error message
         TextView tvError = (TextView) findViewById(R.id.error);
@@ -59,6 +67,11 @@ public class Purchase extends AppCompatActivity {
             tvError.setVisibility(View.VISIBLE);
         }
     }
+
+    /**
+     * this method is called everytime this page is created, it gets the information from previous page, display information
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +107,12 @@ public class Purchase extends AppCompatActivity {
         refreshList(parcelAdapter, addresses);
         parcels.setAdapter(parcelAdapter);
         }
+
+    /**
+     * this method is used to obtain saved addresses for specific user from database, so that the user can choose one of his/her saved addresses when purchase
+     * @param adapter
+     * @param names
+     */
     private void refreshList(final ArrayAdapter<String> adapter, final List<String> names) {
         HttpUtils.get("/addresses/user/"+username, new RequestParams(), new JsonHttpResponseHandler() {
 
@@ -123,7 +142,14 @@ public class Purchase extends AppCompatActivity {
             }
         });
     }
-    //private AlertDialog builder1 = new AlertDialog.Builder(this);
+
+    /**
+     * this method is called when user click purchase button
+     * it first checks the input field to guarantee a successful purchase can be created in the backend
+     * else, a warning will be generated
+     * then, createPur will be called to interact with backend
+     * @param v
+     */
     public void createPurchase(View v){
         Spinner methods = (Spinner) findViewById(R.id.spinnerMethod);
         Spinner stores = (Spinner) findViewById(R.id.spinnerStore);
@@ -180,13 +206,21 @@ public class Purchase extends AppCompatActivity {
         }
         else {
             Date today = new Date();
-            createPur(username, id, today, "Successful");
+            createPur(username, id, "Successful");
         }
 
 
     }
 
-    private void createPur(String username, String id, Date today, String successful) {
+    /**
+     * in order to successfully create a purchase in backend, Purchase, Payment, Delivery instances must be created in order
+     * this method performs the first step: create Purchase Instance in backend with current date
+     * @param username customer id
+     * @param id purchase id
+     * @param successful status
+     */
+
+    private void createPur(String username, String id,  String successful) {
         SimpleDateFormat currentDate = new SimpleDateFormat("yyyy-MM-dd");
         Date todayDate = new Date();
         String thisDate = currentDate.format(todayDate);
@@ -216,6 +250,12 @@ public class Purchase extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * after Purchase instance is created, Payment instance will be created in this method
+     * additionally, it calls the parcel delivery/ instore pickUp based on user input
+     * @param orderNum purchase id
+     */
 
     private void createPayment(String orderNum) {
         Spinner methods = (Spinner) findViewById(R.id.spinnerMethod);
@@ -256,6 +296,12 @@ public class Purchase extends AppCompatActivity {
         });
     }
 
+    /**
+     * this method create an instorepickup instance
+     * if successful, directs to successful payment page
+     * @param orderNum purchase id
+     * @param store storeA/storeB
+     */
     private void createStorePickup(String orderNum, String store) {
         String deliveryID = orderNumber();
         RequestParams rp = new RequestParams();
@@ -286,6 +332,14 @@ public class Purchase extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * this method create an parcel delivery instance with saved addresses chosen by user
+     * if successful, directs to successful payment page
+     * @param orderNum purchase id
+     * @param address address id
+     */
+
     private void createParcel(String orderNum, String address) {
         String deliveryID = orderNumber();
         RequestParams rp = new RequestParams();
@@ -317,6 +371,11 @@ public class Purchase extends AppCompatActivity {
 
     }
 
+    /**
+     * random id generator
+     * @return generated random id
+     */
+
     private String orderNumber (){
         //String now = (new Date()).toString();
         Random rand = new Random();
@@ -328,6 +387,13 @@ public class Purchase extends AppCompatActivity {
         String c = Integer.toString(rand_int3);
         return a+"-"+ b+"-"+ c;
     }
+
+    /**
+     * this method is called when user choose to apply new address
+     * if payment information is filled, directs to apply new address page, pass required parameters, so that user can continue/complete purchase there
+     * else, warning is generated to fill in payment before adding new address
+     * @param v
+     */
     public void applyNew(View v){
         Spinner methods = (Spinner) findViewById(R.id.spinnerMethod);
         String method = methods.getSelectedItem().toString();
@@ -365,6 +431,12 @@ public class Purchase extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * this method is called when cancel button is clickes
+     * returns to artpiece information page
+     * @param v
+     */
     public void cancel(View v){
         Intent intent = new Intent(this, ArtPieceInfo.class );
         intent.putExtra("ARTPIECE_ID", id);

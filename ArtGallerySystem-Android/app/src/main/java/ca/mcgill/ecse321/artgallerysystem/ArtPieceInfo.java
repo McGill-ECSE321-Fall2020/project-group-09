@@ -25,6 +25,10 @@ import java.net.URL;
 
 import cz.msebera.android.httpclient.Header;
 
+/**
+ * this class is used to display detailed art piece information and provides the button to either return to home page or go purchase
+ * @author amelia
+ */
 public class ArtPieceInfo extends AppCompatActivity {
     private String error= null;
 
@@ -38,6 +42,10 @@ public class ArtPieceInfo extends AppCompatActivity {
     private String description;
     private String name;
     private String username;
+
+    /**
+     * this method is used to refresh error
+     */
     private void refreshErrorMessage() {
         // set the error message
         TextView tvError = (TextView) findViewById(R.id.error);
@@ -50,21 +58,15 @@ public class ArtPieceInfo extends AppCompatActivity {
             tvError.setVisibility(View.VISIBLE);
         }
     }
+
+    /**
+     * get useful parameters from last page when create and display artpiece id
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artpieceinfo);
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
         id = getIntent().getStringExtra("ARTPIECE_ID");
         username = getIntent().getStringExtra("USERNAME");
         getDetail();
@@ -73,6 +75,10 @@ public class ArtPieceInfo extends AppCompatActivity {
         refreshErrorMessage();
 
     }
+
+    /**
+     * this method is used to display image and other information about artpiece
+     */
     public void getDetail(){
         HttpUtils.get("artPiece/getArtPiece/" + id, new RequestParams(), new JsonHttpResponseHandler() {
             @Override
@@ -116,6 +122,11 @@ public class ArtPieceInfo extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * this method is used when click purchase button, it passes required parameters in order to perform purchase operation
+     * @param v
+     */
     public void goPurchase(View v){
         Intent intent = new Intent(ArtPieceInfo.this, Purchase.class );
         intent.putExtra("ARTPIECE_ID", id);
@@ -124,6 +135,11 @@ public class ArtPieceInfo extends AppCompatActivity {
         intent.putExtra("USERNAME", username);
         startActivity(intent);
     }
+
+    /**
+     * this method is used when click back button, it passes required parameters in order to go back to home page
+     * @param v
+     */
     public void goHome(View v){
         Intent intent = new Intent(ArtPieceInfo.this, HomePage.class );
         intent.putExtra("USERNAME", username);

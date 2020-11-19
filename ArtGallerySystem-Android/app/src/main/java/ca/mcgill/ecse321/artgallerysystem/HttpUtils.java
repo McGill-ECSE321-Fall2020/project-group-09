@@ -4,6 +4,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+/**
+ * this class contains requests sending to backend
+ */
 public class HttpUtils {
     public static final String DEFAULT_BASE_URL = "https://artgallery-backend-3223.herokuapp.com/";
 

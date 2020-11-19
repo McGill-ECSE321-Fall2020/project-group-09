@@ -11,6 +11,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * this page is used to display all the artpieces from the system, so that user can choose one to check detailed information
+ */
 public class HomePage extends AppCompatActivity {
     private String error= null;
     private void refreshErrorMessage() {
@@ -29,18 +32,13 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
+
+    /**
+     * this method is used when detail button is click for a specfic artpiece, it passes the parameter used to display a specific artpiece
+     * and the username to potentially perform purchase later
+     * @param v
+     */
 
     public void goDetail(View v){
         Intent intent = new Intent(HomePage.this, ArtPieceInfo.class );

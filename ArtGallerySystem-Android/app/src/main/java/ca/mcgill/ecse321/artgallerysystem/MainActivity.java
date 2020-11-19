@@ -15,6 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+/**
+ * this class is not used for now
+ */
 public class MainActivity extends AppCompatActivity {
     private String error = null;
 
