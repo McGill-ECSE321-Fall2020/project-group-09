@@ -15,6 +15,11 @@ import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
 @Service
+/**
+ * this class contains useful business methods to manipulate data in backend, used in controller 
+ * @author amelia
+ *
+ */
 public class PaymentService {
 	@Autowired
 	ArtGallerySystemRepository artGallerySystemRepository;
@@ -23,6 +28,14 @@ public class PaymentService {
 	@Autowired
 	PurchaseRepository purchaseRepository;
 	@Transactional
+	/**
+	 * create a payment 
+	 * @param id: payment id 
+	 * @param method: payment method credit/debit
+	 * @param purchase: related purchase instance (since we are creating purchase before payment)
+	 * @param success: payment status 
+	 * @return
+	 */
 	public Payment createPayment (String id, PaymentMethod method, Purchase purchase, boolean success) {
 		if (id == null|| id == "") {
 			throw new PaymentException ("provide valid id");
@@ -45,6 +58,11 @@ public class PaymentService {
 		return payment;
 	}
 	@Transactional
+	/**
+	 * delete an existing payment by id 
+	 * @param id
+	 * @return old payment instance 
+	 */
 	public Payment deletePayment(String id) {
 		if (id == null||id == "") {
 			throw new PaymentException ("provide vaild id");
@@ -61,6 +79,11 @@ public class PaymentService {
 		return pay;
 	}
 	@Transactional
+	/**
+	 * get an existing payment by id 
+	 * @param id: payment id 
+	 * @return existing payment instance when succeed, throw exception otherwise 
+	 */
 	public Payment getPayment(String id) {
 		if (id == null||id == "") {
 			throw new PaymentException ("provide vaild id");
@@ -72,11 +95,21 @@ public class PaymentService {
 		return payment;
 	}
 	@Transactional
+	/**
+	 * get list of all payments 
+	 * @return list of payment instances 
+	 */
 	public List<Payment> getAllPayments(){
 		return toList(paymentRepository.findAll());
 		
 	}
 	@Transactional
+	/**
+	 * update existing payment (get by id) with a new payment method 
+	 * @param id
+	 * @param newMethod: new payment method 
+	 * @return updated payment when succeed, throw exception otherwise 
+	 */
 	public Payment updatePaymentMethod(String id, PaymentMethod newMethod) {
 		if (id == null||id == "") {
 			throw new PaymentException ("provide vaild id");

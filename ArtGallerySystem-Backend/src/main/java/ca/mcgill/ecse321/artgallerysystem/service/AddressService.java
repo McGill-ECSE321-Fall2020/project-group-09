@@ -13,12 +13,21 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
 @Service
+/**
+ * this class contains useful business methods to manipulate data in backend, used in controller 
+ * @author amelia
+ *
+ */
 public class AddressService {
 	@Autowired
 	ArtGallerySystemRepository artGallerySystemRepository;
 	@Autowired
 	AddressRepository addressRepository;
 	@Transactional
+	/**
+	 * get all addresses from addressRepository
+	 * @return list of addresses 
+	 */
 	public List<Address> getAllAddresses() {
 		//return toList(addressRepository.findAll()).stream().map(this::convertToDto).collect(Collectors.toList());
 		return toList(addressRepository.findAll()).stream().collect(Collectors.toList());
@@ -26,6 +35,11 @@ public class AddressService {
 	}
 	
 	@Transactional
+	/**
+	 * get an existing address by id 
+	 * @param id address id 
+	 * @return address instance if success 
+	 */
 	public Address getAddressById(String id) {
 		Address address = addressRepository.findAddressByAddressId(id);
 		if (id == null || id == "") {
@@ -40,6 +54,18 @@ public class AddressService {
 		
 	}
 	@Transactional
+	/**
+	 * create a new address 
+	 * @param id
+	 * @param city
+	 * @param country
+	 * @param postCode
+	 * @param province
+	 * @param streetAddress
+	 * @param number
+	 * @param name: name wants to display in frontend 
+	 * @return
+	 */
 	public Address createAddress(String id, String city, String country, String postCode, String province, String streetAddress, String number, String name) {
 		if (city==null||country==null||postCode==null||province==null||streetAddress==null 
 				||city==""||country==""||postCode==""||province==""||streetAddress=="") {
@@ -73,6 +99,11 @@ public class AddressService {
 		return address;
 	}
 	@Transactional
+	/**
+	 * delete an existing address by id 
+	 * @param id
+	 * @return old address instance 
+	 */
 	public Address deleteAddress(String id) {
 		Address address = null;
 		Address add = addressRepository.findAddressByAddressId(id);
@@ -84,6 +115,12 @@ public class AddressService {
 		return address;
 	}
 	@Transactional
+	/**
+	 * update streetAddress with new streetAddress 
+	 * @param id
+	 * @param newaddress
+	 * @return
+	 */
 	public Address updateAddress(String id, String newaddress) {
 		Address address = addressRepository.findAddressByAddressId(id);
 		if (newaddress == null|| newaddress == "") {
