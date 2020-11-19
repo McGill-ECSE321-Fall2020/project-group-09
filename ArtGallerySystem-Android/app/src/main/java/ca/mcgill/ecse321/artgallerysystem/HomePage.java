@@ -16,6 +16,14 @@ import com.google.android.material.snackbar.Snackbar;
  */
 public class HomePage extends AppCompatActivity {
     private String error= null;
+    @Override
+    public Intent getIntent(){
+        return super.getIntent();}
+    private String username;
+    private String id;
+    /**
+     * this method is used to refresh error
+     */
     private void refreshErrorMessage() {
         // set the error message
         TextView tvError = (TextView) findViewById(R.id.error);
@@ -32,6 +40,8 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
+        username = getIntent().getStringExtra("USERNAME");
+        TextView id = (TextView) findViewById(R.id.artpieceID);
     }
 
     /**
@@ -42,8 +52,22 @@ public class HomePage extends AppCompatActivity {
 
     public void goDetail(View v){
         Intent intent = new Intent(HomePage.this, ArtPieceInfo.class );
-        intent.putExtra("ARTPIECE_ID", "888888");
-        intent.putExtra("USERNAME", "Angelina");
+        intent.putExtra("ARTPIECE_ID", id);
+        intent.putExtra("USERNAME", username);
+        startActivity(intent);
+    }
+    public void goAccount(View v){
+        Intent intent = new Intent(HomePage.this, Account.class);
+        //intent.putExtra("USERNAME", username);
+        startActivity(intent);
+    }
+    public void goUpload(View v){
+        Intent intent = new Intent(HomePage.this,Upload.class);
+        //intent.putExtra("USERNAME", username);
+        startActivity(intent);
+    }
+    public void goWelcome(View v){
+        Intent intent = new Intent(HomePage.this, Welcome.class);
         startActivity(intent);
     }
 }
