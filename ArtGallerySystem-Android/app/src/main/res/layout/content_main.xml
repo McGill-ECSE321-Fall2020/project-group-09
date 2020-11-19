@@ -37,7 +37,7 @@
             android:layout_width="416dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:onClick="goLogin"
+            android:onClick="goHome"
             android:text="@string/Login" />
 
         <Button

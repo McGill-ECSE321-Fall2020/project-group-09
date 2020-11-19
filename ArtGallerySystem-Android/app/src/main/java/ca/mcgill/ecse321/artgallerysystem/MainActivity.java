@@ -1,5 +1,6 @@
 package ca.mcgill.ecse321.artgallerysystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -65,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             tvError.setVisibility(View.VISIBLE);
         }
+    }
+    public void goHome(View v){
+        Intent intent = new Intent(this, HomePage.class );
+        //intent.putExtra("ARTPIECE_ID", "123");
+        startActivity(intent);
     }
 
 }

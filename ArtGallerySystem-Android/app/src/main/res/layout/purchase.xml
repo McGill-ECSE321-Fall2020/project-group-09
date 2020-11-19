@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Purchase">
+
+    <LinearLayout
+        android:layout_width="391dp"
+        android:layout_height="782dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="3dp">
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF0000"
+            android:visibility="gone" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="55dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="204dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="14dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="ArtPiece ID"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/artpieceID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Text"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="37dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Name"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/artpieceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Price"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/artpiecePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="173dp"
+                android:layout_height="29dp"
+                android:layout_weight="0"
+                android:lineSpacingExtra="8sp"
+                android:text="Payment Method"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/spinnerMethod"
+                android:layout_width="212dp"
+                android:layout_height="29dp"
+                android:layout_weight="0" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="160dp"
+                android:layout_height="29dp"
+                android:layout_weight="0"
+                android:lineSpacingExtra="8sp"
+                android:text="Card ID"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editTextNumber"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="16"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="164dp"
+                android:layout_height="29dp"
+                android:layout_weight="0"
+                android:text="StorePickUp"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/spinnerStore"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="160dp"
+                android:layout_height="29dp"
+                android:layout_weight="0"
+                android:text="ParcelDelivery"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/spinnerParcel"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_weight="0" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonNew"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:insetLeft="100dp"
+            android:insetRight="50dp"
+            android:text="Apply New Address" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:insetLeft="40dp"
+                android:insetRight="40dp"
+                android:text="Cancel" />
+
+            <Button
+                android:id="@+id/buttonPurchase"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetLeft="50dp"
+                android:insetRight="45dp"
+                android:onClick="createPurchase"
+                android:text="Purchase" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

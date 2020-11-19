@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ArtPieceInfo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="406dp"
+        android:layout_height="846dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="3dp">
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF0000"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            tools:ignore="MissingConstraints" />
+
+        <LinearLayout
+            android:layout_width="389dp"
+            android:layout_height="59dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="183dp"
+                android:layout_height="64dp"
+                android:text="ArtPieceID"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:layout_editor_absoluteX="88dp"
+                tools:layout_editor_absoluteY="499dp" />
+
+            <TextView
+                android:id="@+id/textViewARTID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="396dp"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="177dp"
+                android:layout_height="64dp"
+                android:text="Price"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:layout_editor_absoluteX="88dp"
+                tools:layout_editor_absoluteY="363dp" />
+
+            <TextView
+                android:id="@+id/textViewPRICE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="393dp"
+            android:layout_height="68dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="174dp"
+                android:layout_height="63dp"
+                android:text="Author"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:layout_editor_absoluteX="88dp"
+                tools:layout_editor_absoluteY="435dp" />
+
+            <TextView
+                android:id="@+id/textViewAUTHOR"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="262dp"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/Back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:insetLeft="40dp"
+                    android:text="Back"
+                    tools:layout_editor_absoluteX="258dp"
+                    tools:layout_editor_absoluteY="593dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/Purchase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:insetLeft="8dp"
+                    android:insetRight="2dp"
+                    android:text="Purchase"
+                    android:onClick="goPurchase"
+                    tools:layout_editor_absoluteX="56dp"
+                    tools:layout_editor_absoluteY="593dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
