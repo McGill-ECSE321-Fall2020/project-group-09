@@ -5,65 +5,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="ca.mcgill.ecse321.artgallerysystem.HomePage">
+    tools:context=".HomePage">
 
     <Button
         android:id="@+id/button"
-        android:background="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="201dp"
+        android:layout_weight="1"
+        android:insetLeft="40dp"
+        android:insetRight="40dp"
         android:onClick="goDetail"
         android:text="Detail"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="399dp" />
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button3"
-        android:background="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="140dp"
         android:onClick="goAccount"
         android:text="My Account"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="194dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button4"
-        android:background="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="159dp"
         android:onClick="goUpload"
         android:text="Upload"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="194dp"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button5"
-        android:background="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="494dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="110dp"
         android:onClick="goWelcome"
         android:text="Logout"
-        tools:layout_editor_absoluteX="277dp"
-        tools:layout_editor_absoluteY="194dp"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="258dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="77dp"
         android:text="Home Page"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="82dp"
-        tools:visibility="visible"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
