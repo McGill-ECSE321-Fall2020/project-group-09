@@ -16,6 +16,11 @@ import ca.mcgill.ecse321.artgallerysystem.service.exception.ParcelDeliveryExcept
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDeliveryStatus;
 @Service
+/**
+ * this class contains useful methods to manipulate data in the backend, used in controller 
+ * @author Tianyu Zhao
+ * 
+ */
 public class ParcelDeliveryService {
 	@Autowired
 	ArtGallerySystemRepository artGallerySystemRepository;
@@ -32,6 +37,16 @@ public class ParcelDeliveryService {
 	 * Updated Nov 15 by Zhekai Jiang - carrier and tracking number could be empty when the parcel is not shipped...
 	 */
     @Transactional
+    /**
+     * create a ParcelDelivery by its id, trackingnumber, deliveraddress, carrier, status and purchase
+     * @param deliveryid
+     * @param trackingNumber
+     * @param carrier
+     * @param status
+     * @param deliveryAddress
+     * @param purchase
+     * @return  a new ParcelDelivery with above param
+     */
 	public ParcelDelivery createParcelDelivery(String deliveryid,String trackingNumber, String carrier, ParcelDeliveryStatus status, Address deliveryAddress, Purchase purchase) {
     	if (deliveryid == null|| deliveryid == "") {
 			throw new ParcelDeliveryException ("Please provide valid deliveryid.");
@@ -65,6 +80,11 @@ public class ParcelDeliveryService {
 	}
 	
 	@Transactional
+	/**
+	 * delete an existing ParcelDelivery by trackingNumber 
+	 * @param trackingNumber
+	 * @return old ParcelDelivery instance
+	 */
 	public ParcelDelivery deleteParcelDelivery(String trackingNumber) {
 		ParcelDelivery pardel=null;
 		ParcelDelivery par = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
@@ -78,6 +98,11 @@ public class ParcelDeliveryService {
 		return pardel;
 	}
 	@Transactional
+	/**
+	 * get a ParcelDelivery by trackingNumber
+	 * @param trackingNumber
+	 * @return  ParcelDelivery instance when succeed, throw exception otherwise 
+	 */
 	public ParcelDelivery getParcelDelivery(String trackingNumber) {
 		if (trackingNumber == null||trackingNumber == "") {
 			throw new ParcelDeliveryException ("Please provide vaild trackingNumber.");
@@ -89,11 +114,21 @@ public class ParcelDeliveryService {
 		return pardel;
 	}
 	@Transactional
+	/**
+	 * get all ParcelDeliveris from ParcelDeliveryRepository
+	 * @return  list of ParcelDeliveris
+	 */
 	public List<ParcelDelivery> getAllParcelDeliveris() {
 		return toList(parcelDeliveryRepository.findAll());
 	}
 	
 	@Transactional
+	/**
+	 * update an existing ParcelDelivery(get by trackingNumber)and with a new status
+	 * @param trackingNumber
+	 * @param status
+	 * @return  update a new status when succeed, throw exception otherwise
+	 */
 	public ParcelDelivery updateparcelDelivery(String trackingNumber, ParcelDeliveryStatus status) {
 		ParcelDelivery pardel = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(trackingNumber);
 		if (trackingNumber == null|| trackingNumber == "") {
@@ -120,6 +155,15 @@ public class ParcelDeliveryService {
 	 * @author Zhekai Jiang
 	 */
 	@Transactional
+	/**
+	 * update an existing ParcelDelivery(get by trackingNumber)and with a new status
+	 * carrier and tracking number could be empty when the parcel is not shipped
+	 * @param id
+	 * @param status
+	 * @param carrier
+	 * @param trackingNumber
+	 * @return  updated ParcelDelivery when succeed, throw exception otherwise
+	 */
 	public ParcelDelivery updateParcelDelivery(String id, ParcelDeliveryStatus status, String carrier, String trackingNumber) {
 		ParcelDelivery parcelDelivery = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(id);
 		String error = "";
