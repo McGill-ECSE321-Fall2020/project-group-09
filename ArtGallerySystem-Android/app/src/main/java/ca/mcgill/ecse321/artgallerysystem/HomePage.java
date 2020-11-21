@@ -52,7 +52,7 @@ public class HomePage extends AppCompatActivity {
 
     public void goDetail(View v){
         Intent intent = new Intent(HomePage.this, ArtPieceInfo.class );
-        intent.putExtra("ARTPIECE_ID", id);
+        intent.putExtra("ARTPIECE_ID", "888888");
         intent.putExtra("USERNAME", username);
         startActivity(intent);
     }
