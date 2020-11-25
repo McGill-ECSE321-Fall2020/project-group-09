@@ -28,5 +28,6 @@ matrix:
 
       deploy:
         provider: heroku
-        api_key: 3afc3f89-f354-4c98-8f1e-60485543d0f9
+        api_key:
+          secure: "aKCSrW7pcYmgZvXwLuBZRKpN05At6oojEozMJLvmnQD9hDzC+L2SSnKEZZGt2wvdSku3dTojvKxUI3bbHMZm76nmxowtdmDpNO/bCzWxIntjDRqIWMN5E9ncIsM2Qg+z0/tK8Hak/nKeyvoNg7FhQ/tAlPVe6L61EfXgsgm/lX+1+ZQlBwhKVLF40UMeq2zNSfIfbgvMMuRVmbfvzBRgoQcExiKkehc4pvlN4LiblFvM2Y2Y6FBrZi/yZIfkQook4a/x0Wb+LiazWDfgk4nXr1SC3v4bnuR5XI7ujq+dNngyxW3O5hrjt9avSXxUdCshxLw36DuY5nJ8lIISSq5jS6u+KTRS4yKsV9nCJGORjq5tnzQKDYX1JnWPXuysxFOn4WPtmD3+/vz2QLJSSdjy1okTLW+NKfggwi7rDxArFFxvcejppfPkvRobe5NkOFwPeYy1qDnVGvXGoHaFPTrbXbhUIhD2Ha4I6cBDju58TCLWQYy0oeXryJNH//zJAC7U70oaxtZSFKZL1bDgS3n5AggnSs13jFBa2Ox8vUP+88EY54/OjY3DOU3oEGDwKldAZRhc9wbTBDCmqTL3clV/Cbz8j9N9NCuBFJz70TsLqdJhIHnbqB3+cRoS6gZWCwGzZZtJM2MPS0qqcv8PwHvuEh9JQyK7xEwSkRVjj3RkcgI="
         app: artgallery-backend-3223
