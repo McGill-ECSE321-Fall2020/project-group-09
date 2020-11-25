@@ -1,2 +1,0 @@
-artgallery/Library.java
- artgallery.Library
