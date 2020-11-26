@@ -79,8 +79,8 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
     }
     public void goUpload(View v){
-        Intent intent = new Intent(HomePage.this, MainActivity.class);
-        //intent.putExtra("USERNAME", username);
+        Intent intent = new Intent(HomePage.this, CreateArtPiece.class);
+        intent.putExtra("USERNAME", username);
         startActivity(intent);
     }
     public void goWelcome(View v){
