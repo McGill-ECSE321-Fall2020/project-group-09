@@ -81,7 +81,7 @@ public class CreateArtPiece extends AppCompatActivity{
         int month = Integer.parseInt(comps[0]);
         int day = Integer.parseInt(comps[1]);
 
-        if (name ==null||des==null||author==null||price==null||date==null||sel.size()==0){
+        if (name.equals("")||des.equals("")||author.equals("")||price.equals("")||date==null||sel.size()==0){
             AlertDialog alertDialog = new AlertDialog.Builder(this)
                     .setMessage("Please input all information")
                     .setIcon(android.R.drawable.ic_dialog_alert)
