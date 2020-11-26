@@ -11,7 +11,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * My Account page, where an Intent with extra string USERNAME is needed.
+ * My Account page, where an Intent with extra String USERNAME is needed.
  * @author Zhekai Jiang
  */
 public class MyAccount extends AppCompatActivity {
@@ -31,7 +31,8 @@ public class MyAccount extends AppCompatActivity {
         setContentView(R.layout.my_account);
 
         ActionBar actionBar = getSupportActionBar(); // Top bar
-        actionBar.setDisplayHomeAsUpEnabled(true); // Set the back button on the top-left -> https://geekstocode.com/add-back-button-in-android-title-bar/
+        actionBar.setDisplayHomeAsUpEnabled(true);
+            // Set the back button on the top-left -> https://geekstocode.com/add-back-button-in-android-title-bar/
         actionBar.setTitle("My Account");
 
         error = "";
@@ -96,7 +97,7 @@ public class MyAccount extends AppCompatActivity {
     }
 
     /**
-     * Helper method to start the given activity, with extra string username added in intent.
+     * Helper method to start the given activity, with extra String USERNAME added in intent.
      * @author Zhekai Jiang
      * @param activityClass The class of the target activity
      */
