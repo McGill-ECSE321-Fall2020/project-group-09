@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void goHome(View v){
-        Intent intent = new Intent(this, Login.class );
+        Intent intent = new Intent(this, HomePage.class );
         //intent.putExtra("ARTPIECE_ID", "123");
         startActivity(intent);
     }

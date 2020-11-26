@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -59,6 +63,19 @@ public class HomePage extends AppCompatActivity {
         refreshList();
         descriptions = new ArrayList<String>(artpieces.values());
         TextView id = (TextView) findViewById(R.id.artpieceID);
+        //ViewPager mViewPager;
+        //ViewPagerAdapter mViewPagerAdapter;
+        //mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
+       // int[] images = new int[descriptions.size()];
+       // ImageView imageView=(ImageView) findViewById(R.id.imageView);
+
+        //String url = "https://pic.cnblogs.com/avatar/1142647/20170416093225.png";
+        //Glide.with(ArtPieceInfo.this).load(description).into(imageView);
+
+        // Initializing the ViewPagerAdapter
+        //mViewPagerAdapter = new ViewPagerAdapter(HomePage.this, descriptions);
+        // Adding the Adapter to the ViewPager
+        //mViewPager.setAdapter(mViewPagerAdapter);
     }
 
     /**
@@ -100,6 +117,26 @@ public class HomePage extends AppCompatActivity {
                     }
                     refreshErrorMessage();
                 }
+                descriptions = new ArrayList<String>(artpieces.values());
+                String [] des = new String[descriptions.size()];
+                for (int i = 0;i < response.length(); i++){
+                    des[i]= descriptions.get(i);
+                }
+                refreshErrorMessage();
+                ListView listView = (ListView)findViewById(R.id.viewPagerMain);
+                listView.setAdapter(
+                        new ImageListAdapter(
+                                HomePage.this,
+                                des
+                        )
+                );
+                /*ViewPager mViewPager;
+                ViewPagerAdapter mViewPagerAdapter;
+                mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
+                ImageView imageView=(ImageView) findViewById(R.id.imageView);
+                mViewPagerAdapter = new ViewPagerAdapter(HomePage.this, descriptions);
+                // Adding the Adapter to the ViewPager
+                 mViewPager.setAdapter(mViewPagerAdapter);*/
             }
 
             @Override

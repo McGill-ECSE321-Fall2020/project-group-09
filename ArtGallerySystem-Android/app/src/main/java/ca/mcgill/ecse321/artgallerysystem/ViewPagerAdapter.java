@@ -17,6 +17,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     List<String> description;
     private ImageView[] images;
     LayoutInflater mLayoutInfalter;
+    //int[] imgs;
 
     public ViewPagerAdapter(Context context, List<String> description){
         this.context=context;
@@ -39,8 +40,8 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position){
         //todo:Set position here
-        //View itemView = mLayoutInfalter.inflate(R.layout.item,container,false);
-        //ImageView imageView = (ImageView) itemView.findViewById(R.id.imageViewMain);
+        View itemView = mLayoutInfalter.inflate(R.layout.item,container,false);
+       // ImageView imageView = (ImageView) itemView.findViewById(R.id.imageViewMain);
         images[position].setScaleType(ImageView.ScaleType.FIT_CENTER);
         images[position] = new ImageView(ViewPagerAdapter.this.context);
         container.addView(images[position],position);
