@@ -11,4 +11,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="account_greeting_default">Hello!</string>
+    <string name="account_greeting">Hello, %1$s!</string>
+    <string name="account_purchases_button_text">Purchases</string>
+    <string name="account_art_pieces_button_text">Uploaded Art Pieces</string>
+    <string name="account_addresses_button_text">Frequently Used Addresses</string>
 </resources>

@@ -25,6 +25,7 @@
         <activity android:name=".Purchase"/>
         <activity android:name=".ApplyNewAddress"/>
         <activity android:name=".SuccessfulPayment"/>
+        <activity android:name=".MyAccount" android:exported="true"/> <!-- exported for testing -->
 
     </application>
 

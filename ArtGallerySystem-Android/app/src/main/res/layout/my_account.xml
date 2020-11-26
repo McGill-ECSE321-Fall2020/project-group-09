@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/account_greeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/account_greeting_default"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/account_purchases_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:insetLeft="20dp"
+        android:insetTop="20dp"
+        android:insetRight="20dp"
+        android:insetBottom="20dp"
+        android:onClick="onPurchasesClicked"
+        android:text="@string/account_purchases_button_text" />
+
+    <Button
+        android:id="@+id/account_uploaded_art_pieces_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:insetLeft="20dp"
+        android:insetTop="20dp"
+        android:insetRight="20dp"
+        android:insetBottom="20dp"
+        android:onClick="onUploadedArtPiecesClicked"
+        android:text="@string/account_art_pieces_button_text" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:insetLeft="20dp"
+        android:insetTop="20dp"
+        android:insetRight="20dp"
+        android:insetBottom="20dp"
+        android:onClick="onAddressesClicked"
+        android:text="@string/account_addresses_button_text" />
+
+    <TextView
+        android:id="@+id/my_account_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="#F44336" />
+
+</LinearLayout>
