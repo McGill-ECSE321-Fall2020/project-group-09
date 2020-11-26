@@ -46,8 +46,11 @@ public AddressDTO getAddressById(@PathVariable("id")String id) {
 }
 
 	/**
-	 * Added Nov 10
+	 * Get addresses saved by the given user (-'s customer role).
+	 * Added Nov 10 for more convenient frontend access to frequently used addresses in the My Account page.
 	 * @author Zhekai Jiang
+	 * @param userName The name of the user.
+	 * @return The list of AddressDTO-s corresponding to the addresses saved by the user as a customer.
 	 */
 	@GetMapping(value = {"/addresses/user/{username}", "addresses/user/{username}"})
 	public List<AddressDTO> getAddressesByUser(@PathVariable("username") String userName) {
@@ -69,8 +72,18 @@ public AddressDTO updateAddress(@PathVariable("id")String id, @RequestParam("add
 }
 
 	/**
-	 * Added Nov 11
+	 * Update all attributes of an address.
+	 * Added Nov 11.
 	 * @author Zhekai Jiang
+	 * @param id The id of the address to be updated.
+	 * @param name The name associated with the address.
+	 * @param phoneNumber The phone number.
+	 * @param streetAddress The street address.
+	 * @param city The city.
+	 * @param province The province.
+	 * @param postalCode The postal code.
+	 * @param country The country.
+	 * @return The DTO of the updated address.
 	 */
 	@PutMapping(value = {"/address/updatefull/{id}", "/address/updatefull/{id}/"})
 	public AddressDTO updateFullAddress(@PathVariable("id") String id, @RequestParam("name") String name, 
