@@ -98,7 +98,7 @@ public class Signup extends AppCompatActivity {
                     })
                     .show();
         }
-        if (!password.equals(repeated)){
+        else if (!password.equals(repeated)){
             AlertDialog alertDialog = new AlertDialog.Builder(this)
                     .setMessage("Password does not match")
                     .setIcon(android.R.drawable.ic_dialog_alert)
@@ -109,7 +109,7 @@ public class Signup extends AppCompatActivity {
                     })
                     .show();
         }
-        if (names.contains(user)){
+        else if (names.contains(user)){
             AlertDialog alertDialog = new AlertDialog.Builder(this)
                     .setMessage("User already exist")
                     .setIcon(android.R.drawable.ic_dialog_alert)
@@ -126,7 +126,7 @@ public class Signup extends AppCompatActivity {
                     })
                     .show();
         }
-        if (!validate(email)){
+        else if (!validate(email)){
             AlertDialog alertDialog = new AlertDialog.Builder(this)
                     .setMessage("Please input valid email")
                     .setIcon(android.R.drawable.ic_dialog_alert)
@@ -137,7 +137,7 @@ public class Signup extends AppCompatActivity {
                     })
                     .show();
         }
-        if (avatar.equals("")){
+        else if (avatar.equals("")){
             AlertDialog alertDialog = new AlertDialog.Builder(this)
                     .setMessage("Please input valid avator")
                     .setIcon(android.R.drawable.ic_dialog_alert)
@@ -148,30 +148,33 @@ public class Signup extends AppCompatActivity {
                     })
                     .show();
         }
-        RequestParams rp = new RequestParams();
-        rp.add("name", user);
-        rp.add("email", email);
-        rp.add("password", password);
-        rp.add("avatar", avatar);
-        HttpUtils.post("/user/", rp, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                refreshErrorMessage();
-                createCustomer(user);
+        else{
+            RequestParams rp = new RequestParams();
+            rp.add("name", user);
+            rp.add("email", email);
+            rp.add("password", password);
+            rp.add("avatar", avatar);
+            HttpUtils.post("/user/", rp, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    refreshErrorMessage();
+                    createCustomer(user);
 
-            }
-
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                try {
-                    error += errorResponse.get("message").toString();
-                } catch (JSONException e) {
-                    error += e.getMessage();
                 }
-                refreshErrorMessage();
-            }
-        });
+
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                    try {
+                        error += errorResponse.get("message").toString();
+                    } catch (JSONException e) {
+                        error += e.getMessage();
+                    }
+                    refreshErrorMessage();
+                }
+            });
+        }
+
 
 
 
