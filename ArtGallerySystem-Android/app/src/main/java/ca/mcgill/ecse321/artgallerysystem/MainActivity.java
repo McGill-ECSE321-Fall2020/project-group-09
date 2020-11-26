@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 /**
- * this class is not used for now
+ * this class is the welcome page
  */
 public class MainActivity extends AppCompatActivity {
     private String error = null;
@@ -70,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
             tvError.setVisibility(View.VISIBLE);
         }
     }
+
+    /**
+     * this method is called when login/signup is clicked
+     * @param v
+     */
     public void goHome(View v){
         Intent intent = new Intent(this,Login.class );
         //intent.putExtra("ARTPIECE_ID", "123");

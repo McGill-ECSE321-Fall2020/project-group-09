@@ -21,6 +21,9 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
+/**
+ * this class contains methods used for login page
+ */
 public class Login extends AppCompatActivity {
     private String error= null;
     private List<String> names = new ArrayList<>();
@@ -66,6 +69,11 @@ public class Login extends AppCompatActivity {
         });
         refreshErrorMessage();
     }
+
+    /**
+     * this method check if the user name is empty or user does not exist or password does not match
+     * if neither, go to home page
+     */
     public void checkUser(){
         TextView username = (TextView)findViewById(R.id.editTextTextPersonName);
         user = String.valueOf(username.getText());
@@ -137,14 +145,21 @@ public class Login extends AppCompatActivity {
         }
 
     }
-    public void goHome(View v){
-        Intent intent = new Intent(Login.this, HomePage.class);
-        intent.putExtra("USERNAME", user);
-        startActivity(intent);
-    }
+
+
+
+    /**
+     * this method is called when login button is clicked
+     * @param v
+     */
     public void login(View v){
         checkUser();
     }
+
+    /**
+     * this method is called when signup button is clicked
+     * @param v
+     */
     public void goSignUp(View v){
         Intent intent = new Intent(Login.this, Signup.class);
         startActivity(intent);

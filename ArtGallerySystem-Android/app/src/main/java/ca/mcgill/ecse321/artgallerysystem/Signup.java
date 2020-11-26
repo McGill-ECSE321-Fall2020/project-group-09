@@ -23,6 +23,10 @@ import java.util.regex.Pattern;
 
 import cz.msebera.android.httpclient.Header;
 
+/**
+ * this class is used for the sign up page
+ * it creates 2 roles artists/customer at the same time
+ */
 public class Signup extends AppCompatActivity {
     private String error= null;
     private List<String> names = new ArrayList<>();
@@ -71,11 +75,23 @@ public class Signup extends AppCompatActivity {
         });
         refreshErrorMessage();
     }
+
+    /**
+     * this method is called when return button is clicked
+     * @param v
+     */
     public void goBack(View v)
     {
         Intent intent = new Intent(Signup.this, MainActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * this method is called when signup button is clicked
+     * it checks valid username, repeated password, valid email type, nonempty input field, and existing user
+     * if neither, create a user with 2 roles in the backend
+     * @param v
+     */
     public void signUp(View v){
         TextView name = (TextView)findViewById(R.id.editTextTextPersonName);
         user = String.valueOf(name.getText());
@@ -179,6 +195,11 @@ public class Signup extends AppCompatActivity {
 
 
     }
+
+    /**
+     * this method creates a customer role for user
+     * @param user
+     */
     public void createCustomer(String user) {
         RequestParams rp = new RequestParams();
         rp.add("user", user);
@@ -204,6 +225,11 @@ public class Signup extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * this method creates an artist role for user
+     * @param user
+     */
     public void createArtist(String user) {
         RequestParams rp = new RequestParams();
         rp.add("user", user);
@@ -245,9 +271,16 @@ public class Signup extends AppCompatActivity {
             }
         });
     }
+
+
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+    /**
+     * this method checks valid email type
+     * @param emailStr
+     * @return
+     */
     public static boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();

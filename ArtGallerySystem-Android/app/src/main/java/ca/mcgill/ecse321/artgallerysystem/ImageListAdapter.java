@@ -9,6 +9,9 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+/**
+ * this method is used to display list of images in home page
+ */
 public class ImageListAdapter extends ArrayAdapter {
     private Context context;
     private LayoutInflater inflater;

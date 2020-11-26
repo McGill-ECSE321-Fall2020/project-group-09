@@ -63,8 +63,9 @@ public class CreateArtPiece extends AppCompatActivity{
     private String user;
 
 
-
-
+    /**
+     * this method is called when create button is clicked
+     */
     private void CreateArtPiece() {
 
         TextView tv2 = (TextView) findViewById(R.id.editTextArtPieceName);
@@ -119,8 +120,6 @@ public class CreateArtPiece extends AppCompatActivity{
             rp.add("price",price);
             rp.add("status", "Available");
             rp.add("date", year + "-" + formatter.format(month) + "-" + formatter.format(day));
-            //todo: add artists
-
             HttpUtils.post("/artPiece/createArtPiece", rp, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -234,17 +233,29 @@ public class CreateArtPiece extends AppCompatActivity{
         tv.setText(String.format("%02d-%02d-%04d", d, m + 1, y));
     }
 
-
+    /**
+     * this method is called when return button is clicked
+     * @param v
+     */
     public void goHome(View v){
         Intent intent = new Intent(CreateArtPiece.this, HomePage.class );
-
+        intent.putExtra("USERNAME", user);
         startActivity(intent);
     }
+
+    /**
+     * this method is called when create button is clicked
+     * @param v
+     */
     public void addArtPiece(View v){
         CreateArtPiece();
     }
+
+    /**
+     * this method is used to generate random artpiece id
+     * @return artpieceid
+     */
     private String orderNumber (){
-        //String now = (new Date()).toString();
         Random rand = new Random();
         int rand_int1 = rand.nextInt(1000);
         int rand_int2 = rand.nextInt(1000);
@@ -254,6 +265,10 @@ public class CreateArtPiece extends AppCompatActivity{
         String c = Integer.toString(rand_int3);
         return a+"-"+ b+"-"+ c;
     }
+
+    /**
+     * add multiple artists to the selected artpiece
+     */
     public void addArtist(){
         List<String> artists = new ArrayList<>();
         MultiSpinnerSearch multiSelectSpinnerWithSearch = findViewById(R.id.multipleItemSelectionSpinner);
@@ -266,7 +281,6 @@ public class CreateArtPiece extends AppCompatActivity{
         for (int i = 0;i<artists.size();i++){
             RequestParams rp = new RequestParams();
             rp.add("artistid", artists.get(i));
-            //int finalI = i;
             HttpUtils.put("/artPiece/addArtist/"+id, rp, new JsonHttpResponseHandler(){
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -287,6 +301,10 @@ public class CreateArtPiece extends AppCompatActivity{
         }
     }
 
+    /**
+     * this method is called when create the page, to load all artists info for selecting purpose
+     * @return
+     */
     public List<String> getArtists() {
         List<String> result = new ArrayList<>();
         HttpUtils.get("/artist/artistids", new RequestParams(), new JsonHttpResponseHandler() {
