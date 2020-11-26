@@ -3,6 +3,7 @@ package ca.mcgill.ecse321.artgallerysystem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,6 +26,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -38,8 +41,9 @@ public class HomePage extends AppCompatActivity {
         return super.getIntent();}
     private String username;
     private String id;
-    private HashMap artpieces = new HashMap<String, String>();
+    private Map artpieces = new HashMap<String, String>();
     private List<String> descriptions = new ArrayList<>();
+    private List<String> ids = new ArrayList<>();
     /**
      * this method is used to refresh error
      */
@@ -111,13 +115,14 @@ public class HomePage extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 for( int i = 0; i < response.length(); i++){
                     try {
-                        artpieces.put(response.getJSONObject(i).getString("artPieceId"), response.getJSONObject(i).getString("description"));
+                        artpieces.put(response.getJSONObject(i).getString("artPieceId").toString(), response.getJSONObject(i).getString("description").toString());
                     } catch (Exception e) {
                         error += e.getMessage();
                     }
                     refreshErrorMessage();
                 }
                 descriptions = new ArrayList<String>(artpieces.values());
+                ids = new ArrayList<>(artpieces.keySet());
                 String [] des = new String[descriptions.size()];
                 for (int i = 0;i < response.length(); i++){
                     des[i]= descriptions.get(i);
@@ -130,6 +135,16 @@ public class HomePage extends AppCompatActivity {
                                 des
                         )
                 );
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String art  = ids.get(position);
+                        Intent intent = new Intent(HomePage.this, ArtPieceInfo.class );
+                        intent.putExtra("ARTPIECE_ID", art);
+                        intent.putExtra("USERNAME", username);
+                        startActivity(intent);
+                    }
+                });
                 /*ViewPager mViewPager;
                 ViewPagerAdapter mViewPagerAdapter;
                 mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
