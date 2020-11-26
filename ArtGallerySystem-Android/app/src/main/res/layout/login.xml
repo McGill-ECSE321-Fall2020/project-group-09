@@ -6,12 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login">
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="258dp"
         android:layout_height="102dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="77dp"
         android:text="Login"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
@@ -28,15 +36,20 @@
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="116dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="Signup"
+        android:onClick="goSignUp"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="360dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -44,37 +57,52 @@
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="116dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="Login"
+        android:onClick="login"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="408dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signin_signup_btn"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="123dp"
         android:ems="10"
         android:hint="UserName"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="228dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="124dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="287dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
         tools:ignore="MissingConstraints" />
 
 

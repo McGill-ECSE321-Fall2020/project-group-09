@@ -28,6 +28,7 @@ import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -46,7 +47,10 @@ public class CreateArtPiece extends AppCompatActivity{
     private String artpieceURL;
     private Date date;
 
-    public CreateArtPiece() {
+
+
+
+    private void CreateArtPiece() {
 
         TextView tv2 = (TextView) findViewById(R.id.editTextArtPieceName);
         TextView tv3 = (TextView) findViewById(R.id.editTextImageURL);
@@ -193,6 +197,10 @@ public class CreateArtPiece extends AppCompatActivity{
 
         startActivity(intent);
     }
+    public void addArtPiece(View v){
+        CreateArtPiece();
+    }
+
 
 
 }

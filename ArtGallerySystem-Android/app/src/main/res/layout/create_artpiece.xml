@@ -178,13 +178,18 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView23"
+                android:layout_width="283dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Artist"
                 android:textAlignment="center" />
 
+            <Spinner
+                android:id="@+id/artists"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <Space
@@ -208,7 +213,7 @@
                 android:layout_weight="1"
                 android:insetLeft="30dp"
                 android:insetRight="30dp"
-                android:onClick="goBackcHome"
+                android:onClick="goHome"
                 android:text="Cancel" />
 
             <Button

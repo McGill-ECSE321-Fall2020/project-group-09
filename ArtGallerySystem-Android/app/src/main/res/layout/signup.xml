@@ -6,13 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Signup">
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="250dp"
         android:layout_height="64dp"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="77dp"
         android:text="    Sign up"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
@@ -26,56 +34,76 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="89dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="113dp"
         android:ems="10"
         android:hint="UserName"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="186dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="89dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="113dp"
         android:ems="10"
         android:hint="Enter your Password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="246dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="114dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="367dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRepeatPassword"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextRepeatPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="114dp"
         android:ems="10"
         android:hint="Repeat Your Password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="307dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="114dp"
         android:ems="10"
         android:hint="Avatar"
         android:inputType="text"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="427dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+        tools:ignore="MissingConstraints" />
 
 
     <Button
@@ -83,31 +111,41 @@
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="121dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="Signup"
+        android:onClick="signUp"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="498dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAvatar"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/return_btn"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="121dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="Return"
+        android:onClick="goBack"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="548dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signin_signup_btn"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
