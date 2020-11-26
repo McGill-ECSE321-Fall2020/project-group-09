@@ -28,12 +28,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="204dp"
+            android:layout_height="180dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -57,7 +57,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -81,7 +81,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -113,7 +113,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <TextView
@@ -137,7 +137,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <TextView
@@ -161,7 +161,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <TextView
@@ -181,7 +181,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <TextView
