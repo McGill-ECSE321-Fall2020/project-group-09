@@ -45,7 +45,10 @@ import cz.msebera.android.httpclient.Header;
 import static androidx.core.content.ContextCompat.startActivity;
 import static java.util.Collections.unmodifiableList;
 
-
+/**
+ * this class is used to create all art pieces
+ *
+ */
 public class CreateArtPiece extends AppCompatActivity{
 
     private String error= null;
@@ -138,9 +141,6 @@ public class CreateArtPiece extends AppCompatActivity{
                                 }
                             })
                             .show();
-                   // } catch (JSONException e) {
-                   //     error += e.getMessage();
-                   // }
                     refreshErrorMessage();
                 }
 
@@ -189,64 +189,13 @@ public class CreateArtPiece extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_artpiece);
-
-
         artpieceName= getIntent().getStringExtra("ARTPIECE_NAME");
         artpieceURL = getIntent().getStringExtra("URL");
         author = getIntent().getStringExtra("Author");
         price= getIntent().getDoubleExtra("Price",0);
         user = getIntent().getStringExtra("USERNAME");
         artists= getArtists();
-
-        /*MultiSpinnerSearch multiSelectSpinnerWithSearch = findViewById(R.id.multipleItemSelectionSpinner);
-        // Pass true If you want searchView above the list. Otherwise false. default = true.
-        multiSelectSpinnerWithSearch.setSearchEnabled(true);
-
-        // A text that will display in search hint.
-        multiSelectSpinnerWithSearch.setSearchHint("Select your mood");
-
-        // Set text that will display when search result not found...
-        multiSelectSpinnerWithSearch.setEmptyTitle("Not Data Found!");
-
-        // If you will set the limit, this button will not display automatically.
-        multiSelectSpinnerWithSearch.setShowSelectAllButton(true);
-
-        //A text that will display in clear text button
-        multiSelectSpinnerWithSearch.setClearText("Close & Clear");
-
-        KeyPairBoolData k = new KeyPairBoolData();
-
-        List<KeyPairBoolData> listArray0 = new ArrayList<>();
-        for (int i = 0; i < artists.size(); i++) {
-            KeyPairBoolData h = new KeyPairBoolData();
-            h.setId(i + 1);
-            h.setName(artists.get(i));
-            h.setSelected(false);
-            listArray0.add(h);
-        }
-        final List<KeyPairBoolData> listArray1 = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            KeyPairBoolData h = new KeyPairBoolData();
-            h.setId(i + 1);
-            h.setName("a");
-            h.setSelected(false);
-            listArray1.add(h);
-        }
-        //multiSelectSpinnerWithSearch.setItems();
-        //multiSelectSpinnerWithSearch.setItems(listArray0);
-        multiSelectSpinnerWithSearch.setItems(listArray1, new MultiSpinnerListener() {
-            @Override
-            public void onItemsSelected(List<KeyPairBoolData> items) {
-                for (int i = 0; i < items.size(); i++) {
-                    if (items.get(i).isSelected()) {
-                        Log.i(TAG, i + " : " + items.get(i).getName() + " : " + items.get(i).isSelected());
-                    }
-                }
-            }
-        });*/
         refreshErrorMessage();
-
-
     }
 
 
@@ -321,25 +270,6 @@ public class CreateArtPiece extends AppCompatActivity{
             HttpUtils.put("/artPiece/addArtist/"+id, rp, new JsonHttpResponseHandler(){
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                    //if (i == artists.size()-1){
-                        /*AlertDialog alertDialog = new AlertDialog.Builder(CreateArtPiece.this)
-                                .setMessage("Successfully create!")
-                                .setIcon(android.R.drawable.ic_dialog_alert)
-                                .setNegativeButton("go back home", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        Intent intent = new Intent(CreateArtPiece.this, HomePage.class);
-                                        intent.putExtra("USERNAME", user);
-                                        startActivity(intent);
-                                    }
-                                })
-                                .setPositiveButton("Create another one", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                    }
-                                })
-                                .show();*/
-                   // }
-                   // error+=finalI;
                         refreshErrorMessage();
                 }
 

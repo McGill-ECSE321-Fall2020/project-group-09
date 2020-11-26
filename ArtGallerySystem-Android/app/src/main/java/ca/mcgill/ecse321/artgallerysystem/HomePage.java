@@ -46,6 +46,7 @@ public class HomePage extends AppCompatActivity {
     private List<String> ids = new ArrayList<>();
     /**
      * this method is used to refresh error
+     * @author Angelina, Amelia
      */
     private void refreshErrorMessage() {
         // set the error message
@@ -59,6 +60,10 @@ public class HomePage extends AppCompatActivity {
             tvError.setVisibility(View.VISIBLE);
         }
     }
+    /**
+     * this method is called everytime this page is created, it gets the information from previous page, display information
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,47 +72,36 @@ public class HomePage extends AppCompatActivity {
         refreshList();
         descriptions = new ArrayList<String>(artpieces.values());
         TextView id = (TextView) findViewById(R.id.artpieceID);
-        //ViewPager mViewPager;
-        //ViewPagerAdapter mViewPagerAdapter;
-        //mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
-       // int[] images = new int[descriptions.size()];
-       // ImageView imageView=(ImageView) findViewById(R.id.imageView);
-
-        //String url = "https://pic.cnblogs.com/avatar/1142647/20170416093225.png";
-        //Glide.with(ArtPieceInfo.this).load(description).into(imageView);
-
-        // Initializing the ViewPagerAdapter
-        //mViewPagerAdapter = new ViewPagerAdapter(HomePage.this, descriptions);
-        // Adding the Adapter to the ViewPager
-        //mViewPager.setAdapter(mViewPagerAdapter);
     }
-
     /**
-     * this method is used when detail button is click for a specfic artpiece, it passes the parameter used to display a specific artpiece
-     * and the username to potentially perform purchase later
+     * this method is used when My Account button is click on the top left of the page, it goes to the account information page
      * @param v
      */
-
-    public void goDetail(View v){
-        Intent intent = new Intent(HomePage.this, ArtPieceInfo.class );
-        intent.putExtra("ARTPIECE_ID", "888888");
-        intent.putExtra("USERNAME", username);
-        startActivity(intent);
-    }
     public void goAccount(View v){
         Intent intent = new Intent(HomePage.this, MainActivity.class);
-        //intent.putExtra("USERNAME", username);
         startActivity(intent);
     }
+    /**
+     * this method is used when Upload button is click on the top right of the page, it goes to the upload page
+     * @param v
+     */
     public void goUpload(View v){
         Intent intent = new Intent(HomePage.this, CreateArtPiece.class);
         intent.putExtra("USERNAME", username);
         startActivity(intent);
     }
+    /**
+     * this method is used when Logout button is click on the buttom right of the page, it goes back to the welcom page
+     * @param v
+     */
     public void goWelcome(View v){
         Intent intent = new Intent(HomePage.this, MainActivity.class);
         startActivity(intent);
     }
+    /**
+     * this method is used to obtain availableartPieceList  from database, so that all images could be shown on the page and click one of them can goes to its information
+     *
+     */
     private void refreshList() {
         HttpUtils.get("/artPiece/availableartPieceList", new RequestParams(), new JsonHttpResponseHandler() {
 
@@ -145,13 +139,6 @@ public class HomePage extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-                /*ViewPager mViewPager;
-                ViewPagerAdapter mViewPagerAdapter;
-                mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
-                ImageView imageView=(ImageView) findViewById(R.id.imageView);
-                mViewPagerAdapter = new ViewPagerAdapter(HomePage.this, descriptions);
-                // Adding the Adapter to the ViewPager
-                 mViewPager.setAdapter(mViewPagerAdapter);*/
             }
 
             @Override

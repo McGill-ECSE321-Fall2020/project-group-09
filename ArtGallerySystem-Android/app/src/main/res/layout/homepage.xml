@@ -92,26 +92,4 @@
         app:layout_constraintTop_toBottomOf="@+id/textView22"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="109dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="201dp"
-        android:layout_weight="1"
-        android:insetLeft="40dp"
-        android:insetRight="40dp"
-        android:onClick="goDetail"
-        android:text="Detail"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="NotSibling" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
