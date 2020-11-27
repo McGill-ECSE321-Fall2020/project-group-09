@@ -271,7 +271,7 @@ public class Purchase extends AppCompatActivity {
                     createStorePickup(orderNum, "StoreA");
                 }else if (stores.getSelectedItem().toString().equalsIgnoreCase("StoreB")){
                     createStorePickup(orderNum, "StoreB");
-                }else if (parcels.getSelectedItem().toString()!=null){
+                }else if (!parcels.getSelectedItem().toString().equals("")){
                     String addressID = parcels.getSelectedItem().toString().split("--")[0];
                     createParcel(orderNum, addressID);
                 }

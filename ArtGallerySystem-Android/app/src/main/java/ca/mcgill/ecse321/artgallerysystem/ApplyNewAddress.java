@@ -119,7 +119,7 @@ public class ApplyNewAddress extends AppCompatActivity {
         String province = tv7.getText().toString();
         String number = tv6.getText().toString();
         String name = tv2.getText().toString();
-        if (country==null||city==null||postcode==null||streetaddress==null||province==null||number==null||name==null){
+        if (country.equals("")||city.equals("")||postcode.equals("")||streetaddress.equals("")||province.equals("")||number.equals("")||name.equals("")){
             AlertDialog alertDialog = new AlertDialog.Builder(this)
                     .setMessage("Please input all information")
                     .setIcon(android.R.drawable.ic_dialog_alert)
