@@ -86,4 +86,4 @@ The gallery wants to focus on local artists and encourage them to use their webs
 
 #### Links
 * [Deliverable 4 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_4)
-* [User Manual](https://linduan.wixsite.com/website-2)
+* [User Manual](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/User-Documentation)
