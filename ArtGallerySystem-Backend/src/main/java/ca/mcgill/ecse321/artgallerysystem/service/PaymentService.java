@@ -15,6 +15,11 @@ import ca.mcgill.ecse321.artgallerysystem.model.PaymentMethod;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.PaymentException;
 @Service
+/**
+ * this class contains useful business methods to manipulate data in backend, used in controller 
+ * @author amelia
+ *
+ */
 public class PaymentService {
 	@Autowired
 	ArtGallerySystemRepository artGallerySystemRepository;
@@ -22,6 +27,14 @@ public class PaymentService {
 	PaymentRepository paymentRepository;
 	@Autowired
 	PurchaseRepository purchaseRepository;
+	/**
+ 	 * create a payment 
+ 	 * @param id: payment id 
+ 	 * @param method: payment method credit/debit
+ 	 * @param purchase: related purchase instance (since we are creating purchase before payment)
+ 	 * @param success: payment status 
+ 	 * @return
+ 	 */
 	@Transactional
 	public Payment createPayment (String id, PaymentMethod method, Purchase purchase, boolean success) {
 		if (id == null|| id == "") {
@@ -33,9 +46,6 @@ public class PaymentService {
 		if (purchase == null) {
 			throw new PaymentException ("provide valid purchase");
 		}
-		//if (paymentRepository.findPaymentByPaymentId(id)!=null) {
-		//	throw new PaymentException ("payment already exist");
-		//}
 		Payment payment = new Payment ();
 		payment.setIsSuccessful(success);
 		payment.setPaymentId(id);
@@ -44,6 +54,11 @@ public class PaymentService {
 		paymentRepository.save(payment);
 		return payment;
 	}
+	/**
+ 	 * delete an existing payment by id 
+ 	 * @param id
+ 	 * @return old payment instance 
+ 	 */
 	@Transactional
 	public Payment deletePayment(String id) {
 		if (id == null||id == "") {
@@ -60,6 +75,11 @@ public class PaymentService {
 		paymentRepository.deleteById(id);
 		return pay;
 	}
+	/**
+ 	 * get an existing payment by id 
+ 	 * @param id: payment id 
+ 	 * @return existing payment instance when succeed, throw exception otherwise 
+ 	 */
 	@Transactional
 	public Payment getPayment(String id) {
 		if (id == null||id == "") {
@@ -71,11 +91,21 @@ public class PaymentService {
 		}
 		return payment;
 	}
+	/**
+ 	 * get list of all payments 
+ 	 * @return list of payment instances 
+ 	 */
 	@Transactional
 	public List<Payment> getAllPayments(){
 		return toList(paymentRepository.findAll());
 		
 	}
+	/**
+ 	 * update existing payment (get by id) with a new payment method 
+ 	 * @param id
+ 	 * @param newMethod: new payment method 
+ 	 * @return updated payment when succeed, throw exception otherwise 
+ 	 */
 	@Transactional
 	public Payment updatePaymentMethod(String id, PaymentMethod newMethod) {
 		if (id == null||id == "") {

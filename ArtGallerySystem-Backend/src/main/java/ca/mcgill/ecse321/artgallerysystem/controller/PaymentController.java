@@ -31,7 +31,11 @@ import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 
 import ca.mcgill.ecse321.artgallerysystem.service.PaymentService;
 import ca.mcgill.ecse321.artgallerysystem.service.PurchaseService;
-
+/**
+ * this class contains the controller methods to call perform database operations using business methods
+ * @author amelia
+ *
+ */
 @CrossOrigin(origins="*")
 @RestController
 public class PaymentController {
@@ -39,10 +43,11 @@ public class PaymentController {
 private PaymentService service;
 @Autowired 
 private PurchaseService purchaseService;
-//@Autowired 
-//private PurchaseService systemservice;
-//@Autowired
-//private ArtGallerySystemRepository artgallerySystemRepository;
+
+/**
+ * get all the existing payments from database 
+ * @return list of paymentDTO 
+ */
 @GetMapping(value = {"/payments", "/payments/"})
 public List<PaymentDTO> getAllPayments(){
 	
@@ -50,6 +55,14 @@ public List<PaymentDTO> getAllPayments(){
 	return toList(payments.stream().map(this::convertToDto).collect(Collectors.toList()));
 	
 }
+/**
+ * create a new payment 
+ * @param id payment id 
+ * @param method creditcard/debitcard
+ * @param success payment status 
+ * @param purchaseid purchase id 
+ * @return
+ */
 @PostMapping(value = {"/payment", "/payment/"})
 public PaymentDTO createPayment(@RequestParam("id")String id, @RequestParam("method")String method, @RequestParam("success")String success, @RequestParam("purchaseid")String purchaseid) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
@@ -64,19 +77,34 @@ public PaymentDTO createPayment(@RequestParam("id")String id, @RequestParam("met
 	Payment payment = service.createPayment(id, pmethod, purchase, sus);
 	return convertToDto(payment);
 }
-
+/**
+ * get payment by id 
+ * @param id
+ * @return existing paymentDTO if success 
+ */
 @GetMapping(value = {"/payments/{id}", "/payments/{id}/"})
 public PaymentDTO getPaymentById(@PathVariable("id")String id) {
 	return convertToDto(service.getPayment(id));
 }
+/**
+ * delete an existing payment 
+ * @param id
+ */
 @DeleteMapping(value = {"/payments/{id}", "/payments/{id}/"})
 public void deletePayment(@PathVariable("id") String id) {
 	service.deletePayment(id);
 }
+/**
+ * update payment method for existing payment 
+ * @param id: payment id 
+ * @param method: new method 
+ * @return
+ */
 @PutMapping (value = {"/payment/update/{id}", "/payment/update/{id}/"})
 public PaymentDTO updatePayment(@PathVariable("id")String id, @RequestParam("method")String method) {
 	return convertToDto(service.updatePaymentMethod(id, convertToMethod(method)));
 }
+
 public PaymentDTO convertToDto(Payment payment) {
    PaymentDTO paymentdto = new PaymentDTO();
    paymentdto.setIsSuccessful(payment.isIsSuccessful());
@@ -101,6 +129,8 @@ public PaymentMethod convertToMethod(String method) {
 	}
 	return null;
 }
+
+//the following contains some helper methods to convert a class instance to a DTO object 
 public PurchaseDTO convertToDto(Purchase purchase) {
 	PurchaseDTO purchaseDto = new PurchaseDTO();
 	// purchaseDto.setArtPiece(convertToDto(purchase.getArtPiece())); // removed Nov 15 by Zhekai Jiang (not useful)
@@ -110,11 +140,7 @@ public PurchaseDTO convertToDto(Purchase purchase) {
 	purchaseDto.setOrderStatus(purchase.getOrderStatus());
 	return purchaseDto;
 }
-/*public CustomerDTO convertToDto(Customer customer){
-    CustomerDTO customerDTO = new CustomerDTO();
-    BeanUtils.copyProperties(customer,customerDTO);
-    return customerDTO;
-}*/
+
 public CustomerDTO convertToDto(Customer customer){
     CustomerDTO customerDTO = new CustomerDTO();
     customerDTO.setAddress(null);
