@@ -4,18 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
 
-import com.bumptech.glide.Glide;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -27,7 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -40,7 +32,6 @@ public class HomePage extends AppCompatActivity {
     public Intent getIntent(){
         return super.getIntent();}
     private String username;
-    private String id;
     private Map artpieces = new HashMap<String, String>();
     private List<String> descriptions = new ArrayList<>();
     private List<String> ids = new ArrayList<>();
@@ -78,7 +69,8 @@ public class HomePage extends AppCompatActivity {
      * @param v
      */
     public void goAccount(View v){
-        Intent intent = new Intent(HomePage.this, MainActivity.class);
+        Intent intent = new Intent(HomePage.this, MyAccount.class);
+        intent.putExtra("USERNAME", username);
         startActivity(intent);
     }
     /**
