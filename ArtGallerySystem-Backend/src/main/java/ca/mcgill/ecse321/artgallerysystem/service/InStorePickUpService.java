@@ -17,6 +17,14 @@ import ca.mcgill.ecse321.artgallerysystem.service.exception.InStorePickUpExcepti
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUpStatus;
 @Service
+
+
+/**
+ * this class contains useful methods to manipulate data in the backend, used in controller 
+ * @author Tianyu Zhao
+ *
+ */
+
 public class InStorePickUpService {
 	@Autowired
 	ArtGallerySystemRepository artGallerySystemRepository;
@@ -27,6 +35,17 @@ public class InStorePickUpService {
 	@Autowired
 	PurchaseRepository purchaseRepository;
 	@Transactional
+
+	/**
+	 * create an InStorePickUp by its id, referencenumber, status, storeaddress, and purchase
+	 * @param id
+	 * @param pickUpReferenceNumber
+	 * @param status
+	 * @param storeAddress
+	 * @param purchase
+	 * @return  a new InStorePickUp just create with above param
+	 */
+
 	public InStorePickUp createInStorePickUp(String id, String pickUpReferenceNumber, InStorePickUpStatus status, Address storeAddress, Purchase purchase) {
 		if (id == null|| id == "") {
 			throw new InStorePickUpException ("Please provide valid id.");
@@ -54,6 +73,13 @@ public class InStorePickUpService {
 		return pickup;
 	}
 	@Transactional
+
+	/**
+	 * get an InStorePickUp by PickUpReferenceNumber
+	 * @param pickUpReferenceNumber
+	 * @return InStorePickUp instance when succeed, throw exception otherwise 
+	 */
+
 	public InStorePickUp getInStorePickUp(String pickUpReferenceNumber) {
 
 		if (pickUpReferenceNumber == null||pickUpReferenceNumber == "") {
@@ -66,10 +92,23 @@ public class InStorePickUpService {
 		return pickup;
 	}
 	@Transactional
+
+	/**
+	 * get all InStorePickUps from InStorePickUpRepository
+	 * @return  list of InStorePickUps 
+	 */
 	public List<InStorePickUp> getAllInStorePickUps(){
 		return toList(inStorePickUpRepository.findAll());
 	}
 	@Transactional
+
+	/**
+	 * delete a existing InStorePickUp by pickUpReferenceNumber
+	 * @param pickUpReferenceNumber
+	 * @return old InStorePickUp 
+	 */
+	
+
 	public InStorePickUp deleteInStorePickUp(String pickUpReferenceNumber) {
 		if (pickUpReferenceNumber == null||pickUpReferenceNumber == "") {
 			throw new InStorePickUpException ("provide valid non-empty pickupreferencenumber");
@@ -84,6 +123,13 @@ public class InStorePickUpService {
 		return pic;
 	}
 	@Transactional
+
+    /**
+	 * update an existing InStorePickUp(get by id)and with a new status 
+	 * @param pickUpReferenceNumber
+	 * @param status
+	 * @return update a new pickup status when succeed, throw exception otherwise 
+	 */
 	public InStorePickUp updateinStorePickUp(String pickUpReferenceNumber, InStorePickUpStatus status) {
 		
 		if (pickUpReferenceNumber == null|| pickUpReferenceNumber == "") {

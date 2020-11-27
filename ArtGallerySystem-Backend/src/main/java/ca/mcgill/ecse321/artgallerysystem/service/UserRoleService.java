@@ -12,6 +12,7 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.UserRoleException;
 /**
+ * this class contains useful business methods of userRole to manipulate data in backend, used in controller
  * @author Angelina Duan
  */
 @Service
@@ -20,6 +21,12 @@ public class UserRoleService {
 	ArtGallerySystemUserRepository artGallerySystemUserRepository;
 	@Autowired
 	UserRoleRepository userRoleRepository;
+	/**
+	 * create a new user role
+	 * @param userRoleId
+	 * @param userID
+	 * @return
+	 */
 	@Transactional
 	public UserRole createUserRole(String userRoleId, String userID) {
 		if(userRoleId==null) {
@@ -32,6 +39,11 @@ public class UserRoleService {
 		userRoleRepository.save(userRole);
 		return userRole;
 	}
+	/**
+	 * get an existing user role by id
+	 * @param id
+	 * @return user role if success
+	 */
 	@Transactional
 	public UserRole getUserRole(String id) {
 		if(id==null||id=="") {
@@ -44,10 +56,19 @@ public class UserRoleService {
 			return userRole;
 		}
 	}
+	/**
+	 * get all user roles from userRoleRepository
+	 * @return list of user roles
+	 */
 	@Transactional
 	public List<UserRole> getAllUserRoles(){
 		return toList(userRoleRepository.findAll());
 	}
+	/**
+	 * delete an existing user role by id
+	 * @param id
+	 * @return
+	 */
 	@Transactional
 	public boolean deleteUserRole(String id) {
 		boolean deleted = false;

@@ -11,6 +11,7 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtGallerySystemUserException;
 /**
+ * this class contains useful business methods of user to manipulate data in backend, used in controller
  * @author Angelina Duan
  */
 @Service
@@ -19,6 +20,14 @@ public class ArtGallerySystemUserService {
 	ArtGallerySystemRepository artGallerySystemRepository;
 	@Autowired
 	ArtGallerySystemUserRepository artGallerySystemUserRepository;
+	/**
+	 * create a new user
+	 * @param name
+	 * @param email
+	 * @param password
+	 * @param avatar
+	 * @return
+	 */
 	@Transactional
 	public ArtGallerySystemUser createUser(String name, String email, String password, String avatar) {
 		if(name==null||name=="") {
@@ -42,6 +51,11 @@ public class ArtGallerySystemUserService {
 		artGallerySystemUserRepository.save(user);
 		return user;
 	}
+	/**
+	 * get an existing user by name
+	 * @param name
+	 * @return ArtGallerySystemUser
+	 */
 	@Transactional
 	public ArtGallerySystemUser getUser(String name) {
 		if(name==null||name=="") {
@@ -54,10 +68,19 @@ public class ArtGallerySystemUserService {
 			return user;
 		}
 	}
+	/**
+	 * get all users from artGallerySystemUserRepository
+	 * @return list of users
+	 */
 	@Transactional
 	public List<ArtGallerySystemUser> getAllUsers(){
 		return toList(artGallerySystemUserRepository.findAll());
 	}
+	/**
+	 * delete an existing user by name
+	 * @param name
+	 * @return
+	 */
 	@Transactional
 	public boolean deleteArtGallerySystemUser(String name) {
 		boolean deleted=false;
@@ -70,6 +93,12 @@ public class ArtGallerySystemUserService {
 		}
 		return deleted;
 	}
+	/**
+	 * update user email with new email
+	 * @param name
+	 * @param newemail
+	 * @return updated ArtGallerySystemUser
+	 */
 	@Transactional
 	public ArtGallerySystemUser updateArtGallerySystemUserEmail(String name, String newemail) {
 		ArtGallerySystemUser user= artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
@@ -87,6 +116,12 @@ public class ArtGallerySystemUserService {
 			return user;
 		}
 	}
+	/**
+	 * update user password with new password
+	 * @param name
+	 * @param newpassword
+	 * @return updated ArtGallerySystemUser
+	 */
 	@Transactional
 	public ArtGallerySystemUser updateArtGallerySystemUserPassword(String name, String newpassword) {
 		ArtGallerySystemUser user= artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
@@ -103,7 +138,14 @@ public class ArtGallerySystemUserService {
 			artGallerySystemUserRepository.save(user);
 			return user;
 		}
-	}@Transactional
+	}
+	/**
+	 * update user avatar with new avatar
+	 * @param name
+	 * @param newavatar
+	 * @return updated ArtGallerySystemUser
+	 */
+	@Transactional
 	public ArtGallerySystemUser updateArtGallerySystemUserAvatar(String name, String newavatar) {
 		ArtGallerySystemUser user= artGallerySystemUserRepository.findArtGallerySystemUserByName(name);
 		if(newavatar==null||newavatar=="") {

@@ -18,6 +18,11 @@ import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtPieceException;
 
 import static java.lang.String.valueOf;
 
+/**
+ * this class contains useful business methods to manipulate data in backend, used in controller
+ * @author Zheyan Tu
+ *
+ */
 @Service
 public class ArtPieceService {
     @Autowired
@@ -31,7 +36,18 @@ public class ArtPieceService {
     @Autowired
     ArtistRepository artistRepository;
 
-
+    /**
+     * create a new art piece
+     * @param id artPiece id
+     * @param name artPiece name
+     * @param des artPiece image URL
+     * @param author artPiece author
+     * @param price artPiece price
+     * @param date artPiece date
+     * @param status artPiece status
+     * @param artist artPiece artist List
+     * @return
+     */
     @Transactional
     public ArtPiece createArtPiece(String id, String name, String des, String author, double price, Date date, ArtPieceStatus status, Set<Artist> artist) {
         if (id == null||id == "") {
@@ -68,6 +84,12 @@ public class ArtPieceService {
         return artpiece;
 
     }
+
+    /**
+     * get artPiece by artPiece id
+     * @param id artPiece id
+     * @return artPiece
+     */
     @Transactional
     public ArtPiece getArtPiece(String id) {
         if(id == null||id == "") {
@@ -79,12 +101,22 @@ public class ArtPieceService {
         }
         return artpiece;
     }
+
+    /**
+     * get all artPieces in database
+     * @return List of artPiece
+     */
     @Transactional
     public List<ArtPiece> getAllArtPieces(){
         return toList(artpieceRepository.findAll());
 
     }
 
+    /**
+     * get artist by artist userRole id
+     * @param id artist userRole id
+     * @return List of artPiece
+     */
     @Transactional
     public List<ArtPiece> getArtPiecesByArtist(String id){
        Artist artist =  artistRepository.findArtistByUserRoleId(id);
@@ -97,6 +129,11 @@ public class ArtPieceService {
        return artistArtPieces;
     }
 
+    /**
+     * delete artPiece by artPiece id
+     * @param id artPiece id
+     * @return
+     */
     @Transactional
     public ArtPiece deleteArtPiece (String id) {
         if (id == null||id == "") {
@@ -113,6 +150,13 @@ public class ArtPieceService {
         artpieceRepository.deleteById(id);
         return art;
     }
+
+    /**
+     * update artPiece date
+     * @param id artPiece id
+     * @param newdate new date
+     * @return updated artPiece
+     */
     @Transactional
     public ArtPiece updateArtPieceDate (String id, Date newdate) {
         if (id == null||id == "") {
@@ -129,6 +173,13 @@ public class ArtPieceService {
         artpieceRepository.save(artpiece);
         return artpiece;
     }
+
+    /**
+     * update artPiece des
+     * @param id artPiece id
+     * @param des new artPiece URL
+     * @return updated artPiece
+     */
     @Transactional
     public ArtPiece updateArtPieceDescription (String id, String des) {
         if (id == null||id == "") {
@@ -143,6 +194,13 @@ public class ArtPieceService {
         artpieceRepository.save(artpiece);
         return artpiece;
     }
+
+    /**
+     * update artPiece price
+     * @param id artPiece id
+     * @param price new price
+     * @return updated artPiece
+     */
     @Transactional
     public ArtPiece updateArtPiecePrice (String id, double price) {
         if (id == null||id == "") {
@@ -159,6 +217,13 @@ public class ArtPieceService {
         artpieceRepository.save(artpiece);
         return artpiece;
     }
+
+    /**
+     * update artPiece name
+     * @param id artPiece id
+     * @param name new name
+     * @return updated artPiece
+     */
     @Transactional
     public ArtPiece updateArtPieceName (String id, String name) {
         if (id == null||id == "") {
@@ -176,6 +241,12 @@ public class ArtPieceService {
         return artpiece;
     }
 
+    /**
+     * update artPiece status
+     * @param id artPiece id
+     * @param status new status
+     * @return updated artPiece
+     */
     @Transactional
     public ArtPiece updateArtPieceStatus (String id, String status){
         if (id == null||id == "") {
@@ -198,6 +269,12 @@ public class ArtPieceService {
         return artPiece;
     }
 
+    /**
+     * update artPiece author
+     * @param id artPiece id
+     * @param author new author
+     * @return updated artPiece
+     */
     @Transactional
     public ArtPiece updateArtPieceAuthor (String id, String author){
         if (id == null||id == "") {
@@ -216,8 +293,12 @@ public class ArtPieceService {
     }
 
     /**
+     * Add artist to artistList of the artPiece by artPiece id
+     * @param id  artPiece Id
+     * @param artist artist
      * Added Nov 10
      * @author Zhekai Jiang
+     * @return updated artPiece
      */
     @Transactional
     public ArtPiece addArtist(String id, Artist artist) {
@@ -238,6 +319,12 @@ public class ArtPieceService {
     	return artPiece;
     }
 
+    /**
+     * helper method
+     * @param iterable
+     * @param <T>
+     * @return
+     */
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();
         for (T t : iterable) {

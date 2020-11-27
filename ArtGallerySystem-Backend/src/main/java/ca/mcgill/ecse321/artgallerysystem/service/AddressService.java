@@ -13,18 +13,31 @@ import ca.mcgill.ecse321.artgallerysystem.dao.ArtGallerySystemRepository;
 import ca.mcgill.ecse321.artgallerysystem.model.Address;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.AddressException;
 @Service
+/**
+ * this class contains useful business methods to manipulate data in backend, used in controller 
+ * @author amelia
+ *
+ */
 public class AddressService {
 	@Autowired
 	ArtGallerySystemRepository artGallerySystemRepository;
 	@Autowired
 	AddressRepository addressRepository;
+	/**
+ 	 * get all addresses from addressRepository
+ 	 * @return list of addresses 
+ 	 */
 	@Transactional
 	public List<Address> getAllAddresses() {
 		//return toList(addressRepository.findAll()).stream().map(this::convertToDto).collect(Collectors.toList());
 		return toList(addressRepository.findAll()).stream().collect(Collectors.toList());
 		
 	}
-	
+	/**
+ 	 * get an existing address by id 
+ 	 * @param id address id 
+ 	 * @return address instance if success 
+ 	 */
 	@Transactional
 	public Address getAddressById(String id) {
 		Address address = addressRepository.findAddressByAddressId(id);
@@ -39,6 +52,18 @@ public class AddressService {
 		}
 		
 	}
+	/**
+ 	 * create a new address 
+ 	 * @param id
+ 	 * @param city
+ 	 * @param country
+ 	 * @param postCode
+ 	 * @param province
+ 	 * @param streetAddress
+ 	 * @param number
+ 	 * @param name: name wants to display in frontend 
+ 	 * @return
+ 	 */
 	@Transactional
 	public Address createAddress(String id, String city, String country, String postCode, String province, String streetAddress, String number, String name) {
 		if (city==null||country==null||postCode==null||province==null||streetAddress==null 
@@ -55,8 +80,6 @@ public class AddressService {
 			throw new AddressException ("please give an id for the address");
 		}
 		Address address = new Address();
-		//ArtGallerySystem system = artGallerySystemRepository.findArtGallerySystemByArtGallerySystemId(sysID);
-		//address.setArtGallerySystem(system);
 		address.setCity(city);
 		address.setAddressId(id);
 		address.setCountry(country);
@@ -65,13 +88,14 @@ public class AddressService {
 		address.setPostalCode(postCode);
 		address.setProvince(province);
 		address.setStreetAddress(streetAddress);
-		//Set<Address> sysAddress = system.getAddress();
-		//sysAddress.add(address);
-		//s//ystem.setAddress(sysAddress);
-		//artGallerySystemRepository.save(system);
 		addressRepository.save(address);
 		return address;
 	}
+	/**
+ 	 * delete an existing address by id 
+ 	 * @param id
+ 	 * @return old address instance 
+ 	 */
 	@Transactional
 	public Address deleteAddress(String id) {
 		Address address = null;
@@ -83,6 +107,12 @@ public class AddressService {
 		}
 		return address;
 	}
+	/**
+ 	 * update streetAddress with new streetAddress 
+ 	 * @param id
+ 	 * @param newaddress
+ 	 * @return
+ 	 */
 	@Transactional
 	public Address updateAddress(String id, String newaddress) {
 		Address address = addressRepository.findAddressByAddressId(id);
@@ -103,7 +133,7 @@ public class AddressService {
 		}
 	}
 	
-	/**
+	/** update the full address 
 	 * Added Nov 11
 	 * @author Zhekai Jiang
 	 */
@@ -156,19 +186,7 @@ public class AddressService {
 		return address;
 	}
 	
-	/*public AddressDTO convertToDto(Address address) {
-	    AddressDTO addressDTO = new AddressDTO();
-	    addressDTO.setAddressId(address.getAddressId());
-	    addressDTO.setCity(address.getCity());
-	    addressDTO.setCountry(address.getCountry());
-	    addressDTO.setName(address.getName());
-	    addressDTO.setPhoneNumber(address.getPhoneNumber());
-	    addressDTO.setPostalCode(address.getPostalCode());
-	    addressDTO.setProvince(address.getProvince());
-	    addressDTO.setStreetAddress(address.getStreetAddress());
-	    addressDTO.setArtGallerySystem(address.getArtGallerySystem());
-	    return addressDTO;
-	}*/
+	
 
 	private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();

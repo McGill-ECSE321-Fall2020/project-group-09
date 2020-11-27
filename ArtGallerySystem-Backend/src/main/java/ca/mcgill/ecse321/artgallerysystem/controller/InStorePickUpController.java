@@ -31,7 +31,11 @@ import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUp;
 import ca.mcgill.ecse321.artgallerysystem.model.InStorePickUpStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.InStorePickUpService;
-
+/**
+ * this class contains the controller methods to call perform database operations using business methods
+ * @author Tianyu Zhao
+ *
+ */
 @CrossOrigin(origins="*")
 @RestController
 public class InStorePickUpController {
@@ -41,6 +45,10 @@ private InStorePickUpService inStorePickUpService;
 private AddressRepository addressRepository;
 @Autowired
 private PurchaseRepository purchaseRepository;
+/**
+ * return all inStorePickUps in the database 	
+ * @return list of inStorePickUpDTo 
+ */
 @GetMapping(value = {"/inStorePickUps", "/inStorePickUps/"})
 public List<InStorePickUpDTO> getInStorePickUps(){
 	
@@ -48,6 +56,15 @@ public List<InStorePickUpDTO> getInStorePickUps(){
 	return toList(inStorePickUps.stream().map(this::convertToDto).collect(Collectors.toList()));
 	
 }
+/**
+ * create a new inStorePickUp
+ * @param id
+ * @param pickUpReferenceNumber
+ * @param status
+ * @param storeAddress
+ * @param purid
+ * @return inStorePickUp when succeed
+ */
 @PostMapping(value = {"/inStorePickUp", "/inStorePickUp/"})
 
 public InStorePickUpDTO createInStorePickUp(@RequestParam("deliveryid") String id,@RequestParam("pickUpReferenceNumber")String pickUpReferenceNumber,@RequestParam("inStorePickUpStatus")String status, @RequestParam("storeAddress")String storeAddress, @RequestParam("purchaseid")String purid) {
@@ -59,18 +76,38 @@ public InStorePickUpDTO createInStorePickUp(@RequestParam("deliveryid") String i
 	InStorePickUp inStorePickUp = inStorePickUpService.createInStorePickUp(id,pickUpReferenceNumber, inStorePickUpstatus, address, purchase);
 	return convertToDto(inStorePickUp);
 }
+/**
+ * return inStorePickUp by trackingNumber
+ * @param pickUpReferenceNumber
+ * @return inStorePickUpDTO
+ */
 @GetMapping(value = {"/inStorePickUps/{pickUpReferenceNumber}", "/inStorePickUps/{pickUpReferenceNumber}/"})
 public InStorePickUpDTO getinStorePickUpById(@PathVariable("pickUpReferenceNumber")String pickUpReferenceNumber) {
 	return convertToDto(inStorePickUpService.getInStorePickUp(pickUpReferenceNumber));
 }
+/**
+ * delete an existing inStorePickUp using pickUpReferenceNumber
+ * @param pickUpReferenceNumber
+ */
 @DeleteMapping(value = {"/inStorePickUps/{pickUpReferenceNumber}", "/inStorePickUps/{pickUpReferenceNumber}/"})
 public void deleteinStorePickUp(@PathVariable("pickUpReferenceNumber") String pickUpReferenceNumber) {
 	inStorePickUpService.deleteInStorePickUp(pickUpReferenceNumber);
 }
+/**
+ * update status of an existing inStorePickUp with a new status 
+ * @param pickUpReferenceNumber
+ * @param newinStorePickUp
+ * @return
+ */
 @PutMapping (value = {"/inStorePickUp/update/{pickUpReferenceNumber}", "/inStorePickUp/update/{pickUpReferenceNumber}/"})
 public InStorePickUpDTO updateinStorePickUpStatus(@PathVariable("pickUpReferenceNumber")String pickUpReferenceNumber, @RequestParam("inStorePickUp")String newinStorePickUp) {
 	return convertToDto(inStorePickUpService.updateinStorePickUp(pickUpReferenceNumber,getStatus(newinStorePickUp)));
 }
+/**
+ * convert inStorePickUp to DTO
+ * @param inStorePickUp
+ * @return
+ */
 public InStorePickUpDTO convertToDto(InStorePickUp inStorePickUp) {
 	InStorePickUpDTO inStorePickUpDto = new InStorePickUpDTO();
 	inStorePickUpDto.setPickUpReferenceNumber(inStorePickUp.getPickUpReferenceNumber());
@@ -81,6 +118,11 @@ public InStorePickUpDTO convertToDto(InStorePickUp inStorePickUp) {
     
     return inStorePickUpDto;
 }
+/**
+ * Get a status for a inStorePickUp
+ * @param status
+ * @return
+ */
 public InStorePickUpStatus getStatus (String status) {
 	switch(status) {
 	case "Pending":
@@ -94,6 +136,11 @@ public InStorePickUpStatus getStatus (String status) {
 	}
 	return null;
 }
+/**
+ * convert purchase to DTO
+ * @param purchase
+ * @return
+ */
 public PurchaseDTO convertToDto(Purchase purchase) {
 	PurchaseDTO purchaseDto = new PurchaseDTO();
 	purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
@@ -107,6 +154,11 @@ public PurchaseDTO convertToDto(Purchase purchase) {
     BeanUtils.copyProperties(customer,customerDTO);
     return customerDTO;
 }*/
+/**
+ * convert customer to DTO
+ * @param customer
+ * @return
+ */
 public CustomerDTO convertToDto(Customer customer){
     CustomerDTO customerDTO = new CustomerDTO();
     customerDTO.setAddress(null);
@@ -117,7 +169,11 @@ public CustomerDTO convertToDto(Customer customer){
     //BeanUtils.copyProperties(customer,customerDTO);
     return customerDTO;
 }
-
+/**
+ * convert user to DTO
+ * @param user
+ * @return
+ */
 public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
 	ArtGallerySystemUserDTO userDTO = new ArtGallerySystemUserDTO();
 	userDTO.setName(user.getName());
@@ -127,11 +183,21 @@ public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
 	//userDTO.setArtGallerySystem(user.getArtGallerySystem());
 	return userDTO;
 }
+/**
+ * convert artpiece to DTO
+ * @param artPiece
+ * @return
+ */
 public ArtPieceDTO convertToDto(ArtPiece artPiece){
     ArtPieceDTO artPieceDTO = new ArtPieceDTO();
     BeanUtils.copyProperties(artPiece,artPieceDTO);
     return artPieceDTO;
 }
+/**
+ * convert address to DTO
+ * @param address
+ * @return
+ */
 public AddressDTO convertToDto(Address address) {
     AddressDTO addressDTO = new AddressDTO();
     addressDTO.setAddressId(address.getAddressId());
@@ -145,6 +211,11 @@ public AddressDTO convertToDto(Address address) {
     addressDTO.setArtGallerySystem(address.getArtGallerySystem());
     return addressDTO;
 }
+/**
+ * helper method
+ * @param iterable
+ * @return
+ */
 private <T> List<T> toList(Iterable<T> iterable) {
     List<T> resultList = new ArrayList<>();
     for (T t : iterable) {

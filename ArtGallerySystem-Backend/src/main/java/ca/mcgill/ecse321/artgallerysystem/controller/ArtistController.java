@@ -18,6 +18,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * this class contains the controller methods to call perform database operations using business methods
+ * @author Zheyan Tu
+ *
+ */
 @CrossOrigin(origins ="*")
 @RestController
 @RequestMapping("/artist")
@@ -29,18 +35,32 @@ public class ArtistController {
     ArtGallerySystemUserService userService;
     @Autowired
     UserRoleService userroleService;
-    
 
+    /**
+     * return all artists in the database
+     * @return list of artistDTo
+     */
     @GetMapping("/artistList")
     public List<ArtistDTO> getAllArtists(){
         List<Artist> artistList = artistService.getAllArtists();
         return toList(artistList.stream().map(this::convertToDto).collect(Collectors.toList()));
     }
 
+
+    /**
+     * return artist by id
+     * @param id userRole id
+     * @return artistDTO if success
+     */
     @GetMapping("/getArtist/{id}")
     public ArtistDTO getArtistById(@PathVariable("id")String id){
         return convertToDto(artistService.getArtist(id));
     }
+
+    /**
+     * return list of artists userRole id
+     * @return List of ids
+     */
     @GetMapping (value = {"/artistids"})
     public ArrayList<String> getArtistIds(){
     	ArrayList<String> ids = new ArrayList<String>();
@@ -50,6 +70,15 @@ public class ArtistController {
     	}
     	return ids;
     }
+
+
+    /**
+     * create a new artist
+     * @param id userRole id
+     * @param userid
+     * @param credit
+     * @return
+     */
     @PostMapping(value = {"/createArtist/{id}", "/createArtist/{id}/"})
     public ArtistDTO createArtist(@PathVariable("id") String id, @RequestParam("user") String userid, @RequestParam("credit") double credit){
     	//userroleService
@@ -58,15 +87,33 @@ public class ArtistController {
         return convertToDto(artist);
     }
 
+    /**
+     * delete an existing artist using id
+     * @param id
+     */
     @DeleteMapping("/deleteArtist/{id}")
     public void deleteArtist(@PathVariable("id") String id){
         artistService.deleteArtist(id);
     }
 
+    /**
+     * create a new artist
+     * @param id userRole id
+     * @param credit new credit
+     * @return updated artistDTO
+     */
     @PutMapping("/updateCredit/{id}")
     public ArtistDTO updateArtistCredit(@PathVariable("id") String id, @RequestParam("credit") double credit){
         return convertToDto(artistService.updateArtistCredit(id,credit));
     }
+
+
+
+    /**
+     * convert artPiece to artPieceDTO
+     * @param artPiece
+     * @return
+     */
     public ArtPieceDTO convertToDto(ArtPiece artPiece){
         ArtPieceDTO artPieceDTO = new ArtPieceDTO();
         artPieceDTO.setArtPieceId(artPiece.getArtPieceId());
@@ -81,7 +128,11 @@ public class ArtistController {
     }
 
 
-
+    /**
+     * convert artist to artistDTO
+     * @param artist
+     * @return
+     */
     public ArtistDTO convertToDto(Artist artist){
         ArtistDTO artistDTO = new ArtistDTO();
         HashSet<ArtPieceDTO> artPieces = new HashSet<ArtPieceDTO>();
@@ -97,7 +148,12 @@ public class ArtistController {
         return artistDTO;
     }
 
-
+    /**
+     * useful helper method
+     * @param <T>
+     * @param iterable
+     * @return
+     */
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();
         for (T t : iterable) {
