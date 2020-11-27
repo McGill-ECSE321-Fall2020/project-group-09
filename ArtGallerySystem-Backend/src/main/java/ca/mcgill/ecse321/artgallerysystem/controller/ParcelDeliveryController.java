@@ -31,7 +31,11 @@ import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
 import ca.mcgill.ecse321.artgallerysystem.model.ParcelDeliveryStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.ParcelDeliveryService;
-
+/**
+ * this class contains the controller methods to call perform database operations using business methods
+ * @author Tianyu Zhao
+ *
+ */
 @CrossOrigin(origins="*")
 @RestController
 public class ParcelDeliveryController {
@@ -42,6 +46,10 @@ private ParcelDeliveryService parcelDeliveryService;
 private AddressRepository addressRepository;
 @Autowired
 private PurchaseRepository purchaseRepository;
+/**
+ * return all parcelDeliveries in the database 	
+ * @return list of parcelDeliveryDTo 
+ */
 @GetMapping(value = {"/parcelDeliveries", "/parcelDeliveries/"})
 public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 	
@@ -49,6 +57,16 @@ public List<ParcelDeliveryDTO> getAllParcelDeliveries(){
 	return toList(parcelDeliveries.stream().map(this::convertToDto).collect(Collectors.toList()));
 	
 }
+/**
+ * create a new parcelDelivery
+ * @param deliveryid
+ * @param trackingNumber
+ * @param carrier
+ * @param status
+ * @param deliveryAddress
+ * @param purid
+ * @return  parcelDeliveryDTO when succeed
+ */
 @PostMapping(value = {"/parcelDelivery", "/parcelDelivery/"})
 public ParcelDeliveryDTO createParcelDelivery(@RequestParam("deliveryid")String deliveryid, @RequestParam("trackingNumber")String trackingNumber, @RequestParam("carrier")String carrier, @RequestParam("parcelDeliveryStatus")String status, @RequestParam("deliveryAddress")String deliveryAddress, @RequestParam("purchaseid")String purid) {
 	//ArtGallerySystem system = systemservice.getSystemById(id);
@@ -58,14 +76,29 @@ public ParcelDeliveryDTO createParcelDelivery(@RequestParam("deliveryid")String 
 	ParcelDelivery parcelDelivery = parcelDeliveryService.createParcelDelivery(deliveryid,trackingNumber, carrier, parcelDeliverystatus, address,purchase);
 	return convertToDto(parcelDelivery);
 }
+/**
+ * return parcelDelivery by trackingNumber
+ * @param trackingNumber
+ * @return parcelDeliveryDTO
+ */
 @GetMapping(value = {"/parcelDeliveryes/{trackingNumber}", "/parcelDeliveryes/{trackingNumber}/"})
 public ParcelDeliveryDTO getparcelDeliveryById(@PathVariable("trackingNumber")String trackingNumber) {
 	return convertToDto(parcelDeliveryService.getParcelDelivery(trackingNumber));
 }
+/**
+ * delete an existing parcelDelivery using trackingNumber
+ * @param trackingNumber
+ */
 @DeleteMapping(value = {"/parcelDeliveryes/{trackingNumber}", "/parcelDeliveryes/{trackingNumber}/"})
 public void deleteparcelDelivery(@PathVariable("trackingNumber") String trackingNumber) {
 	parcelDeliveryService.deleteParcelDelivery(trackingNumber);
 }
+/**
+ * update status of an existing parcelDelivery with a new status 
+ * @param trackingNumber
+ * @param newparcelDelivery
+ * @return
+ */
 @PutMapping (value = {"/parcelDelivery/update/{trackingNumber}", "/parcelDelivery/update/{trackingNumber}/"})
 public ParcelDeliveryDTO updateparcelDelivery(@PathVariable("trackingNumber")String trackingNumber, @RequestParam("parcelDelivery")String newparcelDelivery) {
 	return convertToDto(parcelDeliveryService.updateparcelDelivery(trackingNumber,getStatus(newparcelDelivery)));
@@ -79,7 +112,11 @@ public ParcelDeliveryDTO updateparcelDelivery(@PathVariable("trackingNumber")Str
 	public ParcelDeliveryDTO updateParcelDelivery(@PathVariable("deliveryId") String id, @RequestParam("parcelDeliveryStatus") String status, @RequestParam("carrier") String carrier, @RequestParam("trackingNumber") String trackingNumber) {
 		return convertToDto(parcelDeliveryService.updateParcelDelivery(id, getStatus(status), carrier, trackingNumber));
 	}
-
+/**
+ * convert parcelDelivery to DTO
+ * @param parcelDelivery
+ * @return
+ */
 public ParcelDeliveryDTO convertToDto(ParcelDelivery parcelDelivery) {
     ParcelDeliveryDTO parcelDeliveryDto = new ParcelDeliveryDTO();
     parcelDeliveryDto.setTrackingNumber(parcelDelivery.getTrackingNumber());
@@ -90,6 +127,11 @@ public ParcelDeliveryDTO convertToDto(ParcelDelivery parcelDelivery) {
     parcelDeliveryDto.setPurchase(convertToDto(parcelDelivery.getPurchase()));
     return parcelDeliveryDto;
 }
+/**
+ * Get status for a parcelDelivery
+ * @param status
+ * @return
+ */
 public ParcelDeliveryStatus getStatus (String status) {
 	switch(status) {
 	case "Delivered":
@@ -103,6 +145,11 @@ public ParcelDeliveryStatus getStatus (String status) {
 	}
 	return null;
 }
+/**
+ * convert purchase to DTO
+ * @param purchase
+ * @return
+ */
 public PurchaseDTO convertToDto(Purchase purchase) {
 	PurchaseDTO purchaseDto = new PurchaseDTO();
 	purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
@@ -116,6 +163,12 @@ public PurchaseDTO convertToDto(Purchase purchase) {
     BeanUtils.copyProperties(customer,customerDTO);
     return customerDTO;
 }*/
+
+/**
+ * convert customer to DTO
+ * @param customer
+ * @return
+ */
 public CustomerDTO convertToDto(Customer customer){
     CustomerDTO customerDTO = new CustomerDTO();
     customerDTO.setAddress(null);
@@ -127,6 +180,11 @@ public CustomerDTO convertToDto(Customer customer){
     return customerDTO;
 }
 
+/**
+ * convert user to DTO
+ * @param user
+ * @return
+ */
 public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
 	ArtGallerySystemUserDTO userDTO = new ArtGallerySystemUserDTO();
 	userDTO.setName(user.getName());
@@ -136,11 +194,21 @@ public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
 	//userDTO.setArtGallerySystem(user.getArtGallerySystem());
 	return userDTO;
 }
+/**
+ * convert artpiece to DTO
+ * @param artPiece
+ * @return
+ */
 public ArtPieceDTO convertToDto(ArtPiece artPiece){
     ArtPieceDTO artPieceDTO = new ArtPieceDTO();
     BeanUtils.copyProperties(artPiece,artPieceDTO);
     return artPieceDTO;
 }
+/**
+ * convert address to DTO
+ * @param address
+ * @return
+ */
 public AddressDTO convertToDto(Address address) {
     AddressDTO addressDTO = new AddressDTO();
     addressDTO.setAddressId(address.getAddressId());
@@ -154,6 +222,11 @@ public AddressDTO convertToDto(Address address) {
     addressDTO.setArtGallerySystem(address.getArtGallerySystem());
     return addressDTO;
 }
+/**
+ * useful helper method 
+ * @param iterable
+ * @return
+ */
 private <T> List<T> toList(Iterable<T> iterable) {
     List<T> resultList = new ArrayList<>();
     for (T t : iterable) {
