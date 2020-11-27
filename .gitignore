@@ -13,3 +13,5 @@ build/
 
 ArtGallerySystem-Backend/gradle/wrapper/gradle-6.6.1-bin.zip
 gradle/wrapper/gradle-6.6.1-bin.zip
+
+.idea/
