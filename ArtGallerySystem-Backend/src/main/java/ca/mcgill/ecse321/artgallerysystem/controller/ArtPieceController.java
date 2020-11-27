@@ -94,11 +94,11 @@ public class ArtPieceController {
     }
     
     /**
-     * Added Nov 10
-     * get artPiece by userId
+     * Get all the art pieces uploaded by the given user (-'s artist role).
+     * Added Nov 10 for more convenient frontend access from my account page.
      * @author Zhekai Jiang
-     * @param userName userId
-     * @return List of ArtPiece
+     * @param userName The user's name.
+     * @return List of ArtPiece-s uploaded by the user.
      */
     @GetMapping(value = {"/user/{username}", "/user/{username}/"})
     public List<ArtPieceDTO> getArtPiecesByUserName(@PathVariable("username") String userName) {
@@ -137,8 +137,12 @@ public class ArtPieceController {
     }
     
     /**
-     * Added Nov 10
+     * Associate an art piece to an artist.
+     * Added Nov 10.
      * @author Zhekai Jiang
+     * @param id The id of the art piece.
+     * @param artistId The id of the artist role.
+     * @return The DTO of the updated art piece.
      */
     @PutMapping(value = {"/addArtist/{id}", "/addArtist/{id}/"})
     public ArtPieceDTO addArtist(@PathVariable("id") String id, @RequestParam("artistid") String artistId) {
@@ -230,8 +234,11 @@ public class ArtPieceController {
 
 
     /**
-     * convert artPiece to artPieceDTO
-     * Updated Nov 10 (to avoid infinite circular reference) & Nov 15 (for frontend access) by Zhekai Jiang
+     * Convert an art piece to DTO.
+     * Updated Nov 10 (to avoid infinite circular reference caused by the BeanUtils method)
+     * & Nov 15 (for more convenient frontend access) by Zhekai Jiang
+     * @param artPiece The art piece instance.
+     * @return ArtPieceDTO The DTO of the art piece.
      */
     public ArtPieceDTO convertToDto(ArtPiece artPiece){
         ArtPieceDTO artPieceDTO = new ArtPieceDTO();
@@ -243,14 +250,15 @@ public class ArtPieceController {
         artPieceDTO.setDate(artPiece.getDate());
         artPieceDTO.setArtPieceStatus(artPiece.getArtPieceStatus());
         artPieceDTO.setPurchase(convertToDto(artPiece.getPurchase()));
-        // BeanUtils.copyProperties(artPiece,artPieceDTO);
         return artPieceDTO;
     }
     
     /**
-     * convert Artist toArtistDTO
-     * Added Nov 15
+     * Convert an artist to DTO (copying set of art pieces and credit only).
+     * Added Nov 15.
      * @author Zhekai Jiang
+     * @param artist The artist instance.
+     * @return ArtistDTO The DTO of the artist.
      */
     public ArtistDTO convertToDto(Artist artist){
         ArtistDTO artistDTO = new ArtistDTO();
@@ -261,16 +269,25 @@ public class ArtPieceController {
         }
         artistDTO.setArtPiece(artPieces);
         artistDTO.setCredit(artist.getCredit());
-        //BeanUtils.copyProperties(artist,artistDTO);
+        
         return artistDTO;
     }
     
     /**
-     * convert Purchase to PurchaseDTO
-     * Added Nov 15
+     * Convert a purchase to DTO.
+     * This conversion copies the date, id, status, and delivery only.
+     * It does NOT copy payment, customer, art piece, and system to avoid circular references.
+     * It also adds several attributes to the DTO to enable the frontend to access more conveniently:
+     * - A String deliveryMethod, which could be either "Parcel Delivery" or "In-Store Pick-Up",
+     * - A boolean isParcelDelivery (which becomes parcelDelivery in JSON),
+     * - A boolean isInStorePickUp (which becomes inStorePickUp in JSON), and
+     * - A String deliveryStatus, which stores the status regardless of delivery type in a string. 
+     * Added Nov 15.
      * @author Zhekai Jiang
+     * @param purchase The purchase instance.
+     * @return The DTO of the purchase.
      */
-    public PurchaseDTO convertToDto(Purchase purchase) {
+    private PurchaseDTO convertToDto(Purchase purchase) {
     	if(purchase == null) {
     		return null;
     	}
@@ -294,11 +311,13 @@ public class ArtPieceController {
     }
     
     /**
-     * convert parcelDelivery to parcelDeliveryDTO
-	 * Added Nov 15
+     * Convert a parcel delivery to DTO.
+	 * Added Nov 15.
 	 * @author Zhekai Jiang
+	 * @param delivery The parcel delivery instance.
+	 * @return The DTO of the parcel delivery.
 	 */
-	public ParcelDeliveryDTO convertToDto(ParcelDelivery delivery) {
+	private ParcelDeliveryDTO convertToDto(ParcelDelivery delivery) {
 		ParcelDeliveryDTO parcelDeliveryDto = new ParcelDeliveryDTO();
 		parcelDeliveryDto.setTrackingNumber(delivery.getTrackingNumber());
 		parcelDeliveryDto.setCarrier(delivery.getCarrier()); 
@@ -309,11 +328,13 @@ public class ArtPieceController {
 	}
 	
 	/**
-     * convert inStorePickUp to inStorePickUpDTO
-	 * Added Nov 15
+     * Convert an in-store pick-up instance to DTO.
+	 * Added Nov 15.
 	 * @author Zhekai Jiang
+	 * @param delivery The in-store pick-up instance.
+	 * @return The DTO of the in-store pick-up.
 	 */
-	public InStorePickUpDTO convertToDto(InStorePickUp delivery) {
+	private InStorePickUpDTO convertToDto(InStorePickUp delivery) {
 		InStorePickUpDTO inStorePickUpDto = new InStorePickUpDTO();
 		inStorePickUpDto.setPickUpReferenceNumber(delivery.getPickUpReferenceNumber());
 		inStorePickUpDto.setDeliveryId(delivery.getDeliveryId());
@@ -323,11 +344,13 @@ public class ArtPieceController {
 	}
 	
 	/**
-     * convert address to addressDTO
-	 * Added Nov 15
+     * Convert an address to DTO.
+	 * Added Nov 15.
 	 * @author Zhekai Jiang
+	 * @param address The address instance.
+	 * @return The DTO of the address.
 	 */
-	public AddressDTO convertToDto(Address address) {
+	private AddressDTO convertToDto(Address address) {
 		AddressDTO addressDTO = new AddressDTO();
 		addressDTO.setAddressId(address.getAddressId());
 		addressDTO.setCity(address.getCity());

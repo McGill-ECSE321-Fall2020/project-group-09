@@ -63,11 +63,12 @@ public class CustomerController {
     }
     
     /**
-     * Added Nov 11
-     * get customer by userId
+     * Get the customer role of a given user.
+     * Note that user and customer are different. A user *has-a* customer role.
+     * Added Nov 11.
      * @author Zhekai Jiang
-     * @param userName userName
-     * @return customerDTO
+     * @param userName The name of the user.
+     * @return The DTO of the user's customer role.
      */
     @GetMapping(value = {"/user/{name}", "/user/{name}/"})
     private CustomerDTO getCustomerByUserName(@PathVariable("name") String userName) {
@@ -148,12 +149,12 @@ public class CustomerController {
     }
     
     /**
-     * Added Nov 11
-     * Delete an address in customer's address list
+     * Delete an address from the customer's address list.
+     * Added Nov 11.
      * @author Zhekai Jiang
-     * @param id customer userRole id
-     * @param addressId addressId
-     * @return updated customerDTO
+     * @param id The id of the customer role.
+     * @param addressId The id of the address to be deleted.
+     * @return The DTO of the updated customer role. 
      */
     @PutMapping(value = {"/deleteAddress/{id}", "/deleteAddress/{id}/"})
     private CustomerDTO deleteCustomerAddress(@PathVariable("id") String id, @RequestParam("addressid") String addressId){

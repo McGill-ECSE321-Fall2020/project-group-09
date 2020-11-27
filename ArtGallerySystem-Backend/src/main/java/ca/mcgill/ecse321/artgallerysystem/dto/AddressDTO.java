@@ -63,13 +63,6 @@ public class AddressDTO {
 	public String getCountry() {
 	return this.country;
 	    }
-	/*public String sysID;
-	public String getSysID() {
-		return this.sysID;
-	}
-	public void setSySID(String id) {
-		this.sysID=id;
-	}*/
 	private ArtGallerySystem artGallerySystem;
 
 	public ArtGallerySystem getArtGallerySystem() {

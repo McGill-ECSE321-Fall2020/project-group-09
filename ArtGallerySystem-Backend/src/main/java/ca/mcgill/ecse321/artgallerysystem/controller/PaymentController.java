@@ -133,7 +133,6 @@ public PaymentMethod convertToMethod(String method) {
 //the following contains some helper methods to convert a class instance to a DTO object 
 public PurchaseDTO convertToDto(Purchase purchase) {
 	PurchaseDTO purchaseDto = new PurchaseDTO();
-	// purchaseDto.setArtPiece(convertToDto(purchase.getArtPiece())); // removed Nov 15 by Zhekai Jiang (not useful)
 	purchaseDto.setCustomer(convertToDto(purchase.getCustomer()));
 	purchaseDto.setDate(purchase.getDate());
 	purchaseDto.setOrderId(purchase.getOrderId());

@@ -38,6 +38,10 @@ import ca.mcgill.ecse321.artgallerysystem.service.ParcelDeliveryService;
 import ca.mcgill.ecse321.artgallerysystem.service.PaymentService;
 import ca.mcgill.ecse321.artgallerysystem.service.PurchaseService;
 
+/**
+ * REST controller for functionalities related to purchases.
+ * @author Zhekai Jiang
+ */
 @CrossOrigin(origins="*")
 @RestController
 public class PurchaseController {
@@ -55,29 +59,56 @@ public class PurchaseController {
 	@Autowired
 	private InStorePickUpService inStorePickUpService;
 	
+	/**
+	 * Get all the purchases in the system.
+	 * @author Amelia Cui
+	 * @return A list of DTOs for all the purchases in the system.
+	 */
 	@GetMapping(value = {"/purchases", "/purchases/"})
 	public List<PurchaseDTO> getAllPurchases(){
 		List<Purchase> purchases = purchaseService.getAllPurchases();
 		return toList(purchases.stream().map(this::convertToDto).collect(Collectors.toList()));
 	}
 	
+	/**
+	 * Create a new purchase.
+	 * @author Amelia Cui, Zhekai Jiang
+	 * @param id The id of the new purchase.
+	 * @param status The status of the new purchase as a String, which could be "Pending", "Successful", "Failed", or "Cancelled".
+	 * @param dateAsString The date of purchase as a String, in the format "YYYY-MM-DD".
+	 * @param artPieceId The id of the art piece purchased.
+	 * @param customerId The role id of the customer who made the purchase.
+	 * @return The DTO of the new purchase created.
+	 */
 	@PostMapping(value = {"/purchase/{id}", "/purchase/{id}/"})
-	public PurchaseDTO createPurchase(@PathVariable("id") String id, // previous: @RequestParam
-			@RequestParam("status") String status, @RequestParam("date") String date, 
+	public PurchaseDTO createPurchase(@PathVariable("id") String id,
+			@RequestParam("status") String status, @RequestParam("date") String dateAsString, 
 			@RequestParam("artpieceid") String artPieceId, @RequestParam("customerid") String customerId) {
-		Date dates = Date.valueOf(date);
+		Date date = Date.valueOf(dateAsString);
 		OrderStatus orderStatus = convertToStatus(status);
 		ArtPiece artPiece = artPieceService.getArtPiece(artPieceId);
 		Customer customer = customerService.getCustomer(customerId);
-		Purchase purchase = purchaseService.createPurchase(id, dates, orderStatus, artPiece, customer);
+		Purchase purchase = purchaseService.createPurchase(id, date, orderStatus, artPiece, customer);
 		return convertToDto(purchase);
 	}
 	
+	/**
+	 * Get the purchase with the given id.
+	 * @author Amelia Cui
+	 * @param id The id of the purchase.
+	 * @return The DTO of the purchase.
+	 */
 	@GetMapping(value = {"/purchase/{id}", "/purchase/{id}/"})
 	public PurchaseDTO getPurchaseById(@PathVariable("id") String id) {
 		return convertToDto(purchaseService.getPurchase(id));
 	}
 	
+	/**
+	 * Get all the purchase made by a given customer.
+	 * @author Zhekai Jiang
+	 * @param customerId The id of the customer.
+	 * @return A list of DTO-s of the purchases made by the customer.
+	 */
 	@GetMapping(value = {"/purchasesbycustomer/{id}", "/purchasesbycustomer/{id}/"})
 	public List<PurchaseDTO> getPurchasesMadeByCustomer(@PathVariable("id") String customerId) {
 		Customer customer = customerService.getCustomer(customerId);
@@ -86,8 +117,12 @@ public class PurchaseController {
 	}
 	
 	/**
-	 * Added Nov 10
+	 * Get all the purchases made by the given user (-'s customer role).
+	 * Note that user and customer are different. A user *has-a* customer role.
+	 * Added Nov 10 for more convenient access from the frontend.
 	 * @author Zhekai Jiang
+	 * @param userName The name of the user.
+	 * @return A list of DTO-s of the purchases made by the user (-'s customer role).
 	 */
 	@GetMapping(value = {"/purchasesbyuser/{username}", "/purchasesbyuser/{username}/"}) 
 	public List<PurchaseDTO> getPurchasesMadeByUser(@PathVariable("username") String userName) {
@@ -95,35 +130,73 @@ public class PurchaseController {
 		return getPurchasesMadeByCustomer(customer.getUserRoleId());
 	}
 	
+	/**
+	 * Delete a purchase.
+	 * @author Amelia Cui
+	 * @param id The id of the purchase to be deleted.
+	 */
 	@DeleteMapping(value = {"/purchase/{id}", "/purchase/{id}/"})
 	public void deletePurchase(@PathVariable("id") String id) {
 		purchaseService.deletePurchase(id);
 	}
 	
-	// previous: updatePurchase
+	/**
+	 * Update the status of a purchase.
+	 * @param id The id of the purchase to be updated.
+	 * @author Amelia Cui
+	 * @param status The new status as a String, which could be "Pending", "Successful", "Failed", or "Cancelled".
+	 * @return The DTO of the updated purchase.
+	 */
 	@PutMapping(value = {"/purchase/updatestatus/{id}", "/purchase/updatestatus/{id}/"})
 	public PurchaseDTO updatePurchaseStatus(@PathVariable("id") String id, @RequestParam("status") String status) {
 		return convertToDto(purchaseService.updatePurchaseStatus(id, convertToStatus(status)));
 	}
 	
+	/**
+	 * Associate a parcel delivery to the purchase.
+	 * @author Zhekai Jiang
+	 * @param id The id of the purchase to be updated.
+	 * @param deliveryId The delivery id of the parcel delivery.
+	 * @return The DTO of the updated purchase.
+	 */
 	@PutMapping(value = {"/purchase/setparceldelivery/{id}", "/purchase/setparceldelivery/{id}/"})
 	public PurchaseDTO setParcelDelivery(@PathVariable("id") String id, @RequestParam("deliveryid") String deliveryId) {
 		Delivery delivery = parcelDeliveryService.getParcelDelivery(deliveryId);
 		return convertToDto(purchaseService.setDelivery(id, delivery));
 	}
 	
+	/**
+	 * Associate an in-store pick-up to the purchase.
+	 * @author Zhekai Jiang
+	 * @param id The id of the purchase to be updated.
+	 * @param deliveryId The delivery id of the in-store pick-up.
+	 * @return The DTO of the updated purchase.
+	 */
 	@PutMapping(value = {"/purchase/setinstorepickup/{id}", "/purchase/setinstorepickup/{id}/"})
 	public PurchaseDTO setInStorePickUp(@PathVariable("id") String id, @RequestParam("deliveryid") String deliveryId) {
 		Delivery delivery = inStorePickUpService.getInStorePickUp(deliveryId);
 		return convertToDto(purchaseService.setDelivery(id, delivery));
 	}
 	
+	/**
+	 * Add a payment to the purchase.
+	 * @author Zhekai Jiang
+	 * @param id The id of the purchase to be updated.
+	 * @param paymentId The id of the payment to be added.
+	 * @return The DTO of the updated purchase.
+	 */
 	@PutMapping(value = {"/purchase/addpayment/{id}", "/purchase/addpayment/{id}/"})
 	public PurchaseDTO addPayment(@PathVariable("id") String id, @RequestParam("paymentid") String paymentId) {
 		Payment payment = paymentService.getPayment(paymentId);
 		return convertToDto(purchaseService.addPayment(id, payment));
 	}
 	
+	/**
+	 * Convert the status, as a String, to an OrderStatus enumeration.
+	 * @author Amelia Cui
+	 * @param status The status as a String, which could be "Pending", "Successful", "Failed", or "Cancelled".
+	 * @return The corresponding OrderStatus enumeration, or null if the input string is not valid.
+	 */
 	public OrderStatus convertToStatus(String status) {
 		switch (status) {
 		case "Successful":
@@ -139,8 +212,18 @@ public class PurchaseController {
 	}
 	
 	/**
-	 * Updated Nov 10 & 15 for more convenient access from frontend
-	 * @author Zhekai Jiang
+	 * Convert a purchase instance to DTO.
+	 * 
+	 * Updated Nov 10 & 15 by Zhekai Jiang.
+	 * Added several attributes to the DTO to enable the frontend to access more conveniently:
+	 * - A String deliveryMethod, which could be either "Parcel Delivery" or "In-Store Pick-Up",
+	 * - A boolean isParcelDelivery (which becomes parcelDelivery in JSON),
+	 * - A boolean isInStorePickUp (which becomes inStorePickUp in JSON), and
+	 * - A String deliveryStatus, which stores the status regardless of delivery type in a string. 
+	 * 
+	 * @author Amelia Cui, Zhekai Jiang
+	 * @param purchase The purchase instance.
+	 * @return The DTO of the purchase.
 	 */
 	public PurchaseDTO convertToDto(Purchase purchase) {
 		PurchaseDTO purchaseDto = new PurchaseDTO();
@@ -163,36 +246,47 @@ public class PurchaseController {
 		}
 		return purchaseDto;
 	}
-	/*public CustomerDTO convertToDto(Customer customer){
+
+	/**
+	 * Helper method to convert a customer instance to DTO.
+	 * Note that this conversion copies only the user, balance, and user role id.
+	 * It does NOT copy the saved addresses and purchases, to avoid circular references.
+	 * @param customer The customer instance.
+	 * @return The DTO of the customer.
+	 */
+	private CustomerDTO convertToDto(Customer customer) {
 		CustomerDTO customerDTO = new CustomerDTO();
-		BeanUtils.copyProperties(customer,customerDTO);
-		return customerDTO;
-	}*/
-	public CustomerDTO convertToDto(Customer customer){
-		CustomerDTO customerDTO = new CustomerDTO();
-		customerDTO.setAddress(null);
 		customerDTO.setArtGallerySystemUser(convertToDto(customer.getArtGallerySystemUser()));
 		customerDTO.setBalance(customer.getBalance());
-		customerDTO.setPurchase(null);
 		customerDTO.setUserRoleId(customer.getUserRoleId());
-		//BeanUtils.copyProperties(customer,customerDTO);
 		return customerDTO;
 	}
 
-	public ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
+	/**
+	 * Helper method to convert a user instance to DTO.
+	 * Note that this conversion copies only the name, email, password, and avatar.
+	 * It does NOT copy the user role and system, to avoid circular references.
+	 * @param user The user instance.
+	 * @return The DTO of the user.
+	 */
+	private ArtGallerySystemUserDTO convertToDto(ArtGallerySystemUser user) {
 		ArtGallerySystemUserDTO userDTO = new ArtGallerySystemUserDTO();
 		userDTO.setName(user.getName());
 		userDTO.setEmail(user.getEmail());
 		userDTO.setPassword(user.getPassword());
 		userDTO.setAvatar(user.getAvatar());
-		//userDTO.setArtGallerySystem(user.getArtGallerySystem());
 		return userDTO;
 	}
 	
 	/**
-	 * Updated Nov 10 (to avoid infinite circular reference) by Zhekai Jiang
+	 * Helper method to convert an art piece to DTO.
+	 * Updated Nov 10 (to avoid infinite circular reference) by Zhekai Jiang.
+	 * Note that this conversion copies only the id, name, description, author, price, date, and status of the art piece.
+	 * It does NOT copy the artists (instances), purchase, and system, to avoid circular references.
+	 * @param artPiece The art piece instance.
+	 * @return The DTO of the art piece.
 	 */
-	public ArtPieceDTO convertToDto(ArtPiece artPiece){
+	private ArtPieceDTO convertToDto(ArtPiece artPiece) {
 		ArtPieceDTO artPieceDTO = new ArtPieceDTO();
 		artPieceDTO.setArtPieceId(artPiece.getArtPieceId());
 		artPieceDTO.setName(artPiece.getName());
@@ -201,11 +295,17 @@ public class PurchaseController {
 		artPieceDTO.setPrice(artPiece.getPrice());
 		artPieceDTO.setDate(artPiece.getDate());
 		artPieceDTO.setArtPieceStatus(artPiece.getArtPieceStatus());
-		// BeanUtils.copyProperties(artPiece,artPieceDTO);
 		return artPieceDTO;
 	}
 	
-	public ParcelDeliveryDTO convertToDto(ParcelDelivery delivery) {
+	/**
+	 * Helper method to convert a parcel delivery instance to DTO.
+	 * Note that this conversion copies only the tracking number, carrier, delivery id, delivery address, status.
+	 * It does NOT copy the purchase associated with the delivery, to avoid circular reference.
+	 * @param delivery The parcel delivery instance.
+	 * @return The DTO of the parcel delivery.
+	 */
+	private ParcelDeliveryDTO convertToDto(ParcelDelivery delivery) {
 		ParcelDeliveryDTO parcelDeliveryDto = new ParcelDeliveryDTO();
 		parcelDeliveryDto.setTrackingNumber(delivery.getTrackingNumber());
 		parcelDeliveryDto.setCarrier(delivery.getCarrier()); 
@@ -215,7 +315,14 @@ public class PurchaseController {
 		return parcelDeliveryDto;
 	}
 	
-	public InStorePickUpDTO convertToDto(InStorePickUp delivery) {
+	/**
+	 * Helper method to convert an in-store pick-up instance to DTO.
+	 * Note that this conversion copies only the reference number, delivery id, store address, and status.
+	 * It does NOT copy the purchase associated with the delivery, to avoid circular reference.
+	 * @param delivery The in-store pick-up instance.
+	 * @return The DTO of the in-store pick-up.
+	 */
+	private InStorePickUpDTO convertToDto(InStorePickUp delivery) {
 		InStorePickUpDTO inStorePickUpDto = new InStorePickUpDTO();
 		inStorePickUpDto.setPickUpReferenceNumber(delivery.getPickUpReferenceNumber());
 		inStorePickUpDto.setDeliveryId(delivery.getDeliveryId());
@@ -224,7 +331,12 @@ public class PurchaseController {
 	    return inStorePickUpDto;
 	}
 	
-	public AddressDTO convertToDto(Address address) {
+	/**
+	 * Helper method to convert an address instance to DTO.
+	 * @param address The address instance.
+	 * @return The DTO of the address.
+	 */
+	private AddressDTO convertToDto(Address address) {
 		AddressDTO addressDTO = new AddressDTO();
 		addressDTO.setAddressId(address.getAddressId());
 		addressDTO.setCity(address.getCity());
@@ -237,7 +349,12 @@ public class PurchaseController {
 		return addressDTO;
 	}
 	
-	// Helper method from tutorial notes
+	/**
+	 * Helper method from tutorial notes to convert an Iterable object to List.
+	 * @param <T> The type of the elements.
+	 * @param iterable The Iterable object.
+	 * @return The list containing all elements in the Iterable object in order.
+	 */
 	private <T> List<T> toList(Iterable<T> iterable) {
 		List<T> resultList = new ArrayList<>();
 		for (T t : iterable) {

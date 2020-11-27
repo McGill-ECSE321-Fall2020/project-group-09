@@ -104,14 +104,20 @@ public ParcelDeliveryDTO updateparcelDelivery(@PathVariable("trackingNumber")Str
 	return convertToDto(parcelDeliveryService.updateparcelDelivery(trackingNumber,getStatus(newparcelDelivery)));
 }
 
-	/**
-	 * Added Nov 15
-	 * @author Zhekai Jiang
-	 */
-	@PutMapping(value = {"/parcelDelivery/updateFull/{deliveryId}", "/parcelDelivery/updateFull/{deliveryId}/"})
-	public ParcelDeliveryDTO updateParcelDelivery(@PathVariable("deliveryId") String id, @RequestParam("parcelDeliveryStatus") String status, @RequestParam("carrier") String carrier, @RequestParam("trackingNumber") String trackingNumber) {
-		return convertToDto(parcelDeliveryService.updateParcelDelivery(id, getStatus(status), carrier, trackingNumber));
-	}
+/**
+ * Update all attributes (id, status, carrier, and tracking number) of a parcel delivery. 
+ * Added Nov 15.
+ * @author Zhekai Jiang
+ * @param id The id of the parcel delivery.
+ * @param status The status of the parcel delivery, which could be "Pending", "Shipped", or "Delivered".
+ * @param carrier The carrier of the parcel.
+ * @param trackingNumber The tracking number of the parcel.
+ */
+@PutMapping(value = {"/parcelDelivery/updateFull/{deliveryId}", "/parcelDelivery/updateFull/{deliveryId}/"})
+public ParcelDeliveryDTO updateParcelDelivery(@PathVariable("deliveryId") String id, @RequestParam("parcelDeliveryStatus") String status, @RequestParam("carrier") String carrier, @RequestParam("trackingNumber") String trackingNumber) {
+	return convertToDto(parcelDeliveryService.updateParcelDelivery(id, getStatus(status), carrier, trackingNumber));
+}
+
 /**
  * convert parcelDelivery to DTO
  * @param parcelDelivery
