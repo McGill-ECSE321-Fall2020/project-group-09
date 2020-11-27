@@ -18,6 +18,11 @@ import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.model.UserRole;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.CustomerException;
 
+/**
+ * this class contains useful business methods to manipulate data in backend, used in controller
+ * @author Zheyan Tu
+ *
+ */
 @Service
 public class CustomerService {
     @Autowired
@@ -28,6 +33,16 @@ public class CustomerService {
     CustomerRepository customerRepository;
     @Autowired
     PurchaseRepository purchaseRepository;
+
+    /**
+     * create a new customer
+     * @param user user
+     * @param id customer userRole id
+     * @param balance balance
+     * @param purchases purchases Set
+     * @param addresses address Set
+     * @return
+     */
     @Transactional
     public Customer createCustomer(ArtGallerySystemUser user, String id, double balance, Set<Purchase> purchases, Set<Address> addresses) {
         if (id == null||id == "") {
@@ -45,6 +60,12 @@ public class CustomerService {
         customerRepository.save(customer);
         return customer;
     }
+
+    /**
+     * get customer by customer userRole id
+     * @param id customer userRole id
+     * @return customer
+     */
     @Transactional
     public Customer getCustomer(String id) {
         if(id == null||id == "") {
@@ -56,6 +77,11 @@ public class CustomerService {
         }
         return customer;
     }
+
+    /**
+     * get all customers in database
+     * @return List of customer
+     */
     @Transactional
     public List<Customer> getAllCustomers(){
         return toList(customerRepository.findAll());
@@ -63,6 +89,9 @@ public class CustomerService {
     }
     
     /**
+     * get customer by user id
+     * @param userName user id
+     * @ return customer
      * Added Nov 10
      * @author Zhekai Jiang
      */
@@ -85,7 +114,12 @@ public class CustomerService {
 		
 		throw new IllegalArgumentException("User " + userName + " does not have a customer role.");
     }
-    
+
+    /**
+     * delete customer by customer userRole id
+     * @param id customer userRole id
+     * @return
+     */
     @Transactional
     public Customer deleteCustomer(String id) {
         if (id == null||id == "") {
@@ -102,6 +136,13 @@ public class CustomerService {
         return cus;
 
     }
+
+    /**
+     * update customer balance
+     * @param id customer userRole id
+     * @param balance new balance
+     * @return updated customer
+     */
     @Transactional
     public Customer updateCustomerBalance (String id, double balance) {
         if (id == null||id == "") {
@@ -121,6 +162,13 @@ public class CustomerService {
         customerRepository.save(customer);
         return customer;
     }
+
+    /**
+     * update customer address set
+     * @param id customer userRole id
+     * @param addresses address set
+     * @return updated customer
+     */
     @Transactional
     public Customer updateCustomerAddress (String id, Set<Address> addresses) {
         if (id == null||id == "") {
@@ -136,6 +184,10 @@ public class CustomerService {
     }
     
     /**
+     * delete an address from the address set of customer
+     * @param id customer userRole id
+     * @param address address
+     * @return
      * Added Nov 11
      * @author Zhekai Jiang
      */
@@ -155,7 +207,12 @@ public class CustomerService {
     	return customer;
     }
 
-
+    /**
+     * helper method
+     * @param iterable
+     * @param <T>
+     * @return
+     */
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();
         for (T t : iterable) {

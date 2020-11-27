@@ -13,6 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * this class contains useful business methods to manipulate data in backend, used in controller
+ * @author Zheyan Tu
+ *
+ */
 @Service
 public class ArtistService {
 
@@ -21,6 +27,11 @@ public class ArtistService {
     @Autowired
     ArtistRepository artistRepository;
 
+    /**
+     * get Artist by artist userRole id
+     * @param id artist userRole id
+     * @return artist
+     */
     @Transactional
     public Artist getArtist(String id){
         if (id == null || id == ""){
@@ -34,6 +45,9 @@ public class ArtistService {
     }
     
     /**
+     * get artist bu artist user id
+     * @param userName userID
+     * @return artist
      * Added Nov 10
      * @author Zhekai Jiang
      */
@@ -57,12 +71,22 @@ public class ArtistService {
 		throw new IllegalArgumentException("User " + userName + " does not have a artist role.");
     }
 
+    /**
+     * returns list of artists stored in database
+     * @return list of artist
+     */
     @Transactional
     public List<Artist> getAllArtists(){
         return toList(artistRepository.findAll());
     }
 
-
+    /**
+     * create a new artist
+     * @param user
+     * @param id artist userRole id
+     * @param credit credit
+     * @return
+     */
     @Transactional
     public Artist createArtist(ArtGallerySystemUser user, String id, double credit ){
         if (id == null || id == ""){
@@ -79,7 +103,11 @@ public class ArtistService {
         return artist;
     }
 
-
+    /**
+     * delete an artist by artist userRole id from database
+     * @param id artist userRole id
+     * @return
+     */
     @Transactional
     public Artist deleteArtist(String id){
         if (id == null || id == ""){
@@ -94,6 +122,12 @@ public class ArtistService {
         return artist1;
     }
 
+    /**
+     * update artist credit
+     * @param id artist userRole id
+     * @param credit new credit
+     * @return updated artist
+     */
     @Transactional
     public Artist updateArtistCredit(String id, double credit){
         if (id == null || id == ""){
@@ -115,7 +149,12 @@ public class ArtistService {
     }
 
 
-
+    /**
+     * helper method
+     * @param iterable
+     * @param <T>
+     * @return
+     */
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> resultList = new ArrayList<>();
         for (T t : iterable) {
