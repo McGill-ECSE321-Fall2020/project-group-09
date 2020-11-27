@@ -32,6 +32,7 @@
         <activity android:name=".AccountPurchases" android:exported="true"/>
         <activity android:name=".AccountArtPieces" android:exported="true"/>
         <activity android:name=".AccountAddresses" android:exported="true"/>
+        <activity android:name=".PurchaseDetail" android:exported="true"/>
 
     </application>
 

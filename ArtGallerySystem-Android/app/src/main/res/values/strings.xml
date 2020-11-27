@@ -18,7 +18,7 @@
     <string name="account_art_pieces_button_text">My Art Pieces</string>
     <string name="account_addresses_button_text">Frequently Used Addresses</string>
 
-    <string name="account_purchases_msg_text">You have made %1$d purchase(s).</string>
-    <string name="account_art_pieces_msg_text">You have uploaded %1$d art piece(s).</string>
+    <string name="account_purchases_msg_text">Click on any purchase for more details.</string>
+    <string name="account_art_pieces_msg_text">Click on any sold art piece for purchase details, or any available one for its description.</string>
     <string name="account_addresses_msg_text">You have saved %1$d frequently used address(es).</string>
 </resources>

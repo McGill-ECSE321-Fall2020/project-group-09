@@ -1,8 +1,8 @@
 package ca.mcgill.ecse321.artgallerysystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -90,7 +90,7 @@ public class AccountPurchases extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 int numPurchases = response.length();
-                msg = getString(R.string.account_purchases_msg_text, numPurchases); // "You have made %1$d purchase(s)."
+                msg = getString(R.string.account_purchases_msg_text);
 
                 for(int i = 0; i < numPurchases; ++i) {
                     JSONObject purchase = null;
@@ -127,12 +127,9 @@ public class AccountPurchases extends AppCompatActivity {
      * @param purchase A JSONObject for the purchase to be added.
      */
     private void addPurchaseToTable(JSONObject purchase) {
-        TableRow row = TableLayoutUtils.initializeRow(AccountPurchases.this, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        TableRow row = TableLayoutUtils.initializeRow(AccountPurchases.this,
+                v -> onPurchaseClicked(purchase) // OnClickListener
+        );
         purchasesTable.addView(row);
 
         LinearLayout rowVerticalLayout = new LinearLayout(AccountPurchases.this);
@@ -165,11 +162,54 @@ public class AccountPurchases extends AppCompatActivity {
         try {
             nameView.setText(purchase.getJSONObject("artPiece").getString("name"));
             dateView.setText(purchase.getString("date"));
-            statusView.setText(purchase.getString("deliveryStatus"));
+            statusView.setText(convertToShownStatus(purchase.getString("deliveryStatus")));
         } catch(Exception e) {
             msg += e.getMessage();
         }
 
+    }
+
+    /**
+     * Start purchase detail activity.
+     * @author Zhekai Jiang
+     * @param purchase The JSON object representing the purchase.
+     */
+    private void onPurchaseClicked(JSONObject purchase) {
+        Intent intent = new Intent(AccountPurchases.this, PurchaseDetail.class);
+        String orderId = null;
+        try {
+            orderId = purchase.getString("orderId");
+        } catch(Exception e) {
+            msg += e.getMessage();
+            refreshMessage();
+        }
+        intent.putExtra("ORDERID", orderId);
+        intent.putExtra("ISARTIST", false);
+        startActivity(intent);
+    }
+
+    /**
+     * Helper method to convert the delivery status stored internally to what is supposed to be shown to the user.
+     * Could be used for both parcel delivery or in-store pick-up.
+     * For "AvailableForPickUp" and "PickedUp" statuses for in-store pick-up, add proper spaces before shown to the user.
+     * Otherwise, they are the same.
+     * @author Zhekai Jiang
+     * @param status The internal status of the delivery as String,
+     *               which could be "Pending", "Shipped", or "Delivered" for parcel delivery,
+     *               or "Pending", "Available", or "PickedUp" for in-store pick-up.
+     * @return The status that is supposed to be shown to the user.
+     *         "Available" and "PickedUp" will be converted to "Available for Pick-Up" and "Picked Up" respectively,
+     *         and other possible statuses will remain the same.
+     */
+    private String convertToShownStatus(String status) {
+        switch(status) {
+            case "AvailableForPickUp":
+                return "Available for Pick-Up";
+            case "PickedUp":
+                return "Picked Up";
+            default:
+                return status;
+        }
     }
 
     /**

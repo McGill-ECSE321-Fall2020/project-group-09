@@ -1,8 +1,8 @@
 package ca.mcgill.ecse321.artgallerysystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -89,7 +89,7 @@ public class AccountArtPieces extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 int numArtPieces = response.length();
-                msg = getString(R.string.account_art_pieces_msg_text, numArtPieces);
+                msg = getString(R.string.account_art_pieces_msg_text);
 
                 for(int i = 0; i < numArtPieces; ++i) {
                     JSONObject artPiece = null;
@@ -126,11 +126,35 @@ public class AccountArtPieces extends AppCompatActivity {
      * @param artPiece A JSONObject for the art piece to be added.
      */
     private void addArtPieceToTable(JSONObject artPiece) {
-        TableRow row = TableLayoutUtils.initializeRow(AccountArtPieces.this, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+        final String id, name, date, status, orderId;
+        try {
+            id = artPiece.getString("artPieceId");
+            name = artPiece.getString("name");
+            date = artPiece.getString("date");
+            status = artPiece.getString("artPieceStatus");
+            if(status.equals("Sold")) {
+                orderId = artPiece.getJSONObject("purchase").getString("orderId");
+            } else {
+                orderId = null;
             }
+        } catch(Exception e) {
+            msg += e.getMessage();
+            refreshMessage();
+            return;
+        }
+
+        TableRow row = TableLayoutUtils.initializeRow(AccountArtPieces.this, v -> {
+            Intent intent;
+            if(status.equals("Sold")) {
+                intent = new Intent(AccountArtPieces.this, PurchaseDetail.class);
+                intent.putExtra("ORDERID", orderId);
+                intent.putExtra("ISARTIST", true);
+            } else {
+                intent = new Intent(AccountArtPieces.this, ArtPieceInfo.class);
+                intent.putExtra("ARTPIECE_ID", id);
+                intent.putExtra("USERNAME", userName);
+            }
+            startActivity(intent);
         });
         artPiecesTable.addView(row);
 
@@ -149,6 +173,7 @@ public class AccountArtPieces extends AppCompatActivity {
         TextView nameView = new TextView(AccountArtPieces.this);
         nameView.setTextAppearance(getApplicationContext(), R.style.boldText);
             // Set TextView style -> https://www.tutorialspoint.com/how-to-change-a-textview-style-at-runtime-in-android
+        nameView.setText(name);
         subRow1.addView(nameView);
 
         TextView dateView = new TextView(AccountArtPieces.this);
@@ -156,18 +181,12 @@ public class AccountArtPieces extends AppCompatActivity {
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
                 // weight 1 to fill the remaining space thus right-aligning status
                 // -> https://stackoverflow.com/questions/4305564/android-layout-right-align
+        dateView.setText(date);
         subRow2.addView(dateView);
 
         TextView statusView = new TextView(AccountArtPieces.this);
+        statusView.setText(status);
         subRow2.addView(statusView);
-
-        try {
-            nameView.setText(artPiece.getString("name"));
-            dateView.setText(artPiece.getString("date"));
-            statusView.setText(artPiece.getString("artPieceStatus"));
-        } catch(Exception e) {
-            msg += e.getMessage();
-        }
     }
 
     /**
