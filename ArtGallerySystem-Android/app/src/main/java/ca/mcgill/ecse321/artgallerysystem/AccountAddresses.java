@@ -1,8 +1,9 @@
 package ca.mcgill.ecse321.artgallerysystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -28,6 +29,7 @@ import cz.msebera.android.httpclient.Header;
 public class AccountAddresses extends AppCompatActivity {
 
     private String userName;
+    private String customerId;
     private String msg; // Could be message about total number of addresses or error.
     private TableLayout addressesTable;
 
@@ -48,18 +50,29 @@ public class AccountAddresses extends AppCompatActivity {
         actionBar.setTitle("Frequently Used Addresses");
 
         userName = getIntent().getStringExtra("USERNAME");
+        getCustomerId();
 
         msg = "";
 
         // dynamic table -> https://www.tutorialspoint.com/how-to-add-table-rows-dynamically-in-android-layout
         addressesTable = findViewById(R.id.account_addresses_table);
         addressesTable.setStretchAllColumns(true);
+    }
 
+    /**
+     * Clear and load (or refresh) the addresses shown when the activity is started or resumed (when back from adding, editing, or deleting).
+     * @author Zhekai Jiang
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        addressesTable.removeAllViews();
         if(userName == null || userName.length() == 0) {
             msg += "User name is empty";
             refreshMessage();
         } else {
-            addAllArtPiecesToTable();
+            addAllAddressesToTable();
         }
     }
 
@@ -80,26 +93,64 @@ public class AccountAddresses extends AppCompatActivity {
     }
 
     /**
+     * Helper method to get the id of the customer role, used for associating new address to the role.
+     * @author Zhekai Jiang
+     */
+    private void getCustomerId() {
+        HttpUtils.get("customer/user/" + userName, new RequestParams(), new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    customerId = response.getString("userRoleId");
+                } catch(Exception e) {
+                    msg += e.getMessage();
+                    refreshMessage();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                msg += "Failed to retrieve customer role.";
+                refreshMessage();
+            }
+        });
+    }
+
+    /**
      * Add all the addresses the user have saved to the table shown on the screen.
      * @author Zhekai Jiang
      */
-    private void addAllArtPiecesToTable() {
+    private void addAllAddressesToTable() {
         HttpUtils.get("addresses/user/" + userName, new RequestParams(), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                int numAddresses = response.length();
-                msg = getString(R.string.account_addresses_msg_text, numAddresses);
+                // Top message
+                msg = getString(R.string.account_addresses_msg_text);
 
-                for(int i = 0; i < numAddresses; ++i) {
+                // Addresses
+                for(int i = 0; i < response.length(); ++i) {
                     JSONObject address = null;
                     try {
                         address = response.getJSONObject(i);
                     } catch(Exception e) {
                         msg += e.getMessage();
                     }
-                    addAddressToTable(address, i);
+                    addAddressToTable(address);
                 }
 
+                // Add Address button
+                Button addButton = new Button(AccountAddresses.this);
+                addButton.setText(R.string.account_addresses_add_button_text);
+                addButton.setOnClickListener(v -> {
+                    Intent intent = new Intent(AccountAddresses.this, EditAddress.class);
+                    intent.putExtra("ADDRESSID", generateNewAddressId());
+                    intent.putExtra("CUSTOMERID", customerId);
+                    intent.putExtra("OPERATION", "Add");
+                    startActivity(intent);
+                });
+                addressesTable.addView(addButton);
+
+                // Error messages
                 refreshMessage();
             }
 
@@ -116,6 +167,14 @@ public class AccountAddresses extends AppCompatActivity {
     }
 
     /**
+     * Generate a random id for a new address to be added.
+     * @return A string consisting of three segments of random integers.
+     */
+    private String generateNewAddressId() {
+        return (int)(Math.random() * 10000) + "-" + (int)(Math.random() * 10000) + "-" + (int)(Math.random() * 10000);
+    }
+
+    /**
      * Add one address to the table.
      * Each address takes two "sub-rows":
      *   Name
@@ -123,13 +182,18 @@ public class AccountAddresses extends AppCompatActivity {
      * To add rows dynamically -> https://stackoverflow.com/questions/18207470/adding-table-rows-dynamically-in-android
      * @author Zhekai Jiang
      * @param address A JSONObject for the address to be added.
-     * @param index The index of the address.
      */
-    private void addAddressToTable(JSONObject address, int index) {
-        TableRow row = TableLayoutUtils.initializeRow(AccountAddresses.this, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+    private void addAddressToTable(JSONObject address) {
+        TableRow row = TableLayoutUtils.initializeRow(AccountAddresses.this, v -> {
+            Intent intent = new Intent(AccountAddresses.this, EditAddress.class);
+            try {
+                intent.putExtra("OPERATION", "Edit");
+                intent.putExtra("ADDRESSID", address.getString("addressId"));
+                intent.putExtra("CUSTOMERID", customerId);
+                startActivity(intent);
+            } catch(Exception e) {
+                msg += e.getMessage();
+                refreshMessage();
             }
         });
         addressesTable.addView(row);

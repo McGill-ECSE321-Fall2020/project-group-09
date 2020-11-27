@@ -28,11 +28,12 @@
         <activity android:name=".Login"/>
         <activity android:name=".Signup"/>
         <activity android:name=".CreateArtPiece"/>
-        <activity android:name=".MyAccount" android:exported="true"/> <!-- exported for testing -->
-        <activity android:name=".AccountPurchases" android:exported="true"/>
-        <activity android:name=".AccountArtPieces" android:exported="true"/>
-        <activity android:name=".AccountAddresses" android:exported="true"/>
-        <activity android:name=".PurchaseDetail" android:exported="true"/>
+        <activity android:name=".MyAccount"/>
+        <activity android:name=".AccountPurchases"/>
+        <activity android:name=".AccountArtPieces"/>
+        <activity android:name=".PurchaseDetail"/>
+        <activity android:name=".AccountAddresses"/>
+        <activity android:name=".EditAddress"/>
 
     </application>
 

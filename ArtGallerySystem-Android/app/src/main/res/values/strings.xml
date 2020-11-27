@@ -20,5 +20,24 @@
 
     <string name="account_purchases_msg_text">Click on any purchase for more details.</string>
     <string name="account_art_pieces_msg_text">Click on any sold art piece for purchase details, or any available one for its description.</string>
-    <string name="account_addresses_msg_text">You have saved %1$d frequently used address(es).</string>
+    <string name="account_addresses_msg_text">Click on any address to edit or delete it, or click on the Add Address button to add a new one.</string>
+    <string name="account_addresses_add_button_text">Add Address</string>
+
+    <string name="edit_address_id"><b>Address ID:</b> %1$s</string>
+    <string name="edit_address_name"><b>Name:</b></string>
+    <string name="edit_address_name_default">Marwan Kanaan</string>
+    <string name="edit_address_phone"><b>Phone Number:</b></string>
+    <string name="edit_address_phone_default">514 233 6666</string>
+    <string name="edit_address_street_address"><b>Street Address:</b></string>
+    <string name="edit_address_street_address_default">845 Rue Sherbrooke Ouest</string>
+    <string name="edit_address_city"><b>City:</b></string>
+    <string name="edit_address_city_default">Montreal</string>
+    <string name="edit_address_province"><b>Province:</b></string>
+    <string name="edit_address_province_default">Quebec</string>
+    <string name="edit_address_postal_code"><b>Postal Code:</b></string>
+    <string name="edit_address_postal_code_default">H3A 2T5</string>
+    <string name="edit_address_country"><b>Country:</b></string>
+    <string name="edit_address_country_default">Canada</string>
+    <string name="edit_address_confirm">Confirm</string>
+    <string name="edit_address_delete">Delete Address</string>
 </resources>
