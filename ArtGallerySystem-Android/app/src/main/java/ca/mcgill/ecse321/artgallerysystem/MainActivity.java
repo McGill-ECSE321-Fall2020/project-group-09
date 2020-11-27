@@ -1,6 +1,7 @@
 package ca.mcgill.ecse321.artgallerysystem;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import cz.msebera.android.httpclient.client.utils.URLEncodedUtils;
 
 /**
  * this class is the welcome page
@@ -77,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
      */
     public void goHome(View v){
         Intent intent = new Intent(this,Login.class );
+        //intent.putExtra("ARTPIECE_ID", "123");
+        startActivity(intent);
+    }
+    public void goUser(View v){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://github.com/AmeliaWen/userdoc/wiki"));
         //intent.putExtra("ARTPIECE_ID", "123");
         startActivity(intent);
     }
