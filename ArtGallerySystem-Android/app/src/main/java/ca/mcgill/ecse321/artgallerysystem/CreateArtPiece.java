@@ -65,6 +65,7 @@ public class CreateArtPiece extends AppCompatActivity{
 
     /**
      * this method is called when create button is clicked
+     * it checks nonempty input and invalid url
      */
     private void CreateArtPiece() {
 
@@ -194,6 +195,7 @@ public class CreateArtPiece extends AppCompatActivity{
         price= getIntent().getDoubleExtra("Price",0);
         user = getIntent().getStringExtra("USERNAME");
         artists= getArtists();
+        setDate(0, 1, 1, 2020);
         refreshErrorMessage();
     }
 
