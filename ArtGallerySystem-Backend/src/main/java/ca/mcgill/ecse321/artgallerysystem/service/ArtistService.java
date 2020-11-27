@@ -45,11 +45,13 @@ public class ArtistService {
     }
     
     /**
-     * get artist bu artist user id
-     * @param userName userID
-     * @return artist
-     * Added Nov 10
+     * Get the artist role of a user.
+     * An IllegalArgumentException will be thrown if the username is empty,
+     * the user does not exist, or the user does not have an artist role.
+     * Added Nov 10 for more convenient access from the frontend.
      * @author Zhekai Jiang
+     * @param userName The name of the user.
+     * @return The Artist (role) of the user.
      */
     @Transactional
     public Artist getArtistByUserName(String userName) {
@@ -68,7 +70,7 @@ public class ArtistService {
 			}
 		}
 		
-		throw new IllegalArgumentException("User " + userName + " does not have a artist role.");
+		throw new IllegalArgumentException("User " + userName + " does not have an artist role.");
     }
 
     /**

@@ -20,6 +20,10 @@ import ca.mcgill.ecse321.artgallerysystem.model.OrderStatus;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 
+/**
+ * Business services related to purchases.
+ * @author Zhekai Jiang
+ */
 @Service
 public class PurchaseService {
 	
@@ -30,6 +34,17 @@ public class PurchaseService {
 	@Autowired
 	PurchaseRepository purchaseRepository;
 	
+	/**
+	 * Create a new purchase.
+	 * An IllegalArgumentException will be thrown if any parameter is empty.
+	 * @author Amelia Cui, Zhekai Jiang
+	 * @param id The id of the purchase to be created. 
+	 * @param date The date of purchase.
+	 * @param status The status of the purchase (which is generally supposed to be OrderStatus.Pending initially).
+	 * @param artPiece The art piece purchased.
+	 * @param customer The customer who made the purchase.
+	 * @return The Purchase instance created.
+	 */
 	@Transactional
 	public Purchase createPurchase(String id, Date date, OrderStatus status, ArtPiece artPiece, Customer customer) {
 		String error = "";
@@ -65,6 +80,13 @@ public class PurchaseService {
 		return purchase;
 	}
 	
+	/**
+	 * Get the purchase with the given id.
+	 * An IllegalArgumentException will be thrown if the id is empty or the purchase with the id does not exist.
+	 * @author Amelia Cui, Zhekai Jiang
+	 * @param id The id of the purchase to be found.
+	 * @return The Purchase instance with the given id.
+	 */
 	@Transactional
 	public Purchase getPurchase(String id) {
 		if (id == null || id.length() == 0) {
@@ -80,11 +102,23 @@ public class PurchaseService {
 		return purchase;
 	}
 	
+	/**
+	 * Get all the purchases in the database.
+	 * @author Amelia Cui
+	 * @return A List of all Purchase-s in the database.
+	 */
 	@Transactional
 	public List<Purchase> getAllPurchases(){
 		return toList(purchaseRepository.findAll());
 	}
 	
+	/**
+	 * Get all the purchases made by a specific customer.
+	 * An IllegalArgumentException will be thrown if the customer is null.
+	 * @author Zhekai Jiang
+	 * @param customer The customer.
+	 * @return A List of all Purchase-s made by the given customer.
+	 */
 	@Transactional
 	public List<Purchase> getPurchasesMadeByCustomer(Customer customer) {
 		if(customer == null) {
@@ -93,20 +127,29 @@ public class PurchaseService {
 		return purchaseRepository.findByCustomer(customer);
 	}
 	
-	
+	/**
+	 * Delete a purchase.
+	 * @author Amelia Cui, Zhekai Jiang
+	 * @param id The id of the purchase to be deleted.
+	 * @return The original Purchase instance.
+	 */
 	@Transactional
 	public Purchase deletePurchase(String id) {
 		Purchase purchase = getPurchase(id);
-		
-/*		if(purchase.getDelivery()!=null || purchase.getPayment() !=null) {
-			throw new IllegalArgumentException ("unable to delete");
-		}*/
 		
 		purchaseRepository.deleteById(id);
 		
 		return purchase;
 	}
 	
+	/**
+	 * Update the status of a purchase.
+	 * An IllegalArgumentException will be thrown if the id or status is empty.
+	 * @author Amelia Cui, Zhekai Jiang
+	 * @param id The id of the purchase to be updated.
+	 * @param status The new status of the purchase.
+	 * @return The updated Purchase instance.
+	 */
 	@Transactional
 	public Purchase updatePurchaseStatus(String id, OrderStatus status) {
 		Purchase purchase = null;
@@ -124,15 +167,19 @@ public class PurchaseService {
 			throw new IllegalArgumentException(error);
 		}
 		
-		// if(purchase.getOrderStatus()==status) {
-		//	throw new IllegalArgumentException ("same status");
-		// }
-		
 		purchase.setOrderStatus(status);
 		purchaseRepository.save(purchase);
 		return purchase;
 	}
 	
+	/**
+	 * Associate a delivery to a purchase.
+	 * An IllegalArgumentException will be thrown if the id or delivery is empty.
+	 * @author Zhekai Jiang
+	 * @param id The id of the purchase.
+	 * @param delivery The Delivery instance to be associated with the purchase.
+	 * @return The updated Purchase instance.
+	 */
 	@Transactional
 	public Purchase setDelivery(String id, Delivery delivery) {
 		Purchase purchase = null;
@@ -155,6 +202,14 @@ public class PurchaseService {
 		return purchase;
 	}
 	
+	/**
+	 * Add a payment to the purchase.
+	 * An IllegalArgumentException will be thrown if the id or payment is empty.
+	 * @author Zhekai Jiang
+	 * @param id The id of the purchase.
+	 * @param payment The payment instance to be added to the purchase.
+	 * @return The updated Purchase instance.
+	 */
 	@Transactional
 	public Purchase addPayment(String id, Payment payment) {
 		Purchase purchase = null;
@@ -181,8 +236,14 @@ public class PurchaseService {
 	}
 	
 
-	
-	// Helper method from tutorial notes - 2.8.1
+	/**
+	 * Helper method to convert an Iterable object to a list.
+	 * Return an empty List if the object contains no element.
+	 * From tutorial notes - 2.8.1.
+	 * @param <T> The type of elements.
+	 * @param iterable The Iterable object.
+	 * @return The List of elements.
+	 */
 	private <T> List<T> toList(Iterable<T> iterable) {
 		if(iterable == null) {
 			return new ArrayList<T>();

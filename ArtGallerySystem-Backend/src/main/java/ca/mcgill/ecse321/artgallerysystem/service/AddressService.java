@@ -133,9 +133,20 @@ public class AddressService {
 		}
 	}
 	
-	/** update the full address 
-	 * Added Nov 11
+	/**
+	 * Update all attributes of an address.
+	 * An IllegalArgumentException will be thrown if any parameter provided is empty or if the id is not valid.
+	 * Added Nov 11.
 	 * @author Zhekai Jiang
+	 * @param id The id of the address.
+	 * @param name The name associated with the address.
+	 * @param phoneNumber The phone number.
+	 * @param streetAddress The street address.
+	 * @param city The city.
+	 * @param province The province.
+	 * @param postalCode The postal code.
+	 * @param country The country.
+	 * @return The updated Address instance. 
 	 */
 	@Transactional
 	public Address updateAddress(String id, String name, String phoneNumber, String streetAddress, String city, String province, String postalCode, String country) {

@@ -34,6 +34,10 @@ import ca.mcgill.ecse321.artgallerysystem.model.ParcelDelivery;
 import ca.mcgill.ecse321.artgallerysystem.model.Payment;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 
+/**
+ * Test suite for the purchase service.
+ * @author Zhekai Jiang
+ */
 @ExtendWith(MockitoExtension.class)
 public class TestPurchaseService {
 	
@@ -58,24 +62,12 @@ public class TestPurchaseService {
 	private static final String PARCELDELIVERY_KEY = "TestParcelDelivery";
 	private static final String INSTOREPICKUP_KEY = "TestInStorePickUp";
 	
-	private boolean isOnePurchaseInRepository;
-	
-/*	private Purchase purchase;
-	private Customer customer;
-	private List<Purchase> allPurchases;*/
+	private boolean isOnePurchaseInRepository; // To test get all
 	
 	@BeforeEach
 	public void setMockOutput() {
-/*		purchase = new Purchase();
-		customer = new Customer();
-		purchase.setOrderId(PURCHASE_KEY);
-		customer.setUserRoleId(CUSTOMER_KEY);
-		purchase.setCustomer(customer);
-		allPurchases = new ArrayList<Purchase>();
-		allPurchases.add(purchase);*/
 		
-		isOnePurchaseInRepository = false; 
-		
+		isOnePurchaseInRepository = false;
 
 		lenient().when(purchaseDao.findPurchaseByOrderId(anyString())).thenAnswer((InvocationOnMock invocation) -> {
 			if (invocation.getArgument(0).equals(PURCHASE_KEY)) {
@@ -114,16 +106,6 @@ public class TestPurchaseService {
 				return null;
 			}
 		});
-		
-//		doNothing().when(purchaseDao.save(any()));
-		
-/*		lenient().when(purchaseDao.deleteById(anyString())).doAnswer((InvocationOnMock invocation) -> {
-			if(invocation.getArgument(0).equals(CUSTOMER_KEY)) {
-				allPurchases = new ArrayList<Purchase>();
-			}
-		});*/
-		
-		
 		
 		lenient().when(customerDao.findCustomerByUserRoleId(anyString())).thenAnswer((InvocationOnMock invocation) -> {
 			if (invocation.getArgument(0).equals(CUSTOMER_KEY)) {
@@ -171,9 +153,7 @@ public class TestPurchaseService {
 	}
 	
 	@Test
-	public void testCreatePurchase() {
-		// assertEquals(0, purchaseService.getAllPurchases().size());
-		
+	public void testCreatePurchase() {		
 		String id = "1";
 		Date date = new Date(1);
 		Customer customer = customerDao.findCustomerByUserRoleId(CUSTOMER_KEY);
@@ -191,8 +171,6 @@ public class TestPurchaseService {
 	
 	@Test
 	public void testCreatePurchaseEmptyId() {
-		// assertEquals(0, purchaseService.getAllPurchases().size());
-		
 		String id = "";
 		Date date = new Date(1);
 		Customer customer = customerDao.findCustomerByUserRoleId(CUSTOMER_KEY);
@@ -211,8 +189,6 @@ public class TestPurchaseService {
 	
 	@Test
 	public void testCreatePurchaseNull() {
-		// assertEquals(0, purchaseService.getAllPurchases().size());
-		
 		String id = null;
 		Date date = null;
 		OrderStatus status = null;
@@ -414,12 +390,6 @@ public class TestPurchaseService {
 		assertEquals("Customer cannot be empty!", error);
 		assertNull(purchases);
 	}
-	
-/*	???
-	@Test
-	public void testDeletePurchase() {
-		
-	}*/
 	
 	@Test
 	public void testUpdatePurchaseStatus() {

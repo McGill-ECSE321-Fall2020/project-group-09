@@ -30,15 +30,11 @@ public class ParcelDeliveryService {
 	ParcelDeliveryRepository parcelDeliveryRepository;
 	@Autowired
 	PurchaseRepository purchaseRepository;
-	// @Autowired
-	// DeliveryRepository deliverRepository;
 	
-	/**
-	 * Updated Nov 15 by Zhekai Jiang - carrier and tracking number could be empty when the parcel is not shipped...
-	 */
     @Transactional
     /**
      * create a ParcelDelivery by its id, trackingnumber, deliveraddress, carrier, status and purchase
+     * Updated Nov 15 by Zhekai Jiang - carrier and tracking number could be empty when the parcel is not shipped.
      * @param deliveryid
      * @param trackingNumber
      * @param carrier
@@ -51,15 +47,9 @@ public class ParcelDeliveryService {
     	if (deliveryid == null|| deliveryid == "") {
 			throw new ParcelDeliveryException ("Please provide valid deliveryid.");
 		}
-    	/* if (trackingNumber == null|| trackingNumber == "") {
-			throw new ParcelDeliveryException ("Please provide valid trackingNumber.");
-		}*/
 		if (deliveryAddress == null) {
 			throw new ParcelDeliveryException ("Please provide valid Address.");
 		}
-		/* if (carrier == null) {
-			throw new ParcelDeliveryException ("Carrier can not be empty! ");
-		}*/
 		if(status == null) {
 			throw new ParcelDeliveryException ("Status can not be empty! ");
 		}
@@ -68,7 +58,6 @@ public class ParcelDeliveryService {
 		}
     	ParcelDelivery pardel = new ParcelDelivery();
     	pardel.setCarrier(carrier);
-    	//Purchase purchase = purchaseRepository.findPurchaseByOrderId(purid);
     	pardel.setDeliveryId(deliveryid);
     	pardel.setParcelDeliveryStatus(status);
     	pardel.setTrackingNumber(trackingNumber);
@@ -151,19 +140,18 @@ public class ParcelDeliveryService {
 	
 	
 	/**
-	 * Added Nov 15
+	 * Update the status, carrier, and/or tracking number of a parcel delivery.
+	 * An IllegalArgumentException will be thrown if the delivery id or status is empty or null.
+	 * Note that the carrier and tracking number COULD be empty when the parcel is not shipped yet.
+	 * Added Nov 15.
 	 * @author Zhekai Jiang
+	 * @param id The id of the parcel delivery to be updated.
+	 * @param status The new status of the delivery. 
+	 * @param carrier The carrier of the parcel.
+	 * @param trackingNumber The tracking number of the parcel.
+	 * @return The updated ParcelDelivery instance.
 	 */
 	@Transactional
-	/**
-	  * update a ParcelDelivery(get by trackingNumber)and with a new status
-	  * carrier and tracking number could be empty when the parcel is not shipped
-	  * @param id
-	  * @param status
-	  * @param carrier
-	  * @param trackingNumber
-	  * @return  updated ParcelDelivery when succeed, throw exception otherwise
-	  */
 	public ParcelDelivery updateParcelDelivery(String id, ParcelDeliveryStatus status, String carrier, String trackingNumber) {
 		ParcelDelivery parcelDelivery = parcelDeliveryRepository.findParcelDeliveryByDeliveryId(id);
 		String error = "";

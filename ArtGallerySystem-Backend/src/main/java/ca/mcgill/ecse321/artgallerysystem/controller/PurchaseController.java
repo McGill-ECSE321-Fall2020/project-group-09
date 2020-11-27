@@ -251,6 +251,7 @@ public class PurchaseController {
 	 * Helper method to convert a customer instance to DTO.
 	 * Note that this conversion copies only the user, balance, and user role id.
 	 * It does NOT copy the saved addresses and purchases, to avoid circular references.
+	 * @author Amelia Cui
 	 * @param customer The customer instance.
 	 * @return The DTO of the customer.
 	 */
@@ -266,6 +267,7 @@ public class PurchaseController {
 	 * Helper method to convert a user instance to DTO.
 	 * Note that this conversion copies only the name, email, password, and avatar.
 	 * It does NOT copy the user role and system, to avoid circular references.
+	 * @author Amelia Cui
 	 * @param user The user instance.
 	 * @return The DTO of the user.
 	 */
@@ -280,9 +282,10 @@ public class PurchaseController {
 	
 	/**
 	 * Helper method to convert an art piece to DTO.
-	 * Updated Nov 10 (to avoid infinite circular reference) by Zhekai Jiang.
+	 * Updated Nov 10 (to avoid infinite circular reference).
 	 * Note that this conversion copies only the id, name, description, author, price, date, and status of the art piece.
 	 * It does NOT copy the artists (instances), purchase, and system, to avoid circular references.
+	 * @author Amelia Cui, Zhekai Jiang
 	 * @param artPiece The art piece instance.
 	 * @return The DTO of the art piece.
 	 */
@@ -302,6 +305,7 @@ public class PurchaseController {
 	 * Helper method to convert a parcel delivery instance to DTO.
 	 * Note that this conversion copies only the tracking number, carrier, delivery id, delivery address, status.
 	 * It does NOT copy the purchase associated with the delivery, to avoid circular reference.
+	 * @author Zhekai Jiang
 	 * @param delivery The parcel delivery instance.
 	 * @return The DTO of the parcel delivery.
 	 */
@@ -319,6 +323,7 @@ public class PurchaseController {
 	 * Helper method to convert an in-store pick-up instance to DTO.
 	 * Note that this conversion copies only the reference number, delivery id, store address, and status.
 	 * It does NOT copy the purchase associated with the delivery, to avoid circular reference.
+	 * @author Zhekai Jiang
 	 * @param delivery The in-store pick-up instance.
 	 * @return The DTO of the in-store pick-up.
 	 */
@@ -333,6 +338,7 @@ public class PurchaseController {
 	
 	/**
 	 * Helper method to convert an address instance to DTO.
+	 * @author Zhekai Jiang
 	 * @param address The address instance.
 	 * @return The DTO of the address.
 	 */

@@ -293,12 +293,15 @@ public class ArtPieceService {
     }
 
     /**
-     * Add artist to artistList of the artPiece by artPiece id
-     * @param id  artPiece Id
-     * @param artist artist
-     * Added Nov 10
-     * @author Zhekai Jiang
-     * @return updated artPiece
+     * Associate an artist to an art piece.
+     * Note that this method MUST be called separately after creating an art piece.
+     * Otherwise the art piece cannot be accessed by the artist.
+     * An IllegalArgumentException will be thrown if the id or artist is null or empty or the art piece does not exist.
+     * Added Nov 10.
+     * @author Zhekai Jiang 
+     * @param id The id of the art piece.
+     * @param artist The artist to be associated with the art piece.
+     * @return The updated ArtPiece instance.
      */
     @Transactional
     public ArtPiece addArtist(String id, Artist artist) {

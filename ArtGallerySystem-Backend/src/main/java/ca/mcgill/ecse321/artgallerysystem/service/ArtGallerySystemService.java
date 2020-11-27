@@ -14,11 +14,22 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 import ca.mcgill.ecse321.artgallerysystem.service.exception.ArtGallerySystemException;
 
+/**
+ * Business services related to the system.
+ * @author Zhekai Jiang
+ */
 @Service
 public class ArtGallerySystemService {
 	@Autowired
 	ArtGallerySystemRepository artGallerySystemRepository;
 	
+	/**
+	 * Get the system with the given id.
+	 * An IllegalArgumentException will be thrown if the id is empty or the system does not exist.
+	 * @author Amelia Cui, Zhekai Jiang
+	 * @param id The id of the system.
+	 * @return The system instance of the given id.
+	 */
 	@Transactional
 	public ArtGallerySystem getSystemById(String id) {
 		if(id == null || id.length() == 0) {
@@ -34,6 +45,13 @@ public class ArtGallerySystemService {
 		
 	}
 	
+	/**
+	 * Create a system with the given id.
+	 * An IllegalArgumentException will be thrown if the id is empty.
+	 * @author Zhekai Jiang
+	 * @param id The id of the system.
+	 * @return The created system instance with the given id.
+	 */
 	@Transactional
 	public ArtGallerySystem createSystem(String id) {
 		if(id == null || id.length() == 0) {
@@ -54,6 +72,12 @@ public class ArtGallerySystemService {
 		return system;
 	}
 	
+	/**
+	 * Delete the system with the given id.
+	 * @author Zhekai Jiang
+	 * @param id The id of the system to be deleted.
+	 * @return The original instance of the system.
+	 */
 	@Transactional
 	public ArtGallerySystem deleteSystem(String id) {
 		ArtGallerySystem system = getSystemById(id);
@@ -61,6 +85,13 @@ public class ArtGallerySystemService {
 		return system;
 	}
 	
+	/**
+	 * Set the income of a system (i.e., gallery) TO a specific value.
+	 * @author Zhekai Jiang
+	 * @param id The id of the system.
+	 * @param income The new income value.
+	 * @return The updated system instance.
+	 */
 	@Transactional
 	public ArtGallerySystem setIncome(String id, double income) {
 		ArtGallerySystem system = getSystemById(id);
@@ -69,6 +100,13 @@ public class ArtGallerySystemService {
 		return system;
 	}
 	
+	/**
+	 * Increase the income of a system (i.e., gallery) BY a given value.
+	 * @author Zhekai Jiang
+	 * @param id The id of the system.
+	 * @param increment The increment in income.
+	 * @return The updated system instance.
+	 */
 	@Transactional
 	public ArtGallerySystem increaseIncome(String id, double increment) {
 		ArtGallerySystem system = getSystemById(id);
@@ -77,6 +115,14 @@ public class ArtGallerySystemService {
 		return system;
 	}
 	
+	/**
+	 * Add a user to a system.
+	 * An IllegalArgumentException will be thrown if the id or the user is null or empty.
+	 * @author Zhekai Jiang
+	 * @param id The id of the system.
+	 * @param user The user to be added to the system.
+	 * @return The updated system instance.
+	 */
 	@Transactional
 	public ArtGallerySystem addUser(String id, ArtGallerySystemUser user) {
 		ArtGallerySystem system = null;
@@ -100,6 +146,14 @@ public class ArtGallerySystemService {
 		return system;
 	}
 	
+	/**
+	 * Add an art piece to a system.
+	 * An IllegalArgumentException will be thrown if the id or the art piece is null or empty.
+	 * @author Zhekai Jiang
+	 * @param id The id of the system.
+	 * @param artPiece The art piece to be added to the system.
+	 * @return The updated system instance.
+	 */
 	@Transactional
 	public ArtGallerySystem addArtPiece(String id, ArtPiece artPiece) {
 		ArtGallerySystem system = null;
@@ -122,6 +176,14 @@ public class ArtGallerySystemService {
 		return system;
 	}
 	
+	/**
+	 * Add a purchase to a system.
+	 * An IllegalArgumentException will be thrown if the id or the purchase is null or empty.
+	 * @author Zhekai Jiang
+	 * @param id The id of the system.
+	 * @param purchase The purchase to be added to the system.
+	 * @return The updated system instance.
+	 */
 	@Transactional
 	public ArtGallerySystem addPurchase(String id, Purchase purchase) {
 		ArtGallerySystem system = null;
@@ -144,6 +206,16 @@ public class ArtGallerySystemService {
 		return system;
 	}
 	
+	/**
+	 * Add an address to a system.
+	 * Note that the address could be for a parcel delivery or a store, or a frequently used address saved by a customer.
+	 * It is NOT necessarily the address of the gallery!
+	 * An IllegalArgumentException will be thrown if the id or the address is null or empty.
+	 * @author Zhekai Jiang
+	 * @param id The id of the system.
+	 * @param address The address to be added to the system.
+	 * @return The updated system instance.
+	 */
 	@Transactional
 	public ArtGallerySystem addAddress(String id, Address address) {
 		ArtGallerySystem system = null;

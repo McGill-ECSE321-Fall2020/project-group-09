@@ -89,11 +89,12 @@ public class CustomerService {
     }
     
     /**
-     * get customer by user id
-     * @param userName user id
-     * @ return customer
-     * Added Nov 10
+     * Get the customer role of a user.
+     * An IllegalArgumentException will be thrown if the user name is empty or the user does not exist.
+     * Added Nov 10.
      * @author Zhekai Jiang
+     * @param userName The name of the user.
+     * @return The Customer (role) instance of the user.
      */
     @Transactional
     public Customer getCustomerByUserName(String userName) {
@@ -184,12 +185,14 @@ public class CustomerService {
     }
     
     /**
-     * delete an address from the address set of customer
-     * @param id customer userRole id
-     * @param address address
-     * @return
-     * Added Nov 11
+     * Delete an address from the address set of a customer.
+     * Note that the address is NOT deleted completely from the database, as it may still be referenced by some delivery.
+     * An IllegalArgumentException will be thrown if the id or address is null or empty or the customer does not exist.
+     * Added Nov 11.
      * @author Zhekai Jiang
+     * @param id The id of the customer role. Note that it is not the user name or address id.
+     * @param address The address to be deleted.
+     * @return The updated Customer instance.
      */
     @Transactional
     public Customer deleteCustomerAddress(String id, Address address) {

@@ -30,6 +30,10 @@ import ca.mcgill.ecse321.artgallerysystem.model.ArtGallerySystemUser;
 import ca.mcgill.ecse321.artgallerysystem.model.ArtPiece;
 import ca.mcgill.ecse321.artgallerysystem.model.Purchase;
 
+/**
+ * Test suite for the system service.
+ * @author Zhekai Jiang
+ */
 @ExtendWith(MockitoExtension.class)
 public class TestArtGallerySystemService {
 	
