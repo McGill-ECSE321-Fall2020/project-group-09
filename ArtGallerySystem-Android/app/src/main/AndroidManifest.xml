@@ -25,6 +25,9 @@
         <activity android:name=".Purchase"/>
         <activity android:name=".ApplyNewAddress"/>
         <activity android:name=".SuccessfulPayment"/>
+        <activity android:name=".Login"/>
+        <activity android:name=".Signup"/>
+        <activity android:name=".CreateArtPiece"/>
         <activity android:name=".MyAccount" android:exported="true"/> <!-- exported for testing -->
         <activity android:name=".AccountPurchases" android:exported="true"/>
         <activity android:name=".AccountArtPieces" android:exported="true"/>

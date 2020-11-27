@@ -240,12 +240,8 @@ public class Purchase extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                //try {
-                    error += thisDate;
+                error += thisDate;
                 error += username;
-               // } catch (JSONException e) {
-               //     error += thisDate;
-               // }
                 refreshErrorMessage();
             }
         });
@@ -275,22 +271,16 @@ public class Purchase extends AppCompatActivity {
                     createStorePickup(orderNum, "StoreA");
                 }else if (stores.getSelectedItem().toString().equalsIgnoreCase("StoreB")){
                     createStorePickup(orderNum, "StoreB");
-                }else if (parcels.getSelectedItem().toString()!=null){
+                }else if (!parcels.getSelectedItem().toString().equals("")){
                     String addressID = parcels.getSelectedItem().toString().split("--")[0];
                     createParcel(orderNum, addressID);
                 }
-                //createPayment(orderNum);
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                //try {
-               // error += thisDate;
                 error += username;
-                // } catch (JSONException e) {
-                //     error += thisDate;
-                // }
                 refreshErrorMessage();
             }
         });
@@ -321,12 +311,7 @@ public class Purchase extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                //try {
-                // error += thisDate;
                 error += username;
-                // } catch (JSONException e) {
-                //     error += thisDate;
-                // }
                 refreshErrorMessage();
             }
         });
@@ -359,12 +344,7 @@ public class Purchase extends AppCompatActivity {
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                //try {
-                // error += thisDate;
                 error += username;
-                // } catch (JSONException e) {
-                //     error += thisDate;
-                // }
                 refreshErrorMessage();
             }
         });

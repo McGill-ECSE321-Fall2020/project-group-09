@@ -5,15 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -79,7 +74,6 @@ public class ApplyNewAddress extends AppCompatActivity {
      * @return random ID
      */
     private String orderNumber (){
-        //String now = (new Date()).toString();
         Random rand = new Random();
         int rand_int1 = rand.nextInt(1000);
         int rand_int2 = rand.nextInt(1000);
@@ -125,7 +119,7 @@ public class ApplyNewAddress extends AppCompatActivity {
         String province = tv7.getText().toString();
         String number = tv6.getText().toString();
         String name = tv2.getText().toString();
-        if (country==null||city==null||postcode==null||streetaddress==null||province==null||number==null||name==null){
+        if (country.equals("")||city.equals("")||postcode.equals("")||streetaddress.equals("")||province.equals("")||number.equals("")||name.equals("")){
             AlertDialog alertDialog = new AlertDialog.Builder(this)
                     .setMessage("Please input all information")
                     .setIcon(android.R.drawable.ic_dialog_alert)
@@ -216,12 +210,8 @@ public class ApplyNewAddress extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                //try {
                 error += thisDate;
                 error += username;
-                // } catch (JSONException e) {
-                //     error += thisDate;
-                // }
                 refreshErrorMessage();
             }
         });
@@ -248,12 +238,7 @@ public class ApplyNewAddress extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                //try {
-                // error += thisDate;
                 error += username;
-                // } catch (JSONException e) {
-                //     error += thisDate;
-                // }
                 refreshErrorMessage();
             }
         });
@@ -284,12 +269,7 @@ public class ApplyNewAddress extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                //try {
-                // error += thisDate;
                 error += username;
-                // } catch (JSONException e) {
-                //     error += thisDate;
-                // }
                 refreshErrorMessage();
             }
         });

@@ -6,55 +6,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomePage">
-
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="109dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="201dp"
-        android:layout_weight="1"
-        android:insetLeft="40dp"
-        android:insetRight="40dp"
-        android:onClick="goDetail"
-        android:text="Detail"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="139dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="140dp"
-        android:onClick="goAccount"
-        android:text="My Account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22"
+        android:text=""
+        android:textColor="#FF0000"
+        android:visibility="gone"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="159dp"
-        android:onClick="goUpload"
-        android:text="Upload"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="166dp"
+        android:layout_height="30dp"
+        android:text="Home Page"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="30dp"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="406dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textView22"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="108dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="140dp"
+            android:onClick="goAccount"
+            android:text="My Account"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:onClick="goUpload"
+            android:text="Upload"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="140dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@+id/viewPagerMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <!--<androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />-->
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/button5"
@@ -72,18 +92,4 @@
         app:layout_constraintTop_toBottomOf="@+id/textView22"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="258dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="77dp"
-        android:text="Home Page"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
