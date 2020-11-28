@@ -71,3 +71,19 @@ The gallery wants to focus on local artists and encourage them to use their webs
 * [Deliverable 3 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_3)
 * [User Manual](https://linduan.wixsite.com/website-2)
 * [Frontend Website](https://artgallery-frontend-3223.herokuapp.com/)
+
+### Deliverable 4
+
+#### Overview Table
+
+| Team Members |	Total Hours	| Responsibility |
+| ------------ | ------------ | -------------- |
+| Amelia Cui | 20 | Backend integration, project report, android page for puchase and apply new address frontend implementation and backend integration |
+| Angelina Duan	| 20 | User documentation, project management, home page frontend implementation and backend integration |
+| Zhekai Jiang | 20 | Backend bug fixing, account information page frontend implementation and backend integration |
+| Zheyan Tu | 15 | art piece upload page frontend implementation and backend integration |
+| Tianyu Zhao | 15 | login page and sign up page frontend implementation and backend integration |
+
+#### Links
+* [Deliverable 4 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_4)
+* [User Manual](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/User-Documentation)
