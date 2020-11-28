@@ -27,7 +27,6 @@ let frontendUrl = frontendConfigurer();
 
 let AXIOS = axios.create({
     baseURL: backendUrl
-    // headers: {'Access-Control-Allow-Origin': frontendUrl}
 });
 
 export default {
@@ -42,7 +41,7 @@ export default {
             artPieces: [],
 
             updateParcelDeliveryInformationDialogVisible: false,
-            updatingParcelDelivery: {
+            updatingParcelDelivery: { // data of parcel delivery to be updated
                 deliveryId: '',
                 parcelDeliveryStatus: '',
                 carrier: '',
@@ -50,7 +49,7 @@ export default {
             },
 
             updateInStorePickUpInformationDialogVisible: false,
-            updatingInStorePickUp: {
+            updatingInStorePickUp: { // data of in-store pick-up to be updated
                 deliveryId: '',
                 inStorePickUpStatus: '',
                 pickUpReferenceNumber: ''
@@ -86,15 +85,15 @@ export default {
             errorCustomerId: '', // error retrieving customer id
             errorPurchases: '', // error retrieving purchases
             errorArtPieces: '', // error retrieving art pieces
-            errorParcelDelivery: '',
-            errorInStorePickUp: '',
+            errorParcelDelivery: '', // error updating parcel delivery
+            errorInStorePickUp: '', // error updating in-store pick-up
             errorAddresses: '', // error retrieving addresses
             errorUpdateAddress: '', // error updating address
             errorNewAddress: '', // error creating address
             errorDeleteAddress: '', // error deleting address
             response: [],
 
-            rules: {
+            rules: { // for address entries
                 name: [ { required: true, message: "Name cannot be empty!", trigger: "blur" } ],
                 phoneNumber: [ { required: true, message: "Phone number cannot be empty!", trigger: "blur" } ],
                 number: [ { required: true, message: "Phone number cannot be empty!", trigger: "blur" } ],
@@ -108,6 +107,8 @@ export default {
             }
         }
     },
+
+    // Get customer id, purchases, art pieces, and addresses
     created: function () {
 
         AXIOS.get('/customer/user/'.concat(this.userName))
@@ -117,10 +118,6 @@ export default {
         AXIOS.get('/purchasesbyuser/'.concat(this.userName))
             .then(response => { this.purchases = response.data })
             .catch(e => { this.errorPurchases = e; console.log(e); });
-
-        /* AXIOS.get('/artPiece/userrole/'.concat(this.userName).concat("--Artist"))
-            .then(response => { this.artPieces = response.data; })
-            .catch(e => { this.errorArtPieces = e; console.log(e); }); */
             
         this.getArtPieces();
 
@@ -129,26 +126,26 @@ export default {
 
     methods: {
 
-        getAddresses: function() { // retrieve or refresh
+        // Retrieve or refresh addresses
+        getAddresses: function() {
             AXIOS.get('/addresses/user/'.concat(this.userName))
                 .then(response => { this.addresses = response.data; })
                 .catch(e => { this.errorAddresses = e });
         },
 
+        // Retreive or refresh art pieces
         getArtPieces: function() {
             AXIOS.get('/artPiece/userrole/'.concat(this.userName).concat("--Artist"))
-            .then(response => { this.artPieces = response.data })
-            .catch(e => { this.errorArtPieces = e; console.log(e); });
-            /*AXIOS.get('/artPiece/user/'.concat(this.userName))
-                .then(response => { this.artPieces = response.data; console.log(response) })
-                .catch(e => { this.errorArtPieces = e; console.log(e); });*/
+                .then(response => { this.artPieces = response.data })
+                .catch(e => { this.errorArtPieces = e; console.log(e); });
         },
 
+        // Back to home page
         goBack(){
             window.location.href = frontendUrl + '/#/home/' + this.userName;
-        // window.location.href='http://127.0.0.1:8087/#/home/'.concat(this.userName);
         },
 
+        // Show dialog, retrieve current information
         startUpdatingParcelDeliveryInformation: function (deliveryId) {
             AXIOS.get('/parcelDeliveryes/'.concat(deliveryId))
                 .then(response => {
@@ -158,11 +155,13 @@ export default {
                 .catch(e => { this.errorParcelDelivery = e; console.log(e) })
         },
 
+        // Call REST controller, refresh list, notify success
         confirmUpdateParcelDeliveryInformation: function() {
-            AXIOS.put('/parcelDelivery/updateFull/'.concat(this.updatingParcelDelivery.deliveryId), {}, {params: this.updatingParcelDelivery})
+            AXIOS.put('/parcelDelivery/updateFull/'.concat(this.updatingParcelDelivery.deliveryId), {}, 
+                {params: this.updatingParcelDelivery})
                 .then(_ => {
                     this.updateParcelDeliveryInformationDialogVisible = false
-                    this.getArtPieces()
+                    this.getArtPieces() // refresh
                     this.$notify({
                         title: 'Success',
                         message: 'Parcel delivery information updated successfully!',
@@ -172,6 +171,7 @@ export default {
                 .catch(e => { this.errorParcelDelivery = e; console.log(e) })
         },
 
+        // Show dialog, retrieve current status
         startUpdatingInStorePickUpInformation: function (deliveryId) {
             AXIOS.get('/inStorePickUps/'.concat(deliveryId))
                 .then(response => {
@@ -182,12 +182,13 @@ export default {
             this.updatingInStorePickUp.pickUpReferenceNumber = deliveryId
         },
 
+        // Update in-store pick-up status via REST controller, refresh list, notify success
         confirmUpdateInStorePickUpInformation: function () {
             AXIOS.put('/inStorePickUp/update/'.concat(this.updatingInStorePickUp.deliveryId), {}, 
                 {params: {inStorePickUp: this.updatingInStorePickUp.inStorePickUpStatus}})
                 .then(_ => {
                     this.updateInStorePickUpInformationDialogVisible = false
-                    this.getArtPieces()
+                    this.getArtPieces() // refresh
                     this.$notify({
                         title: 'Success',
                         message: 'In-store pick-up information updated successfully!',
@@ -197,12 +198,14 @@ export default {
                 .catch(e => { this.errorInStorePickUp = e; console.log(e) })
         },
 
+        // Retrieve address and fill in entries
         startUpdatingAddress: function (addressId) {
             AXIOS.get('/addresses/'.concat(addressId))
                 .then(response => { this.updatingAddress = response.data; })
                 .catch(e => { this.errorUpdateAddress = e; console.log(e); })
         },
 
+        // Update address via REST controller, refresh list, notify success
         confirmUpdateAddress: function () {
             // Format REST parameter names
             this.updatingAddress.phone = this.updatingAddress.phoneNumber;
@@ -222,6 +225,8 @@ export default {
                 .catch(e => { this.errorUpdateAddress = e; console.log(e); })
         },
 
+        // Confirm dialog, delete address from customer's address list, notify success
+        // (not completely deleted in database as it may still be referenced by some delivery!)
         handleDeleteAddress: function (addressId) {
             this.$confirm('Are you sure to delete this address?')
                 .then(_ => { // Confirmed
@@ -239,6 +244,7 @@ export default {
                 .catch(_ => { /* Cancelled */ });
         },
 
+        // Clear entries, generate id for new address
         startCreatingAddress: function () {
             // reset new address
             this.newAddress.id = this.generateAddressId();
@@ -251,10 +257,12 @@ export default {
             this.newAddress.country = '';
         },
 
+        // Post new address via REST controller, refresh list, notify success
         confirmCreateAddress: function() {
             AXIOS.post('/address', {}, {params: this.newAddress})
                 .then(_ => {
-                    AXIOS.put('/customer/addAddress/'.concat(this.customerId), {}, { params: { address: this.newAddress.id } } )
+                    AXIOS.put('/customer/addAddress/'.concat(this.customerId), {}, //!!!
+                        { params: { address: this.newAddress.id } } )
                         // add address in customer's address list
                         .then(_ => {
                             this.addAddressDialogVisible = false;
@@ -277,6 +285,7 @@ export default {
             return  [now.slice(0, 4), now.slice(4, 10), now.slice(10, 14)].join('-')
         },
 
+        // To art piece description page
         handleClickArtPiece: function(artPieceId) {
             window.location.href = frontendUrl + '/#/home/' + this.userName + '/' + artPieceId;
         }
