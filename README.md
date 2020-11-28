@@ -1,4 +1,4 @@
-# ECSE321 Project Group 09 
+# ECSE 321 Project Group 09 
 project-group-09 created by GitHub Classroom
 
 ## Project Overview
@@ -62,9 +62,9 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | ------------ | ------------ | -------------- |
 | Amelia Cui | 25 | Backend bug fixing, architecture model, purchase page and artpiece information page frontend implementation and backend integration, project report|
 | Angelina Duan	| 23 |  Architecture model, home page and welcome page frontend implementation and backend integration, user manual, project management |
-| Zhekai Jiang | 23 | Backend bug fixing, architecture model, account information page frontend implementation and backend integration, Continuous Integration |
-| Zheyan Tu | 22 | Architecture model, art piece upload page frontend implementation and backend integration, Continuous Integration |
-| Tianyu Zhao | 22 | Architecture model, login page and sign up page frontend implementation and backend integration, Continuous Integration |
+| Zhekai Jiang | 23 | Backend bug fixing, architecture model, account management page frontend implementation and backend integration, continuous integration |
+| Zheyan Tu | 22 | Architecture model, art piece upload page frontend implementation and backend integration, continuous integration |
+| Tianyu Zhao | 22 | Architecture model, login page and sign up page frontend implementation and backend integration, continuous integration |
 
 #### Links
 * [Architecture Model](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Architecture-Model)
@@ -80,10 +80,13 @@ The gallery wants to focus on local artists and encourage them to use their webs
 | ------------ | ------------ | -------------- |
 | Amelia Cui | 20 | Backend integration, project report, android page for puchase and apply new address frontend implementation and backend integration |
 | Angelina Duan	| 20 | User documentation, project management, home page frontend implementation and backend integration |
-| Zhekai Jiang | 20 | Backend bug fixing, account information page frontend implementation and backend integration |
-| Zheyan Tu | 15 | art piece upload page frontend implementation and backend integration |
-| Tianyu Zhao | 15 | login page and sign up page frontend implementation and backend integration |
+| Zhekai Jiang | 20 | Backend bug fixing, account management frontend implementation and backend integration |
+| Zheyan Tu | 15 | Art piece upload page frontend implementation and backend integration |
+| Tianyu Zhao | 15 | Login page and sign up page frontend implementation and backend integration |
+
+#### Note
+The source code of the Android application is located in the orphan branch [android](https://github.com/McGill-ECSE321-Fall2020/project-group-09/tree/android).
 
 #### Links
+* [User Documentation](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/User-Documentation)
 * [Deliverable 4 Report](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/Project-Report_4)
-* [User Manual](https://github.com/McGill-ECSE321-Fall2020/project-group-09/wiki/User-Documentation)
