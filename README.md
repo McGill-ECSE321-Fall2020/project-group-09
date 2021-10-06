@@ -1,5 +1,5 @@
-# ECSE 321 Project Group 09 
-project-group-09 created by GitHub Classroom
+# Artizon
+**ECSE 321 – Introduction to Software Engineering, Fall 2020, Project Group 9**
 
 ## Project Overview
 
