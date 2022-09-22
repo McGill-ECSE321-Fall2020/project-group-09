@@ -14,6 +14,7 @@ matrix:
 
       before_deploy:
         - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday-net_http -v 2.1.0
+        - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.10.2
       
       deploy:
         provider: heroku
@@ -33,6 +34,7 @@ matrix:
 
       before_deploy:
         - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday-net_http -v 2.1.0
+        - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.10.2
         
       deploy:
         provider: heroku
