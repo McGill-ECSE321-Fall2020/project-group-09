@@ -12,6 +12,9 @@ matrix:
       script:
         - npm build
 
+      before_deploy:
+        - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday-net_http -v 2.1.0
+      
       deploy:
         provider: heroku
         api_key:
@@ -24,9 +27,13 @@ matrix:
        
       before_install: 
         - chmod +x gradlew
+        
       script:
         - ./gradlew build
 
+      before_deploy:
+        - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday-net_http -v 2.1.0
+        
       deploy:
         provider: heroku
         api_key:
